@@ -1,0 +1,226 @@
+[@游戏推广员标准配置头]
+{
+[@main]
+#CALL [\\NPC配置\所有NPC头内容.txt] @系统_所有NPC头_内容
+
+[@系统_所有NPC头_返回_剑侠]
+#IF
+EQUAL C95 1
+#ACT
+MOV P91 20
+MOV P90 [$推广员一级提成]
+#IF
+EQUAL C95 2
+#ACT
+MOV P91 60
+MOV P90 [$推广员二级提成]
+#IF
+EQUAL C95 3
+#ACT
+MOV P91 100
+MOV P90 [$推广员三级提成]
+
+#IF
+EQUAL C99 1
+#SAY
+推广员【<$USERNAME>】:\
+　您线下已有<$STR(C93)>人和你绑定推广。\ \
+　您的推广码信息为：<$STR(C97)>\
+　您当前的推广等级为:<$STR(C95)>/3级。\
+　您当前的推广积分为:<$STR(C94)>/<$STR(P91)>点。\
+　您的下线玩家进行充值您可获得<$STR(P90)>%的\元宝提成。\ \
+<&查看与我绑定的玩家/@查看被推广详细>\
+<&{【升级推广等级】=FCO=254}/@升级推广等级>\
+<&{【查询等级相关】=FCO=254}/@查询等级相关>\
+<&{【我要领取推广奖励】=FCO=253}/@推广_推广奖励领取>\
+<&推广说明{【推荐阅读】=FCO=253}/@推广说明>\
+<&推广奖励{【推荐阅读】=FCO=253}/@推广奖励>\
+#ELSESAY
+<$USERNAME>:\ \
+　本服已有推广员<$STR(G998)>人。\
+　前[$推广员免费资格名额]名申请推广员的将免费获得推广资\格。\
+　成功被推广进入游戏的有<$STR(G997)>人。\
+
+<&推广说明{【推荐阅读】=FCO=253}/@推广说明>\
+<&推广奖励{【推荐阅读】=FCO=253}/@推广奖励>\
+<&{我要成为推广员=FCO=253}/@成为推广员>
+
+
+[@系统_所有NPC头_返回_盛大]
+#IF
+EQUAL C95 1
+#ACT
+MOV P91 20
+MOV P90 [$推广员一级提成]
+#IF
+EQUAL C95 2
+#ACT
+MOV P91 60
+MOV P90 [$推广员二级提成]
+#IF
+EQUAL C95 3
+#ACT
+MOV P91 100
+MOV P90 [$推广员三级提成]
+
+#IF
+EQUAL C99 1
+#SAY
+推广员【<$USERNAME>】:您线下已有<$STR(C93)>人和你绑定推广。<查看/@查看被推广详细>\
+　　您的推广码信息为：<$STR(C97)>\
+　　您当前的推广等级为:<$STR(C95)>/3级。　 <{【查询等级相关】=FCO=254}/@查询等级相关>\
+　　您当前的推广积分为:<$STR(C94)>/<$STR(P91)>点。　<{【升级推广等级】=FCO=254}/@升级推广等级>\
+　　您的下线玩家进行充值您可获得<$STR(P90)>%的元宝提成。\
+{10=y}　　<推广说明{【推荐阅读】=FCO=253}/@推广说明>　　　<推广奖励{【推荐阅读】=FCO=253}/@推广奖励>\ \
+　　<【{★★★★★★=FCO=253}】我要领取推广奖励【{★★★★★★=FCO=253}】/@推广_推广奖励领取>
+#ELSESAY
+<$USERNAME>:\ \
+　　本服已有推广员<$STR(G998)>人。\
+　　前[$推广员免费资格名额]名申请推广员的将免费获得推广资格。\
+　　成功被推广进入游戏的有<$STR(G997)>人。\
+
+{10=y}　　<推广说明{【推荐阅读】=FCO=253}/@推广说明>　　　<推广奖励{【推荐阅读】=FCO=253}/@推广奖励>\ \
+　　<【{★★★★★★=FCO=253}】我要成为推广员【{★★★★★★=FCO=253}】/@成为推广员>
+
+}
+
+[@游戏推广员标准配置尾]
+{
+[@升级推广等级]
+#IF
+EQUAL C95 3
+#ACT
+MESSAGEBOX 提示：本服目前推广员等级最高为三级。
+BREAK
+#IF
+NOT Small C94 <$STR(P91)>
+#ACT
+INC C95 1
+DEC C94 <$STR(P91)>
+SENDMSG 7 推广等级提示：恭喜你成功升级了推广等级，你当前的推广等级为【<$STR(C95)>级】。
+SENDMSG 0 推广员【<$USERNAME>】成功提成了推广等级，当前推广等级为【<$STR(C95)>级】推广员。
+GOTO @MAIN
+BREAK
+#IF
+#ACT
+MESSAGEBOX 提示：你当前的推广积分不足升级，升级需要推广积分【<$STR(P91)>】点。
+BREAK
+[@查询等级相关]
+#IF
+#ACT
+MESSAGEBOX 推广等级相关：\　\　　一级推广员：线下玩家进行【元宝冲值】，你可获得10%的元宝提成。\　　二级推广员：线下玩家进行【元宝冲值】，你可获得20%的元宝提成。\　　三级推广员：线下玩家进行【元宝冲值】，你可获得30%的元宝提成。\
+[@推广奖励]
+#IF
+#ACT
+MESSAGEBOX 推广奖励：\　\　　1.当你的下线玩家到达50、55、60、65、70级时。\　　你分别可获得1、5、10、30、50元点卷和1、2、3、5、10点推广积分。\　\　　2.当你的线下玩家进行【元宝冲值】时，你可获得10%、20%、30%的元宝提成。\　\　　特别提示：无论你的角色在线与否，系统都将自动将奖励记录在你的帐号下，并且邮件通知。
+[@推广说明]
+#IF
+#ACT
+MESSAGEBOX 推广说明：\　\　　1.成功申请推广员后可获得一个绑定帐号的【推广代码】。\　　2.将【推广代码】发给推广玩家，并在[$被推广等级限制]级前在新手出生地图找NPC成功认证。\　　3.认证时需正确填写你的【推广码】即推广成功。\　　4.推广奖励请点击【推广奖励查询】阅读。\
+[@成为推广员]
+#IF
+CheckLevelEx < 45
+#ACT
+MESSAGEBOX 提示：申请推广员需要等级达到45级。
+BREAK
+#IF
+EQUAL G991 0
+#ACT
+MESSAGEBOX 提示:推广系统将在正式开区一小时后正式运行!\　\你现在还不能申请!\　\本区推广系统开通时间为3月8日18点整!\
+BREAK
+#IF
+NOT Large G998 [$推广员免费资格名额]
+#ACT
+INC G998 1
+MOV C99  1
+MOV C95  1
+MOV P0   <$STR(G998)>
+MUL P0  [$推广代码生成基数]
+MOV C97 <$STR(P0)>
+AddTextList <$USERNAME>:<$STR(C97)> ../QuestDiary/游戏功能/推广系统/推广员总信息.txt
+AddTextList <$STR(C97)> ../QuestDiary/游戏功能/推广系统/推广码信息.txt
+CreateFile ../QuestDiary/游戏功能/推广系统/推广员下线资料/<$USERNAME>.txt
+MESSAGEBOX 提示：\　\　　您已成功成为推广员。\　　推广员：<$USERNAME>\　　推广码：<$STR(C97)>\
+GOTO @main
+BREAK
+#IF
+CheckGamePoint ? [$推广员申请点卷]
+#act
+GamePoint - [$推广员申请点卷]
+INC G998 1
+MOV C99  1
+MOV C95  1
+MOV P0   <$STR(G998)>
+MUL P0  [$推广代码生成基数]
+MOV C97 <$STR(P0)>
+AddTextList <$USERNAME>:<$STR(C97)> ../QuestDiary/游戏功能/推广系统/推广员总信息.txt
+AddTextList <$STR(C97)> ../QuestDiary/游戏功能/推广系统/推广码信息.txt
+CreateFile ../QuestDiary/游戏功能/推广系统/推广员下线资料/<$USERNAME>.txt
+MESSAGEBOX 提示：\　\　　您已成功成为推广员。\　　推广员：<$USERNAME>\　　推广码：<$STR(C97)>\
+GOTO @main
+BREAK
+#IF
+#ACT
+MESSAGEBOX 提示：\　\　　本服前[$推广员免费资格名额]名申请可免费获得推广资格。\　　超出名额需支付[$推广员申请点卷]点卷。\
+
+[@推广_推广奖励领取]
+#IF
+#ACT
+MESSAGEBOX 提示：推广奖励目前以邮件方式及时发送，请注意收取。\　　盛大界面邮件按钮聊天框左上角(图标是一个e)\　　剑侠界面邮件按钮在屏幕左上角的等级显示左边。
+
+
+
+[@查看被推广详细]
+#IF
+EQUAL C93 0
+#ACT
+MESSAGEBOX 提示：你目前还没有被推广玩家。加油！
+BREAK
+#IF
+#ACT
+MOV S0 
+MOV S1 
+MOV S2 
+MOV S3 
+MOV S4 
+MOV S5 
+MOV S6 
+MOV S7 
+MOV S8 
+MOV S9 
+MOV S10 
+MOV S11 
+MOV S12 
+MOV S13 
+MOV S14 
+MOV S15 
+MOV S16 
+MOV S17 
+MOV S18 
+MOV S19 
+MOV S20 
+MOV S21 
+MOV S22 
+MOV S23 
+MOV S24 
+MOV S25 
+MOV S26 
+MOV S27 
+MOV S28 
+MOV S29 
+MOV P51 0
+MOV P50 <$STR(C93)>
+GOTO @查看被推广详细_2
+
+[@查看被推广详细_2]
+#IF
+NOT EQUAL P50 0
+#ACT
+DEC P50 1
+GetListString ../QuestDiary/游戏功能/推广系统/推广员下线资料/<$USERNAME>.txt <$STR(P50)> S<$STR(P51)>
+INC P51 1
+GOTO @查看被推广详细_2
+#ELSEACT
+MESSAGEBOX 被推广玩家名单：\　\<$STR(S0)>　<$STR(S1)>　<$STR(S2)>　<$STR(S3)>　<$STR(S4)>\<$STR(S5)>　<$STR(S6)>　<$STR(S7)>　<$STR(S8)>　<$STR(S9)>\<$STR(S10)>　<$STR(S11)>　<$STR(S12)>　<$STR(S13)>　<$STR(S14)>\<$STR(S15)>　<$STR(S16)>　<$STR(S17)>　<$STR(S18)>　<$STR(S19)>\<$STR(S20)>　<$STR(S21)>　<$STR(S22)>　<$STR(S23)>　<$STR(S24)>\<$STR(S25)>　<$STR(S26)>　<$STR(S27)>　<$STR(S28)>　<$STR(S29)>\
+GOTO @MAIN
+}

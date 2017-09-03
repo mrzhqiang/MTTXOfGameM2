@@ -1,0 +1,88 @@
+[@打造材料_检测]
+{
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [210] 0
+CHECKMAPNAME 0
+#ACT
+INC S0 <&学习打造材料{【生活技能】=FCO=251}/@任务_打造材料_接受>\
+
+#IF
+CHECKMISSION [210] 1
+CHECKMISSION [220] 0
+CHECKMAPNAME 0
+CHECKITEMCOUNT 金矿 ? 5
+#ACT
+INC S0 <&学习打造材料{【生活技能】完成=FCO=251}/@任务_打造材料_完成>\
+}
+
+[@打造材料_脚本]
+{
+[@任务_打造材料_接受]
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [210] 0
+CHECKMAPNAME 0
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　想学{打造材料=FCO=251}啊，那你就先帮我一个\
+忙吧。帮我收集{5个金矿=FCO=250}，我就把打造材\
+料的生活技能传授给你。\ \
+{需准备材料=FCO=243}\
+{12=x}{i.51,c.5=item}\ \ \
+{任务奖励：=FCO=243}\
+　声望值：[$学习生活技能_打造材料声望奖励]\
+　经验值：[$学习生活技能_打造材料经验奖励]\
+　道具奖励：\
+{12=x}{i.312,c.3=item}\ \ \ \
+<&我这就去收集/@激活打造材料>\
+<&结束对话/@exit>\
+
+[@激活打造材料]
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [210] 0
+CHECKMAPNAME 0
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　带上你的{鹤嘴锄=FCO=251}去比奇矿洞{挖5个金矿=FCO=250}\
+来吧，我等你的好消息。\ \
+<&知道了/@exit>\
+#ACT
+SETMISSION [210] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION 9
+ADDMISSION 9 开始打造材料
+
+[@任务_打造材料_完成]
+#IF
+CHECKMISSION [210] 1
+CHECKMISSION [220] 0
+CHECKMAPNAME 0
+CHECKITEMCOUNT 金矿 ? 5
+#ELSEACT
+MESSAGEBOX 你身上没有5个金矿！
+BREAK
+
+#IF
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　{打造材料=FCO=251}的生活技能我已经传授于你\
+了，现在你可以{按F11打开生活技能面板=FCO=253}，\
+随意打造属于你自己的{材料=FCO=250}\ \
+<&关闭对话/@exit>
+#ACT
+SETMISSION [220] 1
+SHOWEFFECT [$特效_任务完成]
+TAKECOUNT 金矿 5
+CHANGEEXP + [$学习生活技能_打造材料经验奖励]
+CREDITPOINT + [$学习生活技能_打造材料声望奖励]
+DYNAMICGIVE [$学习生活技能_打造材料奖励物品] 3
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可出售] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+ADDMAKEMAGIC 9
+DELMISSION 9
+}

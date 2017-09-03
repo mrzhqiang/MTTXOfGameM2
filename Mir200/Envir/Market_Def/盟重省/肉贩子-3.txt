@@ -1,0 +1,73 @@
+;[@main]
+<$USERNAME>:\ \
+　　我这个人,非常喜欢吃猪肉.所以,我长的这么胖.\
+　　不过,我又非常挑剔.我只喜欢吃<家养>的猪肉.\
+　　如果你有<家养>的肉,那就卖给我吧.我会给兑换元宝.\
+　　如果你没有,也不用担心,我可以送你去猪圈去获得.\ \
+;　　<进入猪圈获取猪肉/@进入>　　<我要与你兑换元宝/@兑换>\
+
+[@进入]
+#IF
+#ACT
+MAPMOVE ZHUJUAN
+SENDMSG 0 玩家【<$USERNAME>】进入了【猪圈】，为了元宝去寻找猪肉去了。
+BREAK
+
+[@兑换]
+<$USERNAME>:\ \
+　　我会根据你提交的猪肉部位，以及猪肉的品质来给予元宝。\
+　　当然，猪的品种越好,基本价格就要高一点。\ \
+　　如果你不愿意卖,或觉得价格不适合.那你就留着让猪肉生蛆吧。\ \
+　　<胖子,我要回收猪肉了.瞪大你的铝合金猪眼看清楚品质/@开始兑换>\
+
+[@开始兑换]
+#ACT
+ShowItemBox 放入要兑换的猪肉： @猪肉检测
+Break
+
+[@猪肉检测]
+#IF
+Equal <$ItemInfo[$Param0].Name> 猪肉干
+#ACT
+TakeIdx <$Param0>
+GAMEGOLD + [$猪肉干回收元宝]
+SendMsg 6 你放入的猪肉干已经回收，获得了[$猪肉干回收元宝]元宝！
+ShowItemBox 放入要兑换的猪肉： @猪肉检测
+Break
+
+
+#IF
+Equal <$ItemInfo[$Param0].Name> 猪蹄
+#ACT
+TakeIdx <$Param0>
+GAMEGOLD + [$猪蹄回收元宝]
+SendMsg 6 你放入的猪蹄已经回收，获得了[$猪蹄回收元宝]元宝！
+ShowItemBox 放入要兑换的猪肉： @猪肉检测_成就
+Break
+
+
+#IF
+Equal <$ItemInfo[$Param0].Name> 猪肝
+#ACT
+TakeIdx <$Param0>
+GAMEGOLD + [$猪肝回收元宝]
+SendMsg 6 你放入的猪肝已经回收，获得了[$猪肝回收元宝]元宝！
+ShowItemBox 放入要兑换的猪肉： @猪肉检测_成就
+Break
+
+#IF
+#ACT
+MESSAGEBOX 提示:你确定你放入的是猪肉?
+ShowItemBox 放入要兑换的猪肉： @猪肉检测
+BREAK
+
+[@猪肉检测_成就]
+#IF
+CHECK [354] 0
+#ACT
+SET [354] 1
+SENDMSG 7 每日成就提示：每日活动成就⑷已经完成，请倒土城左上角找【左成就】完成。
+
+#IF
+#ACT
+GOTO @猪肉检测

@@ -1,0 +1,183 @@
+[@服装店_检测]
+{
+#IF
+CHECKMISSION [105] 1
+CHECKMISSION [106] 0
+#ACT
+INC S0 <&江湖新秀{【任务】=FCO=251}/@任务_新兵上路_第二步>\
+
+#IF
+CHECKMISSION [122] 1
+CHECKMISSION [125] 0
+#ACT
+INC S0 <&重整河山{【任务】=FCO=251}/@任务_重整河山_第一步_服装店>\
+}
+
+[@服装店_脚本]
+{
+[@任务_新兵上路_第二步]
+#IF
+CHECKMISSION [105] 1
+CHECKMISSION [106] 0
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　‘风住尘香花已尽，日晚倦梳头。物\
+是人非事事休，欲语泪先流。’易安居士\
+真是深得词中三味，清浅淡雅，不高深不\
+造作……。快坐吧。来，吃个雪梨。是\
+甜酒那个老酒鬼让你来拿防具的哦，拿去\
+拿去。\ \
+<&领取物品/@任务_新兵上路_第二步_领取奖励>\
+<&结束对话/@exit>\
+
+[@任务_新兵上路_第二步_领取奖励]
+#if
+CHECKBAGSIZE 1
+#elseact
+MESSAGEBOX 请至少预留1格背包空间！
+break
+
+#IF
+GENDER MAN
+#ACT
+GIVE 布衣(男) 1 TAKEON
+#ELSEACT
+GIVE 布衣(女) 1 TAKEON
+
+#IF
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　真聪明，东西你拿去吧。你接下来要\
+去{郝漂靓（首饰店老板）=FCO=251}那里，可就没有\
+姑姑这样好讲话咯。她是小户人家的女子，\
+颇多市井气，凡事爱斤斤计较，你要好自\
+为之哦。\ \
+<&我现在过去/@move(新手村,143,130)>\
+<&结束对话/@exit>\
+#act
+SHOWEFFECT [$特效_步骤完成] 
+SETMISSION [106] 1
+CHANGEEXP + [$任务_新兵上路_第二步奖励经验值]
+CREDITPOINT + 1
+UPDATEMISSION 0 新兵上路第三步
+
+[@任务_重整河山_第一步_服装店]
+#IF
+CHECKMISSION [122] 1
+CHECKMISSION [125] 0
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　我这里的防具是玛法大陆最好的。\
+　另外，如果你想打造出更好的防具，来\
+找我是绝对没有错。只要选择{打造防具=FCO=251}，\
+你就能看到玛法大陆所有的{防具列表和打=FCO=251}\
+{造所需要的材料=FCO=251}，只要你{收集到足够的材=FCO=251}\
+{料=FCO=251}，可以随时来找我\
+　另外，我这里有些小礼物送给你\ \
+{获得奖励：=FCO=243}\
+　声望值： 1\
+　经验值： [$任务_重整山河_服装店奖励经验值]\
+　道具奖励：\
+{12=x}{i.<^BJOB(62,66,70)>,b.8=item}{46=x}{i.<^BJS(56,58,60,57,59,61)>,b.8=item}{46=x}{i.74,b.8=item}{46=x}{i.75,b.8=item}\ \ \ \
+<&谢谢你的礼物/@任务_重整河山_第一步_服装店_完成>\
+<&结束对话/@exit>\
+
+[@任务_重整河山_第一步_服装店_完成]
+#IF
+CHECKMISSION [122] 1
+CHECKMISSION [125] 0
+CHECKBAGSIZE 4
+#elseact
+MESSAGEBOX 领取失败！请至少预留4格背包空间！
+break
+
+#if
+CHECKJOB WARRIOR
+GENDER MAN
+#act
+DYNAMICGIVE 圣战头盔 1
+DYNAMICGIVE 天魔神甲 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#if
+CHECKJOB WARRIOR
+GENDER WOMAN
+#act
+DYNAMICGIVE 圣战头盔 1
+DYNAMICGIVE 圣战宝甲 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#if
+CHECKJOB WIZARD
+GENDER MAN
+#act
+DYNAMICGIVE 法神头盔 1
+DYNAMICGIVE 法神披风 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#if
+CHECKJOB WIZARD
+GENDER WOMAN
+#act
+DYNAMICGIVE 法神头盔 1
+DYNAMICGIVE 霓裳羽衣 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#if
+CHECKJOB TAOIST
+GENDER MAN
+#act
+DYNAMICGIVE 天尊头盔 1
+DYNAMICGIVE 天尊道袍 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#if
+CHECKJOB TAOIST
+GENDER WOMAN
+#act
+DYNAMICGIVE 天尊头盔 1
+DYNAMICGIVE 天师长袍 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#if
+#act
+DYNAMICGIVE 青铜腰带 1
+DYNAMICGIVE 紫绸靴 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+SHOWEFFECT [$特效_步骤完成] 
+DELMISSION [$任务_主线索引_重整河山_服装店_变量]
+SETMISSION [125] 1
+CHANGEEXP + [$任务_重整山河_服装店奖励经验值]
+CREDITPOINT + 1
+GOTO @重整河山_检测第一步完成
+
+#CALLX [\\游戏配置\任务配置\主线任务\重整河山.txt] @重整河山_检测第一步
+}

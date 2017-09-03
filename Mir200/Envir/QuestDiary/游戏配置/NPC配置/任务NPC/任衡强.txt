@@ -1,0 +1,207 @@
+[@任衡强准配置]
+{
+(@@InputInteger)
+[@main]
+#CALLX [\\游戏配置\NPC配置\所有NPC调用头内容.txt] @系统_所有NPC头内容
+
+[@系统_所有NPC头_返回]
+#CALLX [\\游戏配置\NPC配置\所有NPC调用头内容.txt] @系统_标准NPC头内容
+
+[@系统_标准NPC头_返回]
+$RESETLABEL
+{<$SELFNAME>=FCO=243}：\
+　在我的身后有口枯井，你可别小看这口\
+枯井了，其实井底有个不为人知的密室，\
+那可是个人闭关修练的好地方。\
+　如果你有一定{修练值=FCO=251}的话，我可以免费\
+将你送到那里进行自我修练和提升。\
+　{你当前的修练值为：=FCO=251}{<$GAMEGIRD>=FCO=250}\ \
+<&关于修练值/@闭关修练_修练值>\
+<&闭关介绍{【介绍】=FCO=251}/@闭关修练_闭关介绍>\
+<&{开始闭关=FCO=250}{【进入】=FCO=251}/@闭关修练_开始闭关>\ \
+<&没兴趣/@exit>\
+
+[@闭关修练_修练值]
+{<$SELFNAME>=FCO=243}：\
+　修练值是进入闭关地图必需品，可以通\
+过{杀怪获得=FCO=250}，或者直接用{元宝兑换=FCO=250}。兑换\
+的比例为：{1元宝=FCO=251}{＝=FCO=250}{[$元宝兑换修练值比例]点修练值=FCO=251}\
+　{你当前的修练值为：=FCO=251}{<$GAMEGIRD>=FCO=250}\ \
+<&请输入你要兑换修练值的元宝数量/@@InputInteger8>\ \
+<&返回上一页/@系统_标准NPC头_返回>
+
+[@@InputInteger8]
+#IF
+SMALL N8 1
+#ACT
+MESSAGEBOX 你输入的元宝数不正确，必须大于“0”
+BREAK
+
+#IF
+CHECKGAMEGOLD < <$STR(N8)>
+#ACT
+MESSAGEBOX 你的元宝不足！
+#ELSEACT
+GAMEGOLD - <$STR(N8)>
+MUL N8 [$元宝兑换修练值比例]
+CHANGEGAMEGIRD + <$STR(N8)>
+GOTO @闭关修练_修练值
+
+[@闭关修练_闭关介绍]
+{<$SELFNAME>=FCO=243}：\
+　凡等级达到{45级=FCO=251}或以上的玩家均可进入。\
+　{每人每天有一次进入闭关修练室的机会。=FCO=251}\
+进入后，将会每两秒减少你 {[$闭关修练每次减修练值] 点修练值=FCO=250}，\
+同时你人物也会{相应增加[$闭关修练每两秒加经验]点经验=FCO=254}。\
+　当你人物修练值不足时，你将会被自动\
+传送出闭关。\ \
+<&返回上一页/@系统_标准NPC头_返回>
+
+[@闭关修练_开始闭关]
+#IF
+CHECKLEVELEX > 44
+#ELSEACT
+MESSAGEBOX 你的等级太低了，等你到达45级以后再来闭关吧。
+BREAK
+
+#IF
+CHECKGAMEGIRD > 0
+#SAY
+$RESETLABEL
+{<$SELFNAME>=FCO=243}：\
+　每人每天只有一次进入闭关的机会，为\
+了不使您浪费这次机会，请仔细确认你有\
+足够的修练值。\
+　{你当前的修练值为：=FCO=251}{<$GAMEGIRD>=FCO=250}\ \
+<&补充修练值/@闭关修练_修练值>\
+<&确定进入/@准备闭关>\ \
+<&返回上一页/@系统_标准NPC头_返回>
+#ELSEACT
+MESSAGEBOX 你没有修练值，不能闭关！
+
+[@准备闭关]
+#IF
+DAYOFWEEK SUN
+CHECK [407] 0
+#ACT
+SET [401] 0
+SET [402] 0
+SET [403] 0
+SET [404] 0
+SET [405] 0
+SET [406] 0
+SET [407] 1
+MAPMOVE GA2
+GOTO @开始闭关_加经验
+BREAK
+
+#IF
+DAYOFWEEK MON
+CHECK [401] 0
+#ACT
+SET [401] 1
+SET [402] 0
+SET [403] 0
+SET [404] 0
+SET [405] 0
+SET [406] 0
+SET [407] 0
+MAPMOVE GA2
+GOTO @开始闭关_加经验
+BREAK
+
+#IF
+DAYOFWEEK TUE
+CHECK [402] 0
+#ACT
+SET [401] 0
+SET [402] 1
+SET [403] 0
+SET [404] 0
+SET [405] 0
+SET [406] 0
+SET [407] 0
+MAPMOVE GA2
+GOTO @开始闭关_加经验
+BREAK
+
+#IF
+DAYOFWEEK WED
+CHECK [403] 0
+#ACT
+SET [401] 0
+SET [402] 0
+SET [403] 1
+SET [404] 0
+SET [405] 0
+SET [406] 0
+SET [407] 0
+MAPMOVE GA2
+GOTO @开始闭关_加经验
+BREAK
+
+#IF
+DAYOFWEEK THU
+CHECK [404] 0
+#ACT
+SET [401] 0
+SET [402] 0
+SET [403] 0
+SET [404] 1
+SET [405] 0
+SET [406] 0
+SET [407] 0
+MAPMOVE GA2
+GOTO @开始闭关_加经验
+BREAK
+
+#IF
+DAYOFWEEK FRI
+CHECK [405] 0
+#ACT
+SET [401] 0
+SET [402] 0
+SET [403] 0
+SET [404] 0
+SET [405] 1
+SET [406] 0
+SET [407] 0
+MAPMOVE GA2
+GOTO @开始闭关_加经验
+BREAK
+
+#IF
+DAYOFWEEK SAT
+CHECK [406] 0
+#ACT
+SET [401] 0
+SET [402] 0
+SET [403] 0
+SET [404] 0
+SET [405] 0
+SET [406] 1
+SET [407] 0
+MAPMOVE GA2
+GOTO @开始闭关_加经验
+BREAK
+#ELSEACT
+MESSAGEBOX 今天你已经闭关修练了一次，请明天再来。
+
+[@开始闭关_加经验]
+#IF
+CHECKMAPNAME GA2
+#ELSEACT
+ClearDelayGoto 每两秒加经验
+BREAK
+
+#IF
+CHECKGAMEGIRD > [$检测修练值必需大于]
+#ACT
+CHANGEGAMEGIRD - [$闭关修练每次减修练值]
+CHANGEEXP + [$闭关修练每两秒加经验]
+DelayGoto 2 @开始闭关_加经验 每两秒加经验
+#ELSEACT
+ClearDelayGoto 每两秒加经验
+MAPMOVE 0159
+
+}

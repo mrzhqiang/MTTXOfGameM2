@@ -1,0 +1,1176 @@
+[@比武竞技标准配置头]
+{
+[@main]
+#CALL [\\NPC配置\所有NPC头内容.txt] @系统_所有NPC头_内容
+
+[@系统_所有NPC头_返回_剑侠]
+<$USERNAME>:\ \
+　想要一举成名吗，想要万众瞩目吗？\
+　每日14:00都将举行一场公平的【比武大\
+赛】。\
+　给你最公平，最刺激的体验。\ \ \
+<&了解比赛规则以及详细比赛信息/@比赛了解>\
+<&我要参与比赛/@参加比赛>\
+<&我要进行观战/@参加观战>\
+<&关闭/@EXIT>\
+
+
+
+
+[@系统_所有NPC头_返回_盛大]
+<$USERNAME>:\
+　　想要一举成名吗，想要万众瞩目吗？\
+　　每日14:00都将举行一场公平的【比武大赛】。\
+　　给你最公平，最刺激的体验。\
+<&了解比赛规则以及详细比赛信息/@比赛了解>\
+<&我要参与比赛/@参加比赛>\
+<&我要进行观战/@参加观战>\
+<&关闭/@EXIT>\
+
+[@参加观战]
+#IF
+EQUAL G968 2
+#ACT
+MOV C80 1
+MAPMOVE BWDSGZ
+SENDMSG 0 比武大赛：玩家【<$USERNAME>】进入了比武大赛观战席，开始观看赛事。
+#ELSEACT
+MESSAGEBOX 提示：比赛还未开始。
+
+[@参加比赛]
+#IF
+EQUAL G968 0
+#act
+MESSAGEBOX 提示：比武大赛还未开始！\　\请在每天的14：00-14：05准时参与！
+BREAK
+#IF
+EQUAL G968 2
+#act
+MESSAGEBOX 提示：比武大赛已经开始了！\　\你可以点击【我要进行观战】进行比赛观战！\
+BREAK
+#IF
+CheckHum BWDS 40
+#act
+MESSAGEBOX 提示：本次报名人数已满。\　\你可以参与观战，或下次再来！
+BREAK
+#IF
+NOT CheckBagSize 20
+#ACT
+MESSAGEBOX 提示：参与活动你背包至少有20个空格。
+BREAK
+#if
+EQUAL G968 1
+#ACT
+MAPMOVE BWDS
+GOTO @进入比赛_执行
+BREAK
+#IF
+EQUAL G968 0
+#ACT
+MESSAGEBOX 提示：比赛还未开始。
+BREAK
+#If
+EQUAL G968 2
+#ACT
+MESSAGEBOX 提示：比赛已经开始，已经无法进场了。你可以选择观战。
+
+[@进入比赛_执行]
+#IF
+#ACT
+MOV C83 <$LEVEL>
+MOV C82 <$EXP>
+SENDMSG 7 比武大赛通告：您当前的等级以及经验信息已经记录到系统。
+SENDMSG 0 玩家【<$USERNAME>】报名参与了比武大赛，为了今天的[$比武大赛元宝奖励]元宝而拼搏！
+#IF
+CheckJob Warrior
+Gender Man
+#ACT
+GIVE 比武战剑 1
+AutoTakeOn 比武战剑 1
+GIVE 比武礼服(战) 1
+AutoTakeOn 比武礼服(战) 0
+GIVE 比武头盔 1
+AutoTakeOn 比武头盔 2
+GIVE 比武项链 1
+AutoTakeOn 比武项链 3
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 5
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 6
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 7
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 8
+ChangeLevel = [$比武大赛战士等级]
+ChangeExp = 0
+HumanHP + 10000
+HumanMP + 10000
+Break
+#IF
+CheckJob Warrior
+#ACT
+GIVE 比武战剑 1
+AutoTakeOn 比武战剑 1
+GIVE 比武礼袍(战) 1
+AutoTakeOn 比武礼袍(战) 0
+GIVE 比武头盔 1
+AutoTakeOn 比武头盔 2
+GIVE 比武项链 1
+AutoTakeOn 比武项链 3
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 5
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 6
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 7
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 8
+ChangeLevel = [$比武大赛战士等级]
+ChangeExp = 0
+HumanHP + 10000
+HumanMP + 10000
+Break
+#IF
+CheckJob Wizard
+Gender Man
+#ACT
+GIVE 比武法剑 1
+AutoTakeOn 比武法剑 1
+GIVE 比武礼服(法) 1
+AutoTakeOn 比武礼服(法) 0
+GIVE 比武头盔 1
+AutoTakeOn 比武头盔 2
+GIVE 比武项链 1
+AutoTakeOn 比武项链 3
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 5
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 6
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 7
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 8
+ChangeLevel = [$比武大赛法师等级]
+ChangeExp = 0
+HumanHP + 10000
+HumanMP + 10000
+Break
+#IF
+CheckJob Wizard
+#ACT
+GIVE 比武法剑 1
+AutoTakeOn 比武法剑 1
+GIVE 比武礼袍(法) 1
+AutoTakeOn 比武礼袍(法) 0
+GIVE 比武头盔 1
+AutoTakeOn 比武头盔 2
+GIVE 比武项链 1
+AutoTakeOn 比武项链 3
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 5
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 6
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 7
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 8
+ChangeLevel = [$比武大赛法师等级]
+ChangeExp = 0
+HumanHP + 10000
+HumanMP + 10000
+Break
+#IF
+CheckJob Taoist
+Gender Man
+#ACT
+GIVE 比武道剑 1
+AutoTakeOn 比武道剑 1
+GIVE 比武礼服(道) 1
+AutoTakeOn 比武礼服(道) 0
+GIVE 比武头盔 1
+AutoTakeOn 比武头盔 2
+GIVE 比武项链 1
+AutoTakeOn 比武项链 3
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 5
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 6
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 7
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 8
+GIVE 灰色药粉 3
+GIVE 黄色药粉 3
+GIVE 护身符 3
+ChangeLevel = [$比武大赛道士等级]
+ChangeExp = 0
+HumanHP + 10000
+HumanMP + 10000
+Break
+#IF
+CheckJob Taoist
+#ACT
+GIVE 比武道剑 1
+AutoTakeOn 比武道剑 1
+GIVE 比武礼袍(道) 1
+AutoTakeOn 比武礼袍(道) 0
+GIVE 比武头盔 1
+AutoTakeOn 比武头盔 2
+GIVE 比武项链 1
+AutoTakeOn 比武项链 3
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 5
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 6
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 7
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 8
+GIVE 灰色药粉 3
+GIVE 黄色药粉 3
+GIVE 护身符 3
+ChangeLevel = [$比武大赛道士等级]
+ChangeExp = 0
+HumanHP + 10000
+HumanMP + 10000
+Break
+
+
+
+
+
+[@比赛了解]
+#IF
+#ACT
+MESSAGEBOX 比武介绍：\　\比武竞技开场时间：每天14：00-14：05。超过时间不能再进入场地！\　\参加比赛的成员不得穿戴任何装备，以及背包携带任何物品进入场地！\　\参加比赛的所有选手进入场地后都将统一等级和装备！\　\比赛为单挑制，每三分钟一轮，直到选出冠军。\　\冠军奖励元宝2000个。
+}
+
+
+[@比武竞技标准配置尾]
+{
+[@main]
+#IF
+EQUAL G968 1
+#ACT
+MESSAGEBOX 提示：比赛还未开始，请稍安勿躁。\　\比赛将在14：05分正式开始。
+BREAK
+#IF
+#ACT
+MESSAGEBOX 比武大赛：晋级者请在本地图小做休息，系统即将开始统计信息。
+BREAK
+}
+
+[@比武竞技全局会话]
+{
+[@比武大赛_通告]
+#IF
+Equal <$USER.INTERFACE> 0
+#say
+激情比武大赛邀请函：\ \
+　　尊敬的[$游戏名称]玩家您好。\
+　　本服经典每日活动【比武大赛】\已经开放。\
+　　最公平的战斗，最激情的享受。\
+　　入场请到土城左下角【321，337】\
+找Npc【单粜尣】了解详情!\ \
+<&{我要参与比武大赛=FCO=250}/@参与比武大赛_全局>
+#ACT
+BREAK
+#IF
+Equal <$USER.INTERFACE> 1
+#SAY
+激情比武大赛邀请函：\ \
+　　尊敬的[$游戏名称]玩家您好。\
+　　本服经典每日活动【比武大赛】已经开放。\
+　　最公平的战斗，最激情的享受。\
+　　入场请到土城左下角【321，337】找Npc【单粜尣】了解详情!\ \
+<&{我要参与比武大赛=FCO=250}/@参与比武大赛_全局>
+
+[@参与比武大赛_全局]
+#IF
+EQUAL G968 0
+#act
+MESSAGEBOX 提示：比武大赛还未开始！\　\请在每天的14：00-14：05准时参与！
+BREAK
+#IF
+EQUAL G968 2
+#act
+MESSAGEBOX 提示：比武大赛已经开始了！\　\你可以点击【我要进行观战】进行比赛观战！\
+BREAK
+#IF
+CheckHum BWDS 40
+#act
+MESSAGEBOX 提示：本次报名人数已满。\　\你可以参与观战，或下次再来！
+BREAK
+#IF
+NOT CheckBagSize 20
+#ACT
+MESSAGEBOX 提示：参与活动你背包至少有20个空格。
+BREAK
+#if
+EQUAL G968 1
+#ACT
+MAPMOVE BWDS
+GOTO @进入比赛_执行
+BREAK
+#IF
+EQUAL G968 0
+#ACT
+MESSAGEBOX 提示：比赛还未开始。
+BREAK
+#If
+EQUAL G968 2
+#ACT
+MESSAGEBOX 提示：比赛已经开始，已经无法进场了。你可以选择观战。
+
+[@进入比赛_执行]
+#IF
+#ACT
+MOV C83 <$LEVEL>
+MOV C82 <$EXP>
+SENDMSG 7 比武大赛通告：您当前的等级以及经验信息已经记录到系统。
+SENDMSG 0 玩家【<$USERNAME>】报名参与了比武大赛，为了今天的[$比武大赛元宝奖励]元宝而拼搏！
+#IF
+CheckJob Warrior
+Gender Man
+#ACT
+GIVE 比武战剑 1
+AutoTakeOn 比武战剑 1
+GIVE 比武礼服(战) 1
+AutoTakeOn 比武礼服(战) 0
+GIVE 比武头盔 1
+AutoTakeOn 比武头盔 2
+GIVE 比武项链 1
+AutoTakeOn 比武项链 3
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 5
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 6
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 7
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 8
+ChangeLevel = [$比武大赛战士等级]
+ChangeExp = 0
+HumanHP + 10000
+HumanMP + 10000
+Break
+#IF
+CheckJob Warrior
+#ACT
+GIVE 比武战剑 1
+AutoTakeOn 比武战剑 1
+GIVE 比武礼袍(战) 1
+AutoTakeOn 比武礼袍(战) 0
+GIVE 比武头盔 1
+AutoTakeOn 比武头盔 2
+GIVE 比武项链 1
+AutoTakeOn 比武项链 3
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 5
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 6
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 7
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 8
+ChangeLevel = [$比武大赛战士等级]
+ChangeExp = 0
+HumanHP + 10000
+HumanMP + 10000
+Break
+#IF
+CheckJob Wizard
+Gender Man
+#ACT
+GIVE 比武法剑 1
+AutoTakeOn 比武法剑 1
+GIVE 比武礼服(法) 1
+AutoTakeOn 比武礼服(法) 0
+GIVE 比武头盔 1
+AutoTakeOn 比武头盔 2
+GIVE 比武项链 1
+AutoTakeOn 比武项链 3
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 5
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 6
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 7
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 8
+ChangeLevel = [$比武大赛法师等级]
+ChangeExp = 0
+HumanHP + 10000
+HumanMP + 10000
+Break
+#IF
+CheckJob Wizard
+#ACT
+GIVE 比武法剑 1
+AutoTakeOn 比武法剑 1
+GIVE 比武礼袍(法) 1
+AutoTakeOn 比武礼袍(法) 0
+GIVE 比武头盔 1
+AutoTakeOn 比武头盔 2
+GIVE 比武项链 1
+AutoTakeOn 比武项链 3
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 5
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 6
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 7
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 8
+ChangeLevel = [$比武大赛法师等级]
+ChangeExp = 0
+HumanHP + 10000
+HumanMP + 10000
+Break
+#IF
+CheckJob Taoist
+Gender Man
+#ACT
+GIVE 比武道剑 1
+AutoTakeOn 比武道剑 1
+GIVE 比武礼服(道) 1
+AutoTakeOn 比武礼服(道) 0
+GIVE 比武头盔 1
+AutoTakeOn 比武头盔 2
+GIVE 比武项链 1
+AutoTakeOn 比武项链 3
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 5
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 6
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 7
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 8
+GIVE 灰色药粉 3
+GIVE 黄色药粉 3
+GIVE 护身符 3
+ChangeLevel = [$比武大赛道士等级]
+ChangeExp = 0
+HumanHP + 10000
+HumanMP + 10000
+Break
+#IF
+CheckJob Taoist
+#ACT
+GIVE 比武道剑 1
+AutoTakeOn 比武道剑 1
+GIVE 比武礼袍(道) 1
+AutoTakeOn 比武礼袍(道) 0
+GIVE 比武头盔 1
+AutoTakeOn 比武头盔 2
+GIVE 比武项链 1
+AutoTakeOn 比武项链 3
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 5
+GIVE 比武手镯 1
+AutoTakeOn 比武手镯 6
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 7
+GIVE 比武戒指 1
+AutoTakeOn 比武戒指 8
+GIVE 灰色药粉 3
+GIVE 黄色药粉 3
+GIVE 护身符 3
+ChangeLevel = [$比武大赛道士等级]
+ChangeExp = 0
+HumanHP + 10000
+HumanMP + 10000
+Break
+
+
+[@比武大赛_全局_抽签]
+#IF
+NOT CheckMapName BWDS
+#ACT
+BREAK
+#IF
+#ACT
+MOV C81 <$STR(G967)>
+#IF
+CheckMapHumanCount G901 = 0
+#ACT
+MOV A900 <$USERNAME>
+MAPMOVE G901
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G901 = 1
+#ACT
+MOV A901 <$USERNAME>
+MAPMOVE G901
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+CheckMapHumanCount G902 = 0
+#ACT
+MOV A902 <$USERNAME>
+MAPMOVE G902
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G902 = 1
+#ACT
+MOV A903 <$USERNAME>
+MAPMOVE G902
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+CheckMapHumanCount G903 = 0
+#ACT
+MOV A904 <$USERNAME>
+MAPMOVE G903
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G903 = 1
+#ACT
+MOV A905 <$USERNAME>
+MAPMOVE G903
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+CheckMapHumanCount G904 = 0
+#ACT
+MOV A906 <$USERNAME>
+MAPMOVE G904
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G904 = 1
+#ACT
+MOV A907 <$USERNAME>
+MAPMOVE G904
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+CheckMapHumanCount G905 = 0
+#ACT
+MOV A908 <$USERNAME>
+MAPMOVE G905
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G905 = 1
+#ACT
+MOV A909 <$USERNAME>
+MAPMOVE G905
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+CheckMapHumanCount G906 = 0
+#ACT
+MOV A910 <$USERNAME>
+MAPMOVE G906
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G906 = 1
+#ACT
+MOV A911 <$USERNAME>
+MAPMOVE G906
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+CheckMapHumanCount G907 = 0
+#ACT
+MOV A912 <$USERNAME>
+MAPMOVE G907
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G907 = 1
+#ACT
+MOV A913 <$USERNAME>
+MAPMOVE G907
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+CheckMapHumanCount G908 = 0
+#ACT
+MOV A914 <$USERNAME>
+MAPMOVE G908
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G908 = 1
+#ACT
+MOV A915 <$USERNAME>
+MAPMOVE G908
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+CheckMapHumanCount G909 = 0
+#ACT
+MOV A916 <$USERNAME>
+MAPMOVE G909
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G909 = 1
+#ACT
+MOV A917 <$USERNAME>
+MAPMOVE G909
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+CheckMapHumanCount G910 = 0
+#ACT
+MOV A918 <$USERNAME>
+MAPMOVE G910
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G910 = 1
+#ACT
+MOV A919 <$USERNAME>
+MAPMOVE G910
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+CheckMapHumanCount G911 = 0
+#ACT
+MOV A920 <$USERNAME>
+MAPMOVE G911
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G911 = 1
+#ACT
+MOV A921 <$USERNAME>
+MAPMOVE G911
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+CheckMapHumanCount G912 = 0
+#ACT
+MOV A922 <$USERNAME>
+MAPMOVE G912
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G912 = 1
+#ACT
+MOV A923 <$USERNAME>
+MAPMOVE G912
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+CheckMapHumanCount G913 = 0
+#ACT
+MOV A924 <$USERNAME>
+MAPMOVE G913
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G913 = 1
+#ACT
+MOV A925 <$USERNAME>
+MAPMOVE G913
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+CheckMapHumanCount G914 = 0
+#ACT
+MOV A926 <$USERNAME>
+MAPMOVE G914
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G914 = 1
+#ACT
+MOV A927 <$USERNAME>
+MAPMOVE G914
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+CheckMapHumanCount G915 = 0
+#ACT
+MOV A928 <$USERNAME>
+MAPMOVE G915
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G915 = 1
+#ACT
+MOV A929 <$USERNAME>
+MAPMOVE G915
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+CheckMapHumanCount G916 = 0
+#ACT
+MOV A930 <$USERNAME>
+MAPMOVE G916
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G916 = 1
+#ACT
+MOV A931 <$USERNAME>
+MAPMOVE G916
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+CheckMapHumanCount G917 = 0
+#ACT
+MOV A932 <$USERNAME>
+MAPMOVE G917
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G917 = 1
+#ACT
+MOV A933 <$USERNAME>
+MAPMOVE G917
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+CheckMapHumanCount G918 = 0
+#ACT
+MOV A934 <$USERNAME>
+MAPMOVE G918
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G918 = 1
+#ACT
+MOV A935 <$USERNAME>
+MAPMOVE G918
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+CheckMapHumanCount G919 = 0
+#ACT
+MOV A936 <$USERNAME>
+MAPMOVE G919
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G919 = 1
+#ACT
+MOV A937 <$USERNAME>
+MAPMOVE G919
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+CheckMapHumanCount G920 = 0
+#ACT
+MOV A938 <$USERNAME>
+MAPMOVE G920
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+#IF
+CheckMapHumanCount G920 = 1
+#ACT
+MOV A939 <$USERNAME>
+MAPMOVE G920
+GOTO @比武大赛_全局_抽签_提示
+BREAK
+
+#IF
+#ACT
+MESSAGEBOX 提示：未知错误代码【900】请联系游戏管理员，或将本信息截图发送到论坛。
+BREAK
+
+[@比武大赛_全局_抽签_提示]
+#IF
+#ACT
+MOV C81 <$STR(G967)>
+SENDMSG 0 比武大赛：玩家【<$USERNAME>】进入了比赛场地，开始了【第<$STR(G967)>轮淘汰赛】。支持他的朋友可以参与观战。
+SENDMSG 7 比武大赛：比赛已经开始，击杀本房间内敌人可获得晋级。如在本轮结束还未分出胜负，系统将随机淘汰一名参赛成员。
+break
+
+[@比武大赛_全局_晋级]
+#IF
+NOT CheckTextList <$MAP> ../QuestDiary/游戏功能/比武大赛地图清单.txt
+#ACT
+BREAK
+#IF
+EQUAL C80 0
+#ACT
+MAPMOVE 3 333 333
+SENDMSG 0 比武大赛：玩家【<$USERNAME>】在【第<$STR(G967)>轮】淘汰赛久久未分出胜负，被系统随机抽取淘汰。
+GOTO @比武大赛_淘汰_奖励
+BREAK
+#IF
+EQUAL C80 1
+#ACT
+ChangeMode 2 0
+ChangeMode 3 0
+Gmexecute TestStatus 5 0
+MAPMOVE BWDSGZ
+SENDMSG 7 比武大赛：本轮比赛已经结束，返回到观战间。
+BREAK
+
+[@比武大赛_全局_颁奖]
+#IF
+CheckMapName BWDS
+#act
+SENDMSG 0 比武竞技大赛：玩家【<$USERNAME>】技压群雄，赢得了今天比武竞技大赛的冠军，获得了[$比武大赛元宝奖励]元宝的嘉奖。
+SENDMSG 0 比武竞技大赛：玩家【<$USERNAME>】技压群雄，赢得了今天比武竞技大赛的冠军，获得了[$比武大赛元宝奖励]元宝的嘉奖。
+SENDMSG 0 比武竞技大赛：玩家【<$USERNAME>】技压群雄，赢得了今天比武竞技大赛的冠军，获得了[$比武大赛元宝奖励]元宝的嘉奖。
+SENDMSG 8 比武竞技大赛：玩家【<$USERNAME>】技压群雄，赢得了今天比武竞技大赛的冠军，获得了[$比武大赛元宝奖励]元宝的嘉奖。
+SENDMSG 8 比武竞技大赛：玩家【<$USERNAME>】技压群雄，赢得了今天比武竞技大赛的冠军，获得了[$比武大赛元宝奖励]元宝的嘉奖。
+SENDMSG 8 比武竞技大赛：玩家【<$USERNAME>】技压群雄，赢得了今天比武竞技大赛的冠军，获得了[$比武大赛元宝奖励]元宝的嘉奖。
+GAMEGOLD + [$比武大赛元宝奖励]
+MAPMOVE 3 333 333
+MOV G968 0
+MOV G967 0
+MOV G966 0
+TakeOffItem 0 1
+TakeOffItem 1 1
+TakeOffItem 2 1
+TakeOffItem 3 1
+TakeOffItem 5 1
+TakeOffItem 6 1
+TakeOffItem 7 1
+TakeOffItem 8 1
+TAKE 比武战剑 1
+TAKE 比武法剑 1
+TAKE 比武道剑 1
+TAKE 比武礼服(战) 1
+TAKE 比武礼袍(战) 1
+TAKE 比武礼服(法) 1
+TAKE 比武礼袍(法) 1
+TAKE 比武礼服(道) 1
+TAKE 比武礼袍(道) 1
+TAKE 比武头盔 1
+TAKE 比武项链 1
+TAKE 比武手镯 1
+TAKE 比武手镯 1
+TAKE 比武戒指 1
+TAKE 比武戒指 1
+ChangeLevel = <$STR(C83)>
+ChangeExp = <$STR(C82)>
+MOV C83 0
+MOV C82 0
+BREAK
+
+
+[@比武大赛_淘汰_奖励]
+#IF
+#ACT
+TakeOffItem 0 1
+TakeOffItem 1 1
+TakeOffItem 2 1
+TakeOffItem 3 1
+TakeOffItem 5 1
+TakeOffItem 6 1
+TakeOffItem 7 1
+TakeOffItem 8 1
+TAKE 比武战剑 1
+TAKE 比武法剑 1
+TAKE 比武道剑 1
+TAKE 比武礼服(战) 1
+TAKE 比武礼袍(战) 1
+TAKE 比武礼服(法) 1
+TAKE 比武礼袍(法) 1
+TAKE 比武礼服(道) 1
+TAKE 比武礼袍(道) 1
+TAKE 比武头盔 1
+TAKE 比武项链 1
+TAKE 比武手镯 1
+TAKE 比武手镯 1
+TAKE 比武戒指 1
+TAKE 比武戒指 1
+ChangeLevel = <$STR(C83)>
+ChangeExp = <$STR(C82)>
+MOV C83 0
+MOV C82 0
+MOV P5 [$比武大赛奖励经验]
+MUL P5 <$STR(C81)>
+ChangeExp + <$STR(P5)>
+SENDMSG 7 比武大赛：获得参与奖励，经验值<$STR(P5)>点。
+BREAK
+
+
+[@比武大赛_全局_验证]
+#IF
+EQUAL C80 0
+CheckTextList <$MAP> ../QuestDiary/游戏功能/比武大赛地图清单.txt
+#act
+DEC <$MAP> 1
+break
+
+
+}
+
+[@比武竞技标准配置最尾]
+{
+[@main]
+#IF
+EQUAL C80 1
+#SAY
+<$USERNAME>:\ \
+　　你现在的身份是【观战者】。\
+　　观战期间你无法移动和攻击。\
+　　目前你处于无敌和静之状态。\ \
+<&我要返回观战间/@返回观战间>\
+#ACT
+BREAK
+#IF
+EQUAL C80 0
+EQUAL <$MAP> 1
+#ACT
+SENDMSG 7 恭喜你，获得了晋级资格。请在抽签房稍等片刻。系统稍后会进行统计。
+SENDMSG 0 比武大赛：玩家【<$USERNAME>】在【第<$STR(G967)>轮】技高一筹，赢得了晋级资格。
+MAPMOVE BWDS
+HumanHP + 10000
+HumanMP + 10000
+#elseact
+SENDMSG 4 请先击败房间内的敌人。若在4分钟内未分出胜负，则全部淘汰。注：比赛场地信息若有延迟，请在20秒后点击我晋级。
+BREAK
+
+
+[@返回观战间]
+#if
+#act
+ChangeMode 2 0
+ChangeMode 3 0
+Gmexecute TestStatus 5 0
+mapmove BWDSGZ
+}
+
+[@比武竞技观战]
+{
+[@main]
+#IF
+EQUAL G968 0
+#ACT
+MAPMOVE 3 333 333
+SENDMSG 7 比武大赛已经结束了。
+BREAK
+#if
+EQUAL G968 1
+#ACT
+mapmove 3 333 333
+SENDMSG 7 比武大赛还在参赛中。
+BREAK
+
+#if
+#act
+MOV S1 
+MOV S2 
+MOV S3 
+MOV S4 
+MOV S5 
+MOV S6 
+MOV S7 
+MOV S8 
+MOV S9 
+MOV S10 
+MOV S11 
+MOV S12 
+MOV S13 
+MOV S14 
+MOV S15 
+MOV S16 
+MOV S17 
+MOV S18 
+MOV S19 
+MOV S20 
+
+#IF
+NOT EQUAL A900 无
+CheckMapHumanCount G901 > 1
+#ACT
+MOV S1 <观战01房/@观战传送_房间(G901,14,13)>【<$STR(A900)>】Vs【<$STR(A901)>】\
+
+#IF
+NOT EQUAL A902 无
+CheckMapHumanCount G902 > 1
+#ACT
+MOV S2 <观战02房/@观战传送_房间(G902,14,13)>【<$STR(A902)>】Vs【<$STR(A903)>】\
+
+#IF
+NOT EQUAL A904 无
+CheckMapHumanCount G903 > 1
+#ACT
+MOV S3 <观战03房/@观战传送_房间(G903,14,13)>【<$STR(A904)>】Vs【<$STR(A905)>】\
+
+#IF
+NOT EQUAL A906 无
+CheckMapHumanCount G904 > 1
+#ACT
+MOV S4 <观战04房/@观战传送_房间(G904,14,13)>【<$STR(A906)>】Vs【<$STR(A907)>】\
+
+#IF
+NOT EQUAL A908 无
+CheckMapHumanCount G905 > 1
+#ACT
+MOV S5 <观战05房/@观战传送_房间(G905,14,13)>【<$STR(A908)>】Vs【<$STR(A909)>】\
+
+#IF
+NOT EQUAL A910 无
+CheckMapHumanCount G906 > 1
+#ACT
+MOV S6 <观战06房/@观战传送_房间(G906,14,13)>【<$STR(A910)>】Vs【<$STR(A911)>】\
+
+#IF
+NOT EQUAL A912 无
+CheckMapHumanCount G907 > 1
+#ACT
+MOV S7 <观战07房/@观战传送_房间(G907,14,13)>【<$STR(A912)>】Vs【<$STR(A913)>】\
+
+#IF
+NOT EQUAL A914 无
+CheckMapHumanCount G908 > 1
+#ACT
+MOV S8 <观战08房/@观战传送_房间(G908,14,13)>【<$STR(A914)>】Vs【<$STR(A915)>】\
+
+#IF
+NOT EQUAL A916 无
+CheckMapHumanCount G909 > 1
+#ACT
+MOV S9 <观战09房/@观战传送_房间(G909,14,13)>【<$STR(A916)>】Vs【<$STR(A917)>】\
+
+#IF
+NOT EQUAL A918 无
+CheckMapHumanCount G910 > 1
+#ACT
+MOV S10 <观战10房/@观战传送_房间(G910,14,13)>【<$STR(A918)>】Vs【<$STR(A919)>】\
+
+#IF
+NOT EQUAL A920 无
+CheckMapHumanCount G911 > 1
+#ACT
+MOV S11 <观战11房/@观战传送_房间(G911,14,13)>【<$STR(A920)>】Vs【<$STR(A921)>】\
+
+#IF
+NOT EQUAL A922 无
+CheckMapHumanCount G912 > 1
+#ACT
+MOV S12 <观战12房/@观战传送_房间(G912,14,13)>【<$STR(A922)>】Vs【<$STR(A923)>】\
+
+#IF
+NOT EQUAL A924 无
+CheckMapHumanCount G913 > 1
+#ACT
+MOV S13 <观战13房/@观战传送_房间(G913,14,13)>【<$STR(A924)>】Vs【<$STR(A925)>】\
+
+#IF
+NOT EQUAL A926 无
+CheckMapHumanCount G914 > 1
+#ACT
+MOV S14 <观战14房/@观战传送_房间(G914,14,13)>【<$STR(A926)>】Vs【<$STR(A927)>】\
+
+#IF
+NOT EQUAL A928 无
+CheckMapHumanCount G915 > 1
+#ACT
+MOV S15 <观战15房/@观战传送_房间(G915,14,13)>【<$STR(A928)>】Vs【<$STR(A929)>】\
+
+#IF
+NOT EQUAL A930 无
+CheckMapHumanCount G916 > 1
+#ACT
+MOV S16 <观战16房/@观战传送_房间(G916,14,13)>【<$STR(A930)>】Vs【<$STR(A931)>】\
+
+#IF
+NOT EQUAL A932 无
+CheckMapHumanCount G917 > 1
+#ACT
+MOV S17 <观战17房/@观战传送_房间(G917,14,13)>【<$STR(A932)>】Vs【<$STR(A933)>】\
+
+#IF
+NOT EQUAL A934 无
+CheckMapHumanCount G918 > 1
+#ACT
+MOV S18 <观战18房/@观战传送_房间(G918,14,13)>【<$STR(A934)>】Vs【<$STR(A935)>】\
+
+#IF
+NOT EQUAL A936 无
+CheckMapHumanCount G919 > 1
+#ACT
+MOV S19 <观战19房/@观战传送_房间(G919,14,13)>【<$STR(A936)>】Vs【<$STR(A937)>】\
+
+#IF
+NOT EQUAL A938 无
+CheckMapHumanCount G920 > 1
+#ACT
+MOV S20 <观战20房/@观战传送_房间(G920,14,13)>【<$STR(A938)>】Vs【<$STR(A939)>】\
+
+
+#IF
+#say
+<$USERNAME>:\ \
+　　比武大赛激情开赛中，请选择你要\
+观战的房间。\
+　　注：本页面可以下拉。\ \
+<$STR(S1)>
+<$STR(S2)>
+<$STR(S3)>
+<$STR(S4)>
+<$STR(S5)>
+<$STR(S6)>
+<$STR(S7)>
+<$STR(S8)>
+<$STR(S9)>
+<$STR(S10)>
+<$STR(S11)>
+<$STR(S12)>
+<$STR(S13)>
+<$STR(S14)>
+<$STR(S15)>
+<$STR(S16)>
+<$STR(S17)>
+<$STR(S18)>
+<$STR(S19)>
+<$STR(S20)>
+
+
+[@观战传送_房间]
+#IF
+EQUAL G968 2
+#ACT
+ChangeMode 2 1
+ChangeMode 3 1
+Gmexecute TestStatus 5 999999
+MAPMOVE <$STR(T0)> <$STR(T1)> <$STR(T2)>
+#elseact
+mapmove 3 333 333
+SENDMSG 7 比武大赛已经结束了。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

@@ -1,0 +1,13 @@
+[@系统_所有NPC头_内容]
+{
+#IF
+Equal <$USER.INTERFACE> 0
+#ACT
+GOTO @系统_所有NPC头_返回_剑侠
+Break
+#IF
+Equal <$USER.INTERFACE> 1
+#ACT
+GOTO @系统_所有NPC头_返回_盛大
+Break
+}

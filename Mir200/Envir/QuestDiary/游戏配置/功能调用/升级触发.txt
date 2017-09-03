@@ -1,0 +1,186 @@
+[@升级触发]
+{
+[@PlayLevelUpEx7]
+#IF
+CheckJob Warrior
+#ACT
+AddSkill 基本剑术 0
+Break
+#IF
+CheckJob Taoist
+#ACT
+AddSkill 治愈术 0
+Break
+
+[@PlayLevelUpEx9]
+#IF
+CheckJob Taoist
+#ACT
+AddSkill 精神力战法 0
+Break
+
+[@PlayLevelUpEx12]
+#IF
+CheckJob Wizard
+#ACT
+AddSkill 抗拒火环 0
+Break
+
+[@PlayLevelUpEx13]
+#IF
+CheckJob Wizard
+#ACT
+AddSkill 诱惑之光 0
+Break
+
+[@PlayLevelUpEx15]
+#IF
+CheckJob Taoist
+#ACT
+AddSkill 施毒术 0
+GIVE 灰色药粉 1
+GIVE 黄色药粉 1
+Break
+
+[@PlayLevelUpEx17]
+#IF
+CheckJob Wizard
+#ACT
+AddSkill 雷电术 0
+Break
+
+[@PlayLevelUpEx18]
+#IF
+CheckJob Taoist
+#ACT
+AddSkill 灵魂火符 0
+GIVE 护身符 2
+Break
+
+[@PlayLevelUpEx19]
+#IF
+CheckJob Warrior
+#ACT
+AddSkill 攻杀剑术 0
+AddSkill 刺杀剑术 0
+Break
+#IF
+CheckJob Wizard
+#ACT
+AddSkill 瞬息移动 0
+Break
+
+[@PlayLevelUpEx20]
+#IF
+CheckJob Taoist
+#ACT
+AddSkill 隐身术 0
+Break
+
+[@PlayLevelUpEx21]
+#IF
+CheckJob Taoist
+#ACT
+AddSkill 集体隐身术 0
+Break
+
+[@PlayLevelUpEx22]
+#IF
+CheckJob Taoist
+#ACT
+AddSkill 幽灵盾 0
+Break
+
+[@PlayLevelUpEx24]
+#IF
+CheckJob Wizard
+#ACT
+AddSkill 火墙 0
+Break
+
+[@PlayLevelUpEx25]
+#IF
+CheckJob Warrior
+#ACT
+AddSkill 刺杀剑术 0
+Break
+#IF
+CheckJob Taoist
+#ACT
+AddSkill 神圣战甲术 0
+Break
+
+[@PlayLevelUpEx26]
+#IF
+CheckJob Wizard
+#ACT
+AddSkill 疾光电影 0
+Break
+#IF
+CheckJob Taoist
+#ACT
+AddSkill 心灵启示 0
+Break
+
+[@PlayLevelUpEx28]
+#IF
+CheckJob Warrior
+#ACT
+AddSkill 圆月刀法 0
+Break
+#IF
+CheckJob Taoist
+#ACT
+AddSkill 困魔咒 0
+Break
+
+[@PlayLevelUpEx30]
+#IF
+CheckJob Warrior
+#ACT
+AddSkill 野蛮冲撞 0
+Break
+#IF
+CheckJob Wizard
+#ACT
+AddSkill 地狱雷光 0
+Break
+
+[@PlayLevelUpEx31]
+#IF
+CheckJob Wizard
+#ACT
+AddSkill 魔法盾 0
+Break
+
+[@PlayLevelUpEx32]
+#IF
+CheckJob Wizard
+#ACT
+AddSkill 圣言术 0
+Break
+
+[@PlayLevelUpEx33]
+#IF
+CheckJob Taoist
+#ACT
+AddSkill 群体治疗术 0
+Break
+
+
+[@PlayLevelUpEx38]
+#IF
+#ACT
+MESSAGEBOX 恭喜您升到38级！\现在你可以按[Q]键,打开任务拦,选择[循环任务]!\或选择手动到练级地图练级!\打造任务里需要的材料,可以在[祖玛寺庙]暴出!\暴率超高的哦!\
+BREAK
+
+[@PlayLevelUpEx103]
+#IF
+CHECKRENEWLEVEL = 0
+#ACT
+CHANGELEVEL = 102
+CHANGEEXP = 0
+SENDMSG 5 由于您目前的等级已经达到未转生级别的上限!所以扣除您的所有经验!请转生后再冲刺更高的等级!
+
+
+}

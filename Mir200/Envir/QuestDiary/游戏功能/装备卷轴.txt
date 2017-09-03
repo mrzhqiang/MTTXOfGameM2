@@ -1,0 +1,72 @@
+[@装备卷轴]
+{
+[@StdmodeFunc30]
+#IF
+#ACT
+GetRandomName ..\QuestDiary\游戏功能\装备卷轴\贝尔装备列表.txt S1
+DynamicGive <$STR(S1)> 1 1
+[@StdmodeFunc31]
+#IF
+#ACT
+GetRandomName ..\QuestDiary\游戏功能\装备卷轴\贝尔装备列表.txt S1
+DynamicGive <$STR(S1)> 1 2
+[@StdmodeFunc32]
+#IF
+#ACT
+GetRandomName ..\QuestDiary\游戏功能\装备卷轴\贝尔装备列表.txt S1
+DynamicGive <$STR(S1)> 1 3
+
+[@StdmodeFunc33]
+#IF
+#ACT
+GetRandomName ..\QuestDiary\游戏功能\装备卷轴\黄金装备列表.txt S1
+DynamicGive <$STR(S1)> 1 1
+
+[@StdmodeFunc34]
+#IF
+#ACT
+GetRandomName ..\QuestDiary\游戏功能\装备卷轴\黄金装备列表.txt S1
+DynamicGive <$STR(S1)> 1 2
+
+[@StdmodeFunc35]
+#IF
+#ACT
+GetRandomName ..\QuestDiary\游戏功能\装备卷轴\黄金装备列表.txt S1
+DynamicGive <$STR(S1)> 1 3
+
+[@StdmodeFunc36]
+#IF
+#ACT
+GetRandomName ..\QuestDiary\游戏功能\装备卷轴\恶魔装备列表.txt S1
+DynamicGive <$STR(S1)> 1 1
+
+[@StdmodeFunc37]
+#IF
+#ACT
+GetRandomName ..\QuestDiary\游戏功能\装备卷轴\恶魔装备列表.txt S1
+DynamicGive <$STR(S1)> 1 2
+
+[@StdmodeFunc38]
+#IF
+#ACT
+GetRandomName ..\QuestDiary\游戏功能\装备卷轴\恶魔装备列表.txt S1
+DynamicGive <$STR(S1)> 1 3
+
+[@StdmodeFunc39]
+#IF
+#ACT
+GetRandomName ..\QuestDiary\游戏功能\装备卷轴\涅槃装备列表.txt S1
+DynamicGive <$STR(S1)> 1 1
+
+[@StdmodeFunc40]
+#IF
+#ACT
+GetRandomName ..\QuestDiary\游戏功能\装备卷轴\涅槃装备列表.txt S1
+DynamicGive <$STR(S1)> 1 2
+
+[@StdmodeFunc41]
+#IF
+#ACT
+GetRandomName ..\QuestDiary\游戏功能\装备卷轴\涅槃装备列表.txt S1
+DynamicGive <$STR(S1)> 1 3
+}

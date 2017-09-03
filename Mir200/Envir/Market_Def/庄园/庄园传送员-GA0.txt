@@ -1,0 +1,21 @@
+[@main]
+<$USERNAME>:\ \
+　　那么，你想要去哪里？\ \ \
+　　<返回土城/@回土>\ \
+　　<梵天灵塔/@灵塔>\
+
+[@回土]
+#IF
+#ACT
+Movr P60 19
+Movr P61 19
+MOV P62 321
+MOV P63 321
+INC P62 <$STR(P60)>
+INC P63 <$STR(P61)>
+MAPMOVE 3 <$STR(P62)> <$STR(P63)>
+
+[@灵塔]
+#IF
+#ACT
+MAPMOVE GA0 119 122

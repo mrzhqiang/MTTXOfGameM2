@@ -1,0 +1,99 @@
+[@礼包系统]
+{
+[@StdmodeFunc20]
+#IF
+#ACT
+DynamicGive 魔血石(小) 1
+DynamicGive 准考证书 1
+DynamicGive 坐骑(烈炎马) 1
+ChangeGiveItem 1 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+[@StdmodeFunc21]
+#IF
+#ACT
+DynamicGive 魔血石(小) 1
+DynamicGive 准考证书 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 8
+DynamicGive 丝布包 1
+ChangeGiveItem 1 3
+ChangeGiveItem 2 0 1
+ChangeGiveItem 8
+[@StdmodeFunc22]
+#IF
+#ACT
+DynamicGive 魔血石(小) 1
+DynamicGive 准考证书 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+[@StdmodeFunc23]
+#IF
+#ACT
+DynamicGive 魔血石(中) 1
+DynamicGive 准考证书 2
+DynamicGive 坐骑(玄皇兽) 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 1 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+[@StdmodeFunc24]
+#IF
+#ACT
+DynamicGive 魔血石(中) 1
+DynamicGive 准考证书 2
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+DynamicGive 丝布包 1
+ChangeGiveItem 1 3
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+[@StdmodeFunc25]
+#IF
+#ACT
+DynamicGive 魔血石(中) 1
+DynamicGive 准考证书 2
+ChangeGiveItem 1 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+[@StdmodeFunc26]
+#IF
+#ACT
+DynamicGive 魔血石(大) 1
+DynamicGive 准考证书 3
+DynamicGive 坐骑(奔雷兽) 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 1 1
+ChangeGiveItem 8
+[@StdmodeFunc27]
+#IF
+#ACT
+DynamicGive 魔血石(大) 1
+DynamicGive 准考证书 3
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 1 2
+ChangeGiveItem 8
+}

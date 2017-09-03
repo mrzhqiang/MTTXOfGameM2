@@ -1,0 +1,112 @@
+[@打造手镯_检测]
+{
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [207] 0
+CHECKMAPNAME 0105
+#ACT
+INC S0 <&学习打造手镯{【生活技能】=FCO=251}/@任务_打造手镯_接受>\
+
+#IF
+CHECKMISSION [207] 1
+CHECKMISSION [217] 0
+CHECKMAPNAME 0105
+CHECKITEMCOUNT 天雷手镯 ? 2
+CHECKITEMCOUNT 混合钢 ? 2
+CHECKITEMCOUNT 铁矿 ? 2
+#ACT
+INC S0 <&学习打造手镯{【生活技能】完成=FCO=251}/@任务_打造手镯_完成>\
+}
+
+[@打造手镯_脚本]
+{
+[@任务_打造手镯_接受]
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [207] 0
+CHECKMAPNAME 0105
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　想学{打造手镯=FCO=251}啊，先去准备一下下面\
+面的材料吧。\ \
+{需准备材料=FCO=243}\
+{12=x}{i.81,c.2=item}{46=x}{i.252,c.2=item}{46=x}{i.49,c.2=item}\ \ \
+{打造成功后得到物品=FCO=243}\
+{12=x}{i.<^BJOB(96,102,108)>,b.8,c.2=item}\ \ \
+{任务奖励：=FCO=243}\
+　声望值：[$学习生活技能_打造手镯声望奖励]\
+　经验值：[$学习生活技能_打造手镯经验奖励]\ \
+<&我这就去准备/@激活打造手镯>\
+<&结束对话/@exit>\
+
+[@激活打造手镯]
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [207] 0
+CHECKMAPNAME 0105
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　打造的材料可以去{危险区域=FCO=251}相对应等\
+级的地方杀怪获得，材料找不找得到就要\
+看你个人的本领了。\ \
+<&知道了/@exit>\
+#ACT
+SETMISSION [207] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION 6
+ADDMISSION 6 开始打造手镯
+
+[@任务_打造手镯_完成]
+#IF
+CHECKMISSION [207] 1
+CHECKMISSION [217] 0
+CHECKMAPNAME 0105
+CHECKITEMCOUNT 天雷手镯 ? 2
+CHECKITEMCOUNT 混合钢 ? 2
+CHECKITEMCOUNT 铁矿 ? 2
+CHECKBAGSIZE 2
+#ELSEACT
+MESSAGEBOX 背包空间不足2个或材料不够！
+BREAK
+
+#IF
+CHECKJOB WARRIOR
+#ACT
+DYNAMICGIVE 斗者护腕(战) 2
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+CHECKJOB WIZARD
+#ACT
+DYNAMICGIVE 斗者护腕(法) 2
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+CHECKJOB TAOIST
+#ACT
+DYNAMICGIVE 斗者护腕(道) 2
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　{打造手镯=FCO=251}的生活技能我已经传授于你\
+了，这是我用背包中材料帮你打造的一件\
+{<^BJOB(雷霆护腕,烈焰护腕,光芒护腕)>=FCO=251}，请收好。\
+　　现在你也可以{按F11打开生活技能面板=FCO=253}\
+，随意打造属于你自己的{手镯=FCO=250}\ \
+<&关闭对话/@exit>
+#ACT
+SETMISSION [217] 1
+SHOWEFFECT [$特效_任务完成]
+TAKECOUNT 天雷手镯 2
+TAKECOUNT 混合钢 2
+TAKECOUNT 铁矿 2
+CHANGEEXP + [$学习生活技能_打造手镯经验奖励]
+CREDITPOINT + [$学习生活技能_打造手镯声望奖励]
+ADDMAKEMAGIC 4
+DELMISSION 6
+}

@@ -1,0 +1,1048 @@
+[@充值使者标准配置头]
+{
+[@main]
+#CALL [\\NPC配置\所有NPC头内容.txt] @系统_所有NPC头_内容
+
+[@系统_所有NPC头_返回_剑侠]
+<$USERNAME>:\ \
+　本服充值比例:(平台比例)\
+网银1:50 送100% 最终得到1:100个元宝!\
+点卡1:50 送80% 最终得到1: 80个元宝!\ \
+　充值奖励请查看土城成就使者:\
+<&点我传送成就使者查看充值奖励/@成就查看>\ \
+{注:注:本服唯一充值客服QQ:无Gm模式=FCO=253}\ \
+<&我要领取元宝/@领取元宝>\
+<&关闭/@EXIT>
+　　
+[@系统_所有NPC头_返回_盛大]
+<$USERNAME>:\
+　　本服充值比例:(平台比例)\
+　　网银1:50 送100% 最终得到1:100个元宝!\
+　　点卡1:50 送80% 最终得到1: 80个元宝!\ \
+　　充值奖励请查看土城成就使者:<传送成就使者查看/@成就查看>\
+    \ 
+{10=y}　{注:本服唯一充值客服QQ:无Gm模式=FCO=253}　　　　　　　<我要领取元宝/@领取元宝>
+
+[@成就查看]
+#IF
+#act
+MAPMOVE 3 323 326
+break
+
+[@领取元宝]
+#IF
+EQUAL C98 1
+#ACT
+GOTO @领取元宝_推广
+#ELSEACT
+GOTO @领取元宝_普通
+
+[@领取元宝_普通]
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb1.txt
+#ACT
+GAMEGOLD + 50
+INC C12 50
+INC C24 50
+DelAccountList ..\QuestDiary\元宝充值\yb1.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得50元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb2.txt
+#ACT
+GAMEGOLD + 100
+INC C12 100
+INC C24 100
+DelAccountList ..\QuestDiary\元宝充值\yb2.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得100元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb3.txt
+#ACT
+GAMEGOLD + 150
+INC C12 150
+INC C24 150
+DelAccountList ..\QuestDiary\元宝充值\yb3.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得150元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb4.txt
+#ACT
+GAMEGOLD + 200
+INC C12 200
+INC C24 200
+DelAccountList ..\QuestDiary\元宝充值\yb4.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得200元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb5.txt
+#ACT
+GAMEGOLD + 250
+INC C12 250
+INC C24 250
+DelAccountList ..\QuestDiary\元宝充值\yb5.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得250元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb6.txt
+#ACT
+GAMEGOLD + 300
+INC C12 300
+INC C24 300
+DelAccountList ..\QuestDiary\元宝充值\yb6.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得300元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb7.txt
+#ACT
+GAMEGOLD + 350
+INC C12 350
+INC C24 350
+DelAccountList ..\QuestDiary\元宝充值\yb7.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得350元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb8.txt
+#ACT
+GAMEGOLD + 400
+INC C12 400
+INC C24 400
+DelAccountList ..\QuestDiary\元宝充值\yb8.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得400元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb9.txt
+#ACT
+GAMEGOLD + 450
+INC C12 450
+INC C24 450
+DelAccountList ..\QuestDiary\元宝充值\yb9.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得450元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb10.txt
+#ACT
+GAMEGOLD + 500
+INC C12 500
+INC C24 500
+DelAccountList ..\QuestDiary\元宝充值\yb10.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得500元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb20.txt
+#ACT
+GAMEGOLD + 1000
+INC C12 1000
+INC C24 1000
+DelAccountList ..\QuestDiary\元宝充值\yb20.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得1000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb30.txt
+#ACT
+GAMEGOLD + 1500
+INC C12 1500
+INC C24 1500
+DelAccountList ..\QuestDiary\元宝充值\yb30.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得1500元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb40.txt
+#ACT
+GAMEGOLD + 2000
+INC C12 2000
+INC C24 2000
+DelAccountList ..\QuestDiary\元宝充值\yb40.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得2000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb50.txt
+#ACT
+GAMEGOLD + 2500
+INC C12 2500
+INC C24 2500
+DelAccountList ..\QuestDiary\元宝充值\yb50.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得2500元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb60.txt
+#ACT
+GAMEGOLD + 3000
+INC C12 3000
+INC C24 3000
+DelAccountList ..\QuestDiary\元宝充值\yb60.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得3000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb70.txt
+#ACT
+GAMEGOLD + 3500
+INC C12 3500
+INC C24 3500
+DelAccountList ..\QuestDiary\元宝充值\yb70.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得3500元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb80.txt
+#ACT
+GAMEGOLD + 4000
+INC C12 4000
+INC C24 4000
+DelAccountList ..\QuestDiary\元宝充值\yb80.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得4000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb90.txt
+#ACT
+GAMEGOLD + 4500
+INC C24 4500
+INC C12 4500
+DelAccountList ..\QuestDiary\元宝充值\yb90.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得4500元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb100.txt
+#ACT
+GAMEGOLD + 5000
+INC C12 5000
+INC C24 5000
+DelAccountList ..\QuestDiary\元宝充值\yb100.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得5000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb200.txt
+#ACT
+GAMEGOLD + 10000
+INC C12 10000
+INC C24 10000
+DelAccountList ..\QuestDiary\元宝充值\yb200.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得10000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb300.txt
+#ACT
+GAMEGOLD + 15000
+INC C12 15000
+INC C24 15000
+DelAccountList ..\QuestDiary\元宝充值\yb300.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得15000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb400.txt
+#ACT
+GAMEGOLD + 20000
+INC C12 20000
+INC C24 20000
+DelAccountList ..\QuestDiary\元宝充值\yb400.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得20000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb500.txt
+#ACT
+GAMEGOLD + 25000
+INC C12 25000
+INC C24 25000
+DelAccountList ..\QuestDiary\元宝充值\yb500.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得25000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb600.txt
+#ACT
+GAMEGOLD + 30000
+INC C12 30000
+INC C24 30000
+DelAccountList ..\QuestDiary\元宝充值\yb600.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得30000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb700.txt
+#ACT
+GAMEGOLD + 35000
+INC C12 35000
+INC C24 35000
+DelAccountList ..\QuestDiary\元宝充值\yb700.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得35000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb800.txt
+#ACT
+GAMEGOLD + 40000
+INC C12 40000
+INC C24 40000
+DelAccountList ..\QuestDiary\元宝充值\yb800.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得40000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb900.txt
+#ACT
+GAMEGOLD + 45000
+INC C12 45000
+INC C24 45000
+DelAccountList ..\QuestDiary\元宝充值\yb900.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得45000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb1000.txt
+#ACT
+GAMEGOLD + 50000
+INC C12 50000
+INC C24 50000
+DelAccountList ..\QuestDiary\元宝充值\yb1000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得50000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb2000.txt
+#ACT
+GAMEGOLD + 100000
+INC C12 100000
+INC C24 100000
+DelAccountList ..\QuestDiary\元宝充值\yb2000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得100000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb3000.txt
+#ACT
+GAMEGOLD + 150000
+INC C24 150000
+INC C12 150000
+DelAccountList ..\QuestDiary\元宝充值\yb3000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得150000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb4000.txt
+#ACT
+GAMEGOLD + 200000
+INC C12 200000
+INC C24 200000
+DelAccountList ..\QuestDiary\元宝充值\yb4000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得200000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb5000.txt
+#ACT
+GAMEGOLD + 250000
+INC C12 250000
+INC C24 250000
+DelAccountList ..\QuestDiary\元宝充值\yb5000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得250000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb6000.txt
+#ACT
+GAMEGOLD + 300000
+INC C12 300000
+INC C24 300000
+DelAccountList ..\QuestDiary\元宝充值\yb6000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得300000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb7000.txt
+#ACT
+GAMEGOLD + 350000
+INC C12 350000
+INC C24 350000
+DelAccountList ..\QuestDiary\元宝充值\yb7000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得350000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb8000.txt
+#ACT
+GAMEGOLD + 400000
+INC C12 400000
+INC C24 400000
+DelAccountList ..\QuestDiary\元宝充值\yb8000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得400000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb9000.txt
+#ACT
+GAMEGOLD + 450000
+INC C12 450000
+INC C24 450000
+DelAccountList ..\QuestDiary\元宝充值\yb9000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得450000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb10000.txt
+#ACT
+GAMEGOLD + 500000
+INC C12 500000
+INC C24 500000
+DelAccountList ..\QuestDiary\元宝充值\yb10000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得500000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb20000.txt
+#ACT
+GAMEGOLD + 1000000
+INC C12 1000000
+INC C24 1000000
+DelAccountList ..\QuestDiary\元宝充值\yb20000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得1000000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb30000.txt
+#ACT
+GAMEGOLD + 1500000
+INC C12 1500000
+INC C24 1500000
+DelAccountList ..\QuestDiary\元宝充值\yb30000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得1500000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb40000.txt
+#ACT
+GAMEGOLD + 2000000
+INC C12 2000000
+INC C24 2000000
+DelAccountList ..\QuestDiary\元宝充值\yb40000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得2000000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb50000.txt
+#ACT
+GAMEGOLD + 2500000
+INC C12 2500000
+INC C24 2500000
+DelAccountList ..\QuestDiary\元宝充值\yb50000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得2500000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb60000.txt
+#ACT
+GAMEGOLD + 3000000
+INC C12 3000000
+INC C24 3000000
+DelAccountList ..\QuestDiary\元宝充值\yb60000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得3000000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb70000.txt
+#ACT
+GAMEGOLD + 3500000
+INC C12 3500000
+INC C24 3500000
+DelAccountList ..\QuestDiary\元宝充值\yb70000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得3500000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb80000.txt
+#ACT
+GAMEGOLD + 4000000
+INC C12 4000000
+INC C24 4000000
+DelAccountList ..\QuestDiary\元宝充值\yb80000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得4000000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb90000.txt
+#ACT
+GAMEGOLD + 4500000
+INC C12 4500000
+INC C24 4500000
+DelAccountList ..\QuestDiary\元宝充值\yb90000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得4500000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+goto @领取元宝
+#ELSESAY
+请查看自己的元宝数量!\
+没有充值请按提示进行充值!\
+注意：请确认手机发送的代码和您的游戏帐号是否正确!\
+<返回/@main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@领取元宝_推广]
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb1.txt
+#ACT
+GAMEGOLD + 50
+INC C12 50
+INC C24 50
+DelAccountList ..\QuestDiary\元宝充值\yb1.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得50元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 101
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb2.txt
+#ACT
+GAMEGOLD + 100
+INC C12 100
+INC C24 100
+DelAccountList ..\QuestDiary\元宝充值\yb2.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得100元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 102
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb3.txt
+#ACT
+GAMEGOLD + 150
+INC C12 150
+INC C24 150
+DelAccountList ..\QuestDiary\元宝充值\yb3.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得150元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 103
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb4.txt
+#ACT
+GAMEGOLD + 200
+INC C12 200
+INC C24 200
+DelAccountList ..\QuestDiary\元宝充值\yb4.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得200元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 104
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb5.txt
+#ACT
+GAMEGOLD + 250
+INC C12 250
+INC C24 250
+DelAccountList ..\QuestDiary\元宝充值\yb5.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得250元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 105
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb6.txt
+#ACT
+GAMEGOLD + 300
+INC C12 300
+INC C24 300
+DelAccountList ..\QuestDiary\元宝充值\yb6.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得300元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 106
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb7.txt
+#ACT
+GAMEGOLD + 350
+INC C12 350
+INC C24 350
+DelAccountList ..\QuestDiary\元宝充值\yb7.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得350元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 107
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb8.txt
+#ACT
+GAMEGOLD + 400
+INC C12 400
+INC C24 400
+DelAccountList ..\QuestDiary\元宝充值\yb8.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得400元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 108
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb9.txt
+#ACT
+GAMEGOLD + 450
+INC C12 450
+INC C24 450
+DelAccountList ..\QuestDiary\元宝充值\yb9.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得450元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 109
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb10.txt
+#ACT
+GAMEGOLD + 500
+INC C12 500
+INC C24 500
+DelAccountList ..\QuestDiary\元宝充值\yb10.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得500元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 110
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb20.txt
+#ACT
+GAMEGOLD + 1000
+INC C12 1000
+INC C24 1000
+DelAccountList ..\QuestDiary\元宝充值\yb20.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得1000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 111
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb30.txt
+#ACT
+GAMEGOLD + 1500
+INC C12 1500
+INC C24 1500
+DelAccountList ..\QuestDiary\元宝充值\yb30.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得1500元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 112
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb40.txt
+#ACT
+GAMEGOLD + 2000
+INC C12 2000
+INC C24 2000
+DelAccountList ..\QuestDiary\元宝充值\yb40.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得2000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 113
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb50.txt
+#ACT
+GAMEGOLD + 2500
+INC C12 2500
+INC C24 2500
+DelAccountList ..\QuestDiary\元宝充值\yb50.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得2500元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 114
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb60.txt
+#ACT
+GAMEGOLD + 3000
+INC C12 3000
+INC C24 3000
+DelAccountList ..\QuestDiary\元宝充值\yb60.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得3000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 115
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb70.txt
+#ACT
+GAMEGOLD + 3500
+INC C12 3500
+INC C24 3500
+DelAccountList ..\QuestDiary\元宝充值\yb70.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得3500元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 116
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb80.txt
+#ACT
+GAMEGOLD + 4000
+INC C12 4000
+INC C24 4000
+DelAccountList ..\QuestDiary\元宝充值\yb80.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得4000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 117
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb90.txt
+#ACT
+GAMEGOLD + 4500
+INC C12 4500
+INC C24 4500
+DelAccountList ..\QuestDiary\元宝充值\yb90.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得4500元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 118
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb100.txt
+#ACT
+GAMEGOLD + 5000
+INC C12 5000
+INC C24 5000
+DelAccountList ..\QuestDiary\元宝充值\yb100.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得5000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 119
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb200.txt
+#ACT
+GAMEGOLD + 10000
+INC C12 10000
+INC C24 10000
+DelAccountList ..\QuestDiary\元宝充值\yb200.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得10000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 120
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb300.txt
+#ACT
+GAMEGOLD + 15000
+INC C12 15000
+INC C24 15000
+DelAccountList ..\QuestDiary\元宝充值\yb300.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得15000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 121
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb400.txt
+#ACT
+GAMEGOLD + 20000
+INC C12 20000
+INC C24 20000
+DelAccountList ..\QuestDiary\元宝充值\yb400.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得20000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 122
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb500.txt
+#ACT
+GAMEGOLD + 25000
+INC C12 25000
+INC C24 25000
+DelAccountList ..\QuestDiary\元宝充值\yb500.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得25000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 123
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb600.txt
+#ACT
+GAMEGOLD + 30000
+INC C12 30000
+INC C24 30000
+DelAccountList ..\QuestDiary\元宝充值\yb600.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得30000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 124
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb700.txt
+#ACT
+GAMEGOLD + 35000
+INC C12 35000
+INC C24 35000
+DelAccountList ..\QuestDiary\元宝充值\yb700.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得35000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 125
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb800.txt
+#ACT
+GAMEGOLD + 40000
+INC C12 40000
+INC C24 40000
+DelAccountList ..\QuestDiary\元宝充值\yb800.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得40000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 126
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb900.txt
+#ACT
+GAMEGOLD + 45000
+INC C12 45000
+INC C24 45000
+DelAccountList ..\QuestDiary\元宝充值\yb900.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得45000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 127
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb1000.txt
+#ACT
+GAMEGOLD + 50000
+INC C12 50000
+INC C24 50000
+DelAccountList ..\QuestDiary\元宝充值\yb1000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得50000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 128
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb2000.txt
+#ACT
+GAMEGOLD + 100000
+INC C12 100000
+INC C24 100000
+DelAccountList ..\QuestDiary\元宝充值\yb2000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得100000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 129
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb3000.txt
+#ACT
+GAMEGOLD + 150000
+INC C12 150000
+INC C24 150000
+DelAccountList ..\QuestDiary\元宝充值\yb3000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得150000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 130
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb4000.txt
+#ACT
+GAMEGOLD + 200000
+INC C12 200000
+INC C24 200000
+DelAccountList ..\QuestDiary\元宝充值\yb4000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得200000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 131
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb5000.txt
+#ACT
+GAMEGOLD + 250000
+INC C12 250000
+INC C24 250000
+DelAccountList ..\QuestDiary\元宝充值\yb5000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得250000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 132
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb6000.txt
+#ACT
+GAMEGOLD + 300000
+INC C12 300000
+INC C24 300000
+DelAccountList ..\QuestDiary\元宝充值\yb6000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得300000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 133
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb7000.txt
+#ACT
+GAMEGOLD + 350000
+INC C12 350000
+INC C24 350000
+DelAccountList ..\QuestDiary\元宝充值\yb7000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得350000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 134
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb8000.txt
+#ACT
+GAMEGOLD + 400000
+INC C12 400000
+INC C24 400000
+DelAccountList ..\QuestDiary\元宝充值\yb8000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得400000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 135
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb9000.txt
+#ACT
+GAMEGOLD + 450000
+INC C12 450000
+INC C24 450000
+DelAccountList ..\QuestDiary\元宝充值\yb9000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得450000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 136
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb10000.txt
+#ACT
+GAMEGOLD + 500000
+INC C12 500000
+INC C24 500000
+DelAccountList ..\QuestDiary\元宝充值\yb10000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得500000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 137
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb20000.txt
+#ACT
+GAMEGOLD + 1000000
+INC C12 1000000
+DelAccountList ..\QuestDiary\元宝充值\yb20000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得1000000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 138
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb30000.txt
+#ACT
+GAMEGOLD + 1500000
+INC C12 1500000
+DelAccountList ..\QuestDiary\元宝充值\yb30000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得1500000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 139
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb40000.txt
+#ACT
+GAMEGOLD + 2000000
+INC C12 2000000
+DelAccountList ..\QuestDiary\元宝充值\yb40000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得2000000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 140
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb50000.txt
+#ACT
+GAMEGOLD + 2500000
+INC C12 2500000
+DelAccountList ..\QuestDiary\元宝充值\yb50000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得2500000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 141
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb60000.txt
+#ACT
+GAMEGOLD + 3000000
+INC C12 3000000
+DelAccountList ..\QuestDiary\元宝充值\yb60000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得3000000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 142
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb70000.txt
+#ACT
+GAMEGOLD + 3500000
+INC C12 3500000
+DelAccountList ..\QuestDiary\元宝充值\yb70000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得3500000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 143
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb80000.txt
+#ACT
+GAMEGOLD + 4000000
+INC C12 4000000
+DelAccountList ..\QuestDiary\元宝充值\yb80000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得4000000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 144
+goto @领取元宝
+#IF
+CheckAccountList ..\QuestDiary\元宝充值\yb90000.txt
+#ACT
+GAMEGOLD + 4500000
+INC C12 4500000
+DelAccountList ..\QuestDiary\元宝充值\yb90000.txt
+sendmsg 7 领取成功.您当前为:<$GAMEGOLD>元宝
+SENDMSG 1 ★[%s]:玩家<$USERNAME>使用我服推出的在线充值购买功能，获得4500000元宝.如果您也需要充值,请赶紧找元宝充值使者，充值获取吧！！
+SendEmail <$STR(B99)> 推广系统(冲值提成) 尊敬的推广员【<$STR(B99)>】你好！#10　你的线下绑定推广玩家【<$USERNAME>】进行了充值。点击左下角邮件附带的物品将获得元宝提成！ 推广奖励 0 145
+goto @领取元宝
+#ELSESAY
+请查看自己的元宝数量!\
+没有充值请按提示进行充值!\
+注意：请确认手机发送的代码和您的游戏帐号是否正确!\
+<返回/@main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

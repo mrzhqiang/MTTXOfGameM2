@@ -1,0 +1,118 @@
+[@文采考官标准配置]
+{
+[@main]
+#CALL [\\NPC配置\所有NPC头内容.txt] @系统_所有NPC头_内容
+
+[@系统_所有NPC头_返回_剑侠]
+#IF
+#ACT
+MOV P0 <$HOUR>
+MOV S0
+
+#IF
+NOT LARGE P0 [$智力测试_第一场开始时间]
+NOT SMALL P0 [$智力测试_第一场开始时间]
+#ACT
+INC S0 <&{开始答题=FCO=250}/@游戏服务_智力测试>\
+GOTO @文采考官_答题说明
+BREAK
+
+#IF
+NOT LARGE P0 [$智力测试_第二场开始时间]
+NOT SMALL P0 [$智力测试_第二场开始时间]
+#ACT
+INC S0 <&{开始答题=FCO=250}/@游戏服务_智力测试>\
+GOTO @文采考官_答题说明
+BREAK
+
+#IF
+NOT LARGE P0 [$智力测试_第三场开始时间]
+NOT SMALL P0 [$智力测试_第三场开始时间]
+#ACT
+INC S0 <&{开始答题=FCO=250}/@游戏服务_智力测试>\
+GOTO @文采考官_答题说明
+BREAK
+
+#IF
+NOT LARGE P0 [$智力测试_第四场开始时间]
+NOT SMALL P0 [$智力测试_第四场开始时间]
+#ACT
+INC S0 <&{开始答题=FCO=250}/@游戏服务_智力测试>\
+GOTO @文采考官_答题说明
+BREAK
+#ELSEACT
+INC S0 现在是{<$DATETIME>=FCO=251}\{考试时间还没有到，请等待下场考试。=FCO=254}\
+GOTO @文采考官_答题说明
+
+[@文采考官_答题说明]
+#IF
+#SAY
+$RESETLABEL
+{<$SELFNAME>=FCO=243}：\
+　成为玛法大陆一个文武双全的勇士是很\
+有必要的，如果不想被人说成四肢发达，\
+头脑简单的人，那么你来找我就是摆脱前\
+者冠以文人的第一步。\ \
+<$STR(S0)>
+<&答题说明{【必读】=FCO=251}/@答题说明>\ \
+<&关闭/@exit>\
+
+
+
+
+
+[@系统_所有NPC头_返回_盛大]
+#IF
+#ACT
+MOV P0 <$HOUR>
+MOV S0
+
+#IF
+NOT LARGE P0 [$智力测试_第一场开始时间]
+NOT SMALL P0 [$智力测试_第一场开始时间]
+#ACT
+INC S0 <&{开始答题=FCO=250}/@游戏服务_智力测试>\
+GOTO @文采考官_答题说明_盛大
+BREAK
+
+#IF
+NOT LARGE P0 [$智力测试_第二场开始时间]
+NOT SMALL P0 [$智力测试_第二场开始时间]
+#ACT
+INC S0 <&{开始答题=FCO=250}/@游戏服务_智力测试>\
+GOTO @文采考官_答题说明_盛大
+BREAK
+
+#IF
+NOT LARGE P0 [$智力测试_第三场开始时间]
+NOT SMALL P0 [$智力测试_第三场开始时间]
+#ACT
+INC S0 <&{开始答题=FCO=250}/@游戏服务_智力测试>\
+GOTO @文采考官_答题说明_盛大
+BREAK
+
+#IF
+NOT LARGE P0 [$智力测试_第四场开始时间]
+NOT SMALL P0 [$智力测试_第四场开始时间]
+#ACT
+INC S0 <&{开始答题=FCO=250}/@游戏服务_智力测试>\
+GOTO @文采考官_答题说明_盛大
+BREAK
+#ELSEACT
+INC S0 现在是{<$DATETIME>=FCO=251}\{考试时间还没有到，请等待下场考试。=FCO=254}\
+GOTO @文采考官_答题说明_盛大
+
+[@文采考官_答题说明_盛大]
+#IF
+#SAY
+$RESETLABEL
+{<$SELFNAME>=FCO=243}：\
+　成为玛法大陆一个文武双全的勇士是很有必要的，如果不想被人\
+说成四肢发达，头脑简单的人，那么你来找我就是摆脱前者冠以文\
+人的第一步。\
+<$STR(S0)>
+<&答题说明{【必读】=FCO=251}/@答题说明>\
+<&关闭/@exit>\
+
+#CALLX [\\游戏功能\智力测试.txt] @智力测试
+}

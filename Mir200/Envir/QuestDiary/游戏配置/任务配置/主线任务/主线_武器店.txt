@@ -1,0 +1,197 @@
+[@武器店_检测]
+{
+#IF
+CHECKMISSION [102] 1
+CHECKMISSION [103] 0
+#ACT
+INC S0 <&初出茅庐{【任务】=FCO=251}/@任务_初出茅庐_第三步_完成>\
+
+#IF
+CHECKMISSION [104] 1
+CHECKMISSION [105] 0
+#ACT
+INC S0 <&江湖新秀{【任务】=FCO=251}/@任务_新兵上路_第一步>\
+
+#IF
+CHECKMISSION [122] 1
+CHECKMISSION [124] 0
+#ACT
+INC S0 <&重整河山{【任务】=FCO=251}/@任务_重整河山_第一步_武器店>\
+}
+
+[@武器店_脚本]
+{
+[@任务_初出茅庐_第三步_完成]
+#IF
+CHECKMISSION [102] 1
+CHECKMISSION [103] 0
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　白秋琳连龙五大爷的兵器都要给你？\
+还真是夸张。\ \
+<&领取物品/@任务_初出茅庐_完成>\
+<&结束对话/@exit>\
+
+[@任务_初出茅庐_完成]
+#IF
+CHECKMISSION [102] 1
+CHECKMISSION [103] 0
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　龙五大爷的兵刃已发给你了，如果知\
+道怎么装备上去，我就服你！另有好东西\
+奉送。怎么样？愿不愿意再赌一次啊？\ \
+{任务奖励=FCO=243}\
+　声望值： 5\
+　经验值： 9500\
+　道具奖励：\
+{12=x}{i.<^BSEX(452,453)>=item}{46=x}{i.485=item}{46=x}{i.519=item}{46=x}{i.471=item}{46=x}{i.472=item}\ \ \ \
+<&接受任务/@新兵上路_接受任务>\
+<&结束对话/@exit>\
+#ACT
+SHOWEFFECT [$特效_任务完成]
+SETMISSION [103] 1
+CHANGEEXP + [$任务_初出茅庐_第三步奖励经验值]
+CREDITPOINT + 1
+GIVE 乌木剑 1 TAKEON
+DELMISSION [$任务_主线索引变量]
+
+[@新兵上路_接受任务]
+#IF
+CHECKMISSION [103] 1
+CHECKMISSION [104] 0
+#ACT
+DELMISSION [$任务_主线索引变量]
+SETMISSION [104] 1
+ADDMISSION 0 新兵任务接受
+SHOWEFFECT [$特效_接受任务]
+GOTO @任务_新兵上路_第一步
+
+[@任务_新兵上路_第一步]
+#IF
+CHECKMISSION [104] 1
+CHECKMISSION [105] 0
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　哎，还是不难为你了！按 {F9=FCO=251} 或 {B键=FCO=251}\
+打开背包，把鼠标移到武器上，用鼠标右\
+键单击就可以装备啦。老叔我不仅告诉你\
+怎么用武器，还慷慨的送给你一件衣服和\
+一些道具！就是没有东西。\
+　　这些东西不在俺手里，全在村子里其\
+它老板的柜子里藏着。他们玩色子输给我\
+咯，又不认账，嘿嘿，你如果能替我要回\
+来，东西就归你。{沈荷叶(防具店老板)=FCO=251}是\
+大户人家的小姐，最喜欢绕圈圈，你就从\
+她那里开始吧。\ \
+<&我马上去/@任务_新兵上路_第二步接受>\
+<&结束对话/@exit>\
+
+[@任务_新兵上路_第二步接受]
+#IF
+CHECKMISSION [104] 1
+CHECKMISSION [105] 0
+#ACT
+SHOWEFFECT [$特效_步骤完成] 
+SETMISSION [105] 1
+CHANGEEXP + [$任务_新兵上路_第一步奖励经验值]
+CREDITPOINT + 1
+UPDATEMISSION 0 新兵上路第二步
+AUTOMOVE 新手村,133,122
+close
+
+[@任务_重整河山_第一步_武器店]
+#IF
+CHECKMISSION [122] 1
+CHECKMISSION [124] 0
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　我这里的兵器是玛法大陆最好的。\
+　另外，如果你想打造出更好的兵器，来\
+找我是绝对没有错。只要选择{打造武器=FCO=251}，\
+你就能看到玛法大陆所有的{武器列表和打=FCO=251}\
+{造所需要的材料=FCO=251}，只要你{收集到足够的材=FCO=251}\
+{料=FCO=251}，可以随时来找我\
+　另外，我这里有些小礼物送给你\ \
+{获得奖励：=FCO=243}\
+　声望值： 1\
+　经验值： [$任务_重整山河_武器店奖励经验值]\
+　道具奖励：\
+{12=x}{i.<^BJOB(54,53,55)>,b.8=item}{46=x}{i.76=item}\ \ \ \
+<&谢谢你的礼物/@任务_重整河山_第一步_武器店_完成>\
+<&结束对话/@exit>\
+
+[@任务_重整河山_第一步_武器店_完成]
+#if
+CHECKMISSION [122] 1
+CHECKMISSION [124] 0
+CHECKBAGSIZE 2
+#ELSEACT
+MESSAGEBOX 领取失败！请至少预留1格背包空间！
+BREAK
+
+#if
+CHECKJOB WARRIOR
+#act
+SHOWEFFECT [$特效_步骤完成] 
+DELMISSION [$任务_主线索引_重整河山_武器店_变量]
+SETMISSION [124] 1
+CHANGEEXP + [$任务_重整山河_武器店奖励经验值]
+CREDITPOINT + 1
+DYNAMICGIVE 怒斩 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+DYNAMICGIVE 天雷刃 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+GOTO @重整河山_检测第一步完成
+
+#if
+CHECKJOB WIZARD
+#act
+SHOWEFFECT [$特效_步骤完成] 
+DELMISSION [$任务_主线索引_重整河山_武器店_变量]
+SETMISSION [124] 1
+CHANGEEXP + [$任务_重整山河_武器店奖励经验值]
+CREDITPOINT + 1
+DYNAMICGIVE 龙牙 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+DYNAMICGIVE 天雷刃 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+GOTO @重整河山_检测第一步完成
+
+#if
+CHECKJOB TAOIST
+#act
+SHOWEFFECT [$特效_步骤完成] 
+DELMISSION [$任务_主线索引_重整河山_武器店_变量]
+SETMISSION [124] 1
+CHANGEEXP + [$任务_重整山河_武器店奖励经验值]
+CREDITPOINT + 1
+DYNAMICGIVE 逍遥扇 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+DYNAMICGIVE 天雷刃 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+GOTO @重整河山_检测第一步完成
+
+#CALLX [\\游戏配置\任务配置\主线任务\重整河山.txt] @重整河山_检测第一步
+}

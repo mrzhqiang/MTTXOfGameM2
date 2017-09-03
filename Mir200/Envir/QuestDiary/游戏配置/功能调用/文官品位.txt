@@ -1,0 +1,145 @@
+[@文官品位]
+{
+#IF
+NOT SMALL C0 [$文采触发_经验倍数_40]
+#ACT
+SETRANKLEVELNAME %S\[正一品]
+SENDMSG 5 你当前的文采为#6FFFF/8#6[<$STR(C0)>]#5　官位#6FFFF/8#6[正一品]#5
+SENDMSG 5 已触发#6FFFF/8#6[4倍经验]#5，可与双倍经验叠加。
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_40]
+NOT SMALL C0 [$文采触发_经验倍数_36]
+#ACT
+SETRANKLEVELNAME %S\[从一品]
+SENDMSG 5 你当前的文采为#6FFFF/8#6[<$STR(C0)>]#5　官位#6FFFF/8#6[从一品]#5
+SENDMSG 5 已触发#6FFFF/8#6[3.6倍经验]#5，可与双倍经验叠加。
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_36]
+NOT SMALL C0 [$文采触发_经验倍数_33]
+#ACT
+SETRANKLEVELNAME %S\[正二品]
+SENDMSG 5 你当前的文采为#6FFFF/8#6[<$STR(C0)>]#5　官位#6FFFF/8#6[正二品]#5
+SENDMSG 5 已触发#6FFFF/8#6[3.3倍经验]#5，可与双倍经验叠加。
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_33]
+NOT SMALL C0 [$文采触发_经验倍数_30]
+#ACT
+SETRANKLEVELNAME %S\[从二品]
+SENDMSG 5 你当前的文采为#6FFFF/8#6[<$STR(C0)>]#5　官位#6FFFF/8#6[从二品]#5
+SENDMSG 5 已触发#6FFFF/8#6[3倍经验]#5，可与双倍经验叠加。
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_30]
+NOT SMALL C0 [$文采触发_经验倍数_28]
+#ACT
+SETRANKLEVELNAME %S\[正三品]
+SENDMSG 5 你当前的文采为#6FFFF/8#6[<$STR(C0)>]#5　官位#6FFFF/8#6[正三品]#5
+SENDMSG 5 已触发#6FFFF/8#6[2.8倍经验]#5，可与双倍经验叠加。
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_28]
+NOT SMALL C0 [$文采触发_经验倍数_26]
+#ACT
+SETRANKLEVELNAME %S\[从三品]
+SENDMSG 5 你当前的文采为#6FFFF/8#6[<$STR(C0)>]#5　官位#6FFFF/8#6[从三品]#5
+SENDMSG 5 已触发#6FFFF/8#6[2.6倍经验]#5，可与双倍经验叠加。
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_26]
+NOT SMALL C0 [$文采触发_经验倍数_24]
+#ACT
+SETRANKLEVELNAME %S\[正四品]
+SENDMSG 5 你当前的文采为#6FFFF/8#6[<$STR(C0)>]#5　官位#6FFFF/8#6[正四品]#5
+SENDMSG 5 已触发#6FFFF/8#6[2.4倍经验]#5，可与双倍经验叠加。
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_24]
+NOT SMALL C0 [$文采触发_经验倍数_22]
+#ACT
+SETRANKLEVELNAME %S\[从四品]
+SENDMSG 5 你当前的文采为#6FFFF/8#6[<$STR(C0)>]#5　官位#6FFFF/8#6[从四品]#5
+SENDMSG 5 已触发#6FFFF/8#6[2.2倍经验]#5，可与双倍经验叠加。
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_22]
+NOT SMALL C0 [$文采触发_经验倍数_20]
+#ACT
+SETRANKLEVELNAME %S\[正五品]
+SENDMSG 5 你当前的文采为#6FFFF/8#6[<$STR(C0)>]#5　官位#6FFFF/8#6[正五品]#5
+SENDMSG 5 已触发#6FFFF/8#6[2倍经验]#5，可与双倍经验叠加。
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_20]
+NOT SMALL C0 [$文采触发_经验倍数_19]
+#ACT
+SETRANKLEVELNAME %S\[从五品]
+SENDMSG 5 你当前的文采为#6FFFF/8#6[<$STR(C0)>]#5　官位#6FFFF/8#6[从五品]#5
+SENDMSG 5 已触发#6FFFF/8#6[1.9倍经验]#5，可与双倍经验叠加。
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_19]
+NOT SMALL C0 [$文采触发_经验倍数_18]
+#ACT
+SETRANKLEVELNAME %S\[正六品]
+SENDMSG 5 你当前的文采为#6FFFF/8#6[<$STR(C0)>]#5　官位#6FFFF/8#6[正六品]#5
+SENDMSG 5 已触发#6FFFF/8#6[1.8倍经验]#5，可与双倍经验叠加。
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_18]
+NOT SMALL C0 [$文采触发_经验倍数_17]
+#ACT
+SETRANKLEVELNAME %S\[从六品]
+SENDMSG 5 你当前的文采为#6FFFF/8#6[<$STR(C0)>]#5　官位#6FFFF/8#6[从六品]#5
+SENDMSG 5 已触发#6FFFF/8#6[1.7倍经验]#5，可与双倍经验叠加。
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_17]
+NOT SMALL C0 [$文采触发_经验倍数_16]
+#ACT
+SETRANKLEVELNAME %S\[正七品]
+SENDMSG 5 你当前的文采为#6FFFF/8#6[<$STR(C0)>]#5　官位#6FFFF/8#6[正七品]#5
+SENDMSG 5 已触发#6FFFF/8#6[1.6倍经验]#5，可与双倍经验叠加。
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_16]
+NOT SMALL C0 [$文采触发_经验倍数_15]
+#ACT
+SETRANKLEVELNAME %S\[从七品]
+SENDMSG 5 你当前的文采为#6FFFF/8#6[<$STR(C0)>]#5　官位#6FFFF/8#6[从七品]#5
+SENDMSG 5 已触发#6FFFF/8#6[1.5倍经验]#5，可与双倍经验叠加。
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_15]
+NOT SMALL C0 [$文采触发_经验倍数_14]
+#ACT
+SETRANKLEVELNAME %S\[正八品]
+SENDMSG 5 你当前的文采为#6FFFF/8#6[<$STR(C0)>]#5　官位#6FFFF/8#6[正八品]#5
+SENDMSG 5 已触发#6FFFF/8#6[1.4倍经验]#5，可与双倍经验叠加。
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_14]
+NOT SMALL C0 [$文采触发_经验倍数_13]
+#ACT
+SETRANKLEVELNAME %S\[从八品]
+SENDMSG 5 你当前的文采为#6FFFF/8#6[<$STR(C0)>]#5　官位#6FFFF/8#6[从八品]#5
+SENDMSG 5 已触发#6FFFF/8#6[1.3倍经验]#5，可与双倍经验叠加。
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_13]
+NOT SMALL C0 [$文采触发_经验倍数_12]
+#ACT
+SETRANKLEVELNAME %S\[正九品]
+SENDMSG 5 你当前的文采为#6FFFF/8#6[<$STR(C0)>]#5　官位#6FFFF/8#6[正九品]#5
+SENDMSG 5 已触发#6FFFF/8#6[1.2倍经验]#5，可与双倍经验叠加。
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_12]
+NOT SMALL C0 [$文采触发_经验倍数_11]
+#ACT
+SETRANKLEVELNAME %S\[从九品]
+SENDMSG 5 你当前的文采为#6FFFF/8#6[<$STR(C0)>]#5　官位#6FFFF/8#6[从九品]#5
+SENDMSG 5 已触发#6FFFF/8#6[1.1倍经验]#5，可与双倍经验叠加。
+}

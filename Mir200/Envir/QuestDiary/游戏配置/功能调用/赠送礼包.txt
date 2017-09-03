@@ -1,0 +1,93 @@
+[@赠送礼包]
+{
+;新手礼包
+[@StdmodeFunc21]
+#IF
+CHECKBAGSIZE 8
+#ACT
+DYNAMICGIVE 进阶礼包 1
+DYNAMICGIVE 记忆石 1
+DYNAMICGIVE 还魂丹 2
+DYNAMICGIVE 比奇传送石 1
+DYNAMICGIVE 聚灵珠（小） 1
+DYNAMICGIVE 双倍秘籍 1
+DYNAMICGIVE 准考证书 3
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+DYNAMICGIVE 布包 1
+CHANGEGIVEITEM [$物品_改变属性_时间] 3
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+#ELSEACT
+DYNAMICGIVE 新手礼包 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+MESSAGEBOX 开启失败！请至少预留8格背包空间
+
+;进阶礼包
+[@StdmodeFunc22]
+#IF
+CHECKBAGSIZE 8
+#ACT
+DYNAMICGIVE 成熟礼包 1
+DYNAMICGIVE 记忆石 1
+DYNAMICGIVE 还魂丹 2
+DYNAMICGIVE 随机传送石 1
+DYNAMICGIVE 聚灵珠（中） 1
+DYNAMICGIVE 双倍秘籍 1
+DYNAMICGIVE 魔血石(中) 1
+DYNAMICGIVE 准考证书 5
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+DYNAMICGIVE 绸布包 1
+CHANGEGIVEITEM [$物品_改变属性_时间] 3
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+#ELSEACT
+DYNAMICGIVE 进阶礼包 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+MESSAGEBOX 开启失败！请至少预留8格背包空间
+
+;成熟礼包
+[@StdmodeFunc23]
+#IF
+CHECKBAGSIZE 7
+#ACT
+DYNAMICGIVE 盟重传送石 1
+DYNAMICGIVE 记忆石 1
+DYNAMICGIVE 还魂丹 2
+DYNAMICGIVE 聚灵珠（大） 1
+DYNAMICGIVE 双倍秘籍 1
+DYNAMICGIVE 魔血石(大) 1
+DYNAMICGIVE 准考证书 10
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+DYNAMICGIVE 丝布包 1
+CHANGEGIVEITEM [$物品_改变属性_时间] 3
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+#ELSEACT
+DYNAMICGIVE 成熟礼包 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+MESSAGEBOX 开启失败！请至少预留7格背包空间
+}

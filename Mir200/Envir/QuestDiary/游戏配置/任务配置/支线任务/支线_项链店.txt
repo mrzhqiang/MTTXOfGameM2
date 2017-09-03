@@ -1,0 +1,112 @@
+[@打造项链_检测]
+{
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [206] 0
+CHECKMAPNAME 0105
+#ACT
+INC S0 <&学习打造项链{【生活技能】=FCO=251}/@任务_打造项链_接受>\
+
+#IF
+CHECKMISSION [206] 1
+CHECKMISSION [216] 0
+CHECKMAPNAME 0105
+CHECKITEMCOUNT 天雷项链 ? 1
+CHECKITEMCOUNT 牛皮针 ? 1
+CHECKITEMCOUNT 铁矿 ? 1
+#ACT
+INC S0 <&学习打造项链{【生活技能】完成=FCO=251}/@任务_打造项链_完成>\
+}
+
+[@打造项链_脚本]
+{
+[@任务_打造项链_接受]
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [206] 0
+CHECKMAPNAME 0105
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　想学{打造项链=FCO=251}啊，先去准备一下下面\
+面的材料吧。\ \
+{需准备材料=FCO=243}\
+{12=x}{i.80=item}{46=x}{i.242=item}{46=x}{i.49=item}\ \ \
+{打造成功后得到物品=FCO=243}\
+{12=x}{i.<^BJOB(95,101,107)>,b.8=item}\ \ \
+{任务奖励：=FCO=243}\
+　声望值：[$学习生活技能_打造项链声望奖励]\
+　经验值：[$学习生活技能_打造项链经验奖励]\ \
+<&我这就去准备/@激活打造项链>\
+<&结束对话/@exit>\
+
+[@激活打造项链]
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [206] 0
+CHECKMAPNAME 0105
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　打造的材料可以去{危险区域=FCO=251}相对应等\
+级的地方杀怪获得，材料找不找得到就要\
+看你个人的本领了。\ \
+<&知道了/@exit>\
+#ACT
+SETMISSION [206] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION 5
+ADDMISSION 5 开始打造项链
+
+[@任务_打造项链_完成]
+#IF
+CHECKMISSION [206] 1
+CHECKMISSION [216] 0
+CHECKMAPNAME 0105
+CHECKITEMCOUNT 天雷项链 ? 1
+CHECKITEMCOUNT 牛皮针 ? 1
+CHECKITEMCOUNT 铁矿 ? 1
+CHECKBAGSIZE 1
+#ELSEACT
+MESSAGEBOX 背包空间不足1个或材料不够！
+BREAK
+
+#IF
+CHECKJOB WARRIOR
+#ACT
+DYNAMICGIVE 斗者项链(战) 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+CHECKJOB WIZARD
+#ACT
+DYNAMICGIVE 斗者项链(法) 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+CHECKJOB TAOIST
+#ACT
+DYNAMICGIVE 斗者项链(道) 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　{打造项链=FCO=251}的生活技能我已经传授于你\
+了，这是我用背包中材料帮你打造的一件\
+{<^BJOB(雷霆项链,烈焰项链,光芒项链)>=FCO=251}，请收好。\
+　　现在你也可以{按F11打开生活技能面板=FCO=253}\
+，随意打造属于你自己的{项链=FCO=250}\ \
+<&关闭对话/@exit>
+#ACT
+SETMISSION [216] 1
+SHOWEFFECT [$特效_任务完成]
+TAKECOUNT 天雷项链 1
+TAKECOUNT 牛皮针 1
+TAKECOUNT 铁矿 1
+CHANGEEXP + [$学习生活技能_打造项链经验奖励]
+CREDITPOINT + [$学习生活技能_打造项链声望奖励]
+ADDMAKEMAGIC 3
+DELMISSION 5
+}

@@ -1,0 +1,289 @@
+[@老兵准配置头]
+{
+(@storage @getback @@InPutString @@InputInteger)
+%100
+[@main]
+#CALL [\\NPC配置\所有NPC头内容.txt] @系统_所有NPC头_内容
+
+[@系统_所有NPC头_返回_剑侠]
+<$USERNAME>:\ \
+　　你知道吗，盟重是最热闹的地方。\ \
+<&我要拜师/@武馆教头_我想拜师>\
+<&我要解除师徒关系/@武馆教头_我想出师>\
+<&打开仓库/@storage>\
+<&租用仓库/@仓库_租用仓库>\
+<&物品摧毁/@@InPutString10#请输入要摧毁物品的名字【请谨慎输入】>
+
+[@系统_所有NPC头_返回_盛大]
+<$USERNAME>:\ \
+　　你知道吗，盟重是最热闹的地方。\ \
+<打开仓库/@storage>　　<租用仓库/@仓库_租用仓库>　　<物品摧毁/@@InPutString10#请输入要摧毁物品的名字【请谨慎输入】>　　<庄园传送/@庄园传送>
+}
+
+[@老兵准配置尾]
+{
+[@庄园传送]
+#IF
+#ACT
+MAPMOVE GA0 71 73
+[@@InPutString10]
+#IF
+EQUAL S10 
+#act
+MESSAGEBOX 提示：你什么都没输入想干什么?
+BREAK
+#IF
+NOT CheckTextList <$STR(S10)> ../QuestDiary/游戏功能/物品销毁.txt
+#ACT
+MESSAGEBOX 提示：你输入的物品名字有误。
+BREAK
+#IF
+CheckItemCount <$STR(S10)> ? 1
+#ACT
+TakeCount <$STR(S10)> 1
+SENDMSG 7 成功销毁物品【<$STR(S10)>】。
+GOTO @main
+#ELSEACT
+MESSAGEBOX 提示：我没有在你身上找到【<$STR(S10)>】这个物品。
+
+
+[@武馆教头_我想拜师]
+#IF
+checkismaster
+#ACT
+MESSAGEBOX 你已经是别人的师父了，怎么还拜师？
+BREAK
+
+#IF
+checkmaster
+#ACT
+MESSAGEBOX 你已经拜了别人为师，怎么还拜师？
+BREAK
+
+#IF
+checkposemaster
+#ACT
+MESSAGEBOX 你找了个什么人做师父，怎么现在还是别人的徒弟？
+BREAK
+
+#IF
+POSEHAVEMASTER
+#ACT
+MESSAGEBOX 本服务器目前师父只允许收取一位徒弟！
+BREAK
+
+#IF
+not checkposedir
+#ACT
+MESSAGEBOX 你要拜谁为师啊？请让他在你对面站好！
+BREAK
+
+#IF
+checklevel [$拜师等级]
+#ACT
+MESSAGEBOX 你都[$拜师等级]多级了还要找师父啊？
+BREAK
+
+#IF
+checkposelevel ? [$师傅等级]
+#ACT
+MASTER
+#ELSEACT
+MESSAGEBOX 你找了个什么师父呀，等级这么低？
+
+[@武馆教头_我想拜师_确认拜师]
+#IF
+HAVEMASTER
+#SAY
+{<$SELFNAME>=FCO=251}：\
+　你已经与别人建立了师徒关系，无法继\
+续进行拜师仪式。\ \
+<&结束对话/@Exit>
+#ELSEACT
+MASTER REQUESTMASTER
+
+[@StartGetMaster]
+{<$SELFNAME>=FCO=251}：\
+　拜师仪式正式开始。\
+　你是否确认拜{<$POSENAME>=FCO=251}为师？\ \
+<&确认/@武馆教头_我想拜师_确认拜师>\
+
+[@StartMaster]
+{<$SELFNAME>=FCO=251}：\
+　拜师仪式正式开始。\
+　请等待{<$POSENAME>=FCO=251}向你提出拜师。\ \
+
+[@WateMaster]
+{<$SELFNAME>=FCO=251}：\
+　你已经向对方发出拜师请求，请耐心\
+等待对方的答复。\ \
+
+[@RevMaster]
+{<$SELFNAME>=FCO=251}：\
+　{<$POSENAME>=FCO=251}想拜你为师！\
+　你是否愿意收此人为徒？\ \
+<&我愿意/@武馆教头_我想拜师_确认拜师_愿意> \
+<&我不愿意/@武馆教头_我想拜师_确认拜师_不愿意>
+
+[@武馆教头_我想拜师_确认拜师_愿意]
+#if
+#act
+MASTER RESPONSEMASTER OK
+
+[@武馆教头_我想拜师_确认拜师_不愿意]
+#if
+#act
+MASTER RESPONSEMASTER FAIL
+
+[@EndMaster]
+{<$SELFNAME>=FCO=251}：\
+　　恭喜二位，你们已经成功建立了师徒\
+关系。\ \
+<&结束对话/@Exit>
+
+[@EndMasterFail]
+{<$SELFNAME>=FCO=251}：\
+　拜师仪式结束，很遗憾你们没有建立师\
+徒关系。\ \
+<&结束对话/@Exit>
+
+[@MasterDirErr]
+{<$SELFNAME>=FCO=251}：\
+　　对方没有站好位置，收徒无法继续进\
+行。请下次再来。\ \
+<&结束对话/@Exit>
+
+[@MasterCheckDir]
+{<$SELFNAME>=FCO=251}：\
+　　请站好位置，收徒无法继续进行。请\
+下次再来。\ \
+<&结束对话/@Exit>
+
+[@HumanTypeErr]
+{<$SELFNAME>=FCO=251}：\
+　　你对面站着的是人还是？我怎么看不\
+见。你看见了吗？\ \
+<&结束对话/@Exit>
+
+[@武馆教头_我想出师]
+#if
+havemaster
+#act
+unmaster
+#ELSEACT
+MESSAGEBOX 你都没有建立师徒关系，跑来做什么？
+
+[@ExeMasterFail]
+{<$SELFNAME>=FCO=251}：\
+　你都没有建立师徒关系，跑来做什么？\ \
+<&结束对话/@Exit>
+
+[@UnMasterCheckDir]
+{<$SELFNAME>=FCO=251}：\
+　解除师徒关系是俩个人的事，必需俩个\
+人面对面站好位置，如果对方人来不了，\
+你只能选择强行解除了。不过强化解除师\
+徒关系需要交纳{100W金币=FCO=243}的手续费。\ \
+<&我要强行解除/@武馆教头_我想出师_强行出师>\
+<&返回/@main>\
+
+[@UnMasterTypeErr]
+{<$SELFNAME>=FCO=251}：\
+　　你对面站着的是人还是？我怎么看不\
+见。你看见了吗？\ \
+<&结束对话/@Exit>
+
+[@UnIsMaster]
+{<$SELFNAME>=FCO=251}：\
+　必需由徒弟发生请求！\ \
+<&结束对话/@Exit>
+
+[@UnMasterError]
+{<$SELFNAME>=FCO=251}：\
+　你们不是师徒关系！\ \
+<&结束对话/@Exit>
+
+[@StartUnMaster]
+{<$SELFNAME>=FCO=251}：\
+　出师仪式正在进行中！\
+　你是否确定要解除师徒关系？\ \
+<&确定/@RequestUnMaster>\
+<&结束对话/@Exit>
+
+[@WateUnMaster]
+{<$SELFNAME>=FCO=251}：\
+　出师仪式正在进行中！\
+　请等待对方选择！\ \
+
+[@RevUnMaster]
+{<$SELFNAME>=FCO=251}：\
+　出师仪式正在进行中！\
+　对方已经确定要解除关系，你是否也确\
+定要解除师徒关系？\ \
+<&确定/@RequestUnMaster>\
+<&结束对话/@Exit>
+
+[@RequestUnMaster]
+#if
+havemaster
+#act
+unmaster REQUESTUNMASTER
+
+[@UnMasterEnd]
+{<$SELFNAME>=FCO=251}：\
+　你们已经成功解除了师徒关系了！\ \
+
+<&结束对话/@Exit>
+
+[@武馆教头_我想出师_强行出师]
+#IF
+CHECKGOLD 1000000
+havemaster
+#SAY
+$RESETLABEL
+{<$SELFNAME>=FCO=251}：\
+　请选择你要解除师徒关系的人物名称。\ \
+<$UNMASTER_FORCE> \
+<&返回/@main>\
+#ELSEACT
+MESSAGEBOX 强行解除需要50W金币手续费，你的金币不足！
+
+[@UnMaster_Force]
+#IF
+CHECKGOLD 1000000
+havemaster
+#ACT
+TAKE 金币 1000000
+unmaster force <$STR(T0)>
+#ELSEACT
+MESSAGEBOX 强行解除需要100W金币手续费，你的金币不足！
+
+
+[@仓库_租用仓库]
+{<$SELFNAME>=FCO=243}：\
+　您是不是觉得仓库容量不够用呢？我们\
+现在推出{买一送一=FCO=251}活动，只要您租用一个\
+仓库，我们将再加送您一个仓库。\
+　价格：{[$租用仓库费用]=FCO=251}元宝/{30=FCO=251}天 (可重复购买)\ \
+
+　您当前额外仓库到期时间为：\
+　仓库二：{<$STORAGE2STATE>=FCO=250}\
+　仓库三：{<$STORAGE3STATE>=FCO=250}\ \
+
+<&租用额外仓库/@仓库_租用仓库_租用>\
+<&返回/@main>\
+
+[@仓库_租用仓库_租用]
+#if
+CHECKGAMEGOLD ? [$租用仓库费用] 
+#act
+GAMEGOLD - [$租用仓库费用]  
+STORAGETIMECHANGE 2 + [$租用仓库时间]
+STORAGETIMECHANGE 3 + [$租用仓库时间]
+MESSAGEBOX 恭喜您，成功的为额外仓库增加了[$租用仓库时间]天时间
+GOTO @仓库_租用仓库
+#elseact
+MESSAGEBOX 对不起，您的[$元宝名称]不够支付本次费用！
+
+
+}

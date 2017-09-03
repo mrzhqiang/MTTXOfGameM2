@@ -1,0 +1,177 @@
+[@每日挖矿_检测]
+{
+#IF
+CHECKMISSION [$任务_每日任务变量] 0
+CHECKMISSION [$任务_每日挖矿任务变量] 0
+CHECKLEVELEX > 39
+#ACT
+MOV S2 <&领取挖矿任务{【未领取】=FCO=251}/@每日_挖矿_接受>\
+
+#IF
+CHECKMISSION [$任务_每日任务变量] 1
+CHECKMISSION [$任务_每日挖矿任务变量] 1
+CHECKLEVELEX > 39
+#ACT
+MOV S2 <&完成挖矿任务{【已领取】=FCO=251}/@每日_挖矿_完成>\
+
+#IF
+CHECKARITHMOMETERCOUNT [$每日挖矿循环变量] > 0
+CHECKMISSION [$任务_每日任务变量] 0
+CHECKMISSION [$任务_每日挖矿任务变量] 0
+#ACT
+MOV S2 <&领取挖矿任务{【已完成】=FCO=251}/@每日_挖矿_已完成>\
+}
+
+
+[@每日_挖矿任务_脚本]
+{
+[@每日_挖矿_接受]
+#IF
+#ACT
+GETRANDOMNAME ../QuestDiary/Amark/每日任务/挖矿任务随即分配.txt S0
+
+#IF
+#ACT
+CALCVAR HUMAN 挖矿任务 = <$STR(S0)>
+SAVEVAR HUMAN 挖矿任务 ..\QuestDiary\Amark\变量数据\挖矿任务Save.txt
+
+#IF
+#ACT
+SETMISSION [$任务_每日任务变量] 1
+SETMISSION [$任务_每日挖矿任务变量] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION [$任务_每日任务索引变量]
+ADDMISSION [$任务_每日任务索引变量] 挖矿任务_<$STR(S0)>
+CHANGEARITHMOMETERCOUNT [$每日挖矿循环变量] + 1
+
+
+
+[@每日_挖矿_完成]
+#IF
+CHECKVAR HUMAN 挖矿任务 = 1
+#ACT
+GOTO @检测挖矿任务1
+
+#IF
+CHECKVAR HUMAN 挖矿任务 = 2
+#ACT
+GOTO @检测挖矿任务2
+
+#IF
+CHECKVAR HUMAN 挖矿任务 = 3
+#ACT
+GOTO @检测挖矿任务3
+
+#IF
+CHECKVAR HUMAN 挖矿任务 = 4
+#ACT
+GOTO @检测挖矿任务4
+
+[@检测挖矿任务1]
+#IF
+CHECKITEMCOUNT [$挖矿任务1物品1] ? [$挖矿任务物品数量]
+CHECKITEMCOUNT [$挖矿任务1物品2] ? [$挖矿任务物品数量]
+CHECKITEMCOUNT [$挖矿任务1物品3] ? [$挖矿任务物品数量]
+#ACT
+TAKECOUNT  [$挖矿任务1物品1] [$挖矿任务物品数量]
+TAKECOUNT  [$挖矿任务1物品2] [$挖矿任务物品数量]
+TAKECOUNT  [$挖矿任务1物品3] [$挖矿任务物品数量]
+GOTO @挖矿任务变量还原
+#ELSEACT
+MESSAGEBOX [提示]:任务物品不齐全!
+
+[@检测挖矿任务2]
+#IF
+CHECKITEMCOUNT [$挖矿任务2物品1] ? [$挖矿任务物品数量]
+CHECKITEMCOUNT [$挖矿任务2物品2] ? [$挖矿任务物品数量]
+CHECKITEMCOUNT [$挖矿任务2物品3] ? [$挖矿任务物品数量]
+#ACT
+TAKECOUNT  [$挖矿任务2物品1] [$挖矿任务物品数量]
+TAKECOUNT  [$挖矿任务2物品2] [$挖矿任务物品数量]
+TAKECOUNT  [$挖矿任务2物品3] [$挖矿任务物品数量]
+GOTO @挖矿任务变量还原
+#ELSEACT
+MESSAGEBOX [提示]:任务物品不齐全!
+
+[@检测挖矿任务3]
+#IF
+CHECKITEMCOUNT [$挖矿任务3物品1] ? [$挖矿任务物品数量]
+CHECKITEMCOUNT [$挖矿任务3物品2] ? [$挖矿任务物品数量]
+CHECKITEMCOUNT [$挖矿任务3物品3] ? [$挖矿任务物品数量]
+#ACT
+TAKECOUNT  [$挖矿任务3物品1] [$挖矿任务物品数量]
+TAKECOUNT  [$挖矿任务3物品2] [$挖矿任务物品数量]
+TAKECOUNT  [$挖矿任务3物品3] [$挖矿任务物品数量]
+GOTO @挖矿任务变量还原
+#ELSEACT
+MESSAGEBOX [提示]:任务物品不齐全!
+
+[@检测挖矿任务4]
+#IF
+CHECKITEMCOUNT [$挖矿任务4物品1] ? [$挖矿任务物品数量]
+CHECKITEMCOUNT [$挖矿任务4物品2] ? [$挖矿任务物品数量]
+CHECKITEMCOUNT [$挖矿任务4物品3] ? [$挖矿任务物品数量]
+#ACT
+TAKECOUNT  [$挖矿任务4物品1] [$挖矿任务物品数量]
+TAKECOUNT  [$挖矿任务4物品2] [$挖矿任务物品数量]
+TAKECOUNT  [$挖矿任务4物品3] [$挖矿任务物品数量]
+GOTO @挖矿任务变量还原
+#ELSEACT
+MESSAGEBOX [提示]:任务物品不齐全!
+
+
+[@挖矿任务变量还原]
+#IF
+#ACT
+SETMISSION [$任务_每日任务变量] 0
+SETMISSION [$任务_每日挖矿任务变量] 0
+SHOWEFFECT [$特效_任务完成]
+DELMISSION [$任务_每日任务索引变量]
+GOTO @挖矿任务奖励
+close
+#ELSEACT
+MESSAGEBOX [提示]:任务未完成,请认阅读任务内容与要求!
+
+[@挖矿任务奖励]
+#IF
+CHECKLEVELEX ? 90
+#ACT
+GIVE [$绑定金币名称] [$90级挖矿奖励]
+BREAK
+
+#IF
+CHECKLEVELEX ? 80
+#ACT
+GIVE [$绑定金币名称] [$80级挖矿奖励]
+BREAK
+
+#IF
+CHECKLEVELEX ? 70
+#ACT
+GIVE [$绑定金币名称] [$70级挖矿奖励]
+BREAK
+
+#IF
+CHECKLEVELEX ? 60
+#ACT
+GIVE [$绑定金币名称] [$60级挖矿奖励]
+BREAK
+
+#IF
+CHECKLEVELEX ? 50
+#ACT
+GIVE [$绑定金币名称] [$50级挖矿奖励]
+BREAK
+
+#IF
+CHECKLEVELEX ? 40
+#ACT
+GIVE [$绑定金币名称] [$40级挖矿奖励]
+BREAK
+
+
+[@每日_挖矿_已完成]
+#IF
+#ACT
+MESSAGEBOX [提示]:您今天的每日挖矿任务已经完成过了!\请在12点系统清空次数后再领取!\
+}

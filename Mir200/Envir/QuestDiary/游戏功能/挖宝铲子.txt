@@ -1,0 +1,471 @@
+[@挖宝铲子]
+{
+[@白银铲子]
+#IF
+NOT CheckInMapRange 3 <$STR(C60)> <$STR(C61)> 1
+#ACT
+MESSAGEBOX 提示：你确定你到了指定挖宝地点吗?
+BREAK
+#IF
+NOT CHECKITEM 古老的藏宝图 1
+#ACT
+MESSAGEBOX 提示：你的宝藏图走路的时候掉了?
+BREAK
+#IF
+NOT CHECKITEM 白银铲子 1
+#ACT
+MESSAGEBOX 提示：你的白银铲子上哪去了?没铲子怎么挖东西?
+BREAK
+#IF
+#ACT
+MOV C60 0
+MOV C61 0
+SET [310] 0
+TakeCount 白银铲子 1
+TAKE 古老的藏宝图 1
+MOV P11 1
+CALCVAR HUMAN 白银挖宝 + 1
+SAVEVAR HUMAN 白银挖宝 ..\QuestDiary\数据文件\每日成就Save.txt
+GOTO @开始挖宝_白银
+[@黄金铲子]
+#IF
+NOT CheckInMapRange 3 <$STR(C60)> <$STR(C61)> 1
+#ACT
+MESSAGEBOX 提示：你确定你到了指定挖宝地点吗?
+BREAK
+#IF
+NOT CHECKITEM 古老的藏宝图 1
+#ACT
+MESSAGEBOX 提示：你的宝藏图走路的时候掉了?
+BREAK
+#IF
+NOT CHECKITEM 黄金铲子 1
+#ACT
+MESSAGEBOX 提示：你的黄金铲子上哪去了?没铲子怎么挖东西?
+BREAK
+#IF
+#ACT
+MOV C60 0
+MOV C61 0
+SET [310] 0
+TakeCount 黄金铲子 1
+TAKE 古老的藏宝图 1
+MOV P11 3
+CALCVAR HUMAN 黄金挖宝 + 1
+SAVEVAR HUMAN 黄金挖宝 ..\QuestDiary\数据文件\每日成就Save.txt
+GOTO @开始挖宝_黄金
+
+
+[@开始挖宝_白银]
+#IF
+random 600
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/神器.txt S18
+DynamicGive <$STR(S18)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 传闻：某人在挖宝的时人品爆发，挖取了神器<$ITEMX[$Param9]>。
+Close
+BREAK
+
+#IF
+random 540
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/高级宝石.txt S18
+GIVE <$STR(S18)> 1
+SENDMSG 0 传闻：某人在挖宝的时，挖取到了稀有宝石<$ITEMX[$Param9]>。
+Close
+BREAK
+
+#IF
+random 450
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/坐骑.txt S18
+GIVE <$STR(S18)> 1
+SENDMSG 0 传闻：某人在挖宝的时，挖取到了超级坐骑<$ITEMX[$Param9]>。
+Close
+BREAK
+
+#IF
+random 120
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/4转装备.txt S18
+DynamicGive <$STR(S18)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 传闻：某人在挖宝的时，挖取了4转装备<$ITEMX[$Param9]>。
+Close
+BREAK
+
+#IF
+random 117
+#act
+MOVR P18 1 5
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/4转转生.txt S18
+GIVE <$STR(S18)> <$STR(P18)>
+SENDMSG 0 传闻：某人在挖宝的时，挖取了4转转生材料<$ITEMX[$Param9]>,<$STR(P18)>个。
+Close
+BREAK
+
+#IF
+random 114
+#act
+MOVR P18 1 5
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/4转打造.txt S18
+GIVE <$STR(S18)> <$STR(P18)>
+SENDMSG 0 传闻：某人在挖宝的时，挖取了4转打造材料<$ITEMX[$Param9]>,<$STR(P18)>个。
+Close
+BREAK
+
+#IF
+random 111
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/高级道具.txt S18
+GIVE <$STR(S18)> 1
+SENDMSG 0 传闻：某人在挖宝的时，挖取到了高级道具<$ITEMX[$Param9]>。
+Close
+BREAK
+
+#IF
+random 105
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/中级宝石.txt S18
+GIVE <$STR(S18)> 1
+SENDMSG 7 挖宝提示：您挖取到了<$STR(S18)>。
+Close
+BREAK
+
+#IF
+random 90
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/3转装备.txt S18
+DynamicGive <$STR(S18)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 传闻：某人在挖宝的时，挖取了3转装备<$ITEMX[$Param9]>。
+Close
+BREAK
+
+#IF
+random 87
+#act
+MOVR P18 1 5
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/3转转生.txt S18
+GIVE <$STR(S18)> <$STR(P18)>
+SENDMSG 0 传闻：某人在挖宝的时，挖取了3转转生材料<$ITEMX[$Param9]>,<$STR(P18)>个。
+Close
+BREAK
+
+#IF
+random 84
+#act
+MOVR P18 1 5
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/3转打造.txt S18
+GIVE <$STR(S18)> <$STR(P18)>
+SENDMSG 0 传闻：某人在挖宝的时，挖取了3转打造材料<$ITEMX[$Param9]>,<$STR(P18)>个。
+Close
+BREAK
+
+#IF
+random 75
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/神器辅材.txt S18
+GIVE <$STR(S18)> 1
+SENDMSG 0 传闻：某人在挖宝的时，挖取到了神器辅助材料<$ITEMX[$Param9]>。
+Close
+BREAK
+
+#IF
+random 50
+#act
+GOTO @放妖
+Close
+BREAK
+
+#IF
+random 45
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/2转装备.txt S18
+DynamicGive <$STR(S18)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 传闻：某人在挖宝的时，挖取了2转装备<$ITEMX[$Param9]>。
+Close
+BREAK
+
+#IF
+random 42
+#act
+MOVR P18 1 5
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/2转转生.txt S18
+GIVE <$STR(S18)> <$STR(P18)>
+SENDMSG 0 传闻：某人在挖宝的时，挖取了2转转生材料<$ITEMX[$Param9]>,<$STR(P18)>个。
+Close
+BREAK
+
+#IF
+random 39
+#act
+MOVR P18 1 5
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/2转打造.txt S18
+GIVE <$STR(S18)> <$STR(P18)>
+SENDMSG 0 传闻：某人在挖宝的时，挖取了2转打造材料<$ITEMX[$Param9]>,<$STR(P18)>个。
+Close
+BREAK
+
+#IF
+random 30
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/低级宝石.txt S18
+GIVE <$STR(S18)> 1
+SENDMSG 7 挖宝提示：您挖取到了<$STR(S18)>。
+Close
+BREAK
+
+#IF
+random 15
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/中级道具.txt S18
+GIVE <$STR(S18)> 1
+SENDMSG 7 挖宝提示：您挖取到了<$STR(S18)>。
+Close
+BREAK
+
+#IF
+random 2
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/初级道具.txt S18
+GIVE <$STR(S18)> 1
+SENDMSG 7 挖宝提示：您挖取到了<$STR(S18)>。
+Close
+BREAK
+
+#IF
+#ACT
+SENDMSG 7 我靠！竟然是个空宝藏。
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@开始挖宝_黄金]
+#IF
+random 200
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/神器.txt S18
+DynamicGive <$STR(S18)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 传闻：某人在挖宝的时人品爆发，挖取了神器<$ITEMX[$Param9]>。
+Close
+BREAK
+
+#IF
+random 180
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/高级宝石.txt S18
+GIVE <$STR(S18)> 1
+SENDMSG 0 传闻：某人在挖宝的时，挖取到了稀有宝石<$ITEMX[$Param9]>。
+Close
+BREAK
+
+#IF
+random 150
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/坐骑.txt S18
+GIVE <$STR(S18)> 1
+SENDMSG 0 传闻：某人在挖宝的时，挖取到了超级坐骑<$ITEMX[$Param9]>。
+Close
+BREAK
+
+#IF
+random 40
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/4转装备.txt S18
+DynamicGive <$STR(S18)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 传闻：某人在挖宝的时，挖取了4转装备<$ITEMX[$Param9]>。
+Close
+BREAK
+
+#IF
+random 39
+#act
+MOVR P18 1 5
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/4转转生.txt S18
+GIVE <$STR(S18)> <$STR(P18)>
+SENDMSG 0 传闻：某人在挖宝的时，挖取了4转转生材料<$ITEMX[$Param9]>,<$STR(P18)>个。
+Close
+BREAK
+
+#IF
+random 38
+#act
+MOVR P18 1 5
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/4转打造.txt S18
+GIVE <$STR(S18)> <$STR(P18)>
+SENDMSG 0 传闻：某人在挖宝的时，挖取了4转打造材料<$ITEMX[$Param9]>,<$STR(P18)>个。
+Close
+BREAK
+
+#IF
+random 37
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/高级道具.txt S18
+GIVE <$STR(S18)> 1
+SENDMSG 0 传闻：某人在挖宝的时，挖取到了高级道具<$ITEMX[$Param9]>。
+Close
+BREAK
+
+#IF
+random 35
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/中级宝石.txt S18
+GIVE <$STR(S18)> 1
+SENDMSG 7 挖宝提示：您挖取到了<$STR(S18)>。
+Close
+BREAK
+
+#IF
+random 30
+#act
+GOTO @放妖
+Close
+BREAK
+
+#IF
+random 30
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/3转装备.txt S18
+DynamicGive <$STR(S18)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 传闻：某人在挖宝的时，挖取了3转装备<$ITEMX[$Param9]>。
+Close
+BREAK
+
+#IF
+random 29
+#act
+MOVR P18 1 5
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/3转转生.txt S18
+GIVE <$STR(S18)> <$STR(P18)>
+SENDMSG 0 传闻：某人在挖宝的时，挖取了3转转生材料<$ITEMX[$Param9]>,<$STR(P18)>个。
+Close
+BREAK
+
+#IF
+random 28
+#act
+MOVR P18 1 5
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/3转打造.txt S18
+GIVE <$STR(S18)> <$STR(P18)>
+SENDMSG 0 传闻：某人在挖宝的时，挖取了3转打造材料<$ITEMX[$Param9]>,<$STR(P18)>个。
+Close
+BREAK
+
+#IF
+random 25
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/神器辅材.txt S18
+GIVE <$STR(S18)> 1
+SENDMSG 0 传闻：某人在挖宝的时，挖取到了神器辅助材料<$ITEMX[$Param9]>。
+Close
+BREAK
+
+#IF
+random 15
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/2转装备.txt S18
+DynamicGive <$STR(S18)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 传闻：某人在挖宝的时，挖取了2转装备<$ITEMX[$Param9]>。
+Close
+BREAK
+
+#IF
+random 14
+#act
+MOVR P18 1 5
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/2转转生.txt S18
+GIVE <$STR(S18)> <$STR(P18)>
+SENDMSG 0 传闻：某人在挖宝的时，挖取了2转转生材料<$ITEMX[$Param9]>,<$STR(P18)>个。
+Close
+BREAK
+
+#IF
+random 13
+#act
+MOVR P18 1 5
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/2转打造.txt S18
+GIVE <$STR(S18)> <$STR(P18)>
+SENDMSG 0 传闻：某人在挖宝的时，挖取了2转打造材料<$ITEMX[$Param9]>,<$STR(P18)>个。
+Close
+BREAK
+
+#IF
+random 10
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/低级宝石.txt S18
+GIVE <$STR(S18)> 1
+SENDMSG 7 挖宝提示：您挖取到了<$STR(S18)>。
+Close
+BREAK
+
+#IF
+random 5
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/中级道具.txt S18
+GIVE <$STR(S18)> 1
+SENDMSG 7 挖宝提示：您挖取到了<$STR(S18)>。
+Close
+BREAK
+
+#IF
+random 1
+#act
+GetRandomName ../QuestDiary/游戏功能/藏宝图宝藏/初级道具.txt S18
+GIVE <$STR(S18)> 1
+SENDMSG 7 挖宝提示：您挖取到了<$STR(S18)>。
+Close
+BREAK
+}

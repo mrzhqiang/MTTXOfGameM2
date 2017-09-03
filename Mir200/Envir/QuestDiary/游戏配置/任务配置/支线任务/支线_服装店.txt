@@ -1,0 +1,527 @@
+[@打造防具_检测]
+{
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [202] 0
+CHECKMAPNAME 0106
+#ACT
+INC S0 <&学习打造盔甲{【生活技能】=FCO=251}/@任务_打造盔甲_接受>\
+
+#IF
+CHECKMISSION [202] 1
+CHECKMISSION [212] 0
+CHECKMAPNAME 0106
+GENDER MAN
+CHECKITEMCOUNT 天雷宝甲 ? 1
+CHECKITEMCOUNT 桑蚕绸 ? 1
+CHECKITEMCOUNT 铁矿 ? 1
+#ACT
+INC S0 <&学习打造盔甲{【生活技能】完成=FCO=251}/@任务_打造盔甲_完成1>\
+
+#IF
+CHECKMISSION [202] 1
+CHECKMISSION [212] 0
+CHECKMAPNAME 0106
+GENDER WOMAN
+CHECKITEMCOUNT 天雷宝衣 ? 1
+CHECKITEMCOUNT 桑蚕绸 ? 1
+CHECKITEMCOUNT 铁矿 ? 1
+#ACT
+INC S0 <&学习打造盔甲{【生活技能】完成=FCO=251}/@任务_打造盔甲_完成2>\
+
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [203] 0
+CHECKMAPNAME 0106
+#ACT
+INC S0 <&学习打造头盔{【生活技能】=FCO=251}/@任务_打造头盔_接受>\
+
+#IF
+CHECKMISSION [203] 1
+CHECKMISSION [213] 0
+CHECKMAPNAME 0106
+CHECKITEMCOUNT 天雷头盔 ? 1
+CHECKITEMCOUNT 棉线 ? 1
+CHECKITEMCOUNT 铁矿 ? 1
+#ACT
+INC S0 <&学习打造头盔{【生活技能】完成=FCO=251}/@任务_打造头盔_完成>\
+
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [204] 0
+CHECKMAPNAME 0106
+#ACT
+INC S0 <&学习打造腰带{【生活技能】=FCO=251}/@任务_打造腰带_接受>\
+
+#IF
+CHECKMISSION [204] 1
+CHECKMISSION [214] 0
+CHECKMAPNAME 0106
+CHECKITEMCOUNT 天雷腰带 ? 1
+CHECKITEMCOUNT 蝉翼纱 ? 1
+CHECKITEMCOUNT 铁矿 ? 1
+#ACT
+INC S0 <&学习打造腰带{【生活技能】完成=FCO=251}/@任务_打造腰带_完成>\
+
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [205] 0
+CHECKMAPNAME 0106
+#ACT
+INC S0 <&学习打造靴子{【生活技能】=FCO=251}/@任务_打造靴子_接受>\
+
+#IF
+CHECKMISSION [205] 1
+CHECKMISSION [215] 0
+CHECKMAPNAME 0106
+CHECKITEMCOUNT 天雷靴 ? 1
+CHECKITEMCOUNT 斑纹皮 ? 1
+CHECKITEMCOUNT 铁矿 ? 1
+#ACT
+INC S0 <&学习打造靴子{【生活技能】完成=FCO=251}/@任务_打造靴子_完成>\
+}
+
+[@打造防具_脚本]
+{
+[@任务_打造盔甲_接受]
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [202] 0
+CHECKMAPNAME 0106
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　想学{打造盔甲=FCO=251}啊，先去准备一下下面\
+面的材料吧。\ \
+{需准备材料=FCO=243}\
+{12=x}{i.<^BSEX(77,78)>=item}{46=x}{i.272=item}{46=x}{i.49=item}\ \ \
+{打造成功后得到物品=FCO=243}\
+{12=x}{i.<^BJS(88,90,92,89,91,93)>,b.8=item}\ \ \
+{任务奖励：=FCO=243}\
+　声望值：[$学习生活技能_打造盔甲声望奖励]\
+　经验值：[$学习生活技能_打造盔甲经验奖励]\ \
+<&我这就去准备/@激活打造盔甲>\
+<&结束对话/@exit>\
+
+[@激活打造盔甲]
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [202] 0
+CHECKMAPNAME 0106
+GENDER MAN
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　打造的材料可以去{危险区域=FCO=251}相对应等\
+级的地方杀怪获得，材料找不找得到就要\
+看你个人的本领了。\ \
+<&知道了/@exit>\
+#ACT
+SETMISSION [202] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION 1
+ADDMISSION 1 开始打造盔甲1
+BREAK
+
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [202] 0
+CHECKMAPNAME 0106
+GENDER WOMAN
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　打造的材料可以去{危险区域=FCO=251}相对应等\
+级的地方杀怪获得，材料找不找得到就要\
+看你个人的本领了。\ \
+<&知道了/@exit>\
+#ACT
+SETMISSION [202] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION 1
+ADDMISSION 1 开始打造盔甲2
+BREAK
+
+[@任务_打造盔甲_完成1]
+#IF
+CHECKMISSION [202] 1
+CHECKMISSION [212] 0
+CHECKMAPNAME 0106
+GENDER MAN
+CHECKITEMCOUNT 天雷宝甲 ? 1
+CHECKITEMCOUNT 桑蚕绸 ? 1
+CHECKITEMCOUNT 铁矿 ? 1
+CHECKBAGSIZE 1
+#ELSEACT
+MESSAGEBOX 背包空间不足1个或材料不够！
+BREAK
+
+#IF
+CHECKJOB WARRIOR
+GENDER MAN
+#ACT
+DYNAMICGIVE 斗者战甲(男) 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+CHECKJOB WIZARD
+GENDER MAN
+#ACT
+DYNAMICGIVE 斗者魔衣(男) 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+CHECKJOB TAOIST
+GENDER MAN
+#ACT
+DYNAMICGIVE 斗者道袍(男) 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　{打造盔甲=FCO=251}的生活技能我已经传授于你\
+了，这是我用背包中材料帮你打造的一件\
+{<^BJS(斗者战甲（男）,斗者魔衣（男）,斗者道袍（男）,斗者战甲（女）,斗者魔衣（女）,斗者道袍（女）)>=FCO=251}，请收好。\
+　　现在你也可以{按F11打开生活技能面板=FCO=253}\
+，随意打造属于你自己的{盔甲=FCO=250}\ \
+<&关闭对话/@exit>
+#ACT
+SETMISSION [212] 1
+SHOWEFFECT [$特效_任务完成]
+TAKECOUNT 天雷宝甲 1
+TAKECOUNT 桑蚕绸 1
+TAKECOUNT 铁矿 1
+CHANGEEXP + [$学习生活技能_打造盔甲经验奖励]
+CREDITPOINT + [$学习生活技能_打造盔甲声望奖励]
+ADDMAKEMAGIC 1
+DELMISSION 1
+
+[@任务_打造盔甲_完成2]
+#IF
+CHECKMISSION [202] 1
+CHECKMISSION [212] 0
+CHECKMAPNAME 0106
+GENDER WOMAN
+CHECKITEMCOUNT 天雷宝衣 ? 1
+CHECKITEMCOUNT 桑蚕绸 ? 1
+CHECKITEMCOUNT 铁矿 ? 1
+CHECKBAGSIZE 1
+#ELSEACT
+MESSAGEBOX 背包空间不足1个或材料不够！
+BREAK
+
+#IF
+CHECKJOB WARRIOR
+GENDER WOMAN
+#ACT
+DYNAMICGIVE 斗者战甲(女) 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+CHECKJOB WIZARD
+GENDER WOMAN
+#ACT
+DYNAMICGIVE 斗者魔衣(女) 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+CHECKJOB TAOIST
+GENDER WOMAN
+#ACT
+DYNAMICGIVE 斗者道袍(女) 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　{打造盔甲=FCO=251}的生活技能我已经传授于你\
+了，这是我用背包中材料帮你打造的一件\
+{<^BJS(斗者战甲（男）,斗者魔衣（男）,斗者道袍（男）,斗者战甲（女）,斗者魔衣（女）,斗者道袍（女）)>=FCO=251}，请收好。\
+　　现在你也可以{按F11打开生活技能面板=FCO=253}\
+，随意打造属于你自己的{盔甲=FCO=250}\ \
+<&关闭对话/@exit>
+#ACT
+SETMISSION [212] 1
+SHOWEFFECT [$特效_任务完成]
+TAKECOUNT 天雷宝衣 1
+TAKECOUNT 桑蚕绸 1
+TAKECOUNT 铁矿 1
+CHANGEEXP + [$学习生活技能_打造盔甲经验奖励]
+CREDITPOINT + [$学习生活技能_打造盔甲声望奖励]
+ADDMAKEMAGIC 1
+DELMISSION 1
+
+[@任务_打造头盔_接受]
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [203] 0
+CHECKMAPNAME 0106
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　想学{打造头盔=FCO=251}啊，先去准备一下下面\
+面的材料吧。\ \
+{需准备材料=FCO=243}\
+{12=x}{i.79=item}{46=x}{i.262=item}{46=x}{i.49=item}\ \ \
+{打造成功后得到物品=FCO=243}\
+{12=x}{i.<^BJOB(94,100,106)>,b.8=item}\ \ \
+{任务奖励：=FCO=243}\
+　声望值：[$学习生活技能_打造头盔声望奖励]\
+　经验值：[$学习生活技能_打造头盔经验奖励]\ \
+<&我这就去准备/@激活打造头盔>\
+<&结束对话/@exit>\
+
+[@激活打造头盔]
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [203] 0
+CHECKMAPNAME 0106
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　打造的材料可以去{危险区域=FCO=251}相对应等\
+级的地方杀怪获得，材料找不找得到就要\
+看你个人的本领了。\ \
+<&知道了/@exit>\
+#ACT
+SETMISSION [203] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION 2
+ADDMISSION 2 开始打造头盔
+
+[@任务_打造头盔_完成]
+#IF
+CHECKMISSION [203] 1
+CHECKMISSION [213] 0
+CHECKMAPNAME 0106
+CHECKITEMCOUNT 天雷头盔 ? 1
+CHECKITEMCOUNT 棉线 ? 1
+CHECKITEMCOUNT 铁矿 ? 1
+CHECKBAGSIZE 1
+#ELSEACT
+MESSAGEBOX 背包空间不足1个或材料不够！
+BREAK
+
+#IF
+CHECKJOB WARRIOR
+#ACT
+DYNAMICGIVE 斗者头盔(战) 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+CHECKJOB WIZARD
+#ACT
+DYNAMICGIVE 斗者头盔(法) 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+CHECKJOB TAOIST
+#ACT
+DYNAMICGIVE 斗者头盔(道) 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　{打造头盔=FCO=251}的生活技能我已经传授于你\
+了，这是我用背包中材料帮你打造的一件\
+{<^BJOB(雷霆头盔,烈焰头盔,光芒头盔)>=FCO=251}，请收好。\
+　　现在你也可以{按F11打开生活技能面板=FCO=253}\
+，随意打造属于你自己的{头盔=FCO=250}\ \
+<&关闭对话/@exit>
+#ACT
+SETMISSION [213] 1
+SHOWEFFECT [$特效_任务完成]
+TAKECOUNT 天雷头盔 1
+TAKECOUNT 棉线 1
+TAKECOUNT 铁矿 1
+CHANGEEXP + [$学习生活技能_打造头盔经验奖励]
+CREDITPOINT + [$学习生活技能_打造头盔声望奖励]
+ADDMAKEMAGIC 2
+DELMISSION 2
+
+[@任务_打造腰带_接受]
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [204] 0
+CHECKMAPNAME 0106
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　想学{打造腰带=FCO=251}啊，先去准备一下下面\
+面的材料吧。\ \
+{需准备材料=FCO=243}\
+{12=x}{i.83=item}{46=x}{i.267=item}{46=x}{i.49=item}\ \ \
+{打造成功后得到物品=FCO=243}\
+{12=x}{i.<^BJOB(98,104,110)>,b.8=item}\ \ \
+{任务奖励：=FCO=243}\
+　声望值：[$学习生活技能_打造腰带声望奖励]\
+　经验值：[$学习生活技能_打造腰带经验奖励]\ \
+<&我这就去准备/@激活打造腰带>\
+<&结束对话/@exit>\
+
+[@激活打造腰带]
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [204] 0
+CHECKMAPNAME 0106
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　打造的材料可以去{危险区域=FCO=251}相对应等\
+级的地方杀怪获得，材料找不找得到就要\
+看你个人的本领了。\ \
+<&知道了/@exit>\
+#ACT
+SETMISSION [204] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION 3
+ADDMISSION 3 开始打造腰带
+
+[@任务_打造腰带_完成]
+#IF
+CHECKMISSION [204] 1
+CHECKMISSION [214] 0
+CHECKMAPNAME 0106
+CHECKITEMCOUNT 天雷腰带 ? 1
+CHECKITEMCOUNT 蝉翼纱 ? 1
+CHECKITEMCOUNT 铁矿 ? 1
+CHECKBAGSIZE 1
+#ELSEACT
+MESSAGEBOX 背包空间不足1个或材料不够！
+BREAK
+
+#IF
+CHECKJOB WARRIOR
+#ACT
+DYNAMICGIVE 斗者腰带(战) 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+CHECKJOB WIZARD
+#ACT
+DYNAMICGIVE 斗者腰带(法) 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+CHECKJOB TAOIST
+#ACT
+DYNAMICGIVE 斗者腰带(道) 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　{打造腰带=FCO=251}的生活技能我已经传授于你\
+了，这是我用背包中材料帮你打造的一件\
+{<^BJOB(雷霆腰带,烈焰腰带,光芒腰带)>=FCO=251}，请收好。\
+　　现在你也可以{按F11打开生活技能面板=FCO=253}\
+，随意打造属于你自己的{腰带=FCO=250}\ \
+<&关闭对话/@exit>
+#ACT
+SETMISSION [214] 1
+SHOWEFFECT [$特效_任务完成]
+TAKECOUNT 天雷腰带 1
+TAKECOUNT 蝉翼纱 1
+TAKECOUNT 铁矿 1
+CHANGEEXP + [$学习生活技能_打造腰带经验奖励]
+CREDITPOINT + [$学习生活技能_打造腰带声望奖励]
+ADDMAKEMAGIC 6
+DELMISSION 3
+
+[@任务_打造靴子_接受]
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [205] 0
+CHECKMAPNAME 0106
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　想学{打造靴子=FCO=251}啊，先去准备一下下面\
+面的材料吧。\ \
+{需准备材料=FCO=243}\
+{12=x}{i.84=item}{46=x}{i.247=item}{46=x}{i.49=item}\ \ \
+{打造成功后得到物品=FCO=243}\
+{12=x}{i.<^BJOB(99,105,111)>,b.8=item}\ \ \
+{任务奖励：=FCO=243}\
+　声望值：[$学习生活技能_打造靴子声望奖励]\
+　经验值：[$学习生活技能_打造靴子经验奖励]\ \
+<&我这就去准备/@激活打造靴子>\
+<&结束对话/@exit>\
+
+[@激活打造靴子]
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [205] 0
+CHECKMAPNAME 0106
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　打造的材料可以去{危险区域=FCO=251}相对应等\
+级的地方杀怪获得，材料找不找得到就要\
+看你个人的本领了。\ \
+<&知道了/@exit>\
+#ACT
+SETMISSION [205] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION 4
+ADDMISSION 4 开始打造靴子
+
+[@任务_打造靴子_完成]
+#IF
+CHECKMISSION [205] 1
+CHECKMISSION [215] 0
+CHECKMAPNAME 0106
+CHECKITEMCOUNT 天雷靴 ? 1
+CHECKITEMCOUNT 斑纹皮 ? 1
+CHECKITEMCOUNT 铁矿 ? 1
+CHECKBAGSIZE 1
+#ELSEACT
+MESSAGEBOX 背包空间不足1个或材料不够！
+BREAK
+
+#IF
+CHECKJOB WARRIOR
+#ACT
+DYNAMICGIVE 斗者战靴(战) 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+CHECKJOB WIZARD
+#ACT
+DYNAMICGIVE 斗者魔靴(法) 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+CHECKJOB TAOIST
+#ACT
+DYNAMICGIVE 斗者道靴(道) 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_未开光] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　{打造靴子=FCO=251}的生活技能我已经传授于你\
+了，这是我用背包中材料帮你打造的一件\
+{<^BJOB(雷霆战靴,烈焰魔靴,光芒道靴)>=FCO=251}，请收好。\
+　　现在你也可以{按F11打开生活技能面板=FCO=253}\
+，随意打造属于你自己的{靴子=FCO=250}\ \
+<&关闭对话/@exit>
+#ACT
+SETMISSION [215] 1
+SHOWEFFECT [$特效_任务完成]
+TAKECOUNT 天雷靴 1
+TAKECOUNT 斑纹皮 1
+TAKECOUNT 铁矿 1
+CHANGEEXP + [$学习生活技能_打造靴子经验奖励]
+CREDITPOINT + [$学习生活技能_打造靴子声望奖励]
+ADDMAKEMAGIC 7
+DELMISSION 4
+}

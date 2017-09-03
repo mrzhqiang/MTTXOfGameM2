@@ -1,0 +1,84 @@
+[@红名使者标准配置头]
+{
+[@main]
+#CALL [\\NPC配置\所有NPC头内容.txt] @系统_所有NPC头_内容
+
+[@系统_所有NPC头_返回_剑侠]
+#IF
+NOT CheckPKPoint 2
+#ACT
+MESSAGEBOX 没卵事别点我！
+BREAK
+#IF
+#ACT
+MOV P3 1
+INC P3 <$STR(C82)>
+MUL P1 <$STR(P3)> 50
+MUL P2 <$STR(P3)> 30
+#IF
+#SAY
+<$USERNAME>:\ \
+　我勒个操!\
+　红成这个鸟样子了~ 你Tm这得杀了多\
+少人?拿钱来吧!我每次可以帮你清洗200\
+点PK值!\ \
+　你今天已经清洗<$STR(C82)>次红名了!\
+　本次清洗红名需要支付<$STR(P1)>点卷\
+或支付<$STR(P2)>元宝!\ \
+<&我要使用点卷清洗红名/@点卷清洗>\
+<&我要使用元宝清洗红名/@元宝清洗>\
+
+[@系统_所有NPC头_返回_盛大]
+#IF
+NOT CheckPKPoint 2
+#ACT
+MESSAGEBOX 没卵事别点我！
+BREAK
+
+#IF
+#ACT
+MOV P3 1
+INC P3 <$STR(C82)>
+MUL P1 <$STR(P3)> 50
+MUL P2 <$STR(P3)> 30
+#IF
+#SAY
+<$USERNAME>:\ \
+　　我勒个操!红成这个鸟样子了~ 你Tm这得杀了多少人?\
+　　拿钱来吧!我每次可以帮你清洗200点PK值!\
+　　你今天已经清洗<$STR(C82)>次红名了!\
+　　本次清洗红名需要支付<$STR(P1)>点卷或支付<$STR(P2)>元宝!\ \
+<我要使用点卷清洗红名/@点卷清洗>　　　　　<我要使用元宝清洗红名/@元宝清洗>\
+
+
+
+
+
+[@点卷清洗]
+#IF
+CheckGamePoint ? <$STR(P1)>
+#ACT
+GamePoint - <$STR(P1)>
+ChangePKPoint - 200
+SENDMSG 7 成功清洗200点PK值!
+INC C82 1
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 大哥！洗个红你也打算霸王洗？
+
+[@元宝清洗]
+#IF
+CheckGameGOLD ? <$STR(P2)>
+#ACT
+GameGOLD - <$STR(P2)>
+ChangePKPoint - 200
+SENDMSG 7 成功清洗200点PK值!
+INC C82 1
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 大哥！洗个红你也打算霸王洗？
+
+
+
+
+}

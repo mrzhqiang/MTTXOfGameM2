@@ -1,0 +1,578 @@
+[@智力测试]
+{
+[@答题说明]
+{<$SELFNAME>=FCO=243}：\
+　考试每天分为{三场=FCO=251}，时间为{每天的10点=FCO=251}\
+{15点、20点=FCO=251}时进行，{每场考试时间为一小=FCO=254}\
+{时=FCO=254}。考试时请带好你的{准考证书=FCO=250}，并交纳\
+一定的出题费。\ \
+{经验值奖励和费用列表：=FCO=243}\
+{　　对应等级　出题费用    经验奖励=FCO=254}\
+　　{1=x}45-49级　{2=x}[$智力测试_出题费用_45]金币　 [$智力测试_经验奖励_45]\
+　　{1=x}50-54级　{2=x}[$智力测试_出题费用_50]金币　 [$智力测试_经验奖励_50]\
+　　{1=x}55-59级　{2=x}[$智力测试_出题费用_55]金币　 [$智力测试_经验奖励_55]\
+　　{1=x}60-64级　{2=x}[$智力测试_出题费用_60]金币　 [$智力测试_经验奖励_60]\
+　　{1=x}65-69级　{2=x}[$智力测试_出题费用_65]金币　 [$智力测试_经验奖励_65]\
+　　{1=x}70-74级　{2=x}[$智力测试_出题费用_70]金币　 [$智力测试_经验奖励_70]\
+　　{1=x}75以后　 {2=x}[$智力测试_出题费用_75]金币　 [$智力测试_经验奖励_75]\ \
+<&返回上一页/@系统_标准NPC头_返回>
+
+[@答题奖励]
+{<$SELFNAME>=FCO=243}：\
+　每正确回答我提出的问题，我将会给你\
+一定{经验和声望=FCO=251}作为奖励，{同时你的文采=FCO=250}\
+{值也会相应增加一点=FCO=250}。\
+　{文采值可以激发经验加成=FCO=254}，文采值越高\
+激发的经验倍数就越高。\ \
+{文采触发经验倍数及官位对照表：=FCO=243}\
+{　 对应等级　　 出题费用   　品位=FCO=254}\
+　{8=x}[$文采触发_经验倍数_11]点文采　　 {-8=x}触发1.1倍　　从九品\
+　{4=x}[$文采触发_经验倍数_12]点文采　　{-4=x}触发1.2倍　　正九品\
+　{4=x}[$文采触发_经验倍数_13]点文采　　{-4=x}触发1.3倍　　从八品\
+　{4=x}[$文采触发_经验倍数_14]点文采　　{-4=x}触发1.4倍　　正八品\
+　{4=x}[$文采触发_经验倍数_15]点文采　　{-4=x}触发1.5倍　　从七品\
+　[$文采触发_经验倍数_16]点文采　 触发1.6倍　　正七品\
+　[$文采触发_经验倍数_17]点文采　 触发1.7倍　　从六品\
+　[$文采触发_经验倍数_18]点文采　 触发1.8倍　　正六品\
+　[$文采触发_经验倍数_19]点文采　 触发1.9倍　　从五品\
+　[$文采触发_经验倍数_20]点文采　 触发2倍　　　正五品\
+　[$文采触发_经验倍数_22]点文采 　触发2.2倍　　{-1=x}从四品\
+　[$文采触发_经验倍数_24]点文采 　触发2.4倍　　{-1=x}正四品\
+　[$文采触发_经验倍数_26]点文采 　触发2.6倍　　{-1=x}从三品\
+　[$文采触发_经验倍数_28]点文采 　触发2.8倍　　{-1=x}正三品\
+　[$文采触发_经验倍数_30]点文采 　触发3倍　　　{-1=x}从二品\
+　[$文采触发_经验倍数_33]点文采 　触发3.3倍　　{-1=x}正二品\
+　[$文采触发_经验倍数_36]点文采 　触发3.6倍　　{-1=x}从一品\
+　[$文采触发_经验倍数_40]点文采  触发4倍　　　{-1=x}正一品\ \
+<&返回上一页/@系统_标准NPC头_返回>
+
+
+[@游戏服务_智力测试]
+#IF
+NOT SMALL C0 [$文采触发_经验倍数_40]
+#ACT
+MOV S1
+INC S1 {正一品=FCO=254}\　经验倍率：{4倍=FCO=254}
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_40]
+NOT SMALL C0 [$文采触发_经验倍数_36]
+#ACT
+MOV S1
+INC S1 {从一品=FCO=254}\　经验倍率：{3.6倍=FCO=254}
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_36]
+NOT SMALL C0 [$文采触发_经验倍数_33]
+#ACT
+MOV S1
+INC S1 {正二品=FCO=254}\　经验倍率：{3.3倍=FCO=254}
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_33]
+NOT SMALL C0 [$文采触发_经验倍数_30]
+#ACT
+MOV S1
+INC S1 {从二品=FCO=254}\　经验倍率：{3倍=FCO=254}
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_30]
+NOT SMALL C0 [$文采触发_经验倍数_28]
+#ACT
+MOV S1
+INC S1 {正三品=FCO=254}\　经验倍率：{2.8倍=FCO=254}
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_28]
+NOT SMALL C0 [$文采触发_经验倍数_26]
+#ACT
+MOV S1
+INC S1 {从三品=FCO=254}\　经验倍率：{2.6倍=FCO=254}
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_26]
+NOT SMALL C0 [$文采触发_经验倍数_24]
+#ACT
+MOV S1
+INC S1 {正四品=FCO=254}\　经验倍率：{2.4倍=FCO=254}
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_24]
+NOT SMALL C0 [$文采触发_经验倍数_22]
+#ACT
+MOV S1
+INC S1 {从四品=FCO=254}\　经验倍率：{2.2倍=FCO=254}
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_22]
+NOT SMALL C0 [$文采触发_经验倍数_20]
+#ACT
+MOV S1
+INC S1 {正五品=FCO=254}\　经验倍率：{2倍=FCO=254}
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_20]
+NOT SMALL C0 [$文采触发_经验倍数_19]
+#ACT
+MOV S1
+INC S1 {从五品=FCO=254}\　经验倍率：{1.9倍=FCO=254}
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_19]
+NOT SMALL C0 [$文采触发_经验倍数_18]
+#ACT
+MOV S1
+INC S1 {正六品=FCO=254}\　经验倍率：{1.8倍=FCO=254}
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_18]
+NOT SMALL C0 [$文采触发_经验倍数_17]
+#ACT
+MOV S1
+INC S1 {从六品=FCO=254}\　经验倍率：{1.7倍=FCO=254}
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_17]
+NOT SMALL C0 [$文采触发_经验倍数_16]
+#ACT
+MOV S1
+INC S1 {正七品=FCO=254}\　经验倍率：{1.6倍=FCO=254}
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_16]
+NOT SMALL C0 [$文采触发_经验倍数_15]
+#ACT
+MOV S1
+INC S1 {从七品=FCO=254}\　经验倍率：{1.5倍=FCO=254}
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_15]
+NOT SMALL C0 [$文采触发_经验倍数_14]
+#ACT
+MOV S1
+INC S1 {正八品=FCO=254}\　经验倍率：{1.4倍=FCO=254}
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_14]
+NOT SMALL C0 [$文采触发_经验倍数_13]
+#ACT
+MOV S1
+INC S1 {从八品=FCO=254}\　经验倍率：{1.3倍=FCO=254}
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_13]
+NOT SMALL C0 [$文采触发_经验倍数_12]
+#ACT
+MOV S1
+INC S1 {正九品=FCO=254}\　经验倍率：{1.2倍=FCO=254}
+
+#IF
+NOT LARGE C0 [$文采触发_经验倍数_12]
+NOT SMALL C0 [$文采触发_经验倍数_11]
+#ACT
+MOV S1
+INC S1 {从九品=FCO=254}\　经验倍率：{1.1倍=FCO=254}
+
+#IF
+SMALL C0 [$文采触发_经验倍数_11]
+#ACT
+MOV S1
+INC S1 {未入流=FCO=254}
+
+#IF
+CHECKARITHMOMETERCOUNT [$ARITHMOMETER循环常量_智力测试] > 9
+#ACT
+MOV S0
+INC S0 <&递交准考证书/@递交准考证书>\
+#ELSEACT
+MOV S0
+INC S0 <&开始答题/@游戏服务_智力测试_出题>\
+
+#IF
+#ACT
+MOV P0 10
+DEC P0 <$MISSIONARITHMOMETER([$ARITHMOMETER循环常量_智力测试])>
+#SAY
+$RESETLABEL
+{<$SELFNAME>=FCO=243}：\
+　你当前可答题数为：{<$STR(P0)>=FCO=251} 次\
+　{你当前的文采值为：=FCO=251}{<$STR(C0)>=FCO=250}\
+　文官品位为：<$STR(S1)>\ \
+<$STR(S0)>
+<&返回上一页/@系统_标准NPC头_返回>\
+
+[@递交准考证书]
+#IF
+CHECKITEMCOUNT 准考证书 ? 1
+#ACT
+TAKECOUNT 准考证书 1
+CHANGEARITHMOMETERCOUNT [$ARITHMOMETER循环常量_智力测试] - 10
+GOTO @游戏服务_智力测试
+#ELSEACT
+MESSAGEBOX 你身上有准考证书吗？我怎么没有看到。
+
+
+[@游戏服务_智力测试_出题]
+#IF
+CHECKARITHMOMETERCOUNT [$ARITHMOMETER循环常量_智力测试] > 9
+#ACT
+GOTO @游戏服务_智力测试
+MESSAGEBOX 本轮答题已结束，如想继续答题，请递交准考证书。
+BREAK
+
+#IF
+CHECKLEVEL 75
+#ACT
+MOV P0 [$智力测试_出题费用_75]
+MOV P1 [$智力测试_经验奖励_75]
+GOTO @游戏服务_智力测试_正式出题
+BREAK
+
+#IF
+NOT CHECKLEVEL 75
+CHECKLEVEL 70
+#ACT
+MOV P0 [$智力测试_出题费用_70]
+MOV P1 [$智力测试_经验奖励_70]
+GOTO @游戏服务_智力测试_正式出题
+BREAK
+
+#IF
+NOT CHECKLEVEL 70
+CHECKLEVEL 65
+#ACT
+MOV P0 [$智力测试_出题费用_65]
+MOV P1 [$智力测试_经验奖励_65]
+GOTO @游戏服务_智力测试_正式出题
+BREAK
+
+#IF
+NOT CHECKLEVEL 65
+CHECKLEVEL 60
+#ACT
+MOV P0 [$智力测试_出题费用_60]
+MOV P1 [$智力测试_经验奖励_60]
+GOTO @游戏服务_智力测试_正式出题
+BREAK
+
+#IF
+NOT CHECKLEVEL 60
+CHECKLEVEL 55
+#ACT
+MOV P0 [$智力测试_出题费用_55]
+MOV P1 [$智力测试_经验奖励_55]
+GOTO @游戏服务_智力测试_正式出题
+BREAK
+
+#IF
+NOT CHECKLEVEL 55
+CHECKLEVEL 50
+#ACT
+MOV P0 [$智力测试_出题费用_50]
+MOV P1 [$智力测试_经验奖励_50]
+GOTO @游戏服务_智力测试_正式出题
+BREAK
+
+#IF
+NOT CHECKLEVEL 50
+CHECKLEVEL 45
+#ACT
+MOV P0 [$智力测试_出题费用_45]
+MOV P1 [$智力测试_经验奖励_45]
+GOTO @游戏服务_智力测试_正式出题
+#ELSEACT
+MESSAGEBOX 您的等级太低，请提升等级以后再来！
+
+
+[@游戏服务_智力测试_正式出题]
+#IF
+CHECKGOLD <$STR(P0)> BIND
+#ACT
+GETRANDOMNAME ../ScriptData/智力问答题库.txt S0
+TAKE 绑定金币 <$STR(P0)>
+CHANGEARITHMOMETERCOUNT [$ARITHMOMETER循环常量_智力测试] + 1
+BREAK
+#SAY
+$RESETLABEL
+<$STR(S0)>
+
+#IF
+CHECKGOLD <$STR(P0)>
+#ACT
+GETRANDOMNAME ../ScriptData/智力问答题库.txt S0
+TAKE 金币 <$STR(P0)>
+CHANGEARITHMOMETERCOUNT [$ARITHMOMETER循环常量_智力测试] + 1
+#SAY
+$RESETLABEL
+<$STR(S0)>
+#ELSEACT
+MESSAGEBOX 对不起，您的金币不足！
+
+[@　]
+#IF
+#ACT
+MOV P1 0
+MOV P0 10
+DEC P0 <$MISSIONARITHMOMETER([$ARITHMOMETER循环常量_智力测试])>
+#SAY
+\ \ \
+　　　　　{很遗憾，回答错误。=FCO=249}\ \ \
+　本轮答题你还有 {<$STR(P0)>=FCO=251} 次机会。\ \
+<&继续答题/@游戏服务_智力测试_出题>\
+<&返回上一页/@系统_标准NPC头_返回>\
+
+[@　　]
+#IF
+#ACT
+CHANGEEXP + <$STR(P1)>
+CREDITPOINT + 1
+MOV P1 0
+MOV P0 10
+DEC P0 <$MISSIONARITHMOMETER([$ARITHMOMETER循环常量_智力测试])>
+INC C0 1
+GOTO @智力测试_答题正确
+
+[@智力测试_答题正确]
+#IF
+EQUAL C0 [$文采触发_经验倍数_40]
+#ACT
+  SHOWEFFECT 20
+  SHOWEFFECT 21
+  SHOWEFFECT 22
+  SHOWEFFECT 23
+  SHOWEFFECT 24
+  SHOWEFFECT 25
+  SHOWEFFECT 26
+  SHOWEFFECT 27
+SENDMSG 0 恭喜玩家[#7%S#7]文采值已达到#6FFFF/8#6([$文采触发_经验倍数_40])#5，成功晋升为#6FFFF/8#6(正一品)#5，同时触发#6FFFF/8#6(4倍经验)#5。
+
+#IF
+EQUAL C0 [$文采触发_经验倍数_36]
+#ACT
+  SHOWEFFECT 20
+  SHOWEFFECT 21
+  SHOWEFFECT 22
+  SHOWEFFECT 23
+  SHOWEFFECT 24
+  SHOWEFFECT 25
+  SHOWEFFECT 26
+  SHOWEFFECT 27
+SENDMSG 0 恭喜玩家[#7%S#7]文采值已达到#6FFFF/8#6([$文采触发_经验倍数_36])#5，成功晋升为#6FFFF/8#6(从一品)#5，同时触发#6FFFF/8#6(3.6倍经验)#5。
+
+#IF
+EQUAL C0 [$文采触发_经验倍数_33]
+#ACT
+  SHOWEFFECT 20
+  SHOWEFFECT 21
+  SHOWEFFECT 22
+  SHOWEFFECT 23
+  SHOWEFFECT 24
+  SHOWEFFECT 25
+  SHOWEFFECT 26
+  SHOWEFFECT 27
+SENDMSG 0 恭喜玩家[#7%S#7]文采值已达到#6FFFF/8#6([$文采触发_经验倍数_33])#5，成功晋升为#6FFFF/8#6(正二品)#5，同时触发#6FFFF/8#6(3.3倍经验)#5。
+
+#IF
+EQUAL C0 [$文采触发_经验倍数_30]
+#ACT
+  SHOWEFFECT 20
+  SHOWEFFECT 21
+  SHOWEFFECT 22
+  SHOWEFFECT 23
+  SHOWEFFECT 24
+  SHOWEFFECT 25
+  SHOWEFFECT 26
+  SHOWEFFECT 27
+SENDMSG 0 恭喜玩家[#7%S#7]文采值已达到#6FFFF/8#6([$文采触发_经验倍数_30])#5，成功晋升为#6FFFF/8#6(从二品)#5，同时触发#6FFFF/8#6(3倍经验)#5。
+
+#IF
+EQUAL C0 [$文采触发_经验倍数_28]
+#ACT
+  SHOWEFFECT 20
+  SHOWEFFECT 21
+  SHOWEFFECT 22
+  SHOWEFFECT 23
+  SHOWEFFECT 24
+  SHOWEFFECT 25
+  SHOWEFFECT 26
+  SHOWEFFECT 27
+SENDMSG 0 恭喜玩家[#7%S#7]文采值已达到#6FFFF/8#6([$文采触发_经验倍数_28])#5，成功晋升为#6FFFF/8#6(正三品)#5，同时触发#6FFFF/8#6(2.8倍经验)#5。
+
+#IF
+EQUAL C0 [$文采触发_经验倍数_26]
+#ACT
+  SHOWEFFECT 20
+  SHOWEFFECT 21
+  SHOWEFFECT 22
+  SHOWEFFECT 23
+  SHOWEFFECT 24
+  SHOWEFFECT 25
+  SHOWEFFECT 26
+  SHOWEFFECT 27
+SENDMSG 0 恭喜玩家[#7%S#7]文采值已达到#6FFFF/8#6([$文采触发_经验倍数_26])#5，成功晋升为#6FFFF/8#6(从三品)#5，同时触发#6FFFF/8#6(2.6倍经验)#5。
+
+#IF
+EQUAL C0 [$文采触发_经验倍数_24]
+#ACT
+  SHOWEFFECT 20
+  SHOWEFFECT 21
+  SHOWEFFECT 22
+  SHOWEFFECT 23
+  SHOWEFFECT 24
+  SHOWEFFECT 25
+  SHOWEFFECT 26
+  SHOWEFFECT 27
+SENDMSG 0 恭喜玩家[#7%S#7]文采值已达到#6FFFF/8#6([$文采触发_经验倍数_24])#5，成功晋升为#6FFFF/8#6(正四品)#5，同时触发#6FFFF/8#6(2.4倍经验)#5。
+
+#IF
+EQUAL C0 [$文采触发_经验倍数_22]
+#ACT
+  SHOWEFFECT 20
+  SHOWEFFECT 21
+  SHOWEFFECT 22
+  SHOWEFFECT 23
+  SHOWEFFECT 24
+  SHOWEFFECT 25
+  SHOWEFFECT 26
+  SHOWEFFECT 27
+SENDMSG 0 恭喜玩家[#7%S#7]文采值已达到#6FFFF/8#6([$文采触发_经验倍数_22])#5，成功晋升为#6FFFF/8#6(从四品)#5，同时触发#6FFFF/8#6(2.2倍经验)#5。
+
+#IF
+EQUAL C0 [$文采触发_经验倍数_20]
+#ACT
+  SHOWEFFECT 20
+  SHOWEFFECT 21
+  SHOWEFFECT 22
+  SHOWEFFECT 23
+  SHOWEFFECT 24
+  SHOWEFFECT 25
+  SHOWEFFECT 26
+  SHOWEFFECT 27
+SENDMSG 0 恭喜玩家[#7%S#7]文采值已达到#6FFFF/8#6([$文采触发_经验倍数_20])#5，成功晋升为#6FFFF/8#6(正五品)#5，同时触发#6FFFF/8#6(2倍经验)#5。
+
+#IF
+EQUAL C0 [$文采触发_经验倍数_19]
+#ACT
+  SHOWEFFECT 20
+  SHOWEFFECT 21
+  SHOWEFFECT 22
+  SHOWEFFECT 23
+  SHOWEFFECT 24
+  SHOWEFFECT 25
+  SHOWEFFECT 26
+  SHOWEFFECT 27
+SENDMSG 0 恭喜玩家[#7%S#7]文采值已达到#6FFFF/8#6([$文采触发_经验倍数_19])#5，成功晋升为#6FFFF/8#6(从五品)#5，同时触发#6FFFF/8#6(1.9倍经验)#5。
+
+#IF
+EQUAL C0 [$文采触发_经验倍数_18]
+#ACT
+  SHOWEFFECT 20
+  SHOWEFFECT 21
+  SHOWEFFECT 22
+  SHOWEFFECT 23
+  SHOWEFFECT 24
+  SHOWEFFECT 25
+  SHOWEFFECT 26
+  SHOWEFFECT 27
+SENDMSG 0 恭喜玩家[#7%S#7]文采值已达到#6FFFF/8#6([$文采触发_经验倍数_18])#5，成功晋升为#6FFFF/8#6(正六品)#5，同时触发#6FFFF/8#6(1.8倍经验)#5。
+
+#IF
+EQUAL C0 [$文采触发_经验倍数_17]
+#ACT
+  SHOWEFFECT 20
+  SHOWEFFECT 21
+  SHOWEFFECT 22
+  SHOWEFFECT 23
+  SHOWEFFECT 24
+  SHOWEFFECT 25
+  SHOWEFFECT 26
+  SHOWEFFECT 27
+SENDMSG 0 恭喜玩家[#7%S#7]文采值已达到#6FFFF/8#6([$文采触发_经验倍数_17])#5，成功晋升为#6FFFF/8#6(从六品)#5，同时触发#6FFFF/8#6(1.7倍经验)#5。
+
+#IF
+EQUAL C0 [$文采触发_经验倍数_16]
+#ACT
+  SHOWEFFECT 20
+  SHOWEFFECT 21
+  SHOWEFFECT 22
+  SHOWEFFECT 23
+  SHOWEFFECT 24
+  SHOWEFFECT 25
+  SHOWEFFECT 26
+  SHOWEFFECT 27
+SENDMSG 0 恭喜玩家[#7%S#7]文采值已达到#6FFFF/8#6([$文采触发_经验倍数_16])#5，成功晋升为#6FFFF/8#6(正七品)#5，同时触发#6FFFF/8#6(1.6倍经验)#5。
+
+#IF
+EQUAL C0 [$文采触发_经验倍数_15]
+#ACT
+  SHOWEFFECT 20
+  SHOWEFFECT 21
+  SHOWEFFECT 22
+  SHOWEFFECT 23
+  SHOWEFFECT 24
+  SHOWEFFECT 25
+  SHOWEFFECT 26
+  SHOWEFFECT 27
+SENDMSG 0 恭喜玩家[#7%S#7]文采值已达到#6FFFF/8#6([$文采触发_经验倍数_15])#5，成功晋升为#6FFFF/8#6(从七品)#5，同时触发#6FFFF/8#6(1.5倍经验)#5。
+
+#IF
+EQUAL C0 [$文采触发_经验倍数_14]
+#ACT
+  SHOWEFFECT 20
+  SHOWEFFECT 21
+  SHOWEFFECT 22
+  SHOWEFFECT 23
+  SHOWEFFECT 24
+  SHOWEFFECT 25
+  SHOWEFFECT 26
+  SHOWEFFECT 27
+SENDMSG 0 恭喜玩家[#7%S#7]文采值已达到#6FFFF/8#6([$文采触发_经验倍数_14])#5，成功晋升为#6FFFF/8#6(正八品)#5，同时触发#6FFFF/8#6(1.4倍经验)#5。
+
+#IF
+EQUAL C0 [$文采触发_经验倍数_13]
+#ACT
+  SHOWEFFECT 20
+  SHOWEFFECT 21
+  SHOWEFFECT 22
+  SHOWEFFECT 23
+  SHOWEFFECT 24
+  SHOWEFFECT 25
+  SHOWEFFECT 26
+  SHOWEFFECT 27
+SENDMSG 0 恭喜玩家[#7%S#7]文采值已达到#6FFFF/8#6([$文采触发_经验倍数_13])#5，成功晋升为#6FFFF/8#6(从八品)#5，同时触发#6FFFF/8#6(1.3倍经验)#5。
+
+#IF
+EQUAL C0 [$文采触发_经验倍数_12]
+#ACT
+  SHOWEFFECT 20
+  SHOWEFFECT 21
+  SHOWEFFECT 22
+  SHOWEFFECT 23
+  SHOWEFFECT 24
+  SHOWEFFECT 25
+  SHOWEFFECT 26
+  SHOWEFFECT 27
+SENDMSG 0 恭喜玩家[#7%S#7]文采值已达到#6FFFF/8#6([$文采触发_经验倍数_12])#5，成功晋升为#6FFFF/8#6(正九品)#5，同时触发#6FFFF/8#6(1.2倍经验)#5。
+
+#IF
+EQUAL C0 [$文采触发_经验倍数_11]
+#ACT
+  SHOWEFFECT 20
+  SHOWEFFECT 21
+  SHOWEFFECT 22
+  SHOWEFFECT 23
+  SHOWEFFECT 24
+  SHOWEFFECT 25
+  SHOWEFFECT 26
+  SHOWEFFECT 27
+SENDMSG 0 恭喜玩家[#7%S#7]文采值已达到#6FFFF/8#6([$文采触发_经验倍数_11])#5，成功晋升为#6FFFF/8#6(从九品)#5，同时触发#6FFFF/8#6(1.1倍经验)#5。
+
+#IF
+#SAY
+\ \ \
+　　　　　{恭喜你，回答正确。=FCO=250}\ \ \
+　{你当前的文采值为：=FCO=251}{<$STR(C0)>=FCO=250}\
+　本轮答题你还有 {<$STR(P0)>=FCO=251} 次机会。\ \
+<&继续答题/@游戏服务_智力测试_出题>\
+<&返回上一页/@系统_标准NPC头_返回>\
+}

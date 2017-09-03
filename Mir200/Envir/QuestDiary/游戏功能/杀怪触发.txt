@@ -1,0 +1,316 @@
+[@杀怪触发]
+{
+[@KillMonster]
+#IF
+CheckKillMobName 木头人1
+#ACT
+DEC C87 1
+GOTO @木人桩关卡_检测
+BREAK
+#IF
+CheckKillMobName 木头人2
+#ACT
+DEC C87 1
+GOTO @木人桩关卡_检测
+BREAK
+#IF
+CheckKillMobName 木头人3
+#ACT
+DEC C87 1
+GOTO @木人桩关卡_检测
+BREAK
+#IF
+CheckKillMobName 木头人11
+#ACT
+DEC C87 1
+GOTO @木人桩关卡_检测
+BREAK
+#IF
+CheckKillMobName 木头人12
+#ACT
+DEC C87 1
+GOTO @木人桩关卡_检测
+BREAK
+#IF
+CheckKillMobName 木头人13
+#ACT
+DEC C87 1
+GOTO @木人桩关卡_检测
+BREAK
+#IF
+CheckKillMobName 木头人21
+#ACT
+DEC C87 1
+GOTO @木人桩关卡_检测
+BREAK
+#IF
+CheckKillMobName 木头人22
+#ACT
+DEC C87 1
+GOTO @木人桩关卡_检测
+BREAK
+#IF
+CheckKillMobName 木头人23
+#ACT
+DEC C87 1
+GOTO @木人桩关卡_检测
+BREAK
+
+
+
+
+#IF
+CheckKillMobName 十头人1
+#ACT
+MongenEx <$MAP> 25 25 木头人2 10 10
+INC C87 10
+MongenEx <$MAP> 25 25 十头人2 10 3
+MongenEx <$MAP> 25 25 术头人2 10 2
+SENDMSG 7 你这蠢货，你杀错怪了。
+SENDMSG 7 由于你杀错怪，地图又增加了一批木桩。
+BREAK
+#IF
+CheckKillMobName 术头人1
+#ACT
+MongenEx <$MAP> 25 25 木头人2 10 10
+INC C87 10
+MongenEx <$MAP> 25 25 十头人2 10 3
+MongenEx <$MAP> 25 25 术头人2 10 2
+HumanHP - 100
+HumanMP - 150
+SENDMSG 7 你这蠢货，你杀错怪了。
+SENDMSG 7 由于你杀错怪，地图又增加了一批木桩。
+BREAK
+#IF
+CheckKillMobName 十头人2
+#ACT
+MongenEx <$MAP> 25 25 木头人3 10 10
+INC C87 10
+MongenEx <$MAP> 25 25 十头人3 10 3
+MongenEx <$MAP> 25 25 术头人3 10 2
+SENDMSG 7 你这蠢货，你杀错怪了。
+SENDMSG 7 由于你杀错怪，地图又增加了一批木桩。
+BREAK
+#IF
+CheckKillMobName 术头人2
+#ACT
+MongenEx <$MAP> 25 25 木头人3 10 10
+INC C87 10
+MongenEx <$MAP> 25 25 十头人3 10 3
+MongenEx <$MAP> 25 25 术头人3 10 2
+HumanHP - 100
+HumanMP - 150
+SENDMSG 7 你这蠢货，你杀错怪了。
+SENDMSG 7 由于你杀错怪，地图又增加了一批木桩。
+BREAK
+
+
+
+
+
+
+
+#IF
+CheckKillMobName 十头人11
+#ACT
+MongenEx <$MAP> 25 25 木头人12 10 10
+INC C87 10
+MongenEx <$MAP> 25 25 十头人12 10 3
+MongenEx <$MAP> 25 25 术头人12 10 2
+SENDMSG 7 你这蠢货，你杀错怪了。
+SENDMSG 7 由于你杀错怪，地图又增加了一批木桩。
+BREAK
+#IF
+CheckKillMobName 术头人11
+#ACT
+MongenEx <$MAP> 25 25 木头人12 10 10
+INC C87 10
+MongenEx <$MAP> 25 25 十头人12 10 3
+MongenEx <$MAP> 25 25 术头人12 10 2
+HumanHP - 100
+HumanMP - 150
+SENDMSG 7 你这蠢货，你杀错怪了。
+SENDMSG 7 由于你杀错怪，地图又增加了一批木桩。
+BREAK
+#IF
+CheckKillMobName 十头人12
+#ACT
+MongenEx <$MAP> 25 25 木头人13 10 10
+INC C87 10
+MongenEx <$MAP> 25 25 十头人13 10 3
+MongenEx <$MAP> 25 25 术头人13 10 2
+SENDMSG 7 你这蠢货，你杀错怪了。
+SENDMSG 7 由于你杀错怪，地图又增加了一批木桩。
+BREAK
+#IF
+CheckKillMobName 术头人12
+#ACT
+MongenEx <$MAP> 25 25 木头人13 10 10
+INC C87 10
+MongenEx <$MAP> 25 25 十头人13 10 3
+MongenEx <$MAP> 25 25 术头人13 10 2
+HumanHP - 100
+HumanMP - 150
+SENDMSG 7 你这蠢货，你杀错怪了。
+SENDMSG 7 由于你杀错怪，地图又增加了一批木桩。
+BREAK
+
+
+
+#IF
+CheckKillMobName 十头人21
+#ACT
+MongenEx <$MAP> 25 25 木头人22 10 10
+INC C87 10
+MongenEx <$MAP> 25 25 十头人22 10 3
+MongenEx <$MAP> 25 25 术头人22 10 2
+SENDMSG 7 你这蠢货，你杀错怪了。
+SENDMSG 7 由于你杀错怪，地图又增加了一批木桩。
+BREAK
+#IF
+CheckKillMobName 术头人21
+#ACT
+MongenEx <$MAP> 25 25 木头人22 10 10
+INC C87 10
+MongenEx <$MAP> 25 25 十头人22 10 3
+MongenEx <$MAP> 25 25 术头人22 10 2
+HumanHP - 100
+HumanMP - 150
+SENDMSG 7 你这蠢货，你杀错怪了。
+SENDMSG 7 由于你杀错怪，地图又增加了一批木桩。
+BREAK
+#IF
+CheckKillMobName 十头人22
+#ACT
+MongenEx <$MAP> 25 25 木头人23 10 10
+INC C87 10
+MongenEx <$MAP> 25 25 十头人23 10 3
+MongenEx <$MAP> 25 25 术头人23 10 2
+SENDMSG 7 你这蠢货，你杀错怪了。
+SENDMSG 7 由于你杀错怪，地图又增加了一批木桩。
+BREAK
+#IF
+CheckKillMobName 术头人22
+#ACT
+MongenEx <$MAP> 25 25 木头人23 10 10
+INC C87 10
+MongenEx <$MAP> 25 25 十头人23 10 3
+MongenEx <$MAP> 25 25 术头人23 10 2
+HumanHP - 100
+HumanMP - 150
+SENDMSG 7 你这蠢货，你杀错怪了。
+SENDMSG 7 由于你杀错怪，地图又增加了一批木桩。
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@木人桩关卡_检测]
+#IF
+NOT EQUAL C87 0
+#ACT
+SENDMSG 7 本关卡的“木头人”还未清理完，当前还有<$STR(C87)>只。
+BREAK
+#IF
+EQUAL C87 0
+#ACT
+GOTO @关卡挑战_奖励_检测
+
+[@关卡挑战_奖励_检测]
+#IF
+EQUAL B98 关卡挑战令[普]
+#ACT
+GOTO @关卡挑战_奖励_普通
+BREAK
+#IF
+EQUAL B98 关卡挑战令[精]
+#ACT
+GOTO @关卡挑战_奖励_精英
+BREAK
+#IF
+EQUAL B98 关卡挑战令[恶]
+#ACT
+GOTO @关卡挑战_奖励_恶魔
+BREAK
+
+[@关卡挑战_奖励_普通]
+#IF
+CHECK [353] 0
+#ACT
+SET [353] 1
+SENDMSG 7 每日成就提示：每日活动成就⑶已经完成，请倒土城左上角找【左成就】完成。
+#IF
+#ACT
+ChangeExp + [$挑战关卡_木人_经验_普通]
+GamePoint + [$挑战关卡_木人_点卷_普通]
+MAPMOVE 3 333 333
+SENDMSG 0 玩家【<$USERNAME>】挑战普通关卡成功!获得了大量嘉奖。
+SENDMSG 7 挑战关卡成功。获得经验值[$挑战关卡_木人_经验_普通]，点卷[$挑战关卡_木人_点卷_普通]。
+BREAK
+[@关卡挑战_奖励_精英]
+#IF
+CHECK [353] 0
+#ACT
+SET [353] 1
+SENDMSG 7 每日成就提示：每日活动成就⑶已经完成，请倒土城左上角找【左成就】完成。
+#IF
+#ACT
+ChangeExp + [$挑战关卡_木人_经验_精英]
+GamePoint + [$挑战关卡_木人_点卷_精英]
+MAPMOVE 3 333 333
+SENDMSG 0 玩家【<$USERNAME>】挑战精英关卡成功!获得了大量嘉奖。
+SENDMSG 7 挑战关卡成功。获得经验值[$挑战关卡_木人_经验_精英]，点卷[$挑战关卡_木人_点卷_精英]。
+BREAK
+[@关卡挑战_奖励_恶魔]
+#IF
+CHECK [353] 0
+#ACT
+SET [353] 1
+SENDMSG 7 每日成就提示：每日活动成就⑶已经完成，请倒土城左上角找【左成就】完成。
+#IF
+#ACT
+ChangeExp + [$挑战关卡_木人_经验_恶魔]
+GamePoint + [$挑战关卡_木人_点卷_恶魔]
+MAPMOVE 3 333 333
+SENDMSG 0 玩家【<$USERNAME>】挑战恶魔关卡成功!获得了大量嘉奖。
+SENDMSG 7 挑战关卡成功。获得经验值[$挑战关卡_木人_经验_恶魔]，点卷[$挑战关卡_木人_点卷_恶魔]。
+BREAK
+}

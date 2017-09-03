@@ -1,0 +1,246 @@
+[@循环坐骑_检测]
+{
+#IF
+CHECKMISSION [$任务_循环坐骑任务变量] 0
+CHECKMISSION [$任务_循环任务变量2] 0
+CHECKLEVELEX > 44
+#ACT
+MOV S0 <&45级坐骑任务{【循环任务】=FCO=251}/@45_循环坐骑_接受>\
+
+#IF
+CHECKMISSION [$任务_循环坐骑任务变量] 0
+CHECKMISSION [$任务_循环任务变量2] 0
+CHECKLEVELEX > 54
+#ACT
+MOV S0 <&55级坐骑任务{【循环任务】=FCO=251}/@55_循环坐骑_接受>\
+
+#IF
+CHECKMISSION [$任务_循环坐骑任务变量] 0
+CHECKMISSION [$任务_循环任务变量2] 0
+CHECKLEVELEX > 64
+#ACT
+MOV S0 <&65级坐骑任务{【循环任务】=FCO=251}/@65_循环坐骑_接受>\
+
+#IF
+CHECKMISSION [$任务_循环坐骑任务变量] 0
+CHECKMISSION [$任务_循环任务变量2] 0
+CHECKLEVELEX > 74
+#ACT
+MOV S0 <&75级坐骑任务{【循环任务】=FCO=251}/@75_循环坐骑_接受>\
+
+#IF
+CHECKMISSION [$任务_循环坐骑任务变量] 0
+CHECKMISSION [$任务_循环任务变量2] 0
+CHECKLEVELEX > 84
+#ACT
+MOV S0 <&85级坐骑任务{【循环任务】=FCO=251}/@85_循环坐骑_接受>\
+
+#IF
+CHECKMISSION [$任务_循环坐骑任务变量] 1
+CHECKMISSION [$任务_循环任务变量2] 1
+CHECKLEVELEX > 44
+#ACT
+INC S0 <&45级坐骑任务{【完成任务】=FCO=251}/@45_循环坐骑_完成>\
+
+#IF
+CHECKMISSION [$任务_循环坐骑任务变量] 1
+CHECKMISSION [$任务_循环任务变量2] 1
+CHECKLEVELEX > 54
+#ACT
+INC S0 <&55级坐骑任务{【完成任务】=FCO=251}/@55_循环坐骑_完成>\
+
+#IF
+CHECKMISSION [$任务_循环坐骑任务变量] 1
+CHECKMISSION [$任务_循环任务变量2] 1
+CHECKLEVELEX > 64
+#ACT
+INC S0 <&65级坐骑任务{【完成任务】=FCO=251}/@65_循环坐骑_完成>\
+
+#IF
+CHECKMISSION [$任务_循环坐骑任务变量] 1
+CHECKMISSION [$任务_循环任务变量2] 1
+CHECKLEVELEX > 74
+#ACT
+INC S0 <&75级坐骑任务{【完成任务】=FCO=251}/@75_循环坐骑_完成>\
+
+#IF
+CHECKMISSION [$任务_循环坐骑任务变量] 1
+CHECKMISSION [$任务_循环任务变量2] 1
+CHECKLEVELEX > 84
+#ACT
+INC S0 <&85级坐骑任务{【完成任务】=FCO=251}/@85_循环坐骑_完成>\
+}
+
+
+[@循环坐骑_脚本]
+{
+[@45_循环坐骑_接受]
+#IF
+CHECKPULLULATION ? [$任务_45循环坐骑任务自然点]
+#ACT
+SETMISSION [$任务_循环坐骑任务变量] [$任务_循环任务已接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务已接受值]
+SET [$CHECK常量_45坐骑杀怪变量] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION [$任务_循环索引变量]
+ADDMISSION [$任务_循环索引变量] 45级循环坐骑任务
+CHANGEPULLULATION - [$任务_45循环坐骑任务自然点]
+close
+#ELSEACT
+MESSAGEBOX [提示]:您的自然成长点底于<[$任务_45循环坐骑任务自然点]>,所以不能领取任务!
+
+[@55_循环坐骑_接受]
+#IF
+CHECKPULLULATION ? [$任务_55循环坐骑任务自然点]
+#ACT
+SETMISSION [$任务_循环坐骑任务变量] [$任务_循环任务已接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务已接受值]
+SET [$CHECK常量_55坐骑杀怪变量] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION [$任务_循环索引变量]
+ADDMISSION [$任务_循环索引变量] 55级循环坐骑任务
+CHANGEPULLULATION - [$任务_55循环坐骑任务自然点]
+close
+#ELSEACT
+MESSAGEBOX [提示]:您的自然成长点底于<[$任务_55循环坐骑任务自然点]>,所以不能领取任务!
+
+[@65_循环坐骑_接受]
+#IF
+CHECKPULLULATION ? [$任务_65循环坐骑任务自然点]
+#ACT
+SETMISSION [$任务_循环坐骑任务变量] [$任务_循环任务已接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务已接受值]
+SET [$CHECK常量_65坐骑杀怪变量] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION [$任务_循环索引变量]
+ADDMISSION [$任务_循环索引变量] 65级循环坐骑任务
+CHANGEPULLULATION - [$任务_65循环坐骑任务自然点]
+close
+#ELSEACT
+MESSAGEBOX [提示]:您的自然成长点底于<[$任务_65循环坐骑任务自然点]>,所以不能领取任务!
+
+[@75_循环坐骑_接受]
+#IF
+CHECKPULLULATION ? [$任务_75循环坐骑任务自然点]
+#ACT
+SETMISSION [$任务_循环坐骑任务变量] [$任务_循环任务已接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务已接受值]
+SET [$CHECK常量_75坐骑杀怪变量] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION [$任务_循环索引变量]
+ADDMISSION [$任务_循环索引变量] 75级循环坐骑任务
+CHANGEPULLULATION - [$任务_75循环坐骑任务自然点]
+close
+#ELSEACT
+MESSAGEBOX [提示]:您的自然成长点底于<[$任务_75循环坐骑任务自然点]>,所以不能领取任务!
+
+[@85_循环坐骑_接受]
+#IF
+CHECKPULLULATION ? [$任务_85循环坐骑任务自然点]
+#ACT
+SETMISSION [$任务_循环坐骑任务变量] [$任务_循环任务已接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务已接受值]
+SET [$CHECK常量_85坐骑杀怪变量] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION [$任务_循环索引变量]
+ADDMISSION [$任务_循环索引变量] 85级循环坐骑任务
+CHANGEPULLULATION - [$任务_85循环坐骑任务自然点]
+close
+#ELSEACT
+MESSAGEBOX [提示]:您的自然成长点底于<[$任务_85循环坐骑任务自然点]>,所以不能领取任务!
+
+[@85_循环坐骑_完成]
+#IF
+CHECKMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = [$任务_85循环坐骑任务杀怪1数量]
+CHECKMISSIONKILLMONCOUNT [$任务_循环索引变量] 2 = [$任务_85循环坐骑任务杀怪1数量]
+#ACT
+CHANGEMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = 0
+CHANGEMISSIONKILLMONCOUNT [$任务_循环索引变量] 2 = 0
+SETMISSION [$任务_循环坐骑任务变量] [$任务_循环任务未接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务未接受值]
+SET [$CHECK常量_85坐骑杀怪变量] 0
+SHOWEFFECT [$特效_任务完成]
+DELMISSION [$任务_循环索引变量]
+HookItem 13
+CHANGEGIVEITEM 11 [$任务_45循环坐骑任务奖励]
+CHANGEGIVEITEM 8
+close
+#ELSEACT
+MESSAGEBOX [提示]:任务未完成,请认阅读任务内容与要求!
+
+[@75_循环坐骑_完成]
+#IF
+CHECKMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = [$任务_75循环坐骑任务杀怪1数量]
+CHECKMISSIONKILLMONCOUNT [$任务_循环索引变量] 2 = [$任务_75循环坐骑任务杀怪1数量]
+#ACT
+CHANGEMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = 0
+CHANGEMISSIONKILLMONCOUNT [$任务_循环索引变量] 2 = 0
+SETMISSION [$任务_循环坐骑任务变量] [$任务_循环任务未接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务未接受值]
+SET [$CHECK常量_75坐骑杀怪变量] 0
+SHOWEFFECT [$特效_任务完成]
+DELMISSION [$任务_循环索引变量]
+HookItem 13
+CHANGEGIVEITEM 11 [$任务_45循环坐骑任务奖励]
+CHANGEGIVEITEM 8
+close
+#ELSEACT
+MESSAGEBOX [提示]:任务未完成,请认阅读任务内容与要求!
+
+[@65_循环坐骑_完成]
+#IF
+CHECKMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = [$任务_65循环坐骑任务杀怪1数量]
+CHECKMISSIONKILLMONCOUNT [$任务_循环索引变量] 2 = [$任务_65循环坐骑任务杀怪1数量]
+#ACT
+CHANGEMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = 0
+CHANGEMISSIONKILLMONCOUNT [$任务_循环索引变量] 2 = 0
+SETMISSION [$任务_循环坐骑任务变量] [$任务_循环任务未接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务未接受值]
+SET [$CHECK常量_65坐骑杀怪变量] 0
+SHOWEFFECT [$特效_任务完成]
+DELMISSION [$任务_循环索引变量]
+HookItem 13
+CHANGEGIVEITEM 11 [$任务_45循环坐骑任务奖励]
+CHANGEGIVEITEM 8
+close
+#ELSEACT
+MESSAGEBOX [提示]:任务未完成,请认阅读任务内容与要求!
+
+[@55_循环坐骑_完成]
+#IF
+CHECKMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = [$任务_55循环坐骑任务杀怪1数量]
+CHECKMISSIONKILLMONCOUNT [$任务_循环索引变量] 2 = [$任务_55循环坐骑任务杀怪1数量]
+#ACT
+CHANGEMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = 0
+CHANGEMISSIONKILLMONCOUNT [$任务_循环索引变量] 2 = 0
+SETMISSION [$任务_循环坐骑任务变量] [$任务_循环任务未接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务未接受值]
+SET [$CHECK常量_55坐骑杀怪变量] 0
+SHOWEFFECT [$特效_任务完成]
+DELMISSION [$任务_循环索引变量]
+HookItem 13
+CHANGEGIVEITEM 11 [$任务_45循环坐骑任务奖励]
+CHANGEGIVEITEM 8
+close
+#ELSEACT
+MESSAGEBOX [提示]:任务未完成,请认阅读任务内容与要求!
+
+[@45_循环坐骑_完成]
+#IF
+CHECKMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = [$任务_45循环坐骑任务杀怪1数量]
+CHECKMISSIONKILLMONCOUNT [$任务_循环索引变量] 2 = [$任务_45循环坐骑任务杀怪1数量]
+#ACT
+CHANGEMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = 0
+CHANGEMISSIONKILLMONCOUNT [$任务_循环索引变量] 2 = 0
+SETMISSION [$任务_循环坐骑任务变量] [$任务_循环任务未接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务未接受值]
+SET [$CHECK常量_45坐骑杀怪变量] 0
+SHOWEFFECT [$特效_任务完成]
+DELMISSION [$任务_循环索引变量]
+HookItem 13
+CHANGEGIVEITEM 11 [$任务_45循环坐骑任务奖励]
+CHANGEGIVEITEM 8
+close
+#ELSEACT
+MESSAGEBOX [提示]:任务未完成,请认阅读任务内容与要求!
+}

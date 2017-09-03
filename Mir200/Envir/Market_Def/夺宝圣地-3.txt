@@ -1,0 +1,17 @@
+[@main]
+
+<$USERNAME>:\ \
+你好，我家里养了本服所\有的怪物以及BOSS哦。\
+想进去爆出他们身上的装备么。\
+让你进去需要给我一张【通行证】哦\
+通行证在本服所有怪物身上均能爆出\
+<进入夺宝/@夺宝>
+[@夺宝]
+#if
+CheckItem 通行证 1
+#act
+mapmove DBSD
+TAKE 通行证 1
+SENDMSG 8 【<$USERNAME>】进入夺宝圣地，希望他能满载而归！
+#ELSEACT
+MESSAGEBOX 提示：你没有【通行证】哦！

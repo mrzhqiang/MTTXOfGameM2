@@ -1,0 +1,122 @@
+[@书店_检测]
+{
+#IF
+CHECKMISSION [109] 1
+CHECKMISSION [110] 0
+#ACT
+INC S0 <&初显锋芒{【任务】=FCO=251}/@任务_学习技能_接受>\
+
+#IF
+CHECKMISSION [114] 1
+CHECKMISSION [115] 0
+CHECKITEMCOUNT 回城卷（任务） ? 1
+#ACT
+INC S0 <&初显锋芒{【任务】=FCO=251}/@任务_学习技能_第五步>\
+}
+
+[@书店_脚本]
+{
+[@任务_学习技能_接受]
+#IF
+CHECKMISSION [109] 1
+CHECKMISSION [110] 0
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　“春眠不觉晓，处处闻啼鸟。夜来风\
+雨声，花落知多少”好诗，好诗。\\
+　　你来了呀，你能不能帮我一个忙啊？\
+我从村子里出来迷路了，你能帮我回去吗？\
+听说玛法大陆有一种东西叫做“回城卷”\
+可以直接把我送回家去，你能帮我去找一\
+张过来吗？听说{不动先生=FCO=251}那里有！你可以\
+去问问看。\ \
+{任务奖励=FCO=243}\
+　声望值： 7\
+　经验值： 103000\
+　道具奖励：\
+{12=x}{i.496,d.7=item}{46=x}{i.<^BJOB(6,22,40)>=item}\ \ \ \
+<&接受任务/@任务_学习技能_接受任务>\
+<&结束对话/@exit>\
+
+[@任务_学习技能_接受任务]
+#if
+CHECKMISSION [109] 1
+CHECKMISSION [110] 0
+#act
+DELMISSION 0
+ADDMISSION 0 学习技能第一步
+SETMISSION [110] 1
+SHOWEFFECT [$特效_接受任务] 
+AUTOMOVE 新手村,119,155
+close
+
+[@任务_学习技能_第五步]
+#if
+CHECKBAGSIZE 2
+#elseact
+MESSAGEBOX 请至少预留2格背包空间！
+break
+
+#IF
+CHECKMISSION [114] 1
+CHECKMISSION [115] 0
+CHECKITEMCOUNT 回城卷（任务） ? 1
+#elseact
+break
+
+#if
+CHECKJOB WARRIOR
+#act
+DYNAMICGIVE [$任务_学习技能_第五步奖励物品2_war] 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#if
+CHECKJOB WIZARD
+#act
+DYNAMICGIVE [$任务_学习技能_第五步奖励物品2_wizard] 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#if
+CHECKJOB TAOIST
+#act
+DYNAMICGIVE [$任务_学习技能_第五步奖励物品2_taos] 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+#IF
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　哎呀~你还真的要来了啊，我都问他要\
+了好几回了，我还以为这一回你要不回来\
+了。看来是我错了，既然你帮我了这么大\
+一个忙，那我总得给你表示一下，我这里\
+有一包书籍，我看了好久了，就是没看懂。\
+既然看不懂就送给你算了。另外还有一个\
+背包，也送给你吧。\
+　　你要是也看不懂，就去问问你秋姨吧，\
+也许她看得懂，我本来也想去问她，可是\
+我一个大男人怎么好意思呢。\ \
+<&去找秋姨问问/@move(新手村,131,136)>\
+<&结束对话/@exit>\
+#act
+SHOWEFFECT [$特效_步骤完成] 
+SETMISSION [115] 1
+CHANGEEXP + [$任务_学习技能_第五步奖励经验值]
+CREDITPOINT + 1
+UPDATEMISSION 0 学习技能第六步
+TAKECOUNT 回城卷（任务） 1
+DYNAMICGIVE 布包 1
+CHANGEGIVEITEM [$物品_改变属性_时间] 7
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+}

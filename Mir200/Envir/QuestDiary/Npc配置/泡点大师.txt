@@ -1,0 +1,123 @@
+[@泡点大师标准配置头]
+{
+[@main]
+#CALL [\\NPC配置\所有NPC头内容.txt] @系统_所有NPC头_内容
+
+[@系统_所有NPC头_返回_剑侠]
+<$USERNAME>：\ \
+　　庄园可是个好地方，不仅提供免费泡\
+点功能。还可以摆摊，购物。\ \
+{60级前=FCO=250}普通玩家，一秒可获得{2000=FCO=250}经验值。\
+{60级前=FCO=250}会员玩家，一秒可获得{4000=FCO=250}经验值。\ \
+{70级前=FCO=254}普通玩家，一秒可获得{1500=FCO=254}经验值。\
+{70级前=FCO=254}会员玩家，一秒可获得{3000=FCO=254}经验值。\ \
+{80级前=FCO=253}普通玩家，一秒可获得{1000=FCO=253}经验值。\
+{80级前=FCO=253}会员玩家，一秒可获得{2000=FCO=253}经验值。\
+　　本服暂未开通离线泡点。\ \
+<&{【我要开启泡点】=FCO=254}/@开启泡点>\
+<&【爱干啥干啥去咯】/@exit>\
+[@系统_所有NPC头_返回_盛大]
+<$USERNAME>：\
+　庄园可是个好地方，不仅提供免费泡点功能。还可以摆摊，购物。\
+{60级前=FCO=250}普通玩家，一秒可获得{2000=FCO=250}经验值。\
+{60级前=FCO=250}会员玩家，一秒可获得{4000=FCO=250}经验值。\
+{70级前=FCO=254}普通玩家，一秒可获得{1500=FCO=254}经验值。\
+{70级前=FCO=254}会员玩家，一秒可获得{3000=FCO=254}经验值。\
+{80级前=FCO=253}普通玩家，一秒可获得{1000=FCO=253}经验值。\
+{80级前=FCO=253}会员玩家，一秒可获得{2000=FCO=253}经验值。\
+　　本服暂未开通离线泡点。　<【返回土城】/@回城>　<{【我要开启泡点】=FCO=254}/@开启泡点>
+
+}
+[@泡点大师标准配置尾]
+{
+[@回城]
+#IF
+#ACT
+Movr P60 19
+Movr P61 19
+MOV P62 321
+MOV P63 321
+INC P62 <$STR(P60)>
+INC P63 <$STR(P61)>
+MAPMOVE 3 <$STR(P62)> <$STR(P63)>
+
+[@开启泡点]
+#IF
+IsDupMode
+#ACT
+MESSAGEBOX 泡点提示：你和别人叠在一起了。踩别人脚是不是很有快感啊？\　\找个没人的地再开通泡点吧。
+BREAK
+#IF
+CheckLevelEx > 79
+#act
+MESSAGEBOX 提示：等级超出79，禁止泡点。
+BREAK
+#IF
+Equal C91 0
+#ACT
+MOV C91 1
+Close
+DelayGoto 1 @泡点系统_开启 泡点_开启
+#ELSEACT
+MESSAGEBOX 提示：你已经开通了泡点。
+
+[@泡点系统_开启]
+#IF
+CheckOffLine
+#ACT
+ClearDelayGoto 泡点_开启
+BREAK
+#IF
+NOT CheckMapName GA0
+#ACT
+ClearDelayGoto 泡点_开启
+SENDMSG 7 泡点提示：离开泡点地图，泡点结束。
+MOV C91 0
+BREAK
+#IF
+CheckLevelEx > 79
+#act
+ClearDelayGoto 泡点_开启
+SENDMSG 7 泡点提示：等级超出79级，禁止泡点。
+MOV C91 0
+BREAK
+#IF
+EQUAL C92 1
+CheckLevelEx > 69
+#ACT
+ChangeExp + 2000
+DelayGoto 1 @泡点系统_开启 泡点_开启
+BREAK
+#IF
+EQUAL C92 0
+CheckLevelEx > 69
+#ACT
+ChangeExp + 1000
+DelayGoto 1 @泡点系统_开启 泡点_开启
+BREAK
+#IF
+EQUAL C92 1
+CheckLevelEx > 59
+#ACT
+ChangeExp + 3000
+DelayGoto 1 @泡点系统_开启 泡点_开启
+BREAK
+#IF
+EQUAL C92 0
+CheckLevelEx > 59
+#ACT
+ChangeExp + 1500
+DelayGoto 1 @泡点系统_开启 泡点_开启
+BREAK
+#IF
+EQUAL C92 1
+#ACT
+ChangeExp + 4000
+DelayGoto 1 @泡点系统_开启 泡点_开启
+BREAK
+#IF
+#ACT
+ChangeExp + 2000
+DelayGoto 1 @泡点系统_开启 泡点_开启
+BREAK
+}

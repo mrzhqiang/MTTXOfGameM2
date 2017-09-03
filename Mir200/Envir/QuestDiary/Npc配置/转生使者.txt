@@ -1,0 +1,100 @@
+[@转生使者标准配置头]
+{
+(@MakeDrug )
+[@main]
+#CALL [\\NPC配置\所有NPC头内容.txt] @系统_所有NPC头_内容
+
+[@系统_所有NPC头_返回_剑侠]
+<$USERNAME>:\ \
+　　年轻人，忘记你的过去吧。\
+　　我将带给你更疯狂的未来。\ \
+　　你当前的转身等级为：<$RENEWLEVEL>转。\ \
+<&我已经准备好了，我要进行转生!/@转生_执行>\
+<&合成转生证明/@MakeDrug>\
+<&查询转身条件/@转生_查询>\
+<&关闭/@EXIT>\
+
+
+
+[@系统_所有NPC头_返回_盛大]
+<$USERNAME>:\
+　　年轻人，忘记你的过去吧。
+　　我将带给你更疯狂的未来。\
+　　你当前的转身等级为：<$RENEWLEVEL>转。\ \
+<我已经准备好了，我要进行转生!/@转生_执行>\ \
+<合成转生证明/@MakeDrug>　　　　　　　　　　　
+<查询转身条件/@转生_查询>\
+<&关闭/@EXIT>\
+}
+[@转生使者标准配置尾]
+{
+[@转生_查询]
+#IF
+#ACT
+MESSAGEBOX 转生提示：\　\　　转生需要您当前要转等级的【转生证明卷】x1。\　\　　可点击本Npc的【合成转生证明】进行合成操作。
+GOTO @MAIN
+BREAK
+[@转生_执行]
+#IF
+CheckRenewLevel = 5
+#ACT
+MESSAGEBOX 提示：本服目前最高转生为5转，还未开放更高转生。
+BREAK
+#IF
+CheckRenewLevel = 4
+#ACT
+MOV S0 五转证明卷
+MOV P0 95
+MOV P1 253
+#IF
+CheckRenewLevel = 3
+#ACT
+MOV S0 四转证明卷
+MOV P0 80
+MOV P1 70
+#IF
+CheckRenewLevel = 2
+#ACT
+MOV S0 三转证明卷
+MOV P0 65
+MOV P1 254
+#IF
+CheckRenewLevel = 1
+#ACT
+MOV S0 二转证明卷
+MOV P0 50
+MOV P1 2
+#IF
+CheckRenewLevel = 0
+#ACT
+MOV S0 一转证明卷
+MOV P0 35
+MOV P1 250
+#if
+CHECKLEVELEX < <$STR(P0)>
+#ACT
+MESSAGEBOX 提示：等级不足转生，当前转生需要<$STR(P0)>级以上。
+BREAK
+#IF
+CHECKITEM <$STR(S0)> 1
+#act
+ChangeNameColor <$STR(P1)>
+TAKE <$STR(S0)> 1
+RenewLevel 1 0 0
+SENDMSG 0 玩家：<$USERNAME>成功完成了一次转生。当前转生等级为<$RENEWLEVEL>转。
+GOTO @main
+BREAK
+#IF
+CHECKLEVELEX > 0
+#ACT
+MESSAGEBOX 提示：缺少物品【<$STR(S0)>】。
+GOTO @MAIN
+BREAK
+
+[MakeItems]
+$转生证明打造	一转证明卷
+$转生证明打造	二转证明卷
+$转生证明打造	三转证明卷
+$转生证明打造	四转证明卷
+;$转生证明打造	五转证明卷
+}

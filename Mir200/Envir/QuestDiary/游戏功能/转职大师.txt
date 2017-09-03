@@ -1,0 +1,105 @@
+[@转职大师标准配置头]
+{
+[@main]
+#CALL [\\NPC配置\所有NPC头内容.txt] @系统_所有NPC头_内容
+
+[@系统_所有NPC头_返回_剑侠]
+<$USERNAME>:\ \
+　　你是否已经厌倦了现在的职业?\ \
+　　给我[$转职收费元宝]元宝消费,我愿意施法帮你\
+转换一下别的职业!\
+　　不过,你当前学习的技能都没有了哦~\
+　　(专职后属性点将被还原!)\ \
+<&{我要专职成为战士!=FCO=249}/@转职开始(Warrior)>\
+<&{我要专职成为法师!=FCO=253}/@转职开始(Wizard)>\
+<&{我要专职成为道士!=FCO=251}/@转职开始(Taoist)>\
+<&关闭/@EXIT>
+
+[@系统_所有NPC头_返回_盛大]
+<$USERNAME>:\
+　　你是否已经厌倦了现在的职业?\
+　　给我[$转职收费元宝]元宝消费,我愿意施法帮你
+转换一下别的职业!\
+　　不过,你当前学习的技能都没有了哦~\ \
+<{我要专职成为战士!=FCO=249}/@转职开始(Warrior)>\
+{5=y}<{我要专职成为法师!=FCO=253}/@转职开始(Wizard)>\
+{5=y}<{我要专职成为道士!=FCO=251}/@转职开始(Taoist)>\
+
+[@转职开始]
+#IF
+CheckJob <$STR(T0)>
+#act
+MESSAGEBOX 提示：逗我好玩是吧？你已经是这个职业了还要转？
+BREAK
+#IF
+CHECKGAMEGOLD ? [$转职收费元宝]
+#ACT
+GAMEGOLD - [$转职收费元宝]
+ChangeJob <$STR(T0)>
+SENDMSG 7 转职成功。
+ClearSkill
+SendMsg 6 你的所有技能已经全部删除！
+GOTO @转职_职业检测_技能
+#ELSEACT
+MESSAGEBOX 提示：你的元宝不足2000个。
+
+[@转职_职业检测_技能]
+#IF
+CheckJob Warrior
+#ACT
+AddSkill 基本剑术 3
+AddSkill 攻杀剑术 3
+AddSkill 刺杀剑术 3
+AddSkill 半月弯刀 3
+AddSkill 烈火剑法 3
+AddSkill 野蛮冲撞 3
+AddSkill 连击
+SENDMSG 0 玩家【<$USERNAME>】厌倦以前的职业，现在已经转职成为了一名战士。
+GOTO @转职_下线
+BREAK
+#IF
+CheckJob Wizard
+#ACT
+AddSkill 火球术 3
+AddSkill 大火球 3
+AddSkill 抗拒火环 3
+AddSkill 地狱火 3
+AddSkill 疾光电影 3
+AddSkill 雷电术 3
+AddSkill 诱惑之光 3
+AddSkill 瞬息移动 3
+AddSkill 火墙 3
+AddSkill 爆裂火焰 3
+AddSkill 地狱雷光 3
+AddSkill 魔法盾 3
+AddSkill 圣言术 3
+AddSkill 冰咆哮 3
+AddSkill 连击
+SENDMSG 0 玩家【<$USERNAME>】厌倦以前的职业，现在已经转职成为了一名法师。
+GOTO @转职_下线
+BREAK
+#IF
+CheckJob Taoist
+#ACT
+AddSkill 治愈术 3
+AddSkill 精神力战法 3
+AddSkill 施毒术 3
+AddSkill 灵魂火符 3
+AddSkill 幽灵盾 3
+AddSkill 神圣战甲术 3
+AddSkill 困魔咒 3
+AddSkill 隐身术 3
+AddSkill 集体隐身术 3
+AddSkill 心灵启示 3
+AddSkill 召唤神兽 3
+AddSkill 连击
+SENDMSG 0 玩家【<$USERNAME>】厌倦以前的职业，现在已经转职成为了一名道士。
+GOTO @转职_下线
+BREAK
+[@转职_下线]
+#IF
+#ACT
+MESSAGEBOX 提示：为避免游戏数据出错!请重新登录。
+Kick
+
+}

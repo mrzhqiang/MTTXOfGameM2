@@ -1,0 +1,334 @@
+[@关卡挑战标准配置头]
+{
+[@main]
+#CALL [\\NPC配置\所有NPC头内容.txt] @系统_所有NPC头_内容
+
+[@系统_所有NPC头_返回_剑侠]
+<$USERNAME>:\ \
+　　这是挑战你个人实力的一个考验!\
+通过考验你将获得大量宝藏!\
+　　挑战需要的凭证,你带来了吗?\ \
+<&{木人桩关卡【经验】=FCO=251}/@木人桩_关卡>\
+<&{藏宝阁关卡【道具】=FCO=254}/@藏宝阁_关卡>\
+<&关闭/@EXIT>
+[@系统_所有NPC头_返回_盛大]
+<$USERNAME>:\
+　　这是挑战你个人实力的一个考验!
+通过考验你将获得大量宝藏!\
+　　挑战需要的凭证,你带来了吗?\ \
+<&{木人桩关卡【经验】=FCO=251}/@木人桩_关卡_盛大>\
+<&{藏宝阁关卡【道具】=FCO=254}/@藏宝阁_关卡_盛大>\
+}
+[@关卡挑战标准配置尾]
+{
+[@藏宝阁_关卡]
+<$USERNAME>:\
+　关卡名称：【藏宝阁】\
+　关卡说明：\
+　　　　藏宝阁里面有着大量的宝藏!可是有\
+些宝藏让恶魔看守!击杀这些恶魔,夺取宝\
+藏!\
+　{挑战关卡将收取关卡等级的令牌一枚!=FCO=251}\ \
+<&{挑战普通藏宝阁关卡【普通】=FCO=250}/@藏宝阁_挑战(CBGGK,关卡挑战令[普],藏宝阁宝藏1,藏宝阁宝藏2,藏宝阁宝藏3,10,10,10)>\
+<&{挑战精英藏宝阁关卡【精英】=FCO=253}/@藏宝阁_挑战(CBGGK1,关卡挑战令[精],藏宝阁宝藏11,藏宝阁宝藏12,藏宝阁宝藏13,10,15,15)>\
+<&{挑战恶魔藏宝阁关卡【恶魔】=FCO=249}/@藏宝阁_挑战(CBGGK2,关卡挑战令[恶],藏宝阁宝藏21,藏宝阁宝藏22,藏宝阁宝藏23,10,20,20)>\
+<&返回/@MAIN>
+[@藏宝阁_关卡_盛大]
+<$USERNAME>:\
+　关卡名称：【藏宝阁】\
+　关卡说明：\
+　　　　藏宝阁里面有着大量的宝藏!可是有些宝藏让恶魔看守!\
+击杀这些恶魔,夺取宝藏!　{挑战关卡将收取关卡等级的令牌一枚!=FCO=251}\
+<&{挑战普通藏宝阁关卡【普通】=FCO=250}/@藏宝阁_挑战(CBGGK,关卡挑战令[普],藏宝阁宝藏1,藏宝阁宝藏2,藏宝阁宝藏3,10,10,10)>\
+<&{挑战精英藏宝阁关卡【精英】=FCO=253}/@藏宝阁_挑战(CBGGK1,关卡挑战令[精],藏宝阁宝藏11,藏宝阁宝藏12,藏宝阁宝藏13,10,15,15)>\
+<&{挑战恶魔藏宝阁关卡【恶魔】=FCO=249}/@藏宝阁_挑战(CBGGK2,关卡挑战令[恶],藏宝阁宝藏21,藏宝阁宝藏22,藏宝阁宝藏23,10,20,20)>\
+
+[@木人桩_关卡]
+<$USERNAME>:\ \
+　关卡名称：【木人桩】\
+　关卡说明：\
+　　　　关卡中有很多的“木头人”，但\
+是也有部分“十头人”“术头人”混杂其\
+中。\
+　　　　在不伤害“十头人”和“术头人”\
+的情况下杀死所有“木头人”则通过关卡.\
+　　　　如果误伤“十头人”和“术头人”\
+的话,地图将刷新更多的怪物！\
+　{挑战关卡将收取关卡等级的令牌一枚!=FCO=251}\ \
+<&{挑战普通木人桩关卡【普通】=FCO=250}/@木人桩_挑战(MRZGK,关卡挑战令[普],木头人1,十头人1,术头人1,30,5,5,1)>\
+<&{挑战精英木人桩关卡【精英】=FCO=253}/@木人桩_挑战(MRZGK1,关卡挑战令[精],木头人11,十头人11,术头人11,50,10,10,2)>\
+<&{挑战恶魔木人桩关卡【恶魔】=FCO=249}/@木人桩_挑战(MRZGK2,关卡挑战令[恶],木头人21,十头人21,术头人21,70,15,15,3)>\
+<&返回/@MAIN>
+
+[@木人桩_关卡_盛大]
+<$USERNAME>:\
+　关卡名称：【木人桩】\
+　关卡说明：关卡中有很多的“木头人”，但是也有部分“十头人”\
+“术头人”混杂其中。\
+　　　　在不伤害“十头人”和“术头人”的情况下杀死所有“木\
+头人”则通过关卡.如果误伤“十头人”和“术头人”的话,地图将\
+刷新更多的怪物！{挑战关卡将收取关卡等级的令牌一枚!=FCO=251}\
+<{挑战普通木人桩关卡【普通】=FCO=250}/@木人桩_挑战(MRZGK,关卡挑战令[普],木头人1,十头人1,术头人1,30,5,5,1)>　　　
+<{挑战精英木人桩关卡【精英】=FCO=253}/@木人桩_挑战(MRZGK1,关卡挑战令[精],木头人11,十头人11,术头人11,50,10,10,2)>\
+<{挑战恶魔木人桩关卡【恶魔】=FCO=249}/@木人桩_挑战(MRZGK2,关卡挑战令[恶],木头人21,十头人21,术头人21,70,15,15,3)>　　　<关闭/@EXIT>
+
+
+
+
+
+
+
+
+
+[@木人桩_挑战]
+#IF
+EQUAL C92 1
+EQUAL C88 3
+#ACT
+MESSAGEBOX 提示：尊敬的Vip会员.你每天最多只能挑战3次关卡.已经比普通玩家多一次了!
+BREAK
+#IF
+EQUAL C92 0
+EQUAL C88 2
+#ACT
+MESSAGEBOX 提示：尊敬的玩家.你每天最多只能挑战2次关卡.成为Vip会员,每天可多挑战一次!
+BREAK
+#IF
+NOT CheckItemCount <$STR(T1)> ? 1
+#ACT
+MESSAGEBOX 提示：挑战本关卡需要挑战令【<$STR(T1)>】一个。
+BREAK
+#IF
+CheckMapHumanCount <$STR(T0)>1 = 0
+#ACT
+ClearMapMon <$STR(T0)>1
+TakeCount <$STR(T1)> 1
+MongenEx <$STR(T0)>1 25 25 <$STR(T2)> 10 <$STR(T5)>
+MongenEx <$STR(T0)>1 25 25 <$STR(T3)> 10 <$STR(T6)>
+MongenEx <$STR(T0)>1 25 25 <$STR(T4)> 10 <$STR(T7)>
+MAPMOVE <$STR(T0)>1 7 10
+MOV P6 <$STR(T5)>
+DEC P6 3
+MOV C87 <$STR(P6)>
+INC C88 1
+MOV B98 <$STR(T1)>
+KillSlave
+SENDMSG 0 【<$USERNAME>】已经做好了准备,开始挑战关卡了!大量宝藏和奖励等这他!
+BREAK
+
+#IF
+CheckMapHumanCount <$STR(T0)>2 = 0
+#ACT
+ClearMapMon <$STR(T0)>2
+TakeCount <$STR(T1)> 1
+MongenEx <$STR(T0)>2 25 25 <$STR(T2)> 10 <$STR(T5)>
+MongenEx <$STR(T0)>2 25 25 <$STR(T3)> 10 <$STR(T6)>
+MongenEx <$STR(T0)>2 25 25 <$STR(T4)> 10 <$STR(T7)>
+MAPMOVE <$STR(T0)>2 7 10
+MOV P6 <$STR(T5)>
+DEC P6 3
+MOV C87 <$STR(T5)>
+INC C88 1
+MOV B98 <$STR(T1)>
+KillSlave
+SENDMSG 0 【<$USERNAME>】已经做好了准备,开始挑战关卡了!大量宝藏和奖励等这他!
+BREAK
+
+#IF
+CheckMapHumanCount <$STR(T0)>3 = 0
+#ACT
+ClearMapMon <$STR(T0)>3
+TakeCount <$STR(T1)> 1
+MongenEx <$STR(T0)>3 25 25 <$STR(T2)> 10 <$STR(T5)>
+MongenEx <$STR(T0)>3 25 25 <$STR(T3)> 10 <$STR(T6)>
+MongenEx <$STR(T0)>3 25 25 <$STR(T4)> 10 <$STR(T7)>
+MAPMOVE <$STR(T0)>3 7 10
+MOV P6 <$STR(T5)>
+DEC P6 3
+MOV C87 <$STR(T5)>
+INC C88 1
+MOV B98 <$STR(T1)>
+KillSlave
+SENDMSG 0 【<$USERNAME>】已经做好了准备,开始挑战关卡了!大量宝藏和奖励等这他!
+BREAK
+
+#IF
+CheckMapHumanCount <$STR(T0)>4 = 0
+#ACT
+ClearMapMon <$STR(T0)>4
+TakeCount <$STR(T1)> 1
+MongenEx <$STR(T0)>4 25 25 <$STR(T2)> 10 <$STR(T5)>
+MongenEx <$STR(T0)>4 25 25 <$STR(T3)> 10 <$STR(T6)>
+MongenEx <$STR(T0)>4 25 25 <$STR(T4)> 10 <$STR(T7)>
+MAPMOVE <$STR(T0)>4 7 10
+MOV P6 <$STR(T5)>
+DEC P6 3
+MOV C87 <$STR(T5)>
+INC C88 1
+MOV B98 <$STR(T1)>
+KillSlave
+SENDMSG 0 【<$USERNAME>】已经做好了准备,开始挑战关卡了!大量宝藏和奖励等这他!
+BREAK
+
+#IF
+CheckMapHumanCount <$STR(T0)>5 = 0
+#ACT
+ClearMapMon <$STR(T0)>5
+TakeCount <$STR(T1)> 1
+MongenEx <$STR(T0)>5 25 25 <$STR(T2)> 10 <$STR(T5)>
+MongenEx <$STR(T0)>5 25 25 <$STR(T3)> 10 <$STR(T6)>
+MongenEx <$STR(T0)>5 25 25 <$STR(T4)> 10 <$STR(T7)>
+MAPMOVE <$STR(T0)>5 7 10
+MOV P6 <$STR(T5)>
+DEC P6 3
+MOV C87 <$STR(T5)>
+INC C88 1
+MOV B98 <$STR(T1)>
+KillSlave
+SENDMSG 0 【<$USERNAME>】已经做好了准备,开始挑战关卡了!大量宝藏和奖励等这他!
+BREAK
+
+#IF
+#ACT
+MESSAGEBOX 提示：关卡人数已满。请稍后再来。
+GOTO @MAIN
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@藏宝阁_挑战]
+#IF
+EQUAL C92 1
+EQUAL C88 3
+#ACT
+MESSAGEBOX 提示：尊敬的Vip会员.你每天最多只能挑战3次关卡.已经比普通玩家多一次了!
+BREAK
+#IF
+EQUAL C92 0
+EQUAL C88 2
+#ACT
+MESSAGEBOX 提示：尊敬的玩家.你每天最多只能挑战2次关卡.成为Vip会员,每天可多挑战一次!
+BREAK
+#IF
+NOT CheckItemCount <$STR(T1)> ? 1
+#ACT
+MESSAGEBOX 提示：挑战本关卡需要挑战令【<$STR(T1)>】一个。
+BREAK
+#IF
+CheckMapHumanCount <$STR(T0)>1 = 0
+#ACT
+ClearMapMon <$STR(T0)>1
+TakeCount <$STR(T1)> 1
+MongenEx <$STR(T0)>1 14 14 <$STR(T2)> 4 <$STR(T5)>
+MongenEx <$STR(T0)>1 14 14 <$STR(T3)> 4 <$STR(T6)>
+MongenEx <$STR(T0)>1 14 14 <$STR(T4)> 4 <$STR(T7)>
+MAPMOVE <$STR(T0)>1 7 10
+MOV C87 <$STR(T5)>
+INC C88 1
+MOV B98 <$STR(T1)>
+KillSlave
+SENDMSG 0 【<$USERNAME>】已经做好了准备,开始挑战关卡了!大量宝藏和奖励等这他!
+BREAK
+
+#IF
+CheckMapHumanCount <$STR(T0)>2 = 0
+#ACT
+ClearMapMon <$STR(T0)>2
+TakeCount <$STR(T1)> 1
+MongenEx <$STR(T0)>2 14 14 <$STR(T2)> 4 <$STR(T5)>
+MongenEx <$STR(T0)>2 14 14 <$STR(T3)> 4 <$STR(T6)>
+MongenEx <$STR(T0)>2 14 14 <$STR(T4)> 4 <$STR(T7)>
+MAPMOVE <$STR(T0)>2 7 10
+MOV C87 <$STR(T5)>
+INC C88 1
+MOV B98 <$STR(T1)>
+KillSlave
+SENDMSG 0 【<$USERNAME>】已经做好了准备,开始挑战关卡了!大量宝藏和奖励等这他!
+BREAK
+
+#IF
+CheckMapHumanCount <$STR(T0)>3 = 0
+#ACT
+ClearMapMon <$STR(T0)>3
+TakeCount <$STR(T1)> 1
+MongenEx <$STR(T0)>3 14 14 <$STR(T2)> 4 <$STR(T5)>
+MongenEx <$STR(T0)>3 14 14 <$STR(T3)> 4 <$STR(T6)>
+MongenEx <$STR(T0)>3 14 14 <$STR(T4)> 4 <$STR(T7)>
+MAPMOVE <$STR(T0)>3 7 10
+MOV C87 <$STR(T5)>
+INC C88 1
+MOV B98 <$STR(T1)>
+KillSlave
+SENDMSG 0 【<$USERNAME>】已经做好了准备,开始挑战关卡了!大量宝藏和奖励等这他!
+BREAK
+
+#IF
+CheckMapHumanCount <$STR(T0)>4 = 0
+#ACT
+ClearMapMon <$STR(T0)>4
+TakeCount <$STR(T1)> 1
+MongenEx <$STR(T0)>4 14 14 <$STR(T2)> 4 <$STR(T5)>
+MongenEx <$STR(T0)>4 14 14 <$STR(T3)> 4 <$STR(T6)>
+MongenEx <$STR(T0)>4 14 14 <$STR(T4)> 4 <$STR(T7)>
+MAPMOVE <$STR(T0)>4 7 10
+MOV C87 <$STR(T5)>
+INC C88 1
+MOV B98 <$STR(T1)>
+KillSlave
+SENDMSG 0 【<$USERNAME>】已经做好了准备,开始挑战关卡了!大量宝藏和奖励等这他!
+BREAK
+
+#IF
+CheckMapHumanCount <$STR(T0)>5 = 0
+#ACT
+ClearMapMon <$STR(T0)>5
+TakeCount <$STR(T1)> 1
+MongenEx <$STR(T0)>5 14 14 <$STR(T2)> 4 <$STR(T5)>
+MongenEx <$STR(T0)>5 14 14 <$STR(T3)> 4 <$STR(T6)>
+MongenEx <$STR(T0)>5 14 14 <$STR(T4)> 4 <$STR(T7)>
+MAPMOVE <$STR(T0)>5 7 10
+MOV C87 <$STR(T5)>
+INC C88 1
+MOV B98 <$STR(T1)>
+KillSlave
+SENDMSG 0 【<$USERNAME>】已经做好了准备,开始挑战关卡了!大量宝藏和奖励等这他!
+BREAK
+
+#IF
+#ACT
+MESSAGEBOX 提示：关卡人数已满。请稍后再来。
+GOTO @MAIN
+BREAK
+}

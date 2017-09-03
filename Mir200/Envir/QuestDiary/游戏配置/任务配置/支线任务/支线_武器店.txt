@@ -1,0 +1,89 @@
+[@打造武器_检测]
+{
+#IF
+CHECKMISSION [132] 1
+CHECKMISSION [201] 0
+CHECKMAPNAME 0103
+#ACT
+INC S0 <&学习打造武器{【生活技能】=FCO=251}/@任务_打造武器_接受>\
+
+#IF
+CHECKMISSION [211] 0
+CHECKMISSION [$任务_系统_成功使用过打造武器技能] 1
+CHECKMAPNAME 0103
+#ACT
+INC S0 <&学习打造武器{【生活技能】完成=FCO=251}/@任务_打造武器_完成>\
+}
+
+[@打造武器_脚本]
+{
+[@任务_打造武器_接受]
+#IF
+CHECKMISSION [132] 1
+CHECKMISSION [201] 0
+CHECKMAPNAME 0103
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　想跟我甜酒学打造武器啊，算你找对\
+人了，你先去准备以下这些材料，我就开\
+始教你如何打造武器。\ \
+{需准备材料=FCO=243}\
+{12=x}{i.76=item}{46=x}{i.257=item}{46=x}{i.49=item}\ \ \
+{打造成功后得到物品=FCO=243}\
+{12=x}{i.<^BJOB(85,86,87)>,b.8=item}\ \ \ \
+<&所需材料我已经准备好了/@激活打造武器>\
+<&结束对话/@exit>\
+
+[@激活打造武器]
+#IF
+CHECKMISSION [132] 1
+CHECKMISSION [201] 0
+CHECKITEMCOUNT 天雷刃 ? 1
+CHECKITEMCOUNT 玄铁锭 ? 1
+CHECKITEMCOUNT 铁矿 ? 1
+CHECKMAPNAME 0103
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　现在我已将打造武器的技能传授给你\
+了。按{F11=FCO=251}打开技能面板，点击上面的{生活=FCO=251}\
+{技能=FCO=251}按钮，再点击{打造武器=FCO=250}的技能图标。\
+在可打造物品列表中选中{<^BJOB(战士专用,法师专用,道士专用)>=FCO=251}，再选\
+择{<^BJOB(开天,镇天,玄天)>=FCO=251}，成功打造一把{<^BJOB(开天,镇天,玄天)>=FCO=251}后交给我，看\
+看你是否已经真的学会了。\ \
+{任务奖励=FCO=243}\
+　声望值：[$学习生活技能_打造武器声望奖励]\
+　经验值：[$学习生活技能_打造武器经验奖励]\ \
+<&我这就去办/@exit>\
+#ACT
+SETMISSION [201] 1
+SHOWEFFECT [$特效_接受任务]
+ADDMAKEMAGIC 0
+UPDATEMISSION 1 开始打造武器
+#ELSEACT
+MESSAGEBOX 材料不足！
+
+[@任务_打造武器_完成]
+#IF
+CHECKMISSION [211] 0
+CHECKMISSION [$任务_系统_成功使用过打造武器技能] 1
+CHECKMAPNAME 0103
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　甜酒叔拿起你打造的{<^BJOB(开天,镇天,玄天)>=FCO=251}仔细端详了\
+一下。\ \
+　　嗯，打造得还不错，没白学。\
+　　在打造时有没有看到打造武器的生活\
+技能是有等级之分的啊。{在人物升级时，=FCO=251}\
+{系统会自动分配给人物生活技能点数。=FCO=251}你\
+可以利用这些点数给生活技能提高等级。\
+当你每升一级所对应的打造物品成功机率\
+会适当提高。等级越高打造物品的成功机\
+率就越高。\ \
+<&明白了/@exit>\
+#ACT
+SETMISSION [211] 1
+SHOWEFFECT [$特效_任务完成]
+CHANGEEXP + [$学习生活技能_打造武器经验奖励]
+CREDITPOINT + [$学习生活技能_打造武器声望奖励]
+DELMISSION 1
+}

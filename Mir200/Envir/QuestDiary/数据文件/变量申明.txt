@@ -1,0 +1,41 @@
+[@私人变量]
+{
+#IF
+#act
+VAR Integer HUMAN 每日签到
+VAR Integer HUMAN 连续签到
+VAR Integer HUMAN 闭关经验
+VAR Integer HUMAN 闭关点数
+VAR Integer HUMAN 每日野外1
+VAR Integer HUMAN 每日野外2
+VAR Integer HUMAN 每日野外3
+VAR Integer HUMAN 每日野外4
+VAR Integer HUMAN 每日野外5
+VAR Integer HUMAN 每日野外6
+VAR Integer HUMAN 每日野外7
+VAR Integer HUMAN 每日野外8
+VAR Integer HUMAN 每日副本1
+VAR Integer HUMAN 每日副本2
+VAR Integer HUMAN 每日副本3
+VAR Integer HUMAN 每日副本4
+VAR Integer HUMAN 白银挖宝
+VAR Integer HUMAN 黄金挖宝
+LOADVAR HUMAN 黄金挖宝 ..\QuestDiary\数据文件\每日成就Save.txt
+LOADVAR HUMAN 白银挖宝 ..\QuestDiary\数据文件\每日成就Save.txt
+LOADVAR HUMAN 每日副本4 ..\QuestDiary\数据文件\每日成就Save.txt
+LOADVAR HUMAN 每日副本3 ..\QuestDiary\数据文件\每日成就Save.txt
+LOADVAR HUMAN 每日副本2 ..\QuestDiary\数据文件\每日成就Save.txt
+LOADVAR HUMAN 每日副本1 ..\QuestDiary\数据文件\每日成就Save.txt
+LOADVAR HUMAN 每日野外1 ..\QuestDiary\数据文件\每日成就Save.txt
+LOADVAR HUMAN 每日野外2 ..\QuestDiary\数据文件\每日成就Save.txt
+LOADVAR HUMAN 每日野外3 ..\QuestDiary\数据文件\每日成就Save.txt
+LOADVAR HUMAN 每日野外4 ..\QuestDiary\数据文件\每日成就Save.txt
+LOADVAR HUMAN 每日野外5 ..\QuestDiary\数据文件\每日成就Save.txt
+LOADVAR HUMAN 每日野外6 ..\QuestDiary\数据文件\每日成就Save.txt
+LOADVAR HUMAN 每日野外7 ..\QuestDiary\数据文件\每日成就Save.txt
+LOADVAR HUMAN 每日野外8 ..\QuestDiary\数据文件\每日成就Save.txt
+LOADVAR HUMAN 闭关点数 ..\QuestDiary\数据文件\闭关系统Save.txt
+LOADVAR HUMAN 闭关经验 ..\QuestDiary\数据文件\闭关系统Save.txt
+LOADVAR HUMAN 连续签到 ..\QuestDiary\数据文件\签到系统Save.txt
+LOADVAR HUMAN 每日签到 ..\QuestDiary\数据文件\签到系统Save.txt
+}

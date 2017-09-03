@@ -1,0 +1,89 @@
+[@屠夫_检测]
+{
+#IF
+CHECKMISSION [111] 1
+CHECKMISSION [112] 0
+#ACT
+INC S0 <&初显锋芒{【任务】=FCO=251}/@任务_学习技能_第二步>\
+
+#IF
+CHECKMISSION [112] 1
+CHECKMISSION [113] 0
+CHECKITEMCOUNT 鸡肉 ? 5
+CHECKITEMCOUNT 鹿肉 ? 5
+CHECKMISSIONKILLMONCOUNT 0 1 ? 5
+CHECKMISSIONKILLMONCOUNT 0 2 ? 5
+#ACT
+INC S0 <&初显锋芒{【任务】=FCO=251}/@任务_学习技能_第三步>\
+}
+
+[@屠夫_脚本]
+{
+[@任务_学习技能_第二步]
+#IF
+CHECKMISSION [111] 1
+CHECKMISSION [112] 0
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　买肉吗？我的肉是这村子里最好的一\
+家（村子里好像就他一家……），看你样\
+长的眉清目秀的，算你便宜一点。\
+　　什么？没钱……又是一穷鬼。算了，\
+看在你秋姨的份上，正好我缺一屠手，你\
+要是能帮我几天忙的话，我可以考虑送点\
+肉给你。\ \
+<&我愿意/@任务_学习技能_第二步_完成>\
+<&结束对话/@exit>\
+
+[@任务_学习技能_第二步_完成]
+#if
+CHECKMISSION [111] 1
+CHECKMISSION [112] 0
+#say
+{<$SELFNAME>=FCO=243}：\
+　　嗯！很好，看到没，这村子里这边有\
+很多鸡呀，鹿啊。都是我家养的，够富裕\
+吧！你只要帮我杀{5只鸡=FCO=251}和{5只鹿=FCO=251}，并且\
+从它们身上将鸡肉和鹿肉带回来给我，我\
+就将送你一些。\ \
+<&结束对话/@exit>\
+#act
+SHOWEFFECT [$特效_步骤完成] 
+SETMISSION [112] 1
+SET [$CHECK常量_是否接受学习技能杀怪任务] 1
+CHANGEEXP + [$任务_学习技能_第二步奖励经验值]
+CREDITPOINT + 1
+UPDATEMISSION 0 学习技能第三步
+
+[@任务_学习技能_第三步]
+#if
+CHECKBAGSIZE 1
+#elseact
+MESSAGEBOX 请至少预留1格背包空间！
+break
+
+#IF
+CHECKMISSION [112] 1
+CHECKMISSION [113] 0
+CHECKITEMCOUNT 鸡肉 ? 5
+CHECKITEMCOUNT 鹿肉 ? 5
+CHECKMISSIONKILLMONCOUNT 0 1 ? 5
+CHECKMISSIONKILLMONCOUNT 0 2 ? 5
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　嗯，这几天幸苦你了，这块干肉你拿\
+吧，不动那人就喜欢我这的干肉，你拿回\
+他一定会喜欢的。\ \
+<&我现在就送过去/@move(新手村,119,155)>\
+<&结束对话/@exit>\
+#act
+SHOWEFFECT [$特效_步骤完成] 
+SETMISSION [113] 1
+SET [$CHECK常量_是否已完成学习技能杀怪任务] 1
+CHANGEEXP + [$任务_学习技能_第三步奖励经验值]
+CREDITPOINT + 1
+UPDATEMISSION 0 学习技能第四步
+TAKECOUNT 鸡肉 5
+TAKECOUNT 鹿肉 5
+GIVE 干肉 1
+}

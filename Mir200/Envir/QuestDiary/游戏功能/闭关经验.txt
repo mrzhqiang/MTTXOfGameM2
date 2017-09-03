@@ -1,0 +1,130 @@
+[@闭关经验标准配置头]
+{
+[@main]
+#CALL [\\NPC配置\所有NPC头内容.txt] @系统_所有NPC头_内容
+
+[@系统_所有NPC头_返回_剑侠]
+#IF
+CHECKVAR HUMAN 闭关点数 = 0
+#ACT
+MOV P10 0
+MOV P11 0
+MOV P20 0
+MOV P21 0
+
+#if
+CHECKVAR HUMAN 闭关点数 > 0
+#ACT
+Mul P10 [$离线闭关_基础经验] <$HUMAN(闭关点数)>
+Mul P20 [$离线闭关_基础经验] <$HUMAN(闭关点数)>
+Mul P10 [$离线闭关_点卷倍率]
+Mul P20 [$离线闭关_元宝倍率]
+Mul P11 <$HUMAN(闭关点数)> [$离线闭关_基础点卷]
+Mul P21 <$HUMAN(闭关点数)> [$离线闭关_基础元宝]
+#if
+#say
+<$USERNAME>:\
+　　闭关经验，则是使用玩家不在线的时\
+间(小时)来兑换经验！\
+　　兑换方式有两种，一种是点卷兑换一\
+倍经验，一种是用元宝兑换多倍经验！\ \
+　　(注：闭关点超过24点将不会增涨)\ \
+你当前有<$HUMAN(闭关点数)>个关闭点数未使用\
+　使用当前闭关点可换取：(需：<$STR(P11)>点卷)\
+<$STR(P10)>点经验。\
+　使用当前闭关点可换取：(需：<$STR(p21)>元宝)\
+<$STR(P20)>点经验。\ \
+
+<&使用闭关点数兑换点卷经验/@点卷经验>　　　　　\
+<&使用闭关点数兑换元宝经验/@元宝经验>\
+<&关闭/@EXIT>
+[@系统_所有NPC头_返回_盛大]
+#IF
+CHECKVAR HUMAN 闭关点数 = 0
+#ACT
+MOV P10 0
+MOV P11 0
+MOV P20 0
+MOV P21 0
+
+#if
+CHECKVAR HUMAN 闭关点数 > 0
+#ACT
+Mul P10 [$离线闭关_基础经验] <$HUMAN(闭关点数)>
+Mul P20 [$离线闭关_基础经验] <$HUMAN(闭关点数)>
+Mul P10 [$离线闭关_点卷倍率]
+Mul P20 [$离线闭关_元宝倍率]
+Mul P11 <$HUMAN(闭关点数)> [$离线闭关_基础点卷]
+Mul P21 <$HUMAN(闭关点数)> [$离线闭关_基础元宝]
+#if
+#say
+<$USERNAME>:\
+　　闭关经验，则是使用玩家不在线的时间(小时)来兑换经验！\
+兑换方式有两种，一种是点卷兑换一倍经验，一种是用元宝兑换\
+多倍经验！(注：闭关点超过24点将不会增涨)\
+{10=y}　　你当前有<$HUMAN(闭关点数)>个关闭点数未使用\
+　　使用当前闭关点可换取(需：<$STR(P11)>点卷)<$STR(P10)>0000点经验\
+　　使用当前闭关点可换取(需：<$STR(P21)>元宝)<$STR(P20)>0000点经验\
+<使用闭关点数兑换点卷经验/@点卷经验>　　　　　<使用闭关点数兑换元宝经验/@元宝经验>\
+}
+[@闭关经验标准配置尾]
+{
+
+
+[@点卷经验]
+#IF
+CHECKVAR HUMAN 闭关点数 = 0
+#act
+MESSAGEBOX 提示：你还没有闭关点数呢，无法兑换免费经验！\　\闭关点的获得：离线一小时可获得一点闭关点数！
+GOTO @main
+BREAK
+#IF
+NOT CheckGamePoint ? <$STR(P11)>
+#ACT
+MESSAGEBOX 提示：你的点卷不足，此次兑换需要点卷<$STR(P11)>点。
+GOTO @main
+BREAK
+#IF
+CHECKVAR HUMAN 闭关点数 > 0
+#ACT
+CHANGEEXP + <$STR(P10)>0000
+GamePoint - <$STR(P11)>
+CALCVAR HUMAN 闭关点数 = 0
+SAVEVAR HUMAN 闭关点数 ..\QuestDiary\数据文件\闭关系统Save.txt
+GOTO @main
+BREAK
+
+
+[@元宝经验]
+#IF
+CHECKVAR HUMAN 闭关点数 = 0
+#act
+MESSAGEBOX 提示：你还没有闭关点数呢，无法兑换免费经验！\　\闭关点的获得：离线一小时可获得一点闭关点数！
+GOTO @MAIN
+BREAK
+#IF
+NOT CheckGameGold ? <$STR(P21)>
+#ACT
+MESSAGEBOX 提示：你的元宝不足，此次兑换需要元宝<$STR(P21)>点。
+GOTO @MAIN
+BREAK
+#IF
+CHECKVAR HUMAN 闭关点数 > 0
+#ACT
+CHANGEEXP + <$STR(P20)>0000
+GAMEGOLD - <$STR(P21)>
+CALCVAR HUMAN 闭关点数 = 0
+SAVEVAR HUMAN 闭关点数 ..\QuestDiary\数据文件\闭关系统Save.txt
+GOTO @MAIN
+BREAK
+}
+
+[@闭关经验]
+{
+[@闭关经验_小时同步_全局]
+#IF
+NOT CheckOffLine
+#ACT
+CALCVAR HUMAN 闭关经验 = <$STR(G995)>
+SAVEVAR HUMAN 闭关经验 ..\QuestDiary\数据文件\闭关系统Save.txt
+}

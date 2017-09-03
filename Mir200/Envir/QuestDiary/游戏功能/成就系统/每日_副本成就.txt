@@ -1,0 +1,196 @@
+[@每日_副本成就]
+{
+[@副本成就_每日](2236,1000,1000,0)
+#IF
+#ACT
+MOV S1 <{『领取奖励』=FCO=250}/@副本成就_每日_领奖(每日副本1,[$副本成就_每日_1],1,1)>
+MOV S2 <{『领取奖励』=FCO=250}/@副本成就_每日_领奖(每日副本2,[$副本成就_每日_2],2,2)>
+MOV S3 <{『领取奖励』=FCO=250}/@副本成就_每日_领奖(每日副本3,[$副本成就_每日_3],3,3)>
+MOV S4 <{『领取奖励』=FCO=250}/@副本成就_每日_领奖(每日副本4,[$副本成就_每日_4],4,4)>
+MOV S5 <{『领取奖励』=FCO=250}/@副本成就_每日_领奖(每日副本1,[$副本成就_每日_5],5,5)>
+MOV S6 <{『领取奖励』=FCO=250}/@副本成就_每日_领奖(每日副本2,[$副本成就_每日_6],6,6)>
+MOV S7 <{『领取奖励』=FCO=250}/@副本成就_每日_领奖(每日副本3,[$副本成就_每日_7],7,7)>
+MOV S8 <{『领取奖励』=FCO=250}/@副本成就_每日_领奖(每日副本4,[$副本成就_每日_8],8,8)>
+#IF
+CHECK [341] 1
+#ACT
+MOV S1 {『已经完成』=FCO=251}
+#IF
+CHECK [342] 1
+#ACT
+MOV S2 {『已经完成』=FCO=251}
+#IF
+CHECK [343] 1
+#ACT
+MOV S3 {『已经完成』=FCO=251}
+#IF
+CHECK [344] 1
+#ACT
+MOV S4 {『已经完成』=FCO=251}
+#IF
+CHECK [345] 1
+#ACT
+MOV S5 {『已经完成』=FCO=251}
+#IF
+CHECK [346] 1
+#ACT
+MOV S6 {『已经完成』=FCO=251}
+#IF
+CHECK [347] 1
+#ACT
+MOV S7 {『已经完成』=FCO=251}
+#IF
+CHECK [348] 1
+#ACT
+MOV S8 {『已经完成』=FCO=251}
+
+#IF
+#SAY
+<$USERNAME>：\
+　　通过每日挑战各种难度的副本，从而获得副本成就奖励。\ \
+{⑴：每日挑战[$副本成就_每日_1]次初级副本。=FCO=251}　{奖品：[$副本成就_每日_11]=FCO=253} x1　{今日已挑战[<$HUMAN(每日副本1)>]次。=FCO=254}\ \
+{⑵：每日挑战[$副本成就_每日_1]次中级副本。=FCO=251}　{奖品：[$副本成就_每日_22]=FCO=253} x1　{今日已挑战[<$HUMAN(每日副本2)>]次。=FCO=254}\ \
+{⑶：每日挑战[$副本成就_每日_3]次高级副本。=FCO=251}　{奖品：[$副本成就_每日_33]=FCO=253} x1　{今日已挑战[<$HUMAN(每日副本3)>]次。=FCO=254}\ \
+{⑷：每日挑战[$副本成就_每日_4]次超级副本。=FCO=251}　{奖品：[$副本成就_每日_44]=FCO=253} x1　{今日已挑战[<$HUMAN(每日副本4)>]次。=FCO=254}\ \
+{⑸：每日挑战[$副本成就_每日_5]次初级副本。=FCO=251}　{奖品：[$副本成就_每日_55]=FCO=253} x1　{今日已挑战[<$HUMAN(每日副本1)>]次。=FCO=254}\ \
+{⑹：每日挑战[$副本成就_每日_6]次中级副本。=FCO=251}　{奖品：[$副本成就_每日_66]=FCO=253} x1　{今日已挑战[<$HUMAN(每日副本2)>]次。=FCO=254}\ \
+{⑺：每日挑战[$副本成就_每日_7]次高级副本。=FCO=251}　{奖品：[$副本成就_每日_77]=FCO=253} x1　{今日已挑战[<$HUMAN(每日副本3)>]次。=FCO=254}\ \
+{⑻：每日挑战[$副本成就_每日_8]次超级副本。=FCO=251}　{奖品：[$副本成就_每日_88]=FCO=253} x1　{今日已挑战[<$HUMAN(每日副本4)>]次。=FCO=254}\ \
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<〖点击返回上一页〗/@main>\
+{-272=y}{400=x}　　　<$STR(S1)>\ \
+{400=x}　　　<$STR(S2)>\ \
+{400=x}　　　<$STR(S3)>\ \
+{400=x}　　　<$STR(S4)>\ \
+{400=x}　　　<$STR(S5)>\ \
+{400=x}　　　<$STR(S6)>\ \
+{400=x}　　　<$STR(S7)>\ \
+{400=x}　　　<$STR(S8)>\ \
+
+[@副本成就_每日_领奖]
+#IF
+CHECKVAR HUMAN <$STR(T0)> < <$STR(T1)>
+#ACT
+MESSAGEBOX 提示：你今日的挑战次数不足领取本次成就奖励。
+GOTO @副本成就_每日
+BREAK
+
+#IF
+EQUAL T3 1
+#act
+SET [341] 1
+DynamicGive [$副本成就_每日_11] 1
+ChangeGiveItem 1 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】完成了【副本成就⑴(每日)】获得了<$ITEMX[$Param9]>一章。
+GOTO @副本成就_每日
+BREAK
+
+#IF
+EQUAL T3 2
+#act
+SET [342] 1
+DynamicGive [$副本成就_每日_22] 1
+ChangeGiveItem 1 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】完成了【副本成就⑵(每日)】获得了<$ITEMX[$Param9]>一章。
+GOTO @副本成就_每日
+BREAK
+
+#IF
+EQUAL T3 3
+#act
+SET [343] 1
+DynamicGive [$副本成就_每日_33] 1
+ChangeGiveItem 1 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】完成了【副本成就⑶(每日)】获得了<$ITEMX[$Param9]>一章。
+GOTO @副本成就_每日
+BREAK
+
+#IF
+EQUAL T3 4
+#act
+SET [344] 1
+DynamicGive [$副本成就_每日_44] 1
+ChangeGiveItem 1 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】完成了【副本成就⑷(每日)】获得了<$ITEMX[$Param9]>一章。
+GOTO @副本成就_每日
+BREAK
+
+#IF
+EQUAL T3 5
+#act
+SET [345] 1
+DynamicGive [$副本成就_每日_55] 1
+ChangeGiveItem 1 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】完成了【副本成就⑸(每日)】获得了<$ITEMX[$Param9]>一章。
+GOTO @副本成就_每日
+BREAK
+
+#IF
+EQUAL T3 6
+#act
+SET [346] 1
+DynamicGive [$副本成就_每日_66] 1
+ChangeGiveItem 1 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】完成了【副本成就⑹(每日)】获得了<$ITEMX[$Param9]>一章。
+GOTO @副本成就_每日
+BREAK
+
+#IF
+EQUAL T3 7
+#act
+SET [347] 1
+DynamicGive [$副本成就_每日_77] 1
+ChangeGiveItem 1 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】完成了【副本成就⑺(每日)】获得了<$ITEMX[$Param9]>一章。
+GOTO @副本成就_每日
+BREAK
+
+#IF
+EQUAL T3 8
+#act
+SET [348] 1
+DynamicGive [$副本成就_每日_88] 1
+ChangeGiveItem 1 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】完成了【副本成就⑻(每日)】获得了<$ITEMX[$Param9]>一章。
+GOTO @副本成就_每日
+BREAK
+}

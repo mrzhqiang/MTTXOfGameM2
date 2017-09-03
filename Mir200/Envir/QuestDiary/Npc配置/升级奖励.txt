@@ -1,0 +1,257 @@
+[@升级奖励标准配置头]
+{
+[@main]
+#CALL [\\NPC配置\所有NPC头内容.txt] @系统_所有NPC头_内容
+
+[@系统_所有NPC头_返回_剑侠]
+<$USERNAME>:\
+　　为嘉奖勇士在玛法大陆做出的贡献。\
+每位勇士在升级之后都可在我这领取一份\
+奖励!\ \
+35级奖励　点卷:[$升级奖励_35级奖励_点卷],　[$升级奖励_35级奖励_物品]x1\
+　　　　　　　　　　　　<【领取奖励】/@35>\
+40级奖励　点卷:[$升级奖励_40级奖励_点卷],　[$升级奖励_40级奖励_物品]x2\
+　　　　　　　　　　　　<【领取奖励】/@40>\
+45级奖励　点卷:[$升级奖励_45级奖励_点卷],　[$升级奖励_45级奖励_物品]\
+　　　　　　　　　　　　<【领取奖励】/@45>\
+50级奖励　点卷:[$升级奖励_50级奖励_点卷], [$升级奖励_50级奖励_物品]x1\
+　　　　　　　　　　　　<【领取奖励】/@50>\
+55级奖励　点卷:[$升级奖励_55级奖励_点卷], [$升级奖励_55级奖励_物品]\
+　　　　　　　　　　　　<【领取奖励】/@55>\
+60级奖励　点卷:[$升级奖励_60级奖励_点卷], [$升级奖励_60级奖励_物品]x3\
+　　　　　　　　　　　　<【领取奖励】/@60>\
+65级奖励　点卷:[$升级奖励_65级奖励_点卷], [$升级奖励_65级奖励_物品]\
+　　　　　　　　　　　　<【领取奖励】/@65>\
+70级奖励　点卷:[$升级奖励_70级奖励_点卷],[$升级奖励_70级奖励_物品]x5\
+　　　　　　　　　　　　<【领取奖励】/@70>\
+75级以上每级可获得：[$升级奖励_71级奖励_物品]x5\
+　　　　　　　　　　　　<【领取奖励】/@75>\
+<&关闭/@EXIT>
+
+
+[@系统_所有NPC头_返回_盛大]
+<$USERNAME>:\
+　　为嘉奖勇士在玛法大陆做出的贡献。每位勇士在升级之后都可\
+在我这领取一份奖励!(本界面注意下拉!)\ \
+　<【领取奖励】/@35>　35级点卷:[$升级奖励_35级奖励_点卷]　物品:[$升级奖励_35级奖励_物品]x1\
+　<【领取奖励】/@40>　40级点卷:[$升级奖励_40级奖励_点卷]　物品:[$升级奖励_40级奖励_物品]x2\
+　<【领取奖励】/@45>　45级点卷:[$升级奖励_45级奖励_点卷]　物品:[$升级奖励_45级奖励_物品]\
+　<【领取奖励】/@50>　50级点卷:[$升级奖励_50级奖励_点卷]　物品:[$升级奖励_50级奖励_物品]x1\
+　<【领取奖励】/@55>　55级点卷:[$升级奖励_55级奖励_点卷]　物品:[$升级奖励_55级奖励_物品]\
+　<【领取奖励】/@60>　60级点卷:[$升级奖励_60级奖励_点卷]　物品:[$升级奖励_60级奖励_物品]x3\
+　<【领取奖励】/@65>　65级点卷:[$升级奖励_65级奖励_点卷]　物品:[$升级奖励_65级奖励_物品]\
+　<【领取奖励】/@70>　70级点卷:[$升级奖励_70级奖励_点卷]　物品:[$升级奖励_70级奖励_物品]x5\
+　<【领取奖励】/@75>　75级以上每级都可领取　物品:[$升级奖励_70级奖励_物品]x5\
+<&关闭/@EXIT>
+
+}
+[@升级奖励标准配置尾]
+{
+[@35]
+#IF
+EQUAL C90 0
+#ACT
+MOV P0 35
+MOV P1 [$升级奖励_35级奖励_点卷]
+MOV S1 [$升级奖励_35级奖励_物品]
+MOV P2 1
+GOTO @升级奖励_颁奖_执行
+#ELSEACT
+GOTO @升级奖励_颁奖_判断
+
+[@40]
+#IF
+EQUAL C90 1
+#ACT
+MOV P0 40
+MOV P1 [$升级奖励_40级奖励_点卷]
+MOV S1 [$升级奖励_40级奖励_物品]
+MOV P2 2
+GOTO @升级奖励_颁奖_执行
+#ELSEACT
+GOTO @升级奖励_颁奖_判断
+
+[@45]
+#IF
+EQUAL C90 2
+#ACT
+MOV P0 45
+MOV P1 [$升级奖励_45级奖励_点卷]
+MOV S1 [$升级奖励_45级奖励_物品]
+MOV P2 1
+GOTO @升级奖励_颁奖_执行
+#ELSEACT
+GOTO @升级奖励_颁奖_判断
+
+[@50]
+#IF
+EQUAL C90 3
+#ACT
+MOV P0 50
+MOV P1 [$升级奖励_50级奖励_点卷]
+MOV S1 [$升级奖励_50级奖励_物品]
+MOV P2 1
+GOTO @升级奖励_颁奖_执行
+#ELSEACT
+GOTO @升级奖励_颁奖_判断
+
+[@55]
+#IF
+EQUAL C90 4
+#ACT
+MOV P0 55
+MOV P1 [$升级奖励_55级奖励_点卷]
+MOV S1 [$升级奖励_55级奖励_物品]
+MOV P2 1
+GOTO @升级奖励_颁奖_执行
+#ELSEACT
+GOTO @升级奖励_颁奖_判断
+
+[@60]
+#IF
+EQUAL C90 5
+#ACT
+MOV P0 60
+MOV P1 [$升级奖励_60级奖励_点卷]
+MOV S1 [$升级奖励_60级奖励_物品]
+MOV P2 3
+GOTO @升级奖励_颁奖_执行
+#ELSEACT
+GOTO @升级奖励_颁奖_判断
+
+[@65]
+#IF
+EQUAL C90 6
+#ACT
+MOV P0 65
+MOV P1 [$升级奖励_65级奖励_点卷]
+MOV S1 [$升级奖励_65级奖励_物品]
+MOV P2 1
+GOTO @升级奖励_颁奖_执行
+#ELSEACT
+GOTO @升级奖励_颁奖_判断
+
+[@70]
+#IF
+EQUAL C90 7
+#ACT
+MOV P0 70
+MOV P1 [$升级奖励_70级奖励_点卷]
+MOV S1 [$升级奖励_70级奖励_物品]
+MOV P2 5
+GOTO @升级奖励_颁奖_执行
+#ELSEACT
+GOTO @升级奖励_颁奖_判断
+
+[@75]
+#IF
+#ACT
+MESSAGEBOX 升级提示：75-90级升级奖励将在您升级的时候自动发放到您身上。
+GOTO @main
+BREAK
+
+[@升级奖励_75后奖励]
+#IF
+NOT CheckLevel 75
+#act
+MESSAGEBOX 提示:等级不足。
+BREAK
+#IF
+CheckLevelEx = <$STR(C90)>
+#ACT
+MESSAGEBOX 提示:本级奖励你已经领取过了~
+BREAK
+#if
+CheckLevelEx = 75
+EQUAL C90 8
+#act
+DynamicGive 庆典蛋糕(活动) 5
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+MOV C90 75
+GOTO @main
+BREAK
+#if
+CheckLevelEx > <$STR(C90)>
+#act
+DynamicGive 庆典蛋糕(活动) 5
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+INC C90 1
+GOTO @main
+BREAK
+
+
+[@升级奖励_颁奖_执行]
+#IF
+NOT CheckLevel <$STR(P0)>
+#act
+MESSAGEBOX 提示：你的等级不足领取该奖励!
+GOTO @main
+BREAK
+#IF
+#ACT
+GamePoint + <$STR(P1)>
+DynamicGive <$STR(S1)> <$STR(P2)>
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+INC C90 1
+SENDMSG 0 玩家【<$USERNAME>】成功领取了<$STR(P0)>级升级奖励。
+Close
+
+[@升级奖励_颁奖_判断]
+#IF
+EQUAL C90 0
+#ACT
+MESSAGEBOX 提示：你必须先领取【35级升级奖励】。
+BREAK
+#IF
+EQUAL C90 1
+#ACT
+MESSAGEBOX 提示：你必须先领取【40级升级奖励】。
+BREAK
+#IF
+EQUAL C90 2
+#ACT
+MESSAGEBOX 提示：你必须先领取【45级升级奖励】。
+BREAK
+#IF
+EQUAL C90 3
+#ACT
+MESSAGEBOX 提示：你必须先领取【50级升级奖励】。
+BREAK
+#IF
+EQUAL C90 4
+#ACT
+MESSAGEBOX 提示：你必须先领取【55级升级奖励】。
+BREAK
+#IF
+EQUAL C90 5
+#ACT
+MESSAGEBOX 提示：你必须先领取【60级升级奖励】。
+BREAK
+#IF
+EQUAL C90 6
+#ACT
+MESSAGEBOX 提示：你必须先领取【65级升级奖励】。
+BREAK
+#IF
+EQUAL C90 7
+#ACT
+MESSAGEBOX 提示：你必须先领取【70级升级奖励】。
+BREAK
+#IF
+EQUAL C90 8
+#ACT
+MESSAGEBOX 提示：你必须先领取【75级升级奖励】。
+BREAK
+}

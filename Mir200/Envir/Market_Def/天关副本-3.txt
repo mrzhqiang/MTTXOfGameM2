@@ -1,0 +1,15 @@
+[@main]
+#say
+你好，我这里可是高爆率哦.\
+不过怪物难度有点高,建议组队前往.\
+想进去试试么,需要[通行证]一张\
+<我要挑战/@挑战>
+[@挑战]
+#if
+CheckItem 通行证 1
+#act
+mapmove TGFB1 20 35
+TAKE 通行证 1
+SENDMSG 8 【<$USERNAME>】进入天关副本，希望他能满载而归！
+#ELSEACT
+MESSAGEBOX 提示：你没有【通行证】哦！

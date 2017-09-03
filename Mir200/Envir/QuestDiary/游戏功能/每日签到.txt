@@ -1,0 +1,188 @@
+[@每日签到标准配置头]
+{
+[@main]
+#CALL [\\NPC配置\所有NPC头内容.txt] @系统_所有NPC头_内容
+
+[@系统_所有NPC头_返回_剑侠]
+<$USERNAME>:\
+　　你当前已经连续在线<$LOGINLONG>！\
+当你每天在线时间满足30分钟，便可以在\
+我这里签到一次！连续签到可获得以下奖\
+励！\ \
+　连续签到1天可获得:点卷{[$每日签到_一级奖励_点卷]=FCO=250}\
+　物品:{[$每日签到_一级奖励_物品]=FCO=254}　经验:{[$每日签到_一级奖励_经验]=FCO=251}\ \
+　连续签到3天可获得:点卷{[$每日签到_二级奖励_点卷]=FCO=250}\
+　物品:{[$每日签到_二级奖励_物品]=FCO=254}　经验:{[$每日签到_二级奖励_经验]=FCO=251}\ \
+　连续签到5天可获得:点卷{[$每日签到_三级奖励_点卷]=FCO=250}\
+　物品:{[$每日签到_三级奖励_物品]=FCO=254}　经验:{[$每日签到_三级奖励_经验]=FCO=251}\ \
+<&开始签到/@开始签到>\
+<&查看连续签到天数/@连续签到>\
+<&关闭/@EXIT>
+
+[@系统_所有NPC头_返回_盛大]
+<$USERNAME>:\
+　　你当前已经连续在线<$LOGINLONG>！当你每天在线时间满足30分\
+钟，便可以在我这里签到一次！连续签到可获得以下奖励！\ \
+　连续签到1天可获得:点卷{[$每日签到_一级奖励_点卷]=FCO=250}　物品:{[$每日签到_一级奖励_物品]=FCO=254}　经验:{[$每日签到_一级奖励_经验]=FCO=251}\
+　连续签到3天可获得:点卷{[$每日签到_二级奖励_点卷]=FCO=250}　物品:{[$每日签到_二级奖励_物品]=FCO=254}　经验:{[$每日签到_二级奖励_经验]=FCO=251}\
+　连续签到5天可获得:点卷{[$每日签到_三级奖励_点卷]=FCO=250}　物品:{[$每日签到_三级奖励_物品]=FCO=254}　经验:{[$每日签到_三级奖励_经验]=FCO=251}\
+{10=y}　<开始签到/@开始签到>　　　　<查看连续签到天数/@连续签到>　　　　<关闭/@EXIT>
+
+}
+[@每日签到标准配置尾]
+{
+[@连续签到]
+#IF
+CHECKVAR HUMAN 每日签到 = <$STR(G996)>
+#ACT
+MESSAGEBOX 　　　　　签到提示：感谢您对Amark失心狂乱版本的支持！\　\　　　　　　您已经连续在Amark失心狂乱版本中签到<$HUMAN(连续签到)>天！\　\友情提示：在游戏签到的同时，不要忘记在baidu传奇贴吧也签到一下哦！
+#ELSEACT
+MESSAGEBOX 签到提示：请在今天签到后再来查询连续签到天数！
+
+
+
+[@开始签到]
+#IF
+CHECKVAR HUMAN 每日签到 = <$STR(G996)>
+#act
+MESSAGEBOX 签到提示：你今天已经签到过了！无需重复签到！
+BREAK
+
+#IF
+OnLineLongMin < 30
+#act
+MESSAGEBOX 签到提示：持续在线30分钟以上才能签到哦亲~
+BREAK
+
+#IF
+#act
+MOV D1 <$HUMAN(每日签到)>
+INC D1 1
+
+#IF
+Equal G996 <$STR(D1)>
+#act
+CALCVAR HUMAN 每日签到 = <$STR(G996)>
+SAVEVAR HUMAN 每日签到 ..\QuestDiary\数据文件\签到系统Save.txt
+CALCVAR HUMAN 连续签到 + 1
+SAVEVAR HUMAN 连续签到 ..\QuestDiary\数据文件\签到系统Save.txt
+GOTO @签到奖励
+BREAK
+
+#IF
+#ACT
+CALCVAR HUMAN 每日签到 = <$STR(G996)>
+SAVEVAR HUMAN 每日签到 ..\QuestDiary\数据文件\签到系统Save.txt
+CALCVAR HUMAN 连续签到 = 1
+SAVEVAR HUMAN 连续签到 ..\QuestDiary\数据文件\签到系统Save.txt
+GOTO @签到奖励
+BREAK
+
+
+[@签到奖励]
+#if
+#act
+SET [352] 1
+SENDMSG 7 每日成就提示：每日活动成就⑵已经完成，请倒土城左上角找【左成就】完成。
+#IF
+CHECKVAR HUMAN 连续签到 > 4
+EQUAL C92 0
+#act
+GamePoint + [$每日签到_三级奖励_点卷]
+CHANGEEXP + [$每日签到_三级奖励_经验]
+DynamicGive [$每日签到_三级奖励_物品] 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 8
+SENDMSG 6 <$USERNAME>：连续签到<$HUMAN(连续签到)>天，感谢您对Amark失心狂乱版本的支持！
+SENDMSG 0 玩家：【<$USERNAME>】在土城【梅日倩】处连续签到了<$HUMAN(连续签到)>天，并且领取了签到奖励！
+Close
+BREAK
+
+#IF
+CHECKVAR HUMAN 连续签到 > 2
+EQUAL C92 0
+#act
+GamePoint + [$每日签到_二级奖励_点卷]
+CHANGEEXP + [$每日签到_二级奖励_经验]
+DynamicGive [$每日签到_二级奖励_物品] 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 8
+SENDMSG 6 <$USERNAME>：连续签到<$HUMAN(连续签到)>天，感谢您对Amark失心狂乱版本的支持！
+SENDMSG 0 玩家：【<$USERNAME>】在土城【梅日倩】处连续签到了<$HUMAN(连续签到)>天，并且领取了签到奖励！
+Close
+BREAK
+
+#IF
+CHECKVAR HUMAN 连续签到 > 0
+EQUAL C92 0
+#act
+GamePoint + [$每日签到_一级奖励_点卷]
+CHANGEEXP + [$每日签到_一级奖励_经验]
+DynamicGive [$每日签到_一级奖励_物品] 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 8
+SENDMSG 6 <$USERNAME>：连续签到<$HUMAN(连续签到)>天，感谢您对Amark失心狂乱版本的支持！
+SENDMSG 0 玩家：【<$USERNAME>】在土城【梅日倩】处连续签到了<$HUMAN(连续签到)>天，并且领取了签到奖励！
+Close
+BREAK
+
+#IF
+CHECKVAR HUMAN 连续签到 > 4
+EQUAL C92 1
+#act
+GamePoint + [$每日签到_三级奖励_点卷]
+CHANGEEXP + [$每日签到_三级奖励_经验]
+GamePoint + [$每日签到_三级奖励_点卷]
+CHANGEEXP + [$每日签到_三级奖励_经验]
+DynamicGive [$每日签到_三级奖励_物品] 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 8
+SENDMSG 6 <$USERNAME>：连续签到<$HUMAN(连续签到)>天，感谢您对Amark失心狂乱版本的支持！
+SENDMSG 0 尊贵的会员：【<$USERNAME>】在土城【梅日倩】处连续签到了<$HUMAN(连续签到)>天，并且领取了【双倍】签到奖励！
+Close
+BREAK
+
+#IF
+CHECKVAR HUMAN 连续签到 > 2
+EQUAL C92 1
+#act
+GamePoint + [$每日签到_二级奖励_点卷]
+CHANGEEXP + [$每日签到_二级奖励_经验]
+GamePoint + [$每日签到_二级奖励_点卷]
+CHANGEEXP + [$每日签到_二级奖励_经验]
+DynamicGive [$每日签到_二级奖励_物品] 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 8
+SENDMSG 6 <$USERNAME>：连续签到<$HUMAN(连续签到)>天，感谢您对Amark失心狂乱版本的支持！
+SENDMSG 0 尊贵的会员：【<$USERNAME>】在土城【梅日倩】处连续签到了<$HUMAN(连续签到)>天，并且领取了【双倍】签到奖励！
+Close
+BREAK
+
+#IF
+CHECKVAR HUMAN 连续签到 > 0
+EQUAL C92 1
+#act
+GamePoint + [$每日签到_一级奖励_点卷]
+CHANGEEXP + [$每日签到_一级奖励_经验]
+GamePoint + [$每日签到_一级奖励_点卷]
+CHANGEEXP + [$每日签到_一级奖励_经验]
+DynamicGive [$每日签到_一级奖励_物品] 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 8
+SENDMSG 6 <$USERNAME>：连续签到<$HUMAN(连续签到)>天，感谢您对Amark失心狂乱版本的支持！
+SENDMSG 0 尊贵的会员：【<$USERNAME>】在土城【梅日倩】处连续签到了<$HUMAN(连续签到)>天，并且领取了【双倍】签到奖励！
+Close
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+}

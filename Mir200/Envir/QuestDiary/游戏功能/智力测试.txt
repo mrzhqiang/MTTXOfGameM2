@@ -1,0 +1,162 @@
+[@智力测试]
+{
+[@答题说明]
+{<$SELFNAME>=FCO=243}：\
+　考试每天分为{四场=FCO=251}，时间为{每天的[$智力测试_第一场开始时间]点=FCO=251}\
+{[$智力测试_第二场开始时间]点、[$智力测试_第三场开始时间]点、[$智力测试_第四场开始时间]点=FCO=251}时进行，{每场考试时间=FCO=254}\
+{为一小时=FCO=254}。考试时请带好你的{准考证书=FCO=250}，\
+并交纳一定的出题费。\ \
+{经验值奖励和费用列表：=FCO=243}\
+{　　对应等级　出题费用    经验奖励=FCO=254}\
+　　{1=x}30-45级　{2=x}[$智力测试_出题费用]金币　  [$智力测试_经验奖励]\
+　　{1=x}46-60级　{2=x}[$智力测试_出题费用]金币　  [$智力测试_经验奖励]\
+　　{1=x}61-75级　{2=x}[$智力测试_出题费用]金币　  [$智力测试_经验奖励]\
+　　{1=x}76-90级　{2=x}[$智力测试_出题费用]金币　  [$智力测试_经验奖励]\
+　　{1=x}90以后　 {2=x}[$智力测试_出题费用]金币　  [$智力测试_经验奖励]\
+　　{每个号每天答题上限为[$智力测试_答题上限]道题。=FCO=251}\ \
+<&返回上一页/@main>
+
+[@游戏服务_智力测试]
+#IF
+EQUAL C4 0
+#ACT
+MOV S0
+INC S0 <&{递交准考证书=FCO=250}/@递交准考证书>\
+#ELSEACT
+MOV S0
+INC S0 <&开始答题/@游戏服务_智力测试_出题>\
+
+#IF
+#SAY
+$RESETLABEL
+{<$SELFNAME>=FCO=243}：\
+　你当前可答题数为：{<$STR(C4)>=FCO=251} 次\ \
+<$STR(S0)>
+<&返回上一页/@main>\
+
+[@递交准考证书]
+#IF
+NOT Small C89 [$智力测试_答题上限]
+#ACT
+MESSAGEBOX 抱歉!您今天的答题数已经达到上限!无法继续答题!\请通过其他渠道获得经验!\
+BREAK
+
+#IF
+CHECKITEMCOUNT 准考证书 ? 1
+#ACT
+TAKECOUNT 准考证书 1
+INC C4 10
+GOTO @游戏服务_智力测试
+#ELSEACT
+MESSAGEBOX 你身上有准考证书吗？我怎么没有看到。
+
+
+[@游戏服务_智力测试_出题]
+#IF
+NOT Small C89 [$智力测试_答题上限]
+#ACT
+MESSAGEBOX 抱歉!您今天的答题数已经达到上限!无法继续答题!\请通过其他渠道获得经验!\
+BREAK
+
+#IF
+#ACT
+MOV P0 <$HOUR>
+MOV S0
+
+#IF
+NOT LARGE P0 [$智力测试_第一场开始时间]
+NOT SMALL P0 [$智力测试_第一场开始时间]
+#ACT
+GOTO @游戏服务_智力测试_出题_正式出题
+BREAK
+
+#IF
+NOT LARGE P0 [$智力测试_第二场开始时间]
+NOT SMALL P0 [$智力测试_第二场开始时间]
+#ACT
+GOTO @游戏服务_智力测试_出题_正式出题
+BREAK
+
+#IF
+NOT LARGE P0 [$智力测试_第三场开始时间]
+NOT SMALL P0 [$智力测试_第三场开始时间]
+#ACT
+GOTO @游戏服务_智力测试_出题_正式出题
+BREAK
+
+#IF
+NOT LARGE P0 [$智力测试_第四场开始时间]
+NOT SMALL P0 [$智力测试_第四场开始时间]
+#ACT
+GOTO @游戏服务_智力测试_出题_正式出题
+BREAK
+#ELSEACT
+MESSAGEBOX 考试时间已过，请等待下场考试。
+GOTO @main
+
+[@游戏服务_智力测试_出题_正式出题]
+#IF
+EQUAL C4 0
+#ACT
+GOTO @游戏服务_智力测试
+MESSAGEBOX 如想继续答题，请递交准考证书。
+BREAK
+
+#IF
+#ACT
+MOV P0 [$智力测试_出题费用]
+MOV P1 [$智力测试_经验奖励]
+GOTO @游戏服务_智力测试_正式出题
+
+[@游戏服务_智力测试_正式出题]
+#IF
+CHECKGOLD <$STR(P0)> BIND
+#ACT
+GETRANDOMNAME ../ScriptData/智力问答题库.txt S0
+TAKE 绑定金币 <$STR(P0)>
+DEC C4 1
+BREAK
+#SAY
+$RESETLABEL
+<$STR(S0)>
+
+#IF
+CHECKGOLD <$STR(P0)>
+#ACT
+GETRANDOMNAME ../ScriptData/智力问答题库.txt S0
+TAKE 金币 <$STR(P0)>
+DEC C4 1
+#SAY
+$RESETLABEL
+<$STR(S0)>
+#ELSEACT
+MESSAGEBOX 对不起，您的金币不足！
+
+[@　]
+#IF
+#SAY
+\ \
+　　　　　{很遗憾，回答错误。=FCO=249}\ \
+　本轮答题你还有 {<$STR(C4)>=FCO=251} 次机会。\ \
+<&继续答题/@游戏服务_智力测试_出题>\
+<&返回上一页/@main>\
+
+[@　　]
+#IF
+#ACT
+CHANGEEXP + 500000
+CREDITPOINT + 1
+INC C0 1
+INC C89 1
+GOTO @智力测试_答题正确
+
+[@智力测试_答题正确]
+#IF
+#SAY
+ \
+　　　　　{恭喜你，回答正确。=FCO=250}\ \
+　本轮答题你还有 {<$STR(C4)>=FCO=251} 次机会。\
+　今天你已经累计答对了{<$STR(C89)>=FCO=251}道题。\ \
+<&继续答题/@游戏服务_智力测试_出题>\
+<&返回上一页/@main>\
+}

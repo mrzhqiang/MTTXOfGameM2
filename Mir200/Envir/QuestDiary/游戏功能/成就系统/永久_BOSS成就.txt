@@ -1,0 +1,146 @@
+[@永久_BOSS成就]
+{
+[@BOSS成就_永久](2236,1000,1000,0)
+#IF
+#ACT
+MOV S1 <{『领取奖励』=FCO=250}/@BOSS成就_永久_领奖(1,C13,10)>
+MOV S2 <{『领取奖励』=FCO=250}/@BOSS成就_永久_领奖(2,C13,30)>
+MOV S3 <{『领取奖励』=FCO=250}/@BOSS成就_永久_领奖(3,C14,10)>
+MOV S4 <{『领取奖励』=FCO=250}/@BOSS成就_永久_领奖(4,C14,30)>
+MOV S5 <{『领取奖励』=FCO=250}/@BOSS成就_永久_领奖(5,C15,10)>
+MOV S6 <{『领取奖励』=FCO=250}/@BOSS成就_永久_领奖(6,C15,30)>
+MOV S7 <{『领取奖励』=FCO=250}/@BOSS成就_永久_领奖(7,C16,10)>
+MOV S8 <{『领取奖励』=FCO=250}/@BOSS成就_永久_领奖(8,C16,30)>
+#IF
+CHECK [391] 1
+#ACT
+MOV S1 {『已经完成』=FCO=251}
+#IF
+CHECK [392] 1
+#ACT
+MOV S2 {『已经完成』=FCO=251}
+#IF
+CHECK [393] 1
+#ACT
+MOV S3 {『已经完成』=FCO=251}
+#IF
+CHECK [394] 1
+#ACT
+MOV S4 {『已经完成』=FCO=251}
+#IF
+CHECK [395] 1
+#ACT
+MOV S5 {『已经完成』=FCO=251}
+#IF
+CHECK [396] 1
+#ACT
+MOV S6 {『已经完成』=FCO=251}
+#IF
+CHECK [397] 1
+#ACT
+MOV S7 {『已经完成』=FCO=251}
+#IF
+CHECK [398] 1
+#ACT
+MOV S8 {『已经完成』=FCO=251}
+#IF
+#SAY
+<$USERNAME>：\
+　　通过多次累计挖宝，获得超级奖励。\ \
+{⑴：击杀初级地图BOSS 10次=FCO=251}　　{奖品：[$BOSS成就_永久_1]元宝 　　=FCO=253}　{已击杀初级BOSS <$STR(C13)>次。=FCO=254}\ \
+{⑵：击杀初级地图BOSS 30次=FCO=251}　　{奖品：[$BOSS成就_永久_2]元宝 　　=FCO=253}　{已击杀初级BOSS <$STR(C13)>次。=FCO=254}\ \
+{⑶：击杀中级地图BOSS 10次=FCO=251}　　{奖品：[$BOSS成就_永久_3]元宝 　　=FCO=253}　{已击杀中级BOSS <$STR(C14)>次。=FCO=254}\ \
+{⑷：击杀中级地图BOSS 30次=FCO=251}　　{奖品：[$BOSS成就_永久_4]元宝 　　=FCO=253}　{已击杀中级BOSS <$STR(C14)>次。=FCO=254}\ \
+{⑸：击杀高级地图BOSS 10次=FCO=251}　　{奖品：[$BOSS成就_永久_5]元宝　　=FCO=253}　{已击杀高级BOSS <$STR(C15)>次。=FCO=254}\ \
+{⑹：击杀高级地图BOSS 30次=FCO=251}　　{奖品：[$BOSS成就_永久_6]元宝　　=FCO=253}　{已击杀高级BOSS <$STR(C15)>次。=FCO=254}\ \
+{⑺：击杀超级地图BOSS 10次=FCO=251}　　{奖品：[$BOSS成就_永久_7]元宝　　=FCO=253}　{已击杀超级BOSS <$STR(C16)>次。=FCO=254}\ \
+{⑻：击杀超级地图BOSS 30次=FCO=251}　　{奖品：[$BOSS成就_永久_8]元宝　　=FCO=253}　{已击杀超级BOSS <$STR(C16)>次。=FCO=254}\ \
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<〖点击返回上一页〗/@main>\
+{-272=y}{400=x}　　　<$STR(S1)>\ \
+{400=x}　　　<$STR(S2)>\ \
+{400=x}　　　<$STR(S3)>\ \
+{400=x}　　　<$STR(S4)>\ \
+{400=x}　　　<$STR(S5)>\ \
+{400=x}　　　<$STR(S6)>\ \
+{400=x}　　　<$STR(S7)>\ \
+{400=x}　　　<$STR(S8)>\ \
+
+[@BOSS成就_永久_领奖]
+#IF
+SMALL <$STR(T1)> <$STR(T2)>
+#ACT
+MESSAGEBOX 提示：你当前击杀的BOSS数量不满足奖励要求。
+BREAK
+
+#IF
+EQUAL T0 1
+#ACT
+SET [391] 1
+GAMEGOLD + [$BOSS成就_永久_1]
+SENDMSG 0 玩家【<$USERNAME>】完成了【BOSS成就⑴(永久)】获得了[$BOSS成就_永久_1]个元宝奖励。
+GOTO @BOSS成就_永久
+BREAK
+
+#IF
+EQUAL T0 2
+#ACT
+SET [392] 1
+GAMEGOLD +  [$BOSS成就_永久_2]
+SENDMSG 0 玩家【<$USERNAME>】完成了【BOSS成就⑵(永久)】获得了[$BOSS成就_永久_2]个元宝奖励。
+GOTO @BOSS成就_永久
+BREAK
+
+#IF
+EQUAL T0 3
+#ACT
+SET [393] 1
+GAMEGOLD + [$BOSS成就_永久_3]
+SENDMSG 0 玩家【<$USERNAME>】完成了【BOSS成就⑶(永久)】获得了[$BOSS成就_永久_3]个元宝奖励。
+GOTO @BOSS成就_永久
+BREAK
+
+#IF
+EQUAL T0 4
+#ACT
+SET [394] 1
+GAMEGOLD +  [$BOSS成就_永久_4]
+SENDMSG 0 玩家【<$USERNAME>】完成了【BOSS成就⑷(永久)】获得了[$BOSS成就_永久_4]个元宝奖励。
+GOTO @BOSS成就_永久
+BREAK
+
+#IF
+EQUAL T0 5
+#ACT
+SET [395] 1
+GAMEGOLD + [$BOSS成就_永久_5]
+SENDMSG 0 玩家【<$USERNAME>】完成了【BOSS成就⑸(永久)】获得了[$BOSS成就_永久_5]个元宝奖励。
+GOTO @BOSS成就_永久
+BREAK
+
+#IF
+EQUAL T0 6
+#ACT
+SET [396] 1
+GAMEGOLD +  [$BOSS成就_永久_6]
+SENDMSG 0 玩家【<$USERNAME>】完成了【BOSS成就⑹(永久)】获得了[$BOSS成就_永久_6]个元宝奖励。
+GOTO @BOSS成就_永久
+BREAK
+
+#IF
+EQUAL T0 7
+#ACT
+SET [397] 1
+GAMEGOLD + [$BOSS成就_永久_7]
+SENDMSG 0 玩家【<$USERNAME>】完成了【BOSS成就⑺(永久)】获得了[$BOSS成就_永久_7]个元宝奖励。
+GOTO @BOSS成就_永久
+BREAK
+
+#IF
+EQUAL T0 8
+#ACT
+SET [398] 1
+GAMEGOLD +  [$BOSS成就_永久_8]
+SENDMSG 0 玩家【<$USERNAME>】完成了【BOSS成就⑻(永久)】获得了[$BOSS成就_永久_8]个元宝奖励。
+GOTO @BOSS成就_永久
+BREAK
+}

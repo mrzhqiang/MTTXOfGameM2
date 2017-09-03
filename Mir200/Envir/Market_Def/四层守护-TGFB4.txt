@@ -1,0 +1,15 @@
+[@main]
+#say
+哇,好久都没人能打到我这里来了\
+可喜可贺啊...我下面一层,\可以自己刷BOSS的哦\
+想去下层,得交给我一个\[通行证]+100元宝.\
+<下一层/@下层>
+[@下层]
+#if
+checkitem 通行证 1
+#act
+mapmove TGFB5 20 35
+take 通行证 1
+GameGold - 100
+#ELSEACT
+MESSAGEBOX 提示:你身上有通行证吗,元宝够吗.!

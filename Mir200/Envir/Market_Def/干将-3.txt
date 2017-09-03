@@ -1,0 +1,175 @@
+[@main]
+#say
+尊敬的玩家：【<$USERNAME>】你好，\
+本服的所有装备，武器，都能打的出来\
+但是你如果想快人一步的话，\不妨来我这里打造一把神器。\
+还有隐藏属性的哦.\让你打怪、PK事半功倍。\
+<打造神器/@神器>\<打造终极特戒/@特戒>
+[@神器]
+<偃月刀、天龙刀、冥法棍/@偃月>\<战影、法影、道影/@战影>\
+<龙鳞凤羽（全职业）/@龙鳞>\<魅影神刃（全职业）/@魅影>\
+[@偃月]
+#SAY
+打造偃月刀，天龙刀，冥法棍，\需要黄金三职业武器各一把+4000元宝\
+隐藏属性1.05倍攻击\
+<打造偃月刀/@1>\<打造天龙刀/@2>\<打造冥法棍/@3>
+[@1]
+#if
+checkitem 黄金战刀 1
+checkitem 黄金道枪 1
+checkitem 黄金法轮 1
+checkgamegold ? 4000
+#act
+take 黄金战刀 1
+take 黄金道枪 1
+take 黄金法轮 1
+give 偃月刀 1
+GAMEGOLD - 4000
+SENDMSG 8 恭喜【<$USERNAME>】打造偃月刀成功!
+#elseact
+messagebox 提示：材料不足，请准备好了再来吧！
+[@2]
+#if
+checkitem 黄金战刀 1
+checkitem 黄金道枪 1
+checkitem 黄金法轮 1
+checkgamegold ? 4000
+#act
+take 黄金战刀 1
+take 黄金道枪 1
+take 黄金法轮 1
+give 天龙刀 1
+GAMEGOLD - 4000
+SENDMSG 8 恭喜【<$USERNAME>】打造天龙刀成功
+#elseact
+messagebox 提示：材料不足，请准备好了再来吧！
+[@3]
+#if
+checkitem 黄金战刀 1
+checkitem 黄金道枪 1
+checkitem 黄金法轮 1
+checkgamegold ? 4000
+#act
+take 黄金战刀 1
+take 黄金道枪 1
+take 黄金法轮 1
+give 冥法棍 1
+GAMEGOLD - 4000
+SENDMSG 8 恭喜【<$USERNAME>】打造冥法棍成功!
+#elseact
+messagebox 提示：材料不足，请准备好了再来吧！
+break
+[@战影]
+#say
+打造战影，道影，法影，\需要偃月等级对应职业2把+6000元宝\
+隐藏属性1.10倍攻击\
+<打造战影/@4>\<打造道影/@5>\<打造法影/@6>\
+[@4]
+#if
+checkitem 偃月刀 2
+checkgamegold ? 6000
+#act
+take 偃月刀 2
+give 战影 1
+GAMEGOLD - 6000
+SENDMSG 8 恭喜【<$USERNAME>】打造战影成功!
+#elseact
+messagebox 提示：材料不足，请准备好了再来吧！
+[@5]
+#if
+checkitem 天龙刀 2
+checkgamegold ? 6000
+#act
+take 天龙刀 2
+give 道影 1
+GAMEGOLD - 6000
+SENDMSG 8 恭喜【<$USERNAME>】打造道影成功!
+#elseact
+messagebox 提示：材料不足，请准备好了再来吧！
+[@6]
+#if
+checkitem 冥法棍 2
+checkgamegold ? 6000
+#act
+take 冥法棍 2
+give 法影 1
+GAMEGOLD - 6000
+SENDMSG 8 恭喜【<$USERNAME>】打造法影成功!
+#elseact
+messagebox 提示：材料不足，请准备好了再来吧！！
+break
+[@龙鳞]
+#say
+龙鳞凤羽，全职业武器，1.15倍全属性.\打造他需要战影,法影,道影\任意一把+10000元宝\
+<战影打造龙鳞凤羽/@战>\<法影打造龙鳞凤羽/@法>\<道影打造龙鳞凤羽/@道>
+[@战]
+#if
+checkitem 战影 1
+checkgamegold ? 10000
+#act
+take 战影 1
+give 龙鳞凤羽 1
+GAMEGOLD - 10000
+SENDMSG 8 恭喜【<$USERNAME>】打造龙鳞凤羽成功!
+#elseact
+messagebox 提示：材料不足，请准备好了再来吧！
+[@法]
+#if
+checkitem 法影 1
+checkgamegold ? 10000
+#act
+take 战影 1
+give 龙鳞凤羽 1
+GAMEGOLD - 10000
+SENDMSG 8 恭喜【<$USERNAME>】打造龙鳞凤羽成功!
+#elseact
+messagebox 提示：材料不足，请准备好了再来吧！
+[@道]
+#if
+checkitem 道影 1
+checkgamegold ? 10000
+#act
+take 道影 1
+give 龙鳞凤羽 1
+gamegold - 10000
+SENDMSG 8 恭喜【<$USERNAME>】打造龙鳞凤羽成功!
+#elseact
+messagebox 提示：材料不足，请准备好了再来吧！
+[@魅影]
+#say
+魅影神刃，全职业神奇,1.20倍全属性\
+打造他需要龙鳞凤羽一把+15000元宝\
+<我要打造\@啊>
+[@啊]
+#if
+checkitem 龙鳞凤羽 1
+checkgamegold ? 15000
+#act
+take 龙鳞凤羽 1
+give 魅影神刃 1
+gamegold - 15000
+SENDMSG 8 恭喜【<$USERNAME>】打造魅影神刃成功!
+#elseact
+messagebox 提示：材料不足，请准备好了再来吧！
+
+
+[@特戒]
+本服终极特戒--[麻痹复活戒],超高全属性\
+合成需要逆火系列麻痹+重生+护体各一枚\
+元宝5000.确定合成么?\
+<确定/@确定>
+[@确定]
+#if
+checkitem 逆火麻痹戒 1
+checkitem 逆火重生戒 1
+checkitem 逆火护体戒 1
+checkgamegold ? 5000
+#act
+take 逆火麻痹戒 1
+take 逆火重生戒 1
+take 逆火护体戒 1
+give 麻痹复活戒 1
+gamegold - 5000
+sendmsg 7 打造麻痹复活戒指成功。
+#elseact
+messagebox 提示：材料不足，请准备好了再来吧！

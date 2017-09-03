@@ -1,0 +1,181 @@
+[@杂货店_检测]
+{
+#IF
+CHECKMISSION [108] 1
+CHECKMISSION [109] 0
+#ACT
+INC S0 <&江湖新秀{【任务】=FCO=251}/@任务_新兵上路_第五步>\
+
+#IF
+CHECKMISSION [110] 1
+CHECKMISSION [111] 0
+#ACT
+INC S0 <&初显锋芒{【任务】=FCO=251}/@任务_学习技能_第一步>\
+
+#IF
+CHECKMISSION [113] 1
+CHECKMISSION [114] 0
+CHECKITEMCOUNT 干肉 ? 1
+#ACT
+INC S0 <&初显锋芒{【任务】=FCO=251}/@任务_学习技能_第四步>\
+
+#IF
+CHECKMISSION [122] 1
+CHECKMISSION [129] 0
+#ACT
+INC S0 <&重整河山{【任务】=FCO=251}/@任务_重整河山_第一步_杂货店>\
+}
+
+[@杂货店_脚本]
+{
+[@任务_新兵上路_第五步]
+#IF
+CHECKMISSION [108] 1
+CHECKMISSION [109] 0
+#say
+{<$SELFNAME>=FCO=243}：\
+　　人生无非吃喝拉撒，能不动就不动吧，\
+一动就要消耗元气精力的呢，很亏的呢。\
+啊？什么是元气？你算问对人了！这个元\
+气呢，就是元气的元，元气的气！喂，不\
+要打人好不啦，素质，注意素质！\
+　　好，不跟你闲扯了，浪费我元气，魔\
+血石你拿去吧，免得说我欺欠人。\ \
+<&完成任务/@任务_新人上路_完成>\
+<&结束对话/@exit>\
+
+[@任务_新人上路_完成]
+#if
+CHECKBAGSIZE 1
+#elseact
+MESSAGEBOX 领取失败！请至少预留1格背包空间！
+break
+
+#IF
+CHECKMISSION [108] 1
+CHECKMISSION [109] 0
+#ACT
+SHOWEFFECT [$特效_任务完成]
+SETMISSION [109] 1
+CHANGEEXP + [$任务_新兵上路_第五步奖励经验值]
+CREDITPOINT + 1
+DYNAMICGIVE 魔血石(小) 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+DELMISSION 0
+ADDMISSION 0 任务教程一
+AUTOMOVE 新手村,180,130
+close
+
+[@任务_学习技能_第一步]
+#IF
+CHECKMISSION [110] 1
+CHECKMISSION [111] 0
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　又是那个书呆子，他已经好几次叫人\
+来问我要“回城卷”了，就这样随便给他\
+那不是太便宜他了。你想帮他说情？那也\
+不行，你那么爱管闲事，那你也帮我做件\
+事，我就把“回城卷”给你。最近为了省\
+点元气，好几天没出门了，你要是能帮我\
+去{包万同=FCO=251}那里拿肉过来，我就答应把你要\
+的东西送给你。\ \
+<&我现在就去/@任务_学习技能_第一步_完成>\
+<&结束对话/@exit>\
+
+[@任务_学习技能_第一步_完成]
+#if
+CHECKMISSION [110] 1
+CHECKMISSION [111] 0
+#act
+SHOWEFFECT [$特效_步骤完成] 
+SETMISSION [111] 1
+CHANGEEXP + [$任务_学习技能_第一步奖励经验值]
+CREDITPOINT + 1
+UPDATEMISSION 0 学习技能第二步
+AUTOMOVE 新手村,127,164
+close
+
+[@任务_学习技能_第四步]
+#if
+CHECKBAGSIZE 1
+#elseact
+MESSAGEBOX 请至少预留1格背包空间！
+break
+
+#IF
+CHECKMISSION [113] 1
+CHECKMISSION [114] 0
+CHECKITEMCOUNT 干肉 ? 1
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　嗯，这肉不错，今天晚上终于有肉吃\
+了，既然肉你带过来了，这张“回城卷”\
+你就带去给那个书呆子吧。\ \
+<&现在就送去/@move(新手村,180,130)>\
+<&结束对话/@exit>\
+#act
+TAKECOUNT 干肉 1
+SHOWEFFECT [$特效_步骤完成] 
+SETMISSION [114] 1
+CHANGEEXP + [$任务_学习技能_第四步奖励经验值]
+CREDITPOINT + 1
+UPDATEMISSION 0 学习技能第五步
+GIVE 回城卷（任务） 1
+
+[@任务_重整河山_第一步_杂货店]
+#IF
+CHECKMISSION [122] 1
+CHECKMISSION [129] 0
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　我这里的材料是玛法大陆最好的。\
+　另外，如果你想打造出更好的材料，来\
+找我是绝对没有错。只要选择{打造材料=FCO=251}，\
+你就能看到玛法大陆所有的{材料列表和打=FCO=251}\
+{造所需要的材料=FCO=251}，只要你{收集到足够的材=FCO=251}\
+{料=FCO=251}，可以随时来找我\
+　另外，我这里有些小礼物送给你\ \
+{获得奖励：=FCO=243}\
+　声望值： 1\
+　经验值： [$任务_重整山河_杂货店奖励经验值]\
+　道具奖励：\
+{12=x}{i.324=item}{46=x}{i.342=item}{46=x}{i.360=item}{46=x}{i.378=item}{46=x}{i.396=item}\ \ \
+{12=x}{i.414=item}{46=x}{i.432=item}\ \ \ \
+<&谢谢你的礼物/@任务_重整河山_第一步_杂货店_完成>\
+<&结束对话/@exit>\
+
+[@任务_重整河山_第一步_杂货店_完成]
+#IF
+CHECKMISSION [122] 1
+CHECKMISSION [129] 0
+CHECKBAGSIZE 7
+#elseact
+MESSAGEBOX 领取失败！请至少预留7格背包空间！
+break
+
+#if
+#act
+SHOWEFFECT [$特效_步骤完成] 
+DELMISSION [$任务_主线索引_重整河山_杂货店_变量]
+SETMISSION [129] 1
+CHANGEEXP + [$任务_重整山河_杂货店奖励经验值]
+CREDITPOINT + 1
+DYNAMICGIVE 黑玉之石1级 1
+DYNAMICGIVE 青玉之石1级 1
+DYNAMICGIVE 火红之石1级 1
+DYNAMICGIVE 白雾之石1级 1
+DYNAMICGIVE 锐利之石1级 1
+DYNAMICGIVE 黄沉之石1级 1
+DYNAMICGIVE 暗青之石1级 1
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+GOTO @重整河山_检测第一步完成
+
+#CALLX [\\游戏配置\任务配置\主线任务\重整河山.txt] @重整河山_检测第一步
+}

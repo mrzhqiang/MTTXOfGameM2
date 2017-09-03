@@ -1,0 +1,76 @@
+[@main]
+<$USERNAME>:\ \
+　　沙巴克乃玛法大陆的一颗新星。\
+　　不过想占领她是非常艰辛的。你想要传送服务吗?\ \
+传送到沙巴克左大门　<使用50点卷传送/@左大门1>　<使用10元宝传送/@左大门2>\
+传送到沙巴克正大门　<使用50点卷传送/@正大门1>　<使用10元宝传送/@正大门2>\
+传送到沙巴克右大门　<使用50点卷传送/@右大门1>　<使用10元宝传送/@右大门2>\
+
+[@左大门1]
+#IF
+CheckGamePoint ? 50
+#ACT
+GamePoint - 50
+MAPMOVE 3 579 335
+BREAK
+#IF
+#act
+MESSAGEBOX 提示:点卷不足50点.
+[@左大门2]
+#IF
+CHECKGAMEGOLD ? 10
+#ACT
+GAMEGOLD - 10
+MAPMOVE 3 579 335
+BREAK
+#IF
+#act
+MESSAGEBOX 提示:元宝不足10个.
+
+
+[@正大门1]
+#IF
+CheckGamePoint ? 50
+#ACT
+GamePoint - 50
+MAPMOVE 3 678 336
+BREAK
+#IF
+#act
+MESSAGEBOX 提示:点卷不足50点.
+
+[@正大门2]
+#IF
+CHECKGAMEGOLD ? 10
+#ACT
+GAMEGOLD - 10
+MAPMOVE 3 678 336
+BREAK
+#IF
+#act
+MESSAGEBOX 提示:元宝不足10个.
+
+
+
+
+[@右大门1]
+#IF
+CheckGamePoint ? 50
+#ACT
+GamePoint - 50
+MAPMOVE 3 676 237
+BREAK
+#IF
+#act
+MESSAGEBOX 提示:点卷不足50点.
+
+[@右大门2]
+#IF
+CHECKGAMEGOLD ? 10
+#ACT
+GAMEGOLD - 10
+MAPMOVE 3 676 237
+BREAK
+#IF
+#act
+MESSAGEBOX 提示:元宝不足10个.

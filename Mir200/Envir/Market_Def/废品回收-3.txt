@@ -1,0 +1,307 @@
+[@main]
+#say
+尊敬的玩家【<$USERNAME>】你好。\
+我是人称垃圾王---倩兰。\
+有多余的装备想回收么\
+<我要回收/@回收>\<查看价格/@查看>
+[@回收]
+<一键回收.武器/@武器>\<一键回收.衣服/@衣服>\<一键回收.首饰/@首饰>\
+[@武器]
+#if
+checkitem 破山 1
+#act
+take 破山 1
+GameGold + 10
+#if
+checkitem 铁轮 1
+#act
+take 铁轮 1
+gamegold + 10
+#if
+checkitem 拂尘 1
+#act
+take 拂尘 1
+gamegold + 10
+#if
+checkitem 五彩战刀 1
+#act 
+take 五彩战刀 1
+gamegold + 20
+#if
+checkitem 五爪法杖 1
+#act
+take 五爪法杖 1
+gamegold + 20
+#if
+checkitem 五曲道剑 1
+#act
+take 五曲道剑 1
+gamegold + 20
+#if
+checkitem 帝王战刀 1
+#act
+take 帝王战刀 1
+gamegold + 40
+#if
+checkitem 帝王法杖 1
+#act
+take 帝王法杖 1
+gamegold + 40
+#if
+checkitem 帝王道剑 1
+#act
+take 帝王道剑 1
+gamegold + 40
+#if
+checkitem 黄金战刀 1
+#act
+take 黄金战刀 1
+gamegold + 100
+#if
+checkitem 黄金法轮 1
+#act
+take 黄金法轮 1
+gamegold +  100
+#if
+checkitem 黄金道枪 1
+#act
+take 黄金道枪 1
+gamegold + 100
+#if
+checkitem 偃月刀 1
+#act
+take 偃月刀 1
+gamegold + 200
+#if
+checkitem 天龙刀 1
+#act
+take 天龙刀 1
+gamegold + 200
+#if
+checkitem 冥法棍 1
+#act
+take 冥法棍 1
+gamegold + 200
+#if
+checkitem 战影 1
+#act
+take 战影 1
+gamegold + 300
+#if
+checkitem 法影 1
+#act
+take 法影 1
+gamegold + 300
+#if
+checkitem 道影 1
+#act
+take 道影 1
+gamegold + 300
+
+[@衣服]
+#if
+checkitem 玄铁战甲 1
+#act
+take 玄铁战甲 1
+gamegold + 10
+#if
+checkitem 玄铁战衣 1
+#act
+take 玄铁战衣 1
+gamegold + 10
+#if
+checkitem 绿魂战甲 1
+#act
+take 绿魂战甲 1
+gamegold + 20
+#if
+checkitem 绿魂战衣 1
+#act
+take 绿魂战衣 1
+gamegold + 20
+#if
+checkitem 红魔战甲 1
+#act
+take 红魔战甲 1
+gamegold + 40
+#if
+checkitem 红魔战衣 1
+#act
+take 红魔战衣 1
+gamegold + 40
+#if
+checkitem 土豪战甲 1
+#act
+take 土豪战甲 1
+gamegold + 100
+#if
+checkitem 土豪战衣 1
+#act
+take 土豪战衣 1
+gamegold + 100
+#if
+checkitem 帝王战甲 1
+#act
+take 帝王战甲 1
+gamegold + 200
+#if
+checkitem 帝王战衣 1
+#act
+take 帝王战衣 1
+gamegold + 200
+#if
+checkitem 火龙战甲 1
+#act
+take 火龙战甲 1
+gamegold + 300
+#if
+checkitem 火龙战衣 1
+#act
+take 火龙战衣 1
+gamegold + 300
+
+[@首饰]
+#if
+checkitem 玄铁戒指 1
+#act
+take 玄铁戒指 1
+gamegold + 5
+#if
+checkitem 玄铁手镯 1
+#act
+take 玄铁手镯 1
+gamegold + 5
+#if
+checkitem 玄铁头盔 1
+#act
+take 玄铁头盔 1
+gamegold + 5
+#if
+checkitem 玄铁项链 1
+#act
+take 玄铁项链 1
+gamegold + 5
+
+#if
+checkitem 帝王戒指 1
+#act
+take 帝王戒指 1
+gamegold + 10
+#if
+checkitem 帝王手镯 1
+#act
+take 帝王手镯 1
+gamegold + 10
+#if
+checkitem 帝王头盔 1
+#act
+take 帝王头盔 1
+gamegold + 10
+#if
+checkitem 帝王项链 1
+#act
+take 帝王项链 1
+gamegold + 10
+
+#if
+checkitem 黑狐戒指 1
+#act
+take 黑狐戒指 1
+gamegold + 20
+#if
+checkitem 黑狐手镯 1
+#act
+take 黑狐手镯 1
+gamegold + 20
+#if
+checkitem 黑狐头盔 1
+#act
+take 黑狐头盔 1
+gamegold + 20
+#if
+checkitem 黑狐项链 1
+#act
+take 黑狐项链 1
+gamegold + 20
+
+#if
+checkitem 玲珑戒指 1
+#act
+take 玲珑戒指 1
+gamegold + 40
+#if
+checkitem 玲珑手镯 1
+#act
+take 玲珑手镯 1
+gamegold + 40
+#if
+checkitem 玲珑头盔 1
+#act
+take 玲珑头盔 1
+gamegold + 40
+#if
+checkitem 玲珑项链 1
+#act
+take 玲珑项链 1
+gamegold + 40
+
+#if
+checkitem 心魔戒指 1
+#act
+take 心魔戒指 1
+gamegold + 60
+#if
+checkitem 心魔手镯 1
+#act
+take 心魔手镯 1
+gamegold + 60
+#if
+checkitem 心魔头盔 1
+#act
+take 心魔头盔 1
+gamegold + 60
+#if
+checkitem 心魔项链 1
+#act
+take 心魔项链 1
+gamegold + 60
+
+#if
+checkitem 孤月戒指 1
+#act
+take 孤月戒指 1
+gamegold + 80
+#if
+checkitem 孤月手镯 1
+#act
+take 孤月手镯 1
+gamegold + 80
+#if
+checkitem 孤月头盔 1
+#act
+take 孤月头盔 1
+gamegold + 80
+#if
+checkitem 孤月项链 1
+#act
+take 孤月项链 1
+gamegold + 80
+
+
+
+
+
+
+
+[@查看]
+#say
+破山刀=1 0元宝 五彩刀=2 0元宝\
+帝王刀=4 0元宝 黄金刀=100元宝\
+偃月刀=200元宝 战影刀=300元宝\ \
+玄铁衣=1 0元宝 绿魂衣=2 0元宝\
+红魔衣=4 0元宝 土豪衣=100元宝\
+帝王衣=200元宝 火龙衣=300元宝\ \
+玄铁首饰=5元宝 帝王首饰=10元宝\
+黑狐首饰=20元宝 玲珑首饰=40元宝\
+心魔首饰=60元宝 孤月首饰=80元宝\
+

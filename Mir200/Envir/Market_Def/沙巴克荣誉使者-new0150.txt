@@ -1,0 +1,45 @@
+[@main]
+#IF
+#SAY
+尊敬的玩家<$USERNAME>:\ \
+　　沙巴克乃荣誉的象征。\ \
+　　<领取沙巴克城主奖励/@领取奖励1>\
+
+[@领取奖励1]
+#if
+NOT IsCastleMaster
+#act
+MESSAGEBOX 提示:你不是沙巴克城主.
+BREAK
+
+#IF
+IsUnderWar
+#ACT
+SendMsg 6 现在正处于攻城状态！
+break
+
+#if
+EQUAL G502 1
+#ACT
+MESSAGEBOx 提示:今天的奖励已经领取过了
+break
+
+
+#if
+Equal G501 4
+#act
+goto @第一次领取
+#elseact
+goTo @第二次领取
+
+[@第一次领取]
+#act
+gamegold + 10000
+Mov G502 1
+MESSAGEBOX 提示:领取沙巴克奖励4000元宝成功!
+
+[@第二次领取]
+#act
+gamegold + 4000
+Mov G502 1
+MESSAGEBOX 提示:领取沙巴克奖励4000元宝成功!

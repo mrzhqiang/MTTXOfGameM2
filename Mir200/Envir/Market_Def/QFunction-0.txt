@@ -1,0 +1,640 @@
+
+(@buy @sell @repair @storage @getback @@InPutString @@InputInteger)
+%100
++99
+
+[@modou50]
+#IF
+CheckHitMonName 经验猪
+checkgold 2500
+#ACT
+TAKE  金币 2500
+ChangeExp + 1000
+Break
+
+
+[@modou51]
+#IF
+CheckHitMonName 经验猪
+checkgold 2500
+#ACT
+TAKE  金币 2500
+ChangeExp + 1000
+Break
+
+
+[@PlayLevelUpEx65]
+#IF
+#ACT
+GIVE 金条 1
+
+[@USERCMD3]
+#IF
+NOT CheckNameList ..\QuestDiary\游戏功能\会员名单.txt
+#ACT
+MESSAGEBOX 提示:你不是会员，不享有特殊服务\ \请加入会员以后再来。
+#IF
+CheckNameList ..\QuestDiary\游戏功能\会员名单.txt
+#SAY
+尊敬的会员玩家【<$USERNAME>】你好.\ \
+<会员传送/@传送>\<会员工资/@工资>\<会员洗红/洗红>\<变性服务/@变性>\
+[@传送]
+#act
+mapmove HYZJ
+[@工资]
+#if
+NOT CheckNameList ..\QuestDiary\游戏功能\金条名单.txt
+#act
+give 金条 1
+sendmsg 7 恭喜你今天的免费金条领取成功.
+AddNamelist ..\QuestDiary\游戏功能\金条名单.txt
+break
+#if
+CheckNameList ..\QuestDiary\游戏功能\金条名单.txt
+#act
+MESSAGEBOX 金条已经领取过了。
+break
+[@洗红]
+#IF
+CheckPKPoint 2
+#ACT
+ChangePKPoint = 0
+SENDMSG 7 红名清洗成功。
+#ELSEACT
+MESSAGEBOX 提示：你还不是红名，无法清洗。
+
+[@变性]
+#if
+Gender Man
+#ACT
+ChangeGender 1
+SendMsg 5 你已经变为一个女性了！
+#ELSEACT
+ChangeGender 0
+SendMsg 5 你已经变为一个男性了！
+
+
+
+
+
+
+
+[@KillPlay]
+#IF
+CheckMapName XHZBS
+CHECK [358] 0
+#ACT
+SET [358] 1
+SENDMSG 7 每日成就提示：每日活动成就⑻已经完成，请倒土城左上角找【左成就】完成。
+
+
+[@PlayDie]
+#IF
+CheckMapName XHZBS
+#ACT
+GOTO @行会争霸
+BREAK
+#if
+CheckTextList <$MAP> ../QuestDiary/游戏功能/比武大赛地图清单.txt
+#ACT
+GOTO @比武大赛_淘汰_QF
+BREAK
+
+[@比武大赛_淘汰_QF]
+#IF
+#ACT
+TakeOffItem 0 1
+TakeOffItem 1 1
+TakeOffItem 2 1
+TakeOffItem 3 1
+TakeOffItem 5 1
+TakeOffItem 6 1
+TakeOffItem 7 1
+TakeOffItem 8 1
+TAKE 比武战剑 1
+TAKE 比武法剑 1
+TAKE 比武道剑 1
+TAKE 比武礼服(战) 1
+TAKE 比武礼袍(战) 1
+TAKE 比武礼服(法) 1
+TAKE 比武礼袍(法) 1
+TAKE 比武礼服(道) 1
+TAKE 比武礼袍(道) 1
+TAKE 比武头盔 1
+TAKE 比武项链 1
+TAKE 比武手镯 1
+TAKE 比武手镯 1
+TAKE 比武戒指 1
+TAKE 比武戒指 1
+ChangeLevel = <$STR(C83)>
+ChangeExp = <$STR(C82)>
+MOV C83 0
+MOV C82 0
+MOV P5 [$比武大赛奖励经验]
+MUL P5 <$STR(C81)>
+ChangeExp + <$STR(P5)>
+SENDMSG 7 比武大赛：获得参与奖励，经验值<$STR(P5)>点。
+SENDMSG 0 比武大赛：玩家【<$USERNAME>】在【第<$STR(G967)>轮】淘汰赛中技不如人，遭到了淘汰。
+DelayGoto 1 @行会争霸_复活
+BREAK
+
+[@行会争霸]
+#IF
+EQUAL C84 0
+#ACT
+SENDMSG 7 复活次数已满，你被淘汰出局了。
+SENDMSG 0 行会争霸：【<$GUILDNAME>】行会的【<$USERNAME>】力不从心，已经被淘汰出局了。
+DelayGoto 1 @行会争霸_复活
+BREAK
+#IF
+#ACT
+DEC C84 1
+MAPMOVE XHZBS
+SENDMSG 7 复活成功！复活次数-1，当前你还可以复活【<$STR(C89)>次】。
+DelayGoto 1 @行会争霸_复活2
+BREAK
+
+[@行会争霸_复活2]
+#IF
+#ACT
+Gmexecute 复活 <$USERNAME>
+
+[@行会争霸_复活]
+#IF
+#ACT
+Gmexecute 复活 <$USERNAME>
+MAPMOVE 3 333 333
+
+[@PlayRevive]
+#IF
+Equal N0 2
+#ACT
+MAPMOVE 3 333 333
+SENDMSG 7 本服未设原地复活。
+BREAK
+#IF
+Equal N0 3
+CheckPKPoint 2
+#ACT
+HumanHP + 100000
+HumanMP + 100000
+MAPMOVE 3 839 668
+Break
+#IF
+Equal N0 3
+#ACT
+HumanHP + 100000
+HumanMP + 100000
+Movr P60 19
+Movr P61 19
+MOV P62 321
+MOV P63 321
+INC P62 <$STR(P60)>
+INC P63 <$STR(P61)>
+MAPMOVE 3 <$STR(P62)> <$STR(P63)>
+Break
+
+[@StdmodeFunc1]
+#if
+#ACT
+GOTO @回城_执行_4
+BREAK
+
+[@StdmodeFunc10]
+#ACT
+GIVE 金币 980000
+SENDMSG 7 解开金条，获得金币98万。
+
+[@StdmodeFunc11]
+#ACT
+GIVE 金条 5
+SENDMSG 7 解开金砖，获得金条5根。
+
+[@StdmodeFunc15]
+#if
+NOT CheckUseItem 1
+#ACT
+GIVE 超级祝福油 1
+MESSAGEBOX 提示：你的武器呢？
+BREAK
+#IF
+CheckItemAddValue 1 20 = 0
+#ACT
+HookItem 1
+ChangeGiveItem 7 20 1
+ChangeGiveItem 8
+SENDMSG 7 服用超级祝福油！武器成功获得1点幸运值！
+BREAK
+#IF
+CheckItemAddValue 1 20 = 1
+#ACT
+HookItem 1
+ChangeGiveItem 7 20 2
+ChangeGiveItem 8
+SENDMSG 7 服用超级祝福油！武器成功获得1点幸运值！
+BREAK
+#IF
+CheckItemAddValue 1 20 = 2
+#ACT
+HookItem 1
+ChangeGiveItem 7 20 3
+ChangeGiveItem 8
+SENDMSG 7 服用超级祝福油！武器成功获得1点幸运值！
+BREAK
+#IF
+CheckItemAddValue 1 20 = 3
+#ACT
+HookItem 1
+ChangeGiveItem 7 20 4
+ChangeGiveItem 8
+SENDMSG 7 服用超级祝福油！武器成功获得1点幸运值！
+BREAK
+#IF
+CheckItemAddValue 1 20 = 4
+#ACT
+HookItem 1
+ChangeGiveItem 7 20 5
+ChangeGiveItem 8
+SENDMSG 7 服用超级祝福油！武器成功获得1点幸运值！
+BREAK
+#IF
+CheckItemAddValue 1 20 = 5
+#ACT
+HookItem 1
+ChangeGiveItem 7 20 6
+ChangeGiveItem 8
+SENDMSG 7 服用超级祝福油！武器成功获得1点幸运值！
+BREAK
+#IF
+CheckItemAddValue 1 20 = 6
+#ACT
+HookItem 1
+ChangeGiveItem 7 20 7
+ChangeGiveItem 8
+SENDMSG 7 服用超级祝福油！武器成功获得1点幸运值！
+BREAK
+
+
+[@StdmodeFunc17]
+#IF
+#ACT
+KillMonExpRate 200 3600
+
+
+[@StdmodeFunc50]
+#IF
+EQUAL C92 1
+#ACT
+MESSAGEBOX 提示：你已经加入了黄金会员。无需重复加入！
+GIVE 黄金会员卷 1
+BREAK
+#IF
+EQUAL C92 0
+#ACT
+MOV C92 1
+SetHumIcon 1 3 2239 1 10 0 39 2
+SENDMSG 0 玩家：【<$USERNAME>】使用了【黄金会员卷】加入了Vip。享受多种尊贵特权。
+SENDMSG 8 玩家：【<$USERNAME>】使用了【黄金会员卷】加入了Vip。享受多种尊贵特权。
+DynamicGive 坐骑(玄皇兽) 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+BREAK
+
+[@StdmodeFunc51]
+#IF
+CheckMakeMagicLevel 0 = 0
+#ACT
+AddMakeMagic 0
+SENDMSG 7 恭喜！学习【打造武器★秘籍】成功。
+#ELSEACT
+SENDMSG 7 抱歉。你已经学习过了【打造武器★秘籍】，无法重复学习。
+GIVE 打造武器★秘籍 1
+
+[@StdmodeFunc52]
+#IF
+CheckMakeMagicLevel 1 = 0
+#ACT
+AddMakeMagic 1
+SENDMSG 7 恭喜！学习【打造盔甲★秘籍】成功。
+#ELSEACT
+SENDMSG 7 抱歉。你已经学习过了【打造盔甲★秘籍】，无法重复学习。
+GIVE 打造盔甲★秘籍 1
+
+[@StdmodeFunc53]
+#IF
+CheckMakeMagicLevel 2 = 0
+#ACT
+AddMakeMagic 2
+SENDMSG 7 恭喜！学习【打造头盔★秘籍】成功。
+#ELSEACT
+SENDMSG 7 抱歉。你已经学习过了【打造头盔★秘籍】，无法重复学习。
+GIVE 打造头盔★秘籍 1
+
+[@StdmodeFunc54]
+#IF
+CheckMakeMagicLevel 3 = 0
+#ACT
+AddMakeMagic 3
+SENDMSG 7 恭喜！学习【打造项链★秘籍】成功。
+#ELSEACT
+SENDMSG 7 抱歉。你已经学习过了【打造项链★秘籍】，无法重复学习。
+GIVE 打造项链★秘籍 1
+
+[@StdmodeFunc55]
+#IF
+CheckMakeMagicLevel 4 = 0
+#ACT
+AddMakeMagic 4
+SENDMSG 7 恭喜！学习【打造手镯★秘籍】成功。
+#ELSEACT
+SENDMSG 7 抱歉。你已经学习过了【打造手镯★秘籍】，无法重复学习。
+GIVE 打造手镯★秘籍 1
+
+[@StdmodeFunc56]
+#IF
+CheckMakeMagicLevel 5 = 0
+#ACT
+AddMakeMagic 5
+SENDMSG 7 恭喜！学习【打造戒指★秘籍】成功。
+#ELSEACT
+SENDMSG 7 抱歉。你已经学习过了【打造戒指★秘籍】，无法重复学习。
+GIVE 打造戒指★秘籍 1
+
+[@StdmodeFunc57]
+#IF
+CheckMakeMagicLevel 9 = 0
+#ACT
+AddMakeMagic 9
+SENDMSG 7 恭喜！学习【打造材料★秘籍】成功。
+#ELSEACT
+SENDMSG 7 抱歉。你已经学习过了【打造材料★秘籍】，无法重复学习。
+GIVE 打造材料★秘籍 1
+
+[@StdmodeFunc58]
+#IF
+CHECK [310] 1
+#ACT
+GIVE 古老的藏宝图 1
+SENDMSG 7 您已经开启过藏宝图，请先将本次藏宝图挖掘之后再开启新的藏宝图。
+break
+#SAY
+<$USERNAME>:\ \
+　　您当前宝藏图中记录的宝藏位置位于:\
+　　{盟重省:<$STR(C60)>,<$STR(C61)>。=FCO=250}　<直接传送至挖宝点(100元宝)/@传送挖宝点>\
+　　{盟重省:<$STR(C60)>,<$STR(C61)>。=FCO=250}　<直接传送至挖宝点(200点卷)/@传送挖宝点2>\
+　　<使用白银铲子挖取宝藏/@白银铲子>　{注释:使用白银铲子挖宝几率为100%=FCO=253}\
+　　<使用黄金铲子挖取宝藏/@黄金铲子>　{注释:使用黄金铲子挖宝几率为300%=FCO=253}\ \
+　　<坐标太远了，不想跑。我要放弃这张藏宝图(清空藏宝图)/@清空藏宝图>\
+#IF
+CHECK [310] 0
+#ACT
+SET [310] 1
+GIVE 古老的藏宝图 1
+MOVR N50 0 99
+GetListString ../QuestDiary/游戏功能/藏宝图坐标.txt <$STR(N50)> S10 N10
+MOV C60 <$STR(S10)>
+MOV C61 <$STR(N10)>
+break
+#SAY
+<$USERNAME>:\ \
+　　您当前宝藏图中记录的宝藏位置位于:\
+　　{盟重省:<$STR(C60)>,<$STR(C61)>。=FCO=250}　<直接传送至挖宝点(100元宝)/@传送挖宝点>\ \
+　　<使用白银铲子挖取宝藏/@白银铲子>　{注释:使用白银铲子挖宝几率为100%=FCO=253}\
+　　<使用黄金铲子挖取宝藏/@黄金铲子>　{注释:使用黄金铲子挖宝几率为300%=FCO=253}\ \
+　　<坐标太远了，不想跑。我要放弃这张藏宝图(清空藏宝图)/@清空藏宝图>\
+
+[@清空藏宝图]
+#IF
+NOT CHECKITEM 古老的藏宝图 1
+#act
+MESSAGEBOX 提示：你的藏宝图去哪里了?
+BREAK
+#IF
+#ACT
+MOV C60 0
+MOV C61 0
+SET [310] 0
+TAKE 古老的藏宝图 1
+SENDMSG 7 提示：你的藏宝图已经注销了。
+Close
+BREAK
+
+[@传送挖宝点]
+#IF
+CHECKGAMEGOLD ? 100
+#ACT
+GAMEGOLD - 100
+MAPMOVE 3 <$STR(C60)> <$STR(C61)>
+SENDMSG 7 提示:扣除元宝100个,您已经传送到了挖宝点.
+#SAY
+<$USERNAME>:\ \
+　　您当前宝藏图中记录的宝藏位置位于:\
+　　{盟重省:<$STR(C60)>,<$STR(C61)>。=FCO=250}　<直接传送至挖宝点(100元宝)/@传送挖宝点>\ \
+　　<使用白银铲子挖取宝藏/@白银铲子>　{注释:使用白银铲子挖宝几率为100%=FCO=253}\
+　　<使用黄金铲子挖取宝藏/@黄金铲子>　{注释:使用黄金铲子挖宝几率为300%=FCO=253}\ \
+　　<坐标太远了，不想跑。我要放弃这张藏宝图(清空藏宝图)/@清空藏宝图>\
+BREAK
+#ELSEACT
+MESSAGEBOX 提示:元宝不足100个，无法传送.
+BREAK
+
+[@传送挖宝点2]
+#IF
+CheckGamePoint ? 200
+#ACT
+GamePoint - 200
+MAPMOVE 3 <$STR(C60)> <$STR(C61)>
+SENDMSG 7 提示:扣除点卷200个,您已经传送到了挖宝点.
+#SAY
+<$USERNAME>:\ \
+　　您当前宝藏图中记录的宝藏位置位于:\
+　　{盟重省:<$STR(C60)>,<$STR(C61)>。=FCO=250}　\ \
+　　<使用白银铲子挖取宝藏/@白银铲子>　{注释:使用白银铲子挖宝几率为100%=FCO=253}\
+　　<使用黄金铲子挖取宝藏/@黄金铲子>　{注释:使用黄金铲子挖宝几率为300%=FCO=253}\ \
+　　<坐标太远了，不想跑。我要放弃这张藏宝图(清空藏宝图)/@清空藏宝图>\
+BREAK
+#ELSEACT
+MESSAGEBOX 提示:点卷不足200个，无法传送.
+BREAK
+
+
+
+
+[@TakeOnItem]
+#IF
+Equal N0 0
+#act
+goto @武器强化元素检测
+BREAK
+#IF
+Equal S0 贝尔戒指の麻
+Equal N0 7
+#ACT
+MOV N1 <$STR(N0)>
+DelayGoto 1 @麻痹戒指佩戴
+BREAK
+#IF
+Equal S0 贝尔戒指の麻
+Equal N0 8
+#ACT
+MOV N1 <$STR(N0)>
+DelayGoto 1 @麻痹戒指佩戴
+BREAK
+#IF
+Equal S0 黄金戒指の麻
+Equal N0 7
+#ACT
+MOV N1 <$STR(N0)>
+DelayGoto 1 @麻痹戒指佩戴
+BREAK
+#IF
+Equal S0 黄金戒指の麻
+Equal N0 8
+#ACT
+MOV N1 <$STR(N0)>
+DelayGoto 1 @麻痹戒指佩戴
+BREAK
+#IF
+Equal S0 恶魔戒指の麻
+Equal N0 7
+#ACT
+MOV N1 <$STR(N0)>
+DelayGoto 1 @麻痹戒指佩戴
+BREAK
+#IF
+Equal S0 恶魔戒指の麻
+Equal N0 8
+#ACT
+MOV N1 <$STR(N0)>
+DelayGoto 1 @麻痹戒指佩戴
+BREAK
+#IF
+Equal S0 涅槃戒指の麻
+Equal N0 7
+#ACT
+MOV N1 <$STR(N0)>
+DelayGoto 1 @麻痹戒指佩戴
+BREAK
+#IF
+Equal S0 涅槃戒指の麻
+Equal N0 8
+#ACT
+MOV N1 <$STR(N0)>
+DelayGoto 1 @麻痹戒指佩戴
+BREAK
+
+[@StdmodeFunc70]
+#IF
+CHECK [356] 0
+#ACT
+SET [356] 1
+SENDMSG 7 每日成就提示：每日活动成就⑹已经完成，请倒土城左上角找【左成就】完成。
+
+#IF
+#ACT
+OpenBox 4 100
+
+[@麻痹戒指佩戴]
+#IF
+NOT CheckJob Warrior
+#ACT
+TakeOffItem <$STR(N1)> 1
+SENDMSG 7 麻痹系列戒指禁止战士以外职业佩戴！
+Break
+
+[@武器强化元素检测]
+#IF
+#act
+MOV S81 <$ITEMINFO[$IDX(1)].Streng.1>
+
+#IF
+EQUAL S81 0
+#ACT
+HookItem 1
+ChangeGiveItem 5 18
+ChangeGiveItem 6 0 1
+ChangeGiveItem 6 1 1
+ChangeGiveItem 6 2 1
+ChangeGiveItem 6 3 1
+ChangeGiveItem 6 4 1
+ChangeGiveItem 6 5 1
+ChangeGiveItem 4 3
+ChangeGiveItem 8
+SENDMSG 7 系统检测到武器或衣服的强化属性出错，已经修复。小退后取下武器刷新即可。
+BREAK
+
+[@StdmodeFunc162]
+#if
+NOT CheckNameList ..\QuestDiary\游戏功能\会员名单.txt
+#act
+sendmsg 8 恭喜<$USERNAME>加入会员成功。
+SetRankLevelName %S\★尊贵会员★
+ChangeNameColor 253
+AddNamelist ..\QuestDiary\游戏功能\会员名单.txt
+break
+#if
+CheckNameList ..\QuestDiary\游戏功能\会员名单.txt
+#act
+give 会员卷 1
+messagebox 你已经是会员，无需重复加入！
+break
+
+[@StdmodeFunc163]
+#IF
+#ACT
+GIVE 红牛 20
+
+[@StdmodeFunc164]
+#if
+#act
+gamegold + 10
+
+[@StdmodeFunc165]
+#if
+#act
+gamegold + 20
+
+[@StdmodeFunc166]
+#if
+#act
+gamegold + 50
+
+[@StdmodeFunc167]
+#if
+#act
+gamegold + 100
+
+[@StdmodeFunc168]
+#if
+#act
+gamegold + 200
+[@StdmodeFunc169]
+#if
+#act
+gamegold + 500
+[@StdmodeFunc170]
+#if
+#act
+gamegold + 1000
+
+
+
+
+
+
+#CALLX [\\游戏功能\回城系统.txt] @回城系统
+#CALLX [\\游戏功能\杀人勋章.txt] @杀人勋章
+#CALLX [\\游戏功能\庆典蛋糕.txt] @庆典蛋糕
+#CALLX [\\游戏功能\礼包系统.txt] @礼包系统
+#CALLX [\\游戏功能\邮箱触发.txt] @邮箱触发
+#CALLX [\\游戏功能\任务注销.txt] @任务注销
+#CALLX [\\游戏功能\装备卷轴.txt] @装备卷轴
+#CALLX [\\游戏功能\杀怪触发.txt] @杀怪触发
+#CALLX [\\游戏功能\升级触发.txt] @升级触发
+#CALLX [\\游戏功能\藏宝关卡.txt] @藏宝关卡
+#CALLX [\\游戏功能\挖宝铲子.txt] @挖宝铲子
+#CALLX [\\游戏功能\会员服务.txt] @会员服务
+#CALLX [\\游戏配置\功能调用\刷怪提示.txt] @刷怪提示

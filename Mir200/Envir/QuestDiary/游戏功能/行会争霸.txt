@@ -1,0 +1,19 @@
+[@行会争霸标准配置头]
+{
+[@main]
+#IF
+EQUAL G969  1
+#ACT
+MESSAGEBOX 提示:活动还未开始，奖励无法领取。
+BREAK
+#IF
+CheckMapHumanCount xhzbs = 1
+#act
+MAPMOVE 3 333 333
+GAMEGOLD + [$行会争霸元宝奖励]
+SENDMSG 7 成功领取元宝[$行会争霸元宝奖励]个。
+SENDMSG 0 行会争霸：【<$GUILDNAME>】行会技压群雄，赢得了今天争霸赛的头彩。
+SENDMSG 0 行会争霸：【<$GUILDNAME>】行会的【<$USERNAME>】领取了今天行会争霸的奖励[$行会争霸元宝奖励]元宝。
+#ELSEACT
+SENDMSG 4 行会争霸赛地图只剩一人的时候再点我领取奖励。
+}

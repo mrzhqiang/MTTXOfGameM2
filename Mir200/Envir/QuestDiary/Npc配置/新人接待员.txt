@@ -1,0 +1,297 @@
+[@新人接待标准配置]
+{
+(@@InPutString @@InputInteger)
+[@main]
+#CALL [\\NPC配置\所有NPC头内容.txt] @系统_所有NPC头_内容
+
+[@系统_所有NPC头_返回_剑侠]
+#IF
+EQUAL G991 0
+#SAY
+<$USERNAME>:\ \
+　　欢迎来到[名途天下]，即将带您体\
+验的是2014年独家复古+创新一体的独家版本。\ \
+　　本版本为长久服，若经不起练级打宝\
+之苦，还是麻烦您早点退出的好。\ \ \
+<&我最喜欢长久服了，继续体验本游戏。/@继续_2>
+#ACT
+BREAK
+#IF
+EQUAL C98 1
+#SAY
+<$USERNAME>:\ \
+　　欢迎来到[名途天下]，即将带您体\
+验的是2014独家复古+创新一体的独家版本。\ \
+　　本版本为长久服，若经不起练级打宝\
+之苦，还是麻烦您早点退出的好。\ \ \
+<&我最喜欢长久服了，继续体验本游戏。/@继续_2>
+#ACT
+BREAK
+#IF
+#SAY
+<$USERNAME>:\ \
+　　欢迎来到[名途天下]，即将带您体\
+验的是2014独家复古+创新一体的独家版本。\ \
+　　本版本为长久服，若经不起练级打宝\
+之苦，还是麻烦您早点退出的好。\ \ \
+<&我最喜欢长久服了，继续体验本游戏。/@继续_剑侠>
+[@系统_所有NPC头_返回_盛大]
+#IF
+EQUAL G991 0
+#SAY
+<$USERNAME>:\ \
+　　欢迎来到[名途天下]，即将带您体验的是2014独家复古+\创新一体
+的独家版本。\
+　　本版本为长久服，若经不起练级打宝之苦，还是麻烦您早点退\
+出的好。\ \
+<&我最喜欢复古长久服了，继续体验本游戏/@继续_2>
+#ACT
+BREAK
+#IF
+EQUAL C98 1
+#SAY
+<$USERNAME>:\ \
+　　欢迎来到[名途天下]，即将带您体验的是2014独家复古+\创新一体
+的独家版本。\
+　　本版本为长久服，若经不起练级打宝之苦，还是麻烦您早点退\
+出的好。\ \
+<&我最喜欢复古长久服了，继续体验本游戏/@继续_2>
+#act
+break
+#if
+#say
+<$USERNAME>:\ \
+　　欢迎来到[名途天下]，即将带您体验的是2014独家复古+\创新一体
+的独家版本。\
+　　本版本为长久服，若经不起练级打宝之苦，还是麻烦您早点退\
+出的好。\ \
+<&我最喜欢复古长久服了，继续体验本游戏/@继续_盛大>
+
+
+
+[@继续_2]
+;#IF
+;EQUAL G992 0
+;#ACT
+;MESSAGEBOX 提示：\　\　　尊敬的新人玩家【<$USERNAME>】您好。\　\　　本服务器还未正式开区！正式开区时间为【2013年5月31号17:30】\　\　　当前时间为<$DATETIME>\　\　　空暇之余，可前去[一区]了解一下玩法和功能。\　\
+;BREAK
+#IF
+CHECKITEM 新人通行令 1
+#act
+GOTO @新人通行_执行
+#ELSEACT
+GOTO @MAIN
+MESSAGEBOX 提示：你必须在本地图打怪获得物品【新人通行令】才能离开本地图。
+
+[@新人通行_执行]
+#IF
+CheckJob Warrior
+Gender Man
+#ACT
+TAKE 新人通行令 1
+GIVE 新手刀 1
+GIVE 新人战甲 1
+GIVE 新人战甲(女) 1
+GIVE 新手头盔 1
+GIVE 新手项链 1
+GIVE 新手手镯 2
+GIVE 新手戒指 2
+GIVE 新手腰带 1
+GIVE 新手靴 1
+GIVE 新手勋章 1
+GIVE 新手宝石 1
+AddSkill 基本剑术 3
+AddSkill 攻杀剑术 3
+AddSkill 刺杀剑术 3
+AddSkill 半月弯刀 3
+AddSkill 烈火剑法 3
+AddSkill 野蛮冲撞 3
+MAPMOVE 3 330 330
+DynamicGive 魔血石(小) 1
+DynamicGive 盟重传送石 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 8
+GIVE 绑定金币 100000
+GIVE 金币 100000
+Break
+#IF
+CheckJob Warrior
+#ACT
+TAKE 新人通行令 1
+GIVE 新手刀 1
+GIVE 新人战甲 1
+GIVE 新人战甲(女) 1
+GIVE 新手头盔 1
+GIVE 新手项链 1
+GIVE 新手手镯 2
+GIVE 新手戒指 2
+GIVE 新手腰带 1
+GIVE 新手靴 1
+GIVE 新手勋章 1
+GIVE 新手宝石 1
+AddSkill 基本剑术 3
+AddSkill 攻杀剑术 3
+AddSkill 刺杀剑术 3
+AddSkill 半月弯刀 3
+AddSkill 烈火剑法 3
+AddSkill 野蛮冲撞 3
+MAPMOVE 3 330 330
+DynamicGive 魔血石(小) 1
+DynamicGive 盟重传送石 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 8
+GIVE 绑定金币 100000
+give 金币 100000
+Break
+#IF
+CheckJob Wizard
+Gender Man
+#ACT
+TAKE 新人通行令 1
+GIVE 新手刀 1
+GIVE 新人战甲 1
+GIVE 新人战甲(女) 1
+GIVE 新手头盔 1
+GIVE 新手项链 1
+GIVE 新手手镯 2
+GIVE 新手戒指 2
+GIVE 新手腰带 1
+GIVE 新手靴 1
+GIVE 新手勋章 1
+GIVE 新手宝石 1
+AddSkill 火球术 3
+AddSkill 大火球 3
+AddSkill 抗拒火环 3
+AddSkill 地狱火 3
+AddSkill 疾光电影 3
+AddSkill 雷电术 3
+AddSkill 诱惑之光 3
+AddSkill 瞬息移动 3
+AddSkill 火墙 3
+AddSkill 爆裂火焰 3
+AddSkill 地狱雷光 3
+AddSkill 魔法盾 3
+AddSkill 圣言术 3
+AddSkill 冰咆哮 3
+MAPMOVE 3 330 330
+DynamicGive 魔血石(小) 1
+DynamicGive 盟重传送石 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 8
+GIVE 绑定金币 100000
+give 金币 100000
+Break
+#IF
+CheckJob Wizard
+#ACT
+TAKE 新人通行令 1
+GIVE 新手刀 1
+GIVE 新人战甲 1
+GIVE 新人战甲(女) 1
+GIVE 新手头盔 1
+GIVE 新手项链 1
+GIVE 新手手镯 2
+GIVE 新手戒指 2
+GIVE 新手腰带 1
+GIVE 新手靴 1
+GIVE 新手勋章 1
+GIVE 新手宝石 1
+AddSkill 火球术 3
+AddSkill 大火球 3
+AddSkill 抗拒火环 3
+AddSkill 地狱火 3
+AddSkill 疾光电影 3
+AddSkill 雷电术 3
+AddSkill 诱惑之光 3
+AddSkill 瞬息移动 3
+AddSkill 火墙 3
+AddSkill 爆裂火焰 3
+AddSkill 地狱雷光 3
+AddSkill 魔法盾 3
+AddSkill 圣言术 3
+AddSkill 冰咆哮 3
+MAPMOVE 3 330 330
+DynamicGive 魔血石(小) 1
+DynamicGive 盟重传送石 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 8
+GIVE 绑定金币 100000
+give 金币 100000
+Break
+#IF
+CheckJob Taoist
+Gender Man
+#ACT
+TAKE 新人通行令 1
+GIVE 新手刀 1
+GIVE 新人战甲 1
+GIVE 新人战甲(女) 1
+GIVE 新手头盔 1
+GIVE 新手项链 1
+GIVE 新手手镯 2
+GIVE 新手戒指 2
+GIVE 新手腰带 1
+GIVE 新手靴 1
+GIVE 新手勋章 1
+GIVE 新手宝石 1
+AddSkill 治愈术 3
+AddSkill 精神力战法 3
+AddSkill 施毒术 3
+AddSkill 灵魂火符 3
+AddSkill 召唤骷髅 3
+AddSkill 幽灵盾 3
+AddSkill 神圣战甲术 3
+AddSkill 困魔咒 3
+AddSkill 隐身术 3
+AddSkill 集体隐身术 3
+AddSkill 心灵启示 3
+AddSkill 召唤神兽 3
+MAPMOVE 3 330 330
+DynamicGive 魔血石(小) 1
+DynamicGive 盟重传送石 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 8
+GIVE 绑定金币 100000
+give 金币 100000
+Break
+#IF
+CheckJob Taoist
+#ACT
+TAKE 新人通行令 1
+GIVE 新手刀 1
+GIVE 新人战甲 1
+GIVE 新人战甲(女) 1
+GIVE 新手头盔 1
+GIVE 新手项链 1
+GIVE 新手手镯 2
+GIVE 新手戒指 2
+GIVE 新手腰带 1
+GIVE 新手靴 1
+GIVE 新手勋章 1
+GIVE 新手宝石 1
+AddSkill 治愈术 3
+AddSkill 精神力战法 3
+AddSkill 施毒术 3
+AddSkill 灵魂火符 3
+AddSkill 召唤骷髅 3
+AddSkill 幽灵盾 3
+AddSkill 神圣战甲术 3
+AddSkill 困魔咒 3
+AddSkill 隐身术 3
+AddSkill 集体隐身术 3
+AddSkill 心灵启示 3
+AddSkill 召唤神兽 3
+MAPMOVE 3 330 330
+DynamicGive 魔血石(小) 1
+DynamicGive 盟重传送石 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 8
+GIVE 绑定金币 100000
+give 金币 100000
+Break
+
+
+
+#CALLX [\\游戏功能\推广系统\推广验证.txt] @推广验证
+
+}

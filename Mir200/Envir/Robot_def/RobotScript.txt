@@ -1,0 +1,36 @@
+;#AutoRun NPC RUNONDAY	23:59	@服务器天数
+;#AutoRun NPC MIN 60 @服务器小时数
+;#AutoRun NPC MIN 1 @玩家在线分钟
+#AutoRun NPC RUNONDAY	23:59	@每日清空
+
+;#AutoRun NPC RUNONDAY	9:00	@答题开始
+;#AutoRun NPC RUNONDAY	10:00	@答题结束
+;#AutoRun NPC RUNONDAY	13:00	@答题开始
+;#AutoRun NPC RUNONDAY	14:00	@答题结束
+;#AutoRun NPC RUNONDAY	18:00	@答题开始
+;#AutoRun NPC RUNONDAY	19:00	@答题结束
+;#AutoRun NPC RUNONDAY	22:00	@答题开始
+;#AutoRun NPC RUNONDAY	23:00	@答题结束
+
+;#AutoRun NPC RUNONDAY	18:30	@押镖开始
+;#AutoRun NPC RUNONDAY	23:00	@押镖结束
+#AutoRun NPC RUNONDAY	11:00	@怪物开始4
+#AutoRun NPC RUNONDAY	23:00	@怪物开始2
+;#AutoRun NPC RUNONDAY	12:20	@怪物开始3
+;#AutoRun NPC RUNONDAY	23:01	@怪物开始1
+;#AutoRun NPC RUNONDAY	23:10	@怪物开始2
+;#AutoRun NPC RUNONDAY	23:20	@怪物开始3
+
+;#AutoRun NPC RUNONDAY	18:00	@行会争霸_开启
+;#AutoRun NPC RUNONDAY	18:05	@行会争霸_关闭
+;#AutoRun NPC RUNONDAY	19:50	@沙巴克攻城战_预备
+;#AutoRun NPC RUNONDAY	20:00	@沙巴克攻城战_开启
+;#AutoRun NPC RUNONDAY	22:00	@沙巴克攻城战_关闭
+
+;#AutoRun NPC RUNONDAY	20:00	@沙巴克系统_开启
+;#AutoRun NPC RUNONDAY	22:00	@沙巴克系统_结束
+;#AutoRun NPC RUNONDAY	17:30	@正式开区
+;#AutoRun NPC RUNONDAY	18:00	@推广开通
+
+#AutoRun NPC RUNONDAY	19:50	@攻城提醒
+#AutoRun NPC RUNONDAY	20:00	@沙巴克_yubei

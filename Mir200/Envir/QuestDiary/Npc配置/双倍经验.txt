@@ -1,0 +1,65 @@
+[@双倍经验标准配置头]
+{
+[@main]
+#CALL [\\NPC配置\所有NPC头内容.txt] @系统_所有NPC头_内容
+
+[@系统_所有NPC头_返回_剑侠]
+<$USERNAME>:\ \
+　　想要快人一步吗，想要升级飞快吗？\ \
+　　普通玩家每天可领取1小时双倍经验。\
+　　会员玩家每天可领取2小时双倍经验。\ \
+　　双倍经验可以叠加，并且下线保存。\
+　　不过离线也要计算时间的哦~\ \
+<&我要领取今天的免费双倍经验/@双倍领取>\
+<&随便看看/@EXIT>
+
+[@系统_所有NPC头_返回_盛大]
+<$USERNAME>:\
+{10=y}　想要快人一步吗，想要升级飞快吗？普通玩家每天可领取1小时\
+双倍经验。会员玩家每天可领取2小时双倍经验。双倍经验可以叠\
+加，并且下线保存。不过离线也要计算时间的哦~\ \
+<&我要领取今天的免费双倍经验/@双倍领取>\
+<&随便看看/@EXIT>
+}
+
+[@双倍经验标准配置尾]
+{
+[@双倍领取]
+#IF
+NOT CheckNameList ../QuestDiary/数据文件/双倍经验名单.txt
+#act
+SET [351] 1
+SENDMSG 7 每日成就提示：每日活动成就⑴已经完成，请倒土城左上角找【左成就】完成。
+KillMonExpRate 200 3600
+AddNameList ../QuestDiary/数据文件/双倍经验名单.txt
+Close
+BREAK
+
+#IF
+EQUAL C92 1
+CheckNameList ../QuestDiary/数据文件/双倍经验名单.txt
+#ACT
+GOTO @会员检测
+BREAK
+#IF
+EQUAL C92 0
+CheckNameList ../QuestDiary/数据文件/双倍经验名单.txt
+#ACT
+MESSAGEBOX 提示：你今天的双倍时间已经领完了。成为会员每日可领取2小时双倍经验.
+BREAK
+
+
+[@会员检测]
+#IF
+CheckNameList ../QuestDiary/数据文件/会员双倍名单.txt
+#ACT
+MESSAGEBOX 尊敬的会员，你今天的双倍经验时间已经领取完了。
+BREAK
+#IF
+NOT CheckNameList ../QuestDiary/数据文件/会员双倍名单.txt
+#ACT
+KillMonExpRate 200 3600
+AddNameList ../QuestDiary/数据文件/会员双倍名单.txt
+Close
+BREAK
+}

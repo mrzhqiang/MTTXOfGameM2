@@ -1,0 +1,65 @@
+(@storage @getback @@InPutString @@InputInteger)
+%100
+[@main]
+你好，我能为你做点什么吗？\
+<打开仓库/@storage>\<仓库租用/@仓库_租用仓库>\<一键特修/@特修>\
+;<双倍领取/@双倍>\
+
+[@特修]
+#IF
+#ACT
+RepairItem 
+sendmsg 7 特修完成.
+
+
+[@仓库_租用仓库]
+{<$SELFNAME>=FCO=243}：\
+　您是不是觉得仓库容量不够用呢？我们\
+现在推出{买一送一=FCO=251}活动，只要您租用一个\
+仓库，我们将再加送您一个仓库。\
+　价格：{[$租用仓库费用]=FCO=251}元宝/{30=FCO=251}天 (可重复购买)\ \
+
+　您当前额外仓库到期时间为：\
+　仓库二：{<$STORAGE2STATE>=FCO=250}\
+　仓库三：{<$STORAGE3STATE>=FCO=250}\ \
+
+<&租用额外仓库/@仓库_租用仓库_租用>\
+<&返回/@main>\
+
+[@仓库_租用仓库_租用]
+#if
+CHECKGAMEGOLD ? [$租用仓库费用] 
+#act
+GAMEGOLD - [$租用仓库费用]  
+STORAGETIMECHANGE 2 + [$租用仓库时间]
+STORAGETIMECHANGE 3 + [$租用仓库时间]
+MESSAGEBOX 恭喜您，成功的为额外仓库增加了[$租用仓库时间]天时间
+GOTO @仓库_租用仓库
+#elseact
+MESSAGEBOX 对不起，您的[$元宝名称]不够支付本次费用！
+
+
+
+[@双倍]
+#SAY
+尊敬的玩家【<$USERNAME>】你好。\ \
+在我这里每天可以领取一次双倍经验1小时.\ \
+一天只能领取一次哦.\ \
+<领取双倍经验1小时/@领取>\
+
+[@领取]
+#IF
+CheckNameList ..\QuestDiary\游戏功能\双倍经验名单.txt
+#ACT
+MESSAGEBOX 提示:你今天已经领取过了。
+BREAK
+
+#IF
+not CheckNameList ..\QuestDiary\游戏功能\双倍经验名单.txt
+#ACT
+KillMonExpRate 200 3600
+
+AddNamelist ..\QuestDiary\游戏功能\双倍经验名单.txt
+sendmsg 7 恭喜你今天的双倍经验领取成功.
+BREAK
+[@特修]

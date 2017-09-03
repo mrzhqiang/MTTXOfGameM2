@@ -1,0 +1,5 @@
+[@main]
+#IF
+#ACT
+GamePoint + 10
+SENDMSG 0 玩家：【<$USERNAME>】杀死了低级BOSS，获得了10点卷的奖励。

@@ -1,0 +1,963 @@
+[@装备回收标准配置]
+{
+[@main]
+#CALLX [\\游戏配置\NPC配置\所有NPC调用头内容.txt] @系统_所有NPC头内容
+
+[@系统_所有NPC头_返回]
+#CALLX [\\游戏配置\NPC配置\所有NPC调用头内容.txt] @系统_标准NPC头内容
+
+[@系统_标准NPC头_返回]
+　请选择你要回收的装备的种类。\ \
+<&{回收说明【必读】=FCO=251}/@回收说明>\
+<&{回收55级装备=FCO=243}{【点击立即回收】=FCO=250}/@55级回收>\
+<&{回收65级装备=FCO=243}{【点击立即回收】=FCO=250}/@65级回收>\
+<&{回收75级装备=FCO=243}{【点击立即回收】=FCO=250}/@75级回收>\
+<&{回收85级装备=FCO=243}{【点击立即回收】=FCO=250}/@85级回收>\
+<&{回收95级装备=FCO=243}{【点击立即回收】=FCO=250}/@95级回收>\ \
+<&关闭/@exit>
+
+[@回收说明]
+　装备回收元宝价格和经验：\ \
+{55级装备回收后可获得：=FCO=243}\
+　{元宝：=FCO=251}{[$55级装备回收元宝价格]=FCO=250}　　{经验：=FCO=251}{[$55级装备回收经验值]=FCO=250}\
+{65级装备回收后可获得：=FCO=243}\
+　{元宝：=FCO=251}{[$65级装备回收元宝价格]=FCO=250}　　{经验：=FCO=251}{[$65级装备回收经验值]=FCO=250}\
+{75级装备回收后可获得：=FCO=243}\
+　{元宝：=FCO=251}{[$75级装备回收元宝价格]=FCO=250}　　{经验：=FCO=251}{[$75级装备回收经验值]=FCO=250}\
+{85级装备回收后可获得：=FCO=243}\
+　{元宝：=FCO=251}{[$85级装备回收元宝价格]=FCO=250}　　{经验：=FCO=251}{[$85级装备回收经验值]=FCO=250}\
+{95级装备回收后可获得：=FCO=243}\
+　{元宝：=FCO=251}{[$95级装备回收元宝价格]=FCO=250}　　{经验：=FCO=251}{[$95级装备回收经验值]=FCO=250}\ \
+
+<&返回上一页/@main>
+
+[@55级回收]
+#IF
+CHECKITEMCOUNT 斗师屠龙 ? 1
+#ACT
+MOV S0 斗师屠龙
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师之杖 ? 1
+#ACT
+MOV S0 斗师之杖
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师之剑 ? 1
+#ACT
+MOV S0 斗师之剑
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师战甲(男) ? 1
+#ACT
+MOV S0 斗师战甲(男)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师战甲(女) ? 1
+#ACT
+MOV S0 斗师战甲(女)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师法衣(男) ? 1
+#ACT
+MOV S0 斗师法衣(男)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师法衣(女) ? 1
+#ACT
+MOV S0 斗师法衣(女)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师道袍(男) ? 1
+#ACT
+MOV S0 斗师道袍(男)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师道袍(女) ? 1
+#ACT
+MOV S0 斗师道袍(女)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师战盔(战) ? 1
+#ACT
+MOV S0 斗师战盔(战)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师项链(战) ? 1
+#ACT
+MOV S0 斗师项链(战)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师护腕(战) ? 1
+#ACT
+MOV S0 斗师护腕(战)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师战戒(战) ? 1
+#ACT
+MOV S0 斗师战戒(战)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师腰带(战) ? 1
+#ACT
+MOV S0 斗师腰带(战)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师战靴(战) ? 1
+#ACT
+MOV S0 斗师战靴(战)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师魔盔(法) ? 1
+#ACT
+MOV S0 斗师魔盔(法)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师项链(法) ? 1
+#ACT
+MOV S0 斗师项链(法)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师护腕(法) ? 1
+#ACT
+MOV S0 斗师护腕(法)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师魔戒(法) ? 1
+#ACT
+MOV S0 斗师魔戒(法)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师腰带(法) ? 1
+#ACT
+MOV S0 斗师腰带(法)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师魔靴(法) ? 1
+#ACT
+MOV S0 斗师魔靴(法)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师道盔(道) ? 1
+#ACT
+MOV S0 斗师道盔(道)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师项链(道) ? 1
+#ACT
+MOV S0 斗师项链(道)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师护腕(道) ? 1
+#ACT
+MOV S0 斗师护腕(道)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师道戒(道) ? 1
+#ACT
+MOV S0 斗师道戒(道)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师腰带(道) ? 1
+#ACT
+MOV S0 斗师腰带(道)
+GOTO @回收获得_55
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗师道靴(道) ? 1
+#ACT
+MOV S0 斗师道靴(道)
+GOTO @回收获得_55
+BREAK
+#ELSEACT
+MESSAGEBOX 你身上已没有可供回收的【55级装备】了！
+
+[@回收获得_55]
+#IF
+#ACT
+TAKECOUNT <$STR(S0)> 1
+GAMEGOLD + [$55级装备回收元宝价格]
+CHANGEEXP + [$55级装备回收经验值]
+GOTO @55级回收
+
+[@65级回收]
+#IF
+CHECKITEMCOUNT 大斗师之剑 ? 1
+#ACT
+MOV S0 大斗师之剑
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师彩刃 ? 1
+#ACT
+MOV S0 大斗师彩刃
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师佛尘 ? 1
+#ACT
+MOV S0 大斗师佛尘
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师战甲(男) ? 1
+#ACT
+MOV S0 大斗师战甲(男)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师战甲(女) ? 1
+#ACT
+MOV S0 大斗师战甲(女)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师魔衣(男) ? 1
+#ACT
+MOV S0 大斗师魔衣(男)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师魔衣(女) ? 1
+#ACT
+MOV S0 大斗师魔衣(女)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师道袍(男) ? 1
+#ACT
+MOV S0 大斗师道袍(男)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师道袍(女) ? 1
+#ACT
+MOV S0 大斗师道袍(女)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师战盔(战) ? 1
+#ACT
+MOV S0 大斗师战盔(战)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师项链(战) ? 1
+#ACT
+MOV S0 大斗师项链(战)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师护腕(战) ? 1
+#ACT
+MOV S0 大斗师护腕(战)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师战戒(战) ? 1
+#ACT
+MOV S0 大斗师战戒(战)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师腰带(战) ? 1
+#ACT
+MOV S0 大斗师腰带(战)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师战靴(战) ? 1
+#ACT
+MOV S0 大斗师战靴(战)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师魔盔(法) ? 1
+#ACT
+MOV S0 大斗师魔盔(法)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师项链(法) ? 1
+#ACT
+MOV S0 大斗师项链(法)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师护腕(法) ? 1
+#ACT
+MOV S0 大斗师护腕(法)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师魔戒(法) ? 1
+#ACT
+MOV S0 大斗师魔戒(法)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师腰带(法) ? 1
+#ACT
+MOV S0 大斗师腰带(法)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师魔靴(法) ? 1
+#ACT
+MOV S0 大斗师魔靴(法)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师道盔(道) ? 1
+#ACT
+MOV S0 大斗师道盔(道)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师项链(道) ? 1
+#ACT
+MOV S0 大斗师项链(道)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师护腕(道) ? 1
+#ACT
+MOV S0 大斗师护腕(道)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师道戒(道) ? 1
+#ACT
+MOV S0 大斗师道戒(道)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师腰带(道) ? 1
+#ACT
+MOV S0 大斗师腰带(道)
+GOTO @回收获得_65
+BREAK
+
+#IF
+CHECKITEMCOUNT 大斗师道靴(道) ? 1
+#ACT
+MOV S0 大斗师道靴(道)
+GOTO @回收获得_65
+BREAK
+#ELSEACT
+MESSAGEBOX 你身上已没有可供回收的【65级装备】了！
+
+[@回收获得_65]
+#IF
+#ACT
+TAKECOUNT <$STR(S0)> 1
+GAMEGOLD + [$65级装备回收元宝价格]
+CHANGEEXP + [$65级装备回收经验值]
+GOTO @65级回收
+
+[@75级回收]
+#IF
+CHECKITEMCOUNT 斗灵圣剑 ? 1
+#ACT
+MOV S0 斗灵圣剑
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵法轮 ? 1
+#ACT
+MOV S0 斗灵法轮
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵银月 ? 1
+#ACT
+MOV S0 斗灵银月
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵战甲(男) ? 1
+#ACT
+MOV S0 斗灵战甲(男)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵战甲(女) ? 1
+#ACT
+MOV S0 斗灵战甲(女)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵魔衣(男) ? 1
+#ACT
+MOV S0 斗灵魔衣(男)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵魔衣(女) ? 1
+#ACT
+MOV S0 斗灵魔衣(女)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵道袍(男) ? 1
+#ACT
+MOV S0 斗灵道袍(男)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵道袍(女) ? 1
+#ACT
+MOV S0 斗灵道袍(女)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵战盔(战) ? 1
+#ACT
+MOV S0 斗灵战盔(战)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵项链(战) ? 1
+#ACT
+MOV S0 斗灵项链(战)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵护腕(战) ? 1
+#ACT
+MOV S0 斗灵护腕(战)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵战戒(战) ? 1
+#ACT
+MOV S0 斗灵战戒(战)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵腰带(战) ? 1
+#ACT
+MOV S0 斗灵腰带(战)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵战靴(战) ? 1
+#ACT
+MOV S0 斗灵战靴(战)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵魔盔(法) ? 1
+#ACT
+MOV S0 斗灵魔盔(法)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵项链(法) ? 1
+#ACT
+MOV S0 斗灵项链(法)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵护腕(法) ? 1
+#ACT
+MOV S0 斗灵护腕(法)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵魔戒(法) ? 1
+#ACT
+MOV S0 斗灵魔戒(法)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵腰带(法) ? 1
+#ACT
+MOV S0 斗灵腰带(法)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵魔靴(法) ? 1
+#ACT
+MOV S0 斗灵魔靴(法)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵道盔(道) ? 1
+#ACT
+MOV S0 斗灵道盔(道)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵项链(道) ? 1
+#ACT
+MOV S0 斗灵项链(道)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵护腕(道) ? 1
+#ACT
+MOV S0 斗灵护腕(道)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵道戒(道) ? 1
+#ACT
+MOV S0 斗灵道戒(道)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵腰带(道) ? 1
+#ACT
+MOV S0 斗灵腰带(道)
+GOTO @回收获得_75
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗灵道靴(道) ? 1
+#ACT
+MOV S0 斗灵道靴(道)
+GOTO @回收获得_75
+BREAK
+#ELSEACT
+MESSAGEBOX 你身上已没有可供回收的【75级装备】了！
+
+[@回收获得_75]
+#IF
+#ACT
+TAKECOUNT <$STR(S0)> 1
+GAMEGOLD + [$75级装备回收元宝价格]
+CHANGEEXP + [$75级装备回收经验值]
+GOTO @75级回收
+
+[@85级回收]
+#IF
+CHECKITEMCOUNT 斗王开天斩 ? 1
+#ACT
+MOV S0 斗王开天斩
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王圣衣(男) ? 1
+#ACT
+MOV S0 斗王圣衣(男)
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王圣衣(女) ? 1
+#ACT
+MOV S0 斗王圣衣(女)
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王战盔(战) ? 1
+#ACT
+MOV S0 斗王战盔(战)
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王项链(战) ? 1
+#ACT
+MOV S0 斗王项链(战)
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王护腕(战) ? 1
+#ACT
+MOV S0 斗王护腕(战)
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王战戒(战) ? 1
+#ACT
+MOV S0 斗王战戒(战)
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王腰带(战) ? 1
+#ACT
+MOV S0 斗王腰带(战)
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王战靴(战) ? 1
+#ACT
+MOV S0 斗王战靴(战)
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王诛神杖 ? 1
+#ACT
+MOV S0 斗王诛神杖
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王魔盔(法) ? 1
+#ACT
+MOV S0 斗王魔盔(法)
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王项链(法) ? 1
+#ACT
+MOV S0 斗王项链(法)
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王护腕(法) ? 1
+#ACT
+MOV S0 斗王护腕(法)
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王魔戒(法) ? 1
+#ACT
+MOV S0 斗王魔戒(法)
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王腰带(法) ? 1
+#ACT
+MOV S0 斗王腰带(法)
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王魔靴(法) ? 1
+#ACT
+MOV S0 斗王魔靴(法)
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王金月刀 ? 1
+#ACT
+MOV S0 斗王金月刀
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王道盔(道) ? 1
+#ACT
+MOV S0 斗王道盔(道)
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王项链(道) ? 1
+#ACT
+MOV S0 斗王项链(道)
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王护腕(道) ? 1
+#ACT
+MOV S0 斗王护腕(道)
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王道戒(道) ? 1
+#ACT
+MOV S0 斗王道戒(道)
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王腰带(道) ? 1
+#ACT
+MOV S0 斗王腰带(道)
+GOTO @回收获得_85
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗王道靴(道) ? 1
+#ACT
+MOV S0 斗王道靴(道)
+GOTO @回收获得_85
+BREAK
+#ELSEACT
+MESSAGEBOX 你身上已没有可供回收的【85级装备】了！
+
+[@回收获得_85]
+#IF
+#ACT
+TAKECOUNT <$STR(S0)> 1
+GAMEGOLD + [$85级装备回收元宝价格]
+CHANGEEXP + [$85级装备回收经验值]
+GOTO @85级回收
+
+[@95级回收]
+#IF
+CHECKITEMCOUNT 斗皇神甲(男) ? 1
+#ACT
+MOV S0 斗皇神甲(男)
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇赤骨刃 ? 1
+#ACT
+MOV S0 斗皇赤骨刃
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇神甲(女) ? 1
+#ACT
+MOV S0 斗皇神甲(女)
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇战盔(战) ? 1
+#ACT
+MOV S0 斗皇战盔(战)
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇项链(战) ? 1
+#ACT
+MOV S0 斗皇项链(战)
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇护腕(战) ? 1
+#ACT
+MOV S0 斗皇护腕(战)
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇战戒(战) ? 1
+#ACT
+MOV S0 斗皇战戒(战)
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇腰带(战) ? 1
+#ACT
+MOV S0 斗皇腰带(战)
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇魔盔(法) ? 1
+#ACT
+MOV S0 斗皇魔盔(法)
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇战靴(战) ? 1
+#ACT
+MOV S0 斗皇战靴(战)
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇项链(法) ? 1
+#ACT
+MOV S0 斗皇项链(法)
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇护腕(法) ? 1
+#ACT
+MOV S0 斗皇护腕(法)
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇魔戒(法) ? 1
+#ACT
+MOV S0 斗皇魔戒(法)
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇腰带(法) ? 1
+#ACT
+MOV S0 斗皇腰带(法)
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇魔靴(法) ? 1
+#ACT
+MOV S0 斗皇魔靴(法)
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇道盔(道) ? 1
+#ACT
+MOV S0 斗皇道盔(道)
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇项链(道) ? 1
+#ACT
+MOV S0 斗皇项链(道)
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇护腕(道) ? 1
+#ACT
+MOV S0 斗皇护腕(道)
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇道戒(道) ? 1
+#ACT
+MOV S0 斗皇道戒(道)
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇腰带(道) ? 1
+#ACT
+MOV S0 斗皇腰带(道)
+GOTO @回收获得_95
+BREAK
+
+#IF
+CHECKITEMCOUNT 斗皇道靴(道) ? 1
+#ACT
+MOV S0 斗皇道靴(道)
+GOTO @回收获得_95
+BREAK
+#ELSEACT
+MESSAGEBOX 你身上已没有可供回收的【95级装备】了！
+
+[@回收获得_95]
+#IF
+#ACT
+TAKECOUNT <$STR(S0)> 1
+GAMEGOLD + [$95级装备回收元宝价格]
+CHANGEEXP + [$95级装备回收经验值]
+GOTO @95级回收
+}

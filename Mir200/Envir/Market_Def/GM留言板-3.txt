@@ -1,0 +1,18 @@
+(@@InPutString @@InputInteger)
+[@main]
+<$USERNAME>:\ \
+　名途天下是一个非常耐玩,非常特色的版本！没有什么东西是\
+能够绝对完美的。但是,我们愿意争取做到最完美！在游戏的过程\
+中可能会出现一些Bug以及不足的地方！希望各位玩家能够配合我\
+们及时修复这些不足和漏洞！对于留言不足和漏洞的玩家,一旦核\
+实或是意见收录，我们会奖励10-200Rmb等值的元宝!\
+{10=y}<我要给Gm留言(等级大于50级)[注：留言信息请不要有空格出现。]/@@InPutString10#请输入要留言的内容。[内容请不要带有空格]>
+
+[@@InPutString10]
+#IF
+CheckLevel 50
+#act
+AddTextList <$USERNAME>:<$STR(S10)> ../QuestDiary/Gm留言.txt 0
+SENDMSG 7 留言成功！您当前的留言内容如下：<$STR(S10)>
+#ELSEACT
+MESSAGEBOX 提示：等级不足50级。

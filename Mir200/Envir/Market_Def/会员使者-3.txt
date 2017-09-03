@@ -1,0 +1,55 @@
+[@main]
+#IF
+NOT CheckNameList ..\QuestDiary\游戏功能\会员名单.txt
+#ACT
+MESSAGEBOX 提示:你不是会员，不享有特殊服务\ \请加入会员以后再来。
+#IF
+CheckNameList ..\QuestDiary\游戏功能\会员名单.txt
+#SAY
+尊敬的会员玩家【<$USERNAME>】你好.\ \
+<会员传送/@传送>\<领取每日福利/@工资>\<开启随身泡点/@开启>\
+<会员免费洗红名/@洗红>\<变性服务/@变性>\
+[@传送]
+<会员之家/@1>\ \<会员圣地/@2>
+[@1]
+#act
+mapmove HYSD1
+[@2]
+#act
+mapmove HYSD2
+[@工资]
+#if
+NOT CheckNameList ..\QuestDiary\游戏功能\金条名单.txt
+#act
+give 金条 1
+give 通行证 1
+give 50元宝
+sendmsg 7 恭喜你今天的免费福利领取成功.
+AddNamelist ..\QuestDiary\游戏功能\金条名单.txt
+break
+#if
+CheckNameList ..\QuestDiary\游戏功能\金条名单.txt
+#act
+MESSAGEBOX 会员福利已经领取过了。
+break
+[@开启]
+#ACT
+SetAutoGetExp 1 800 0
+[@洗红]
+#IF
+CheckPKPoint 2
+#ACT
+ChangePKPoint = 0
+SENDMSG 7 红名清洗成功。
+#ELSEACT
+MESSAGEBOX 提示：你还不是红名，无法清洗。
+
+[@变性]
+#if
+Gender Man
+#ACT
+ChangeGender 1
+SendMsg 5 你已经变为一个女性了！
+#ELSEACT
+ChangeGender 0
+SendMsg 5 你已经变为一个男性了！

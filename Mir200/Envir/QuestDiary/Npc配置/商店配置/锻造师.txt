@@ -1,0 +1,1155 @@
+[@锻造师标准配置头]
+{
+(@ArmStrengthen @ArmUnseal @ArmRemoveStone @MakeDrug @ArmAbilityMove)
+%100
++99
+[@main]
+#CALL [\\NPC配置\所有NPC头内容.txt] @系统_所有NPC头_内容
+
+[@系统_所有NPC头_返回_剑侠]
+　有什么我可以帮你的。\ \
+<&打造剑甲/@makedrug>\
+<&装备强化/@ArmStrengthen>\
+<&装备开光/@ArmUnseal>\
+<&装备属性转移/@ArmAbilityMove>\
+<&{强化灵石兑换=FCO=249}/@灵石兑换>\
+<&{卸下宝石=FCO=243}/@ArmRemoveStone>\
+<&装备强化说明/@装备强化说明>\
+<&装备开光说明/@装备开光说明>\
+<&关闭/@exit>\
+
+[@系统_所有NPC头_返回_盛大]
+<$USERNAME>：\ \
+　有什么我可以帮你的。\ \
+<〖打造剑甲〗/@makedrug>　　<〖武器强化〗/@武器强化>　　<〖衣服强化〗/@衣服强化>　　<〖装备开光〗/@装备开光>\ \
+<〖卸下宝石〗/@ArmRemoveStone>　　<〖强化转移〗/@强化转移>　　<〖勋章打造〗/@勋章打造>　　<〖首饰打造〗/@首饰打造>\
+{10=y}<〖关闭〗/@exit>\
+}
+[@锻造师标准配置尾]
+{
+[MakeItems]
+$武器打造	$一转武器	命运之刃
+$武器打造	$一转武器	迷离魔杖
+$武器打造	$一转武器	龙纹剑
+$武器打造	$二转武器	绿玉屠龙
+$武器打造	$二转武器	三爪杖
+$武器打造	$二转武器	雪浮尘
+$武器打造	$三转武器	黄金开天
+$武器打造	$三转武器	黄金魔杖
+$武器打造	$三转武器	黄金偃月
+$武器打造	$四转武器	开天神剑
+$武器打造	$四转武器	玄冰神剑
+$武器打造	$四转武器	八卦斩
+;$武器打造	$五转武器	游龙圣剑
+;$武器打造	$五转武器	寒冰玄弓
+;$武器打造	$五转武器	玄月大刀
+$衣服打造	$一转衣服	天魔铠甲(男)
+$衣服打造	$一转衣服	天魔铠甲(女)
+$衣服打造	$一转衣服	幻魔披风(男)
+$衣服打造	$一转衣服	幻魔披风(女)
+$衣服打造	$一转衣服	圣魔道袍(男)
+$衣服打造	$一转衣服	圣魔道袍(女)
+$衣服打造	$二转衣服	白龙战骑(男)
+$衣服打造	$二转衣服	白龙战骑(女)
+$衣服打造	$二转衣服	白龙法骑(男)
+$衣服打造	$二转衣服	白龙法骑(女)
+$衣服打造	$二转衣服	白龙道骑(男)
+$衣服打造	$二转衣服	白龙道骑(女)
+$衣服打造	$三转衣服	魔幻战甲(男)
+$衣服打造	$三转衣服	魔幻战衣(女)
+$衣服打造	$三转衣服	魔幻魔甲(男)
+$衣服打造	$三转衣服	魔幻魔衣(女)
+$衣服打造	$三转衣服	魔幻道甲(男)
+$衣服打造	$三转衣服	魔幻道衣(女)
+$衣服打造	$四转衣服	黑色礼服(战)
+$衣服打造	$四转衣服	白色礼服(战)
+$衣服打造	$四转衣服	黑色礼服(法)
+$衣服打造	$四转衣服	白色礼服(法)
+$衣服打造	$四转衣服	黑色礼服(道)
+$衣服打造	$四转衣服	白色礼服(道)
+;$衣服打造	$五转衣服	圣灵战甲(男)
+;$衣服打造	$五转衣服	圣灵战衣(女)
+;$衣服打造	$五转衣服	圣灵魔甲(男)
+;$衣服打造	$五转衣服	圣灵魔衣(女)
+;$衣服打造	$五转衣服	圣灵道甲(男)
+;$衣服打造	$五转衣服	圣灵道衣(女)
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@武器强化]
+#IF
+NOT CheckUseItem 1
+#ACT
+MESSAGEBOX 提示：请将要强化的武器佩戴在身上。
+BREAK
+#IF
+#ACT
+MOV P10 1
+MOV S10 武器
+MOV S90 @开始强化_武器
+GOTO @开始强化_计算
+
+[@开始强化_计算]
+#IF
+#act
+MOV P19 <$ITEMINFO[$IDX(1)].Streng(1)>
+
+#IF
+EQUAL P19 0
+#ACT
+MOV P20 90
+MOV P22 [$装备强化_1级强化基础费用]
+
+#IF
+EQUAL P19 1
+#ACT
+MOV P20 85
+MOV P22 [$装备强化_1级强化基础费用]
+
+#IF
+EQUAL P19 2
+#ACT
+MOV P20 80
+MOV P22 [$装备强化_1级强化基础费用]
+
+#IF
+EQUAL P19 3
+#ACT
+MOV P20 75
+MOV P22 [$装备强化_2级强化基础费用]
+
+#IF
+EQUAL P19 4
+#ACT
+MOV P20 70
+MOV P22 [$装备强化_2级强化基础费用]
+
+#IF
+EQUAL P19 5
+#ACT
+MOV P20 65
+MOV P22 [$装备强化_2级强化基础费用]
+
+#IF
+EQUAL P19 6
+#ACT
+MOV P20 60
+MOV P22 [$装备强化_3级强化基础费用]
+
+#IF
+EQUAL P19 7
+#ACT
+MOV P20 55
+MOV P22 [$装备强化_3级强化基础费用]
+
+#IF
+EQUAL P19 8
+#ACT
+MOV P20 50
+MOV P22 [$装备强化_3级强化基础费用]
+
+#IF
+EQUAL P19 9
+#ACT
+MOV P20 45
+MOV P22 [$装备强化_4级强化基础费用]
+
+#IF
+EQUAL P19 10
+#ACT
+MOV P20 40
+MOV P22 [$装备强化_4级强化基础费用]
+
+#IF
+EQUAL P19 11
+#ACT
+MOV P20 35
+MOV P22 [$装备强化_4级强化基础费用]
+
+#IF
+EQUAL P19 12
+#ACT
+MOV P20 30
+MOV P22 [$装备强化_5级强化基础费用]
+
+#IF
+EQUAL P19 13
+#ACT
+MOV P20 25
+MOV P22 [$装备强化_5级强化基础费用]
+
+#IF
+EQUAL P19 14
+#ACT
+MOV P20 20
+MOV P22 [$装备强化_5级强化基础费用]
+
+#IF
+EQUAL P19 15
+#ACT
+MOV P20 15
+MOV P22 [$装备强化_6级强化基础费用]
+
+#IF
+EQUAL P19 16
+#ACT
+MOV P20 10
+MOV P22 [$装备强化_6级强化基础费用]
+
+#IF
+EQUAL P19 17
+#ACT
+MOV P20 5
+MOV P22 [$装备强化_6级强化基础费用]
+
+#IF
+#ACT
+MUL P23 <$STR(P22)> 2
+MUL P24 <$STR(P22)> 4
+MUL P25 <$STR(P22)> 8
+goto <$STR(S90)>
+
+[@开始强化_武器]
+#IF
+#ACT
+MOV S30 <$WEAPON>
+MOV P30 <$ITEMINFO[$IDX(1)].Streng(1)>
+#say
+<$USERNAME>：\
+　　你当前选择要强化的【{<$STR(S10)>=FCO=253}：{<$WEAPON>=FCO=251}】。\
+　　强化信息：{<$ITEMINFO[$IDX(1)].Streng(1)>=FCO=250}/{<$ITEMINFO[$IDX(1)].Streng(2)>=FCO=249}　　当前等级强化成功率为：{<$STR(P20)>=FCO=250}/{100=FCO=249}\ \
+<〖使用低级强化〗/@低级强化_武器>　{失败后强化等级清空。=FCO=250}{强化费用=FCO=251}：<$STR(P22)>{元宝。=FCO=251}\
+<〖使用中级强化〗/@中级强化_武器>　{失败后强化等级降级。=FCO=253}{强化费用=FCO=251}：<$STR(P23)>{元宝。=FCO=251}\
+<〖使用高级强化〗/@高级强化_武器>　{失败后强化等级不变。=FCO=251}{强化费用=FCO=251}：<$STR(P24)>{元宝。=FCO=251}\
+<〖使用超级强化〗/@超级强化_武器>　{100%强化成功。　　　=FCO=249}{强化费用=FCO=251}：<$STR(P25)>{元宝。=FCO=251}\
+
+[@低级强化_武器]
+#if
+EQUAL P30 <$ITEMINFO[$IDX(1)].Streng(2)>
+#ACT
+MESSAGEBOX 强化提示：你当前的装备已经无法强化了。
+BREAK
+#if
+EQUAL P30 18
+#ACT
+MESSAGEBOX 强化提示：你的武器已经强化满级了。
+BREAK
+#IF
+NOT EQUAL S30 <$WEAPON>
+#act
+Close
+MESSAGEBOX 强化提示：不要以为你偷偷的换了武器我会不知道。
+BREAK
+#IF
+NOT EQUAL P30 <$ITEMINFO[$IDX(1)].Streng(1)>
+#act
+Close
+MESSAGEBOX 强化提示：不要以为你偷偷的换了武器我会不知道。
+BREAK
+#IF
+NOT CHECKGAMEGOLD ? <$STR(P22)>
+#ACT
+MESSAGEBOX 强化提示：你身上的元宝不足支付本次强化费用。
+BREAK
+
+#IF
+#ACT
+MOVR P40 1 101
+
+#if
+Small P40 <$STR(P20)>
+#ACT
+GAMEGOLD - <$STR(P22)>
+INC P30 1
+HookItem 1
+ChangeGiveItem 9 <$STR(P30)>
+ChangeGiveItem 8
+SENDMSG 7 强化信息：恭喜你，强化武器【<$ITEMX[$IDX(1)]>】成功，当前强化等级为【<$STR(P30)>级】。
+GOTO @武器强化_成功检测
+#ELSEACT
+GAMEGOLD - <$STR(P22)>
+SENDMSG 7 抱歉，强化失败。强化等级清空。
+HookItem 1
+ChangeGiveItem 9 0
+ChangeGiveItem 8
+GOTO @武器强化
+
+[@中级强化_武器]
+#if
+EQUAL P30 <$ITEMINFO[$IDX(1)].Streng(2)>
+#ACT
+MESSAGEBOX 强化提示：你当前的装备已经无法强化了。
+BREAK
+#if
+EQUAL P30 18
+#ACT
+MESSAGEBOX 强化提示：你的武器已经强化满级了。
+BREAK
+#IF
+NOT EQUAL S30 <$WEAPON>
+#act
+Close
+MESSAGEBOX 强化提示：不要以为你偷偷的换了武器我会不知道。
+BREAK
+#IF
+NOT EQUAL P30 <$ITEMINFO[$IDX(1)].Streng(1)>
+#act
+Close
+MESSAGEBOX 强化提示：不要以为你偷偷的换了武器我会不知道。
+BREAK
+#IF
+NOT CHECKGAMEGOLD ? <$STR(P23)>
+#ACT
+MESSAGEBOX 强化提示：你身上的元宝不足支付本次强化费用。
+BREAK
+
+#IF
+#ACT
+MOVR P40 1 101
+
+#if
+Small P40 <$STR(P20)>
+#ACT
+GAMEGOLD - <$STR(P23)>
+INC P30 1
+HookItem 1
+ChangeGiveItem 9 <$STR(P30)>
+ChangeGiveItem 8
+SENDMSG 7 强化信息：恭喜你，强化武器【<$ITEMX[$IDX(1)]>】成功，当前强化等级为【<$STR(P30)>级】。
+GOTO @武器强化_成功检测
+#ELSEACT
+GAMEGOLD - <$STR(P23)>
+DEC P30 1
+HookItem 1
+ChangeGiveItem 9 <$STR(P30)>
+ChangeGiveItem 8
+SENDMSG 7 抱歉，强化失败。强化等级降级1级，当前强化等级为【<$STR(P30)>级】。
+GOTO @武器强化
+
+
+[@高级强化_武器]
+#if
+EQUAL P30 <$ITEMINFO[$IDX(1)].Streng(2)>
+#ACT
+MESSAGEBOX 强化提示：你当前的装备已经无法强化了。
+BREAK
+#if
+EQUAL P30 18
+#ACT
+MESSAGEBOX 强化提示：你的武器已经强化满级了。
+BREAK
+#IF
+NOT EQUAL S30 <$WEAPON>
+#act
+Close
+MESSAGEBOX 强化提示：不要以为你偷偷的换了武器我会不知道。
+BREAK
+#IF
+NOT EQUAL P30 <$ITEMINFO[$IDX(1)].Streng(1)>
+#act
+Close
+MESSAGEBOX 强化提示：不要以为你偷偷的换了武器我会不知道。
+BREAK
+#IF
+NOT CHECKGAMEGOLD ? <$STR(P24)>
+#ACT
+MESSAGEBOX 强化提示：你身上的元宝不足支付本次强化费用。
+BREAK
+
+#IF
+#ACT
+MOVR P40 1 101
+
+#if
+Small P40 <$STR(P20)>
+#ACT
+GAMEGOLD - <$STR(P24)>
+INC P30 1
+HookItem 1
+ChangeGiveItem 9 <$STR(P30)>
+ChangeGiveItem 8
+SENDMSG 7 强化信息：恭喜你，强化武器【<$ITEMX[$IDX(1)]>】成功，当前强化等级为【<$STR(P30)>级】。
+GOTO @武器强化_成功检测
+#ELSEACT
+GAMEGOLD - <$STR(P24)>
+SENDMSG 7 抱歉，强化失败，强化等级没有改变。
+GOTO @武器强化
+
+[@超级强化_武器]
+#if
+EQUAL P30 <$ITEMINFO[$IDX(1)].Streng(2)>
+#ACT
+MESSAGEBOX 强化提示：你当前的装备已经无法强化了。
+BREAK
+#if
+EQUAL P30 18
+#ACT
+MESSAGEBOX 强化提示：你的武器已经强化满级了。
+BREAK
+#IF
+NOT EQUAL S30 <$WEAPON>
+#act
+Close
+MESSAGEBOX 强化提示：不要以为你偷偷的换了武器我会不知道。
+BREAK
+#IF
+NOT EQUAL P30 <$ITEMINFO[$IDX(1)].Streng(1)>
+#act
+Close
+MESSAGEBOX 强化提示：不要以为你偷偷的换了武器我会不知道。
+BREAK
+#IF
+NOT CHECKGAMEGOLD ? <$STR(P25)>
+#ACT
+MESSAGEBOX 强化提示：你身上的元宝不足支付本次强化费用。
+BREAK
+
+#if
+#ACT
+GAMEGOLD - <$STR(P25)>
+INC P30 1
+HookItem 1
+ChangeGiveItem 9 <$STR(P30)>
+ChangeGiveItem 8
+SENDMSG 7 强化信息：恭喜你，强化武器【<$ITEMX[$IDX(1)]>】成功，当前强化等级为【<$STR(P30)>级】。
+GOTO @武器强化_成功检测
+
+[@武器强化_成功检测]
+#IF
+Large P30 5
+#ACT
+SENDMSG 0 玩家：【<$USERNAME>】成功将装备【<$ITEMX[$IDX(1)]>】强化到了【<$STR(P30)>级】。
+#IF
+EQUAL P30 9
+#ACT
+MOV C21 9
+SENDMSG 7 强化成就提示：恭喜您，完成了【强化成就⑴永久】的条件。请找【左成就(土城,321,325)】完成【强化成就(永久)】。
+#IF
+EQUAL P30 12
+#ACT
+MOV C21 12
+SENDMSG 7 强化成就提示：恭喜您，完成了【强化成就⑵永久】的条件。请找【左成就(土城,321,325)】完成【强化成就(永久)】。
+#IF
+EQUAL P30 15
+#ACT
+MOV C21 15
+SENDMSG 7 强化成就提示：恭喜您，完成了【强化成就⑶永久】的条件。请找【左成就(土城,321,325)】完成【强化成就(永久)】。
+#IF
+EQUAL P30 18
+#ACT
+MOV C21 18
+SENDMSG 7 强化成就提示：恭喜您，完成了【强化成就⑷永久】的条件。请找【左成就(土城,321,325)】完成【强化成就(永久)】。
+#if
+#act
+GOTO @武器强化
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@衣服强化]
+#IF
+NOT CheckUseItem 0
+#ACT
+MESSAGEBOX 提示：请将要强化的衣服佩戴在身上。
+BREAK
+#IF
+#ACT
+MOV P10 0
+MOV S10 衣服
+MOV S90 @开始强化_衣服
+GOTO @开始强化_计算_衣服
+
+[@开始强化_计算_衣服]
+#IF
+#act
+MOV P19 <$ITEMINFO[$IDX(0)].Streng(1)>
+
+#IF
+EQUAL P19 0
+#ACT
+MOV P20 90
+MOV P22 [$装备强化_1级强化基础费用]
+
+#IF
+EQUAL P19 1
+#ACT
+MOV P20 85
+MOV P22 [$装备强化_1级强化基础费用]
+
+#IF
+EQUAL P19 2
+#ACT
+MOV P20 80
+MOV P22 [$装备强化_1级强化基础费用]
+
+#IF
+EQUAL P19 3
+#ACT
+MOV P20 75
+MOV P22 [$装备强化_2级强化基础费用]
+
+#IF
+EQUAL P19 4
+#ACT
+MOV P20 70
+MOV P22 [$装备强化_2级强化基础费用]
+
+#IF
+EQUAL P19 5
+#ACT
+MOV P20 65
+MOV P22 [$装备强化_2级强化基础费用]
+
+#IF
+EQUAL P19 6
+#ACT
+MOV P20 60
+MOV P22 [$装备强化_3级强化基础费用]
+
+#IF
+EQUAL P19 7
+#ACT
+MOV P20 55
+MOV P22 [$装备强化_3级强化基础费用]
+
+#IF
+EQUAL P19 8
+#ACT
+MOV P20 50
+MOV P22 [$装备强化_3级强化基础费用]
+
+#IF
+EQUAL P19 9
+#ACT
+MOV P20 45
+MOV P22 [$装备强化_4级强化基础费用]
+
+#IF
+EQUAL P19 10
+#ACT
+MOV P20 40
+MOV P22 [$装备强化_4级强化基础费用]
+
+#IF
+EQUAL P19 11
+#ACT
+MOV P20 35
+MOV P22 [$装备强化_4级强化基础费用]
+
+#IF
+EQUAL P19 12
+#ACT
+MOV P20 30
+MOV P22 [$装备强化_5级强化基础费用]
+
+#IF
+EQUAL P19 13
+#ACT
+MOV P20 25
+MOV P22 [$装备强化_5级强化基础费用]
+
+#IF
+EQUAL P19 14
+#ACT
+MOV P20 20
+MOV P22 [$装备强化_5级强化基础费用]
+
+#IF
+EQUAL P19 15
+#ACT
+MOV P20 15
+MOV P22 [$装备强化_6级强化基础费用]
+
+#IF
+EQUAL P19 16
+#ACT
+MOV P20 10
+MOV P22 [$装备强化_6级强化基础费用]
+
+#IF
+EQUAL P19 17
+#ACT
+MOV P20 5
+MOV P22 [$装备强化_6级强化基础费用]
+
+#IF
+#ACT
+MUL P23 <$STR(P22)> 2
+MUL P24 <$STR(P22)> 4
+MUL P25 <$STR(P22)> 8
+goto <$STR(S90)>
+
+[@开始强化_衣服]
+#IF
+#ACT
+MOV S30 <$DRESS>
+MOV P30 <$ITEMINFO[$IDX(0)].Streng(1)>
+#say
+<$USERNAME>：\
+　　你当前选择要强化的【{<$STR(S10)>=FCO=253}：{<$DRESS>=FCO=251}】。\
+　　强化信息：{<$ITEMINFO[$IDX(0)].Streng(1)>=FCO=250}/{<$ITEMINFO[$IDX(0)].Streng(2)>=FCO=249}　　当前等级强化成功率为：{<$STR(P20)>=FCO=250}/{100=FCO=249}\ \
+<〖使用低级强化〗/@低级强化_衣服>　{失败后强化等级清空。=FCO=250}{强化费用=FCO=251}：<$STR(P22)>{元宝。=FCO=251}\
+<〖使用中级强化〗/@中级强化_衣服>　{失败后强化等级降级。=FCO=253}{强化费用=FCO=251}：<$STR(P23)>{元宝。=FCO=251}\
+<〖使用高级强化〗/@高级强化_衣服>　{失败后强化等级不变。=FCO=251}{强化费用=FCO=251}：<$STR(P24)>{元宝。=FCO=251}\
+<〖使用超级强化〗/@超级强化_衣服>　{100%强化成功。　　　=FCO=249}{强化费用=FCO=251}：<$STR(P25)>{元宝。=FCO=251}\
+
+[@低级强化_衣服]
+#if
+EQUAL P30 <$ITEMINFO[$IDX(0)].Streng(2)>
+#ACT
+MESSAGEBOX 强化提示：你当前的装备已经无法强化了。
+BREAK
+#if
+EQUAL P30 18
+#ACT
+MESSAGEBOX 强化提示：你的衣服已经强化满级了。
+BREAK
+#IF
+NOT EQUAL S30 <$DRESS>
+#act
+Close
+MESSAGEBOX 强化提示：不要以为你偷偷的换了衣服我会不知道。
+BREAK
+#IF
+NOT EQUAL P30 <$ITEMINFO[$IDX(0)].Streng(1)>
+#act
+Close
+MESSAGEBOX 强化提示：不要以为你偷偷的换了衣服我会不知道。
+BREAK
+#IF
+NOT CHECKGAMEGOLD ? <$STR(P22)>
+#ACT
+MESSAGEBOX 强化提示：你身上的元宝不足支付本次强化费用。
+BREAK
+
+#IF
+#ACT
+MOVR P40 1 101
+
+#if
+Small P40 <$STR(P20)>
+#ACT
+GAMEGOLD - <$STR(P22)>
+INC P30 1
+HookItem 0
+ChangeGiveItem 9 <$STR(P30)>
+ChangeGiveItem 8
+SENDMSG 7 强化信息：恭喜你，强化衣服【<$ITEMX[$IDX(0)]>】成功，当前强化等级为【<$STR(P30)>级】。
+GOTO @衣服强化_成功检测
+#ELSEACT
+GAMEGOLD - <$STR(P22)>
+SENDMSG 7 抱歉，强化失败。强化等级清空。
+HookItem 0
+ChangeGiveItem 9 0
+ChangeGiveItem 8
+GOTO @衣服强化
+
+[@中级强化_衣服]
+#if
+EQUAL P30 <$ITEMINFO[$IDX(0)].Streng(2)>
+#ACT
+MESSAGEBOX 强化提示：你当前的装备已经无法强化了。
+BREAK
+#if
+EQUAL P30 18
+#ACT
+MESSAGEBOX 强化提示：你的衣服已经强化满级了。
+BREAK
+#IF
+NOT EQUAL S30 <$DRESS>
+#act
+Close
+MESSAGEBOX 强化提示：不要以为你偷偷的换了衣服我会不知道。
+BREAK
+#IF
+NOT EQUAL P30 <$ITEMINFO[$IDX(0)].Streng(1)>
+#act
+Close
+MESSAGEBOX 强化提示：不要以为你偷偷的换了衣服我会不知道。
+BREAK
+#IF
+NOT CHECKGAMEGOLD ? <$STR(P23)>
+#ACT
+MESSAGEBOX 强化提示：你身上的元宝不足支付本次强化费用。
+BREAK
+
+#IF
+#ACT
+MOVR P40 1 101
+
+#if
+Small P40 <$STR(P20)>
+#ACT
+GAMEGOLD - <$STR(P23)>
+INC P30 1
+HookItem 0
+ChangeGiveItem 9 <$STR(P30)>
+ChangeGiveItem 8
+SENDMSG 7 强化信息：恭喜你，强化衣服【<$ITEMX[$IDX(0)]>】成功，当前强化等级为【<$STR(P30)>级】。
+GOTO @衣服强化_成功检测
+#ELSEACT
+GAMEGOLD - <$STR(P23)>
+DEC P30 1
+HookItem 0
+ChangeGiveItem 9 <$STR(P30)>
+ChangeGiveItem 8
+SENDMSG 7 抱歉，强化失败。强化等级降级1级，当前强化等级为【<$STR(P30)>级】。
+GOTO @衣服强化
+
+
+[@高级强化_衣服]
+#if
+EQUAL P30 <$ITEMINFO[$IDX(0)].Streng(2)>
+#ACT
+MESSAGEBOX 强化提示：你当前的装备已经无法强化了。
+BREAK
+#if
+EQUAL P30 18
+#ACT
+MESSAGEBOX 强化提示：你的衣服已经强化满级了。
+BREAK
+#IF
+NOT EQUAL S30 <$DRESS>
+#act
+Close
+MESSAGEBOX 强化提示：不要以为你偷偷的换了衣服我会不知道。
+BREAK
+#IF
+NOT EQUAL P30 <$ITEMINFO[$IDX(0)].Streng(1)>
+#act
+Close
+MESSAGEBOX 强化提示：不要以为你偷偷的换了衣服我会不知道。
+BREAK
+#IF
+NOT CHECKGAMEGOLD ? <$STR(P24)>
+#ACT
+MESSAGEBOX 强化提示：你身上的元宝不足支付本次强化费用。
+BREAK
+
+#IF
+#ACT
+MOVR P40 1 101
+
+#if
+Small P40 <$STR(P20)>
+#ACT
+GAMEGOLD - <$STR(P24)>
+INC P30 1
+HookItem 0
+ChangeGiveItem 9 <$STR(P30)>
+ChangeGiveItem 8
+SENDMSG 7 强化信息：恭喜你，强化衣服【<$ITEMX[$IDX(0)]>】成功，当前强化等级为【<$STR(P30)>级】。
+GOTO @衣服强化_成功检测
+#ELSEACT
+GAMEGOLD - <$STR(P24)>
+SENDMSG 7 抱歉，强化失败，强化等级没有改变。
+GOTO @衣服强化
+
+[@超级强化_衣服]
+#if
+EQUAL P30 <$ITEMINFO[$IDX(0)].Streng(2)>
+#ACT
+MESSAGEBOX 强化提示：你当前的装备已经无法强化了。
+BREAK
+#if
+EQUAL P30 18
+#ACT
+MESSAGEBOX 强化提示：你的衣服已经强化满级了。
+BREAK
+#IF
+NOT EQUAL S30 <$DRESS>
+#act
+Close
+MESSAGEBOX 强化提示：不要以为你偷偷的换了衣服我会不知道。
+BREAK
+#IF
+NOT EQUAL P30 <$ITEMINFO[$IDX(0)].Streng(1)>
+#act
+Close
+MESSAGEBOX 强化提示：不要以为你偷偷的换了衣服我会不知道。
+BREAK
+#IF
+NOT CHECKGAMEGOLD ? <$STR(P25)>
+#ACT
+MESSAGEBOX 强化提示：你身上的元宝不足支付本次强化费用。
+BREAK
+
+#if
+#ACT
+GAMEGOLD - <$STR(P25)>
+INC P30 1
+HookItem 0
+ChangeGiveItem 9 <$STR(P30)>
+ChangeGiveItem 8
+SENDMSG 7 强化信息：恭喜你，强化衣服【<$ITEMX[$IDX(0)]>】成功，当前强化等级为【<$STR(P30)>级】。
+GOTO @衣服强化_成功检测
+
+[@衣服强化_成功检测]
+#IF
+Large P30 5
+#ACT
+SENDMSG 0 玩家：【<$USERNAME>】成功将装备【<$ITEMX[$IDX(0)]>】强化到了【<$STR(P30)>级】。
+#IF
+EQUAL P30 9
+#ACT
+MOV C22 9
+SENDMSG 7 强化成就提示：恭喜您，完成了【强化成就⑸永久】的条件。请找【左成就(土城,321,325)】完成【强化成就(永久)】。
+#IF
+EQUAL P30 12
+#ACT
+MOV C22 12
+SENDMSG 7 强化成就提示：恭喜您，完成了【强化成就⑹永久】的条件。请找【左成就(土城,321,325)】完成【强化成就(永久)】。
+#IF
+EQUAL P30 15
+#ACT
+MOV C22 15
+SENDMSG 7 强化成就提示：恭喜您，完成了【强化成就⑺永久】的条件。请找【左成就(土城,321,325)】完成【强化成就(永久)】。
+#IF
+EQUAL P30 18
+#ACT
+MOV C22 18
+SENDMSG 7 强化成就提示：恭喜您，完成了【强化成就⑻永久】的条件。请找【左成就(土城,321,325)】完成【强化成就(永久)】。
+#if
+#act
+GOTO @衣服强化
+
+
+[@装备开光]
+#ACT
+ShowItemBox 放入要开光的装备： @检测开光
+Break
+
+[@检测开光]
+#IF
+EQUAL <$ItemInfo[$Param0].BindX(8)> 0
+#act
+SENDMSG 7 提示：该装备已经开光，无法重复开光。
+BREAK
+#if
+#act
+MOV B30 <$ItemInfo[$Param0].Name>
+
+#IF
+CheckTextList <$ItemInfo[$Param0].Name> ../QuestDiary/游戏功能/装备卷轴/普通开光.txt
+#ACT
+GIVE <$STR(B30)> 1
+SENDMSG 0 玩家【<$USERNAME>】在土城右上角的龙铁锤处成功开光了转生首饰【<$ITEMX[$Param9]>】。
+TakeIdx <$Param0>
+break
+
+#IF
+CheckTextList <$ItemInfo[$Param0].Name> ../QuestDiary/游戏功能/装备卷轴/武器开光.txt
+#ACT
+DynamicGive <$STR(B30)> 1
+ChangeGiveItem 5 18
+ChangeGiveItem 6 0 1
+ChangeGiveItem 6 1 1
+ChangeGiveItem 6 2 1
+ChangeGiveItem 6 3 1
+ChangeGiveItem 6 4 1
+ChangeGiveItem 6 5 1
+ChangeGiveItem 4 3
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】在土城右上角的龙铁锤处成功开光了转生武器【<$ITEMX[$Param9]>】。
+TakeIdx <$Param0>
+break
+
+
+#IF
+CheckTextList <$ItemInfo[$Param0].Name> ../QuestDiary/游戏功能/装备卷轴/衣服开光.txt
+#ACT
+DynamicGive <$STR(B30)> 1
+ChangeGiveItem 5 18
+ChangeGiveItem 6 0 1
+ChangeGiveItem 6 1 1
+ChangeGiveItem 6 2 1
+ChangeGiveItem 6 3 1
+ChangeGiveItem 6 4 1
+ChangeGiveItem 6 5 1
+ChangeGiveItem 4 3
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】在土城右上角的龙铁锤处成功开光了转生衣服【<$ITEMX[$Param9]>】。
+TakeIdx <$Param0>
+break
+
+#IF
+CheckTextList <$ItemInfo[$Param0].Name> ../QuestDiary/游戏功能/装备卷轴/神器首饰开光.txt
+#ACT
+DynamicGive <$STR(B30)> 1
+ChangeGiveItem 10 4
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】在土城右上角的龙铁锤处成功开光了神器首饰【<$ITEMX[$Param9]>】。
+TakeIdx <$Param0>
+break
+
+#IF
+CheckTextList <$ItemInfo[$Param0].Name> ../QuestDiary/游戏功能/装备卷轴/神器武器开光.txt
+#ACT
+DynamicGive <$STR(B30)> 1
+ChangeGiveItem 5 18
+ChangeGiveItem 6 0 1
+ChangeGiveItem 6 1 1
+ChangeGiveItem 6 2 1
+ChangeGiveItem 6 3 1
+ChangeGiveItem 6 4 1
+ChangeGiveItem 6 5 1
+ChangeGiveItem 7 27 125
+ChangeGiveItem 10 4
+ChangeGiveItem 4 3
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】在土城右上角的龙铁锤处成功开光了神器武器【<$ITEMX[$Param9]>】。
+TakeIdx <$Param0>
+break
+
+
+#IF
+CheckTextList <$ItemInfo[$Param0].Name> ../QuestDiary/游戏功能/装备卷轴/神器衣服开光.txt
+#ACT
+DynamicGive <$STR(B30)> 1
+ChangeGiveItem 5 18
+ChangeGiveItem 6 0 1
+ChangeGiveItem 6 1 1
+ChangeGiveItem 6 2 1
+ChangeGiveItem 6 3 1
+ChangeGiveItem 6 4 1
+ChangeGiveItem 6 5 1
+ChangeGiveItem 10 4
+ChangeGiveItem 4 3
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】在土城右上角的龙铁锤处成功开光了神器衣服【<$ITEMX[$Param9]>】。
+TakeIdx <$Param0>
+break
+
+
+#IF
+CheckTextList <$ItemInfo[$Param0].Name> ../QuestDiary/游戏功能/装备卷轴/勋章.txt
+#ACT
+DynamicGive <$STR(B30)> 1
+ChangeGiveItem 5 18
+ChangeGiveItem 6 0 0
+ChangeGiveItem 6 1 0
+ChangeGiveItem 6 2 0
+ChangeGiveItem 6 3 0
+ChangeGiveItem 6 4 0
+ChangeGiveItem 6 5 0
+ChangeGiveItem 2 1 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 10 4
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】在土城右上角的龙铁锤处成功开光了成长勋章【<$ITEMX[$Param9]>】。
+TakeIdx <$Param0>
+break
+
+[@强化转移]
+<$USERNAME>：\ \
+　　强化转移：可将武器或衣服上的强化等级转移到另外的装备上。\
+此功能让大家在游戏的过度期间不必浪费太多的装备。\ \
+　　本功能按照转移装备强化等级的高低进行收费　<查看强化收费/@查看转移收费>\ \
+　　<转移武器上的强化等级/@武器转移>　　<转移衣服上的强化等级/@衣服转移>
+
+[@查看转移收费]
+#ACT
+MESSAGEBOX 强化转移功能收费详细：\　　\转移的强化等级小于十级，则按照每级100元宝收费。\　　\转移的强化等级大于九级，则按照每级200元宝收费。\
+
+[@武器转移]
+#IF
+NOT CheckUseItem 1
+#ACT
+MESSAGEBOX 提示：请将被转移的强化武器穿戴在身上。
+BREAK
+
+#IF
+EQUAL <$ITEMINFO[$IDX(1)].Streng(1)> 0
+#ACT
+MESSAGEBOX 提示：请将被转移的强化武器穿戴在身上。
+BREAK
+
+#IF
+#ACT
+MOV P30 <$ITEMINFO[$IDX(1)].Streng(1)>
+
+#IF
+Small P30 10
+#ACT
+MUL P31 <$STR(P30)> 100
+
+#IF
+Large P30 9
+#ACT
+MUL P31 <$STR(P30)> 200
+
+#IF
+CHECKGAMEGOLD ? <$STR(P31)>
+#ACT
+SENDMSG 7 强化转移提示：请将受益装备放入框中。
+MOV P29 1
+ShowItemBox 放入转移受益装备： @武器转移_执行
+#ELSEACT
+MESSAGEBOX 提示：\　　\您的元宝不足此次转移。\　\您的武器强化次数为【<$ITEMINFO[$IDX(1)].Streng(1)>】次，应收费【<$STR(P31)>】元宝。
+
+[@衣服转移]
+#IF
+NOT CheckUseItem 0
+#ACT
+MESSAGEBOX 提示：请将被转移的强化衣服穿戴在身上。
+BREAK
+
+#IF
+EQUAL <$ITEMINFO[$IDX(0)].Streng(1)> 0
+#ACT
+MESSAGEBOX 提示：请将被转移的强化衣服穿戴在身上。
+BREAK
+
+#IF
+#ACT
+MOV P30 <$ITEMINFO[$IDX(0)].Streng(1)>
+
+#IF
+Small P30 10
+#ACT
+MUL P31 <$STR(P30)> 100
+
+#IF
+Large P30 9
+#ACT
+MUL P31 <$STR(P30)> 200
+
+#IF
+CHECKGAMEGOLD ? <$STR(P31)>
+#ACT
+SENDMSG 7 强化转移提示：请将受益装备放入框中。
+MOV P29 0
+ShowItemBox 放入转移受益装备： @武器转移_执行
+#ELSEACT
+MESSAGEBOX 提示：\　　\您的元宝不足此次转移。\　\您的衣服强化次数为【<$ITEMINFO[$IDX(0)].Streng(1)>】次，应收费【<$STR(P31)>】元宝。
+
+
+[@武器转移_执行]
+#IF
+NOT CheckTextList <$ItemInfo[$Param0].Name> ../QuestDiary/游戏功能/装备卷轴/强化转移.txt
+#ACT
+MESSAGEBOX 提示：该物品无法转移强化属性。(物品无强化等级可转移)。
+BREAK
+
+#IF
+#ACT
+MOV P32 <$ItemInfo[$Param0].Streng(1)>
+
+#IF
+NOT Small P32 <$STR(P30)>
+#ACT
+MESSAGEBOX 提示：无法转移，您放入的受益装备已强化等级高于你身上的装备。
+BREAK
+
+#IF
+#ACT
+MOV P33 <$ItemInfo[$Param0].Pin>
+MOV S33 <$ItemInfo[$Param0].Name>
+GAMEGOLD - <$STR(P31)>
+HookItem <$STR(P29)>
+ChangeGiveItem 9 0
+ChangeGiveItem 8
+TakeIdx <$Param0>
+DynamicGive <$STR(S33)> 1
+ChangeGiveItem 5 18
+ChangeGiveItem 6 0 1
+ChangeGiveItem 6 1 1
+ChangeGiveItem 6 2 1
+ChangeGiveItem 6 3 1
+ChangeGiveItem 6 4 1
+ChangeGiveItem 6 5 1
+ChangeGiveItem 4 3
+ChangeGiveItem 9 <$STR(P30)>
+ChangeGiveItem 10 <$STR(P33)>
+ChangeGiveItem 8
+
+#IF
+EQUAL P29 1
+#ACT
+SENDMSG 0 玩家【<$USERNAME>】花费了<$STR(P31)>元宝，成功将<$ITEMX[$IDX(1)]>的强化等级转移到了<$ITEMX[$Param9]>上。
+BREAK
+
+#IF
+EQUAL P29 0
+#ACT
+SENDMSG 0 玩家【<$USERNAME>】花费了<$STR(P31)>元宝，成功将<$ITEMX[$IDX(0)]>的强化等级转移到了<$ITEMX[$Param9]>上。
+BREAK
+
+
+
+
+[@勋章打造]
+　　请选择要打造的勋章，并保证材料在背包中。\
+{15=y}　　　　<开始打造/@打造勋章(1,优秀勋章,精致勋章)>：身上佩戴勋章{优秀勋章=FCO=250}，背包拥有{怨气灵石=FCO=249}x1。\
+{26=y}　　　　<开始打造/@打造勋章(2,精致勋章,史诗勋章)>：身上佩戴勋章{精致勋章=FCO=254}，背包拥有{怨气灵石=FCO=249}x2。\
+{26=y}　　　　<开始打造/@打造勋章(5,史诗勋章,传说勋章)>：身上佩戴勋章{史诗勋章=FCO=253}，背包拥有{怨气灵石=FCO=249}x5。\
+{-110=y}{i.642,c.1,s.18=item}\
+{21=y}{i.643,c.1,s.18=item}\
+{21=y}{i.644,c.1,s.18=item}\
+
+
+[@打造勋章]
+#IF
+#ACT
+MOV S35 <$RIGHTHAND>
+#IF
+NOT CheckItemCount 怨气灵石 ? <$STR(T0)>
+#ACT
+MESSAGEBOX 提示：您的怨气灵石不足<$STR(T0)>个。
+break
+#IF
+NOT EQUAL S35 <$STR(T1)>
+#ACT
+MESSAGEBOX 提示：您佩戴的勋章不是【<$STR(T1)>】，无法升级。\　　\请先将勋章升级到【<$STR(T1)>】。
+BREAK
+#IF
+#ACT
+TakeCount 怨气灵石 <$STR(T0)>
+TakeOffItem 4 1
+TAKE <$STR(T1)>
+DynamicGive <$STR(T2)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 2 1 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】成功将成长勋章升级成为了【<$ITEMX[$Param9]>】。
+GOTO @勋章打造
+BREAK
+#CALLX [\\游戏功能\装备合成.txt] @装备合成执行
+}
+

@@ -1,0 +1,11 @@
+[@main]
+#IF
+CHECKVAR HUMAN 每日野外6 < [$野外成就_每日_6_数量]
+#ACT
+CALCVAR HUMAN 每日野外6 + 1
+SAVEVAR HUMAN 每日野外6 ..\QuestDiary\数据文件\每日成就Save.txt
+#IF
+CHECK [316] 0
+CHECKVAR HUMAN 每日野外6 = [$野外成就_每日_6_数量]
+#ACT
+SENDMSG 7 成就提示：每日野外⑹成就已经完成，请到[土城:左成就]处领取奖励。

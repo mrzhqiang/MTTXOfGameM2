@@ -1,0 +1,32 @@
+[@main]
+#say
+尊敬的【<$USERNAME>】你好\ \会员玩家泡点经验增加50%\ \
+经验猪,每刀+1000经验,扣除金币2500\ \
+<安全泡点/@安全> -> 每秒1000经验\ \
+<激情泡点/@激情> -> 每秒2000经验\ \
+[@安全]
+#if
+CheckNameList ..\QuestDiary\游戏功能\会员名单.txt
+#act
+mapmove aqpd
+SetAutoGetExp 1 1500 1 AQPD
+break
+#if
+not CheckNameList ..\QuestDiary\游戏功能\会员名单.txt
+#act
+mapmove aqpd
+SetAutoGetExp 1 1000 1 AQPD
+
+[@激情]
+#if
+CheckNameList ..\QuestDiary\游戏功能\会员名单.txt
+#act
+mapmove JQPD
+SetAutoGetExp 1 3000 0 JQPD
+break
+#if
+not CheckNameList ..\QuestDiary\游戏功能\会员名单.txt
+#act
+mapmove JQPD
+SetAutoGetExp 1 2000 0 JQPD
+

@@ -1,0 +1,95 @@
+(@ArmStrengthen)
+%100
++99
+[@main]
+#say
+你好,我这里可以给装备升级,\特戒合成.也可以合成玄晶.\
+<装备强化/@ArmStrengthen>\<特戒合成/@特戒>\<玄晶升级/@升级>
+[@升级]
+2个初级玄晶合成一个低级玄晶\
+2个低级玄晶合成一个中级玄晶\
+2个中级玄晶合成一个高级玄晶\
+2个高级玄晶合成一个超级玄晶\
+<低级玄晶/@低级>\<中级玄晶/@中级>\<高级玄晶/@高级>\<超级玄晶/@超级>\
+[@低级]
+#if
+checkitem 初级玄晶 2
+#act 
+give 低级玄晶 1
+take 初级玄晶 2
+#ELSEACT
+MESSAGEBOX 材料不足!
+[@中级]
+#if
+checkitem 低级玄晶 2
+#act 
+give 中级玄晶 1
+take 低级玄晶 2
+#ELSEACT
+MESSAGEBOX 材料不足!
+[@高级]
+#if
+checkitem 中级玄晶 2
+#act 
+give 高级玄晶 1
+take 中级玄晶 2
+#ELSEACT
+MESSAGEBOX 材料不足!
+[@超级]
+#if
+checkitem 高级玄晶 2
+#act 
+give 超级玄晶 1
+take 高级玄晶 2
+#ELSEACT
+MESSAGEBOX 材料不足!
+
+[@特戒]
+#say
+想合高级特戒么.来我这里吧.\
+三职业普通特戒各一枚+3000元宝.\可以合成逆火戒指哦\
+<合成逆火麻痹/@麻痹>\<合成逆火重生/@重生>\<合成逆火护体/@护体>
+[@麻痹]
+#if
+checkitem 麻痹戒指 1
+checkitem 护身戒指 1
+checkitem 复活戒指 1
+CHECKGAMEGOLD ? 3000
+#act
+give 逆火麻痹戒 1
+take 麻痹戒指 1
+take 护身戒指 1
+take 复活戒指 1
+GAMEGOLD - 3000
+#ELSEACT
+MESSAGEBOX 材料不足!
+[@重生]
+#if
+checkitem 麻痹戒指 1
+checkitem 护身戒指 1
+checkitem 复活戒指 1
+CHECKGAMEGOLD ? 3000
+#act
+give 逆火重生戒 1
+take 麻痹戒指 1
+take 护身戒指 1
+take 复活戒指 1
+GAMEGOLD - 3000
+#ELSEACT
+MESSAGEBOX 材料不足!
+[@护体]
+#if
+checkitem 麻痹戒指 1
+checkitem 护身戒指 1
+checkitem 复活戒指 1
+checkgamegold ? 3000
+#act
+give 逆火护体戒 1
+take 麻痹戒指 1
+take 护身戒指 1
+take 复活戒指 1
+gamegold - 3000
+#ELSEACT
+MESSAGEBOX 材料不足!
+
+

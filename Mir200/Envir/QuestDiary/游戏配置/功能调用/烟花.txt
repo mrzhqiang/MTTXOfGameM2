@@ -1,0 +1,82 @@
+[@烟花]
+{
+[@StdmodeFunc10]
+#if
+#act
+SENDMSG 0 [#7%s#7]正在%m(%x,%y)放一心一意烟花，大家快去看哦！
+SHOWEFFECT [$特效_烟花_一心一意] SELF
+
+[@StdmodeFunc11]
+#if
+#act
+SENDMSG 0 [#7%s#7]正在%m(%x,%y)放心心相印烟花，大家快去看哦！
+SHOWEFFECT [$特效_烟花_心心相印]
+
+[@StdmodeFunc12]
+#if
+#act
+SENDMSG 0 [#7%s#7]正在%m(%x,%y)放飞火流星烟花，大家快去看哦！
+SHOWEFFECT [$特效_烟花_飞火流星]
+
+[@StdmodeFunc13]
+#if
+#act
+SENDMSG 0 [#7%s#7]正在%m(%x,%y)放浪漫星雨烟花，大家快去看哦！
+SHOWEFFECT [$特效_烟花_浪漫星雨]
+
+[@StdmodeFunc14]
+#if
+#act
+SENDMSG 0 [#7%s#7]正在%m(%x,%y)放绮梦幻想烟花，大家快去看哦！
+SHOWEFFECT [$特效_烟花_绮梦幻想]
+
+[@StdmodeFunc15]
+#if
+#act
+SENDMSG 0 [#7%s#7]正在%m(%x,%y)放长空火舞烟花，大家快去看哦！
+SHOWEFFECT [$特效_烟花_长空火舞]
+
+[@StdmodeFunc16]
+#if
+#act
+SENDMSG 0 [#7%s#7]正在%m(%x,%y)放如雾似梦烟花，大家快去看哦！
+SHOWEFFECT [$特效_烟花_如雾似梦]
+
+[@StdmodeFunc36]
+#IF
+#ACT
+MOV M3 0
+GOTO @庆典蛋糕
+
+[@庆典蛋糕]
+#IF
+EQUAL M3 0
+#ACT
+SENDMSG 0 [#7%s#7]在%m(%x:%y)处放庆典蛋糕、大家快去欣赏哦。
+
+#IF
+EQUAL M3 5
+#ACT
+SENDMSG 0 [#7%s#7]在%m(%x:%y)处放庆典蛋糕、大家快去欣赏哦。
+
+#IF
+EQUAL M3 10
+#ACT
+SENDMSG 0 [#7%s#7]在%m(%x:%y)处放庆典蛋糕、大家快去欣赏哦。
+
+#IF
+  small M3 15
+#Act
+  INC M3 1
+  SHOWEFFECT 20
+  SHOWEFFECT 21
+  SHOWEFFECT 22
+  SHOWEFFECT 23
+  SHOWEFFECT 24
+  SHOWEFFECT 25
+  SHOWEFFECT 26
+  SHOWEFFECT 27
+  DelayGoto 2 @庆典蛋糕
+#ELSEAct
+  MOV M3 0
+}

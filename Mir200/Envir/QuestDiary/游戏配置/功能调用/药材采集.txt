@@ -1,0 +1,196 @@
+[@药材采集]
+{
+;忍冬滕调用
+[@StdmodeFunc24]
+#IF
+CHECKBAGSIZE 1
+#ELSEACT
+SENDMSG 5 背包已满，未采集到任何物品。
+BREAK
+#IF
+#ACT
+MOV S0 忍冬滕
+GOTO @采集物品随机获得
+
+;石楠叶调用
+[@StdmodeFunc25]
+#IF
+CHECKBAGSIZE 1
+#ELSEACT
+SENDMSG 5 背包已满，未采集到任何物品。
+#IF
+#ACT
+MOV S0 石楠叶
+GOTO @采集物品随机获得
+
+;罗汉果调用
+[@StdmodeFunc26]
+#IF
+CHECKBAGSIZE 1
+#ELSEACT
+SENDMSG 5 背包已满，未采集到任何物品。
+#IF
+#ACT
+MOV S0 罗汉果
+GOTO @采集物品随机获得
+
+;太子参调用
+[@StdmodeFunc27]
+#IF
+CHECKBAGSIZE 1
+#ELSEACT
+SENDMSG 5 背包已满，未采集到任何物品。
+#IF
+#ACT
+MOV S0 太子参
+GOTO @采集物品随机获得
+
+;冬凌草调用
+[@StdmodeFunc28]
+#IF
+CHECKBAGSIZE 1
+#ELSEACT
+SENDMSG 5 背包已满，未采集到任何物品。
+#IF
+#ACT
+MOV S0 冬凌草
+GOTO @采集物品随机获得
+
+;麻黄根调用
+[@StdmodeFunc29]
+#IF
+CHECKBAGSIZE 1
+#ELSEACT
+SENDMSG 5 背包已满，未采集到任何物品。
+#IF
+#ACT
+MOV S0 麻黄根
+GOTO @采集物品随机获得
+
+;矮地茶调用
+[@StdmodeFunc30]
+#IF
+CHECKBAGSIZE 1
+#ELSEACT
+SENDMSG 5 背包已满，未采集到任何物品。
+#IF
+#ACT
+MOV S0 矮地茶
+GOTO @采集物品随机获得
+
+;桂枝调用
+[@StdmodeFunc31]
+#IF
+CHECKBAGSIZE 1
+#ELSEACT
+SENDMSG 5 背包已满，未采集到任何物品。
+#IF
+#ACT
+MOV S0 桂枝
+GOTO @采集物品随机获得
+
+;凌霄花调用
+[@StdmodeFunc32]
+#IF
+CHECKBAGSIZE 1
+#ELSEACT
+SENDMSG 5 背包已满，未采集到任何物品。
+#IF
+#ACT
+MOV S0 凌霄花
+GOTO @采集物品随机获得
+
+;狼把草调用
+[@StdmodeFunc33]
+#IF
+CHECKBAGSIZE 1
+#ELSEACT
+SENDMSG 5 背包已满，未采集到任何物品。
+#IF
+#ACT
+MOV S0 狼把草
+GOTO @采集物品随机获得
+
+;人参调用
+[@StdmodeFunc34]
+#IF
+CHECKBAGSIZE 1
+#ELSEACT
+SENDMSG 5 背包已满，未采集到任何物品。
+#IF
+#ACT
+MOV S0 人参
+GOTO @采集物品随机获得
+
+;瓜蒂调用
+[@StdmodeFunc35]
+#IF
+CHECKBAGSIZE 1
+#ELSEACT
+SENDMSG 5 背包已满，未采集到任何物品。
+#IF
+#ACT
+MOV S0 瓜蒂
+GOTO @采集物品随机获得
+
+[@采集物品随机获得]
+#if
+random 10
+#act
+give <$STR(S0)> 2
+break
+
+#if
+random 9
+#act
+sendmsg 5 未采集到任何物品！
+break
+
+#if
+random 8
+#act
+give <$STR(S0)> 1
+break
+
+#if
+random 7
+#act
+give <$STR(S0)> 1
+break
+
+#if
+random 6
+#act
+give <$STR(S0)> 1
+break
+
+#if
+random 5
+#act
+give <$STR(S0)> 1
+break
+
+#if
+random 4
+#act
+give <$STR(S0)> 1
+break
+
+#if
+random 3
+#act
+give <$STR(S0)> 1
+break
+
+#if
+random 2
+#act
+give <$STR(S0)> 1
+break
+
+#if
+random 1
+#act
+give <$STR(S0)> 1
+break
+}

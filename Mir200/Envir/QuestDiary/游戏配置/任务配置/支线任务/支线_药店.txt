@@ -1,0 +1,90 @@
+[@打造药品_检测]
+{
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [209] 0
+CHECKMAPNAME 0
+#ACT
+INC S0 <&学习打造药品{【生活技能】=FCO=251}/@任务_打造药品_接受>\
+
+#IF
+CHECKMISSION [209] 1
+CHECKMISSION [219] 0
+CHECKMAPNAME 0
+CHECKITEMCOUNT 瓜蒂 ? 5
+CHECKITEMCOUNT 桂枝 ? 5
+#ACT
+INC S0 <&学习打造药品{【生活技能】完成=FCO=251}/@任务_打造药品_完成>\
+}
+
+[@打造药品_脚本]
+{
+[@任务_打造药品_接受]
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [209] 0
+CHECKMAPNAME 0
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　想学{打造药品=FCO=251}啊，先去准备一下下面\
+面的材料吧。\ \
+{需准备材料=FCO=243}\
+{12=x}{i.580,c.5=item}{46=x}{i.576,c.5=item}\ \ \
+{打造成功后得到物品=FCO=243}\
+{12=x}{i.282,c.5=item}\ \ \
+{任务奖励：=FCO=243}\
+　声望值：[$学习生活技能_打造药品声望奖励]\
+　经验值：[$学习生活技能_打造药品经验奖励]\ \
+<&我这就去准备/@激活打造药品>\
+<&结束对话/@exit>\
+
+[@激活打造药品]
+#IF
+CHECKMISSION [200] 1
+CHECKMISSION [209] 0
+CHECKMAPNAME 0
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　这些药材可以在地图上找到的植物状\
+的东西通过采集获得。\
+　　{瓜蒂=FCO=251}{生长在苍月岛的树林里，=FCO=250}{桂枝=FCO=251}{生=FCO=250}\
+{长在盟重省的树林里。=FCO=250}\ \
+<&知道了/@exit>\
+#ACT
+SETMISSION [209] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION 8
+ADDMISSION 8 开始打造药品
+
+[@任务_打造药品_完成]
+#IF
+CHECKMISSION [209] 1
+CHECKMISSION [219] 0
+CHECKMAPNAME 0
+CHECKITEMCOUNT 瓜蒂 ? 5
+CHECKITEMCOUNT 桂枝 ? 5
+CHECKBAGSIZE 1
+#ELSEACT
+MESSAGEBOX 背包空间不足1个或材料不够！
+BREAK
+
+#IF
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　{打造药品=FCO=251}的生活技能我已经传授于你\
+了，这是我用背包中材料帮你打造的5瓶\
+{特效金创药=FCO=251}，请收好。\
+　　现在你也可以{按F11打开生活技能面板=FCO=253}\
+，随意打造属于你自己的{药品=FCO=250}\ \
+<&关闭对话/@exit>
+#ACT
+SETMISSION [219] 1
+SHOWEFFECT [$特效_任务完成]
+TAKECOUNT 瓜蒂 5
+TAKECOUNT 桂枝 5
+GIVE 特效金创药 5
+CHANGEEXP + [$学习生活技能_打造药品经验奖励]
+CREDITPOINT + [$学习生活技能_打造药品声望奖励]
+ADDMAKEMAGIC 8
+DELMISSION 8
+}

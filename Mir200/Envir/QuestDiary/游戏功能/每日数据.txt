@@ -1,0 +1,44 @@
+[@每日数据]
+{
+[@每日数据_刷新]
+#IF
+#ACT
+SENDMSG 7 您的每日任务相关信息已经清空(签到，双倍，关卡，答题，成就)
+MOV C89 0
+AddNameList ../QuestDiary/数据文件/答题次数名单.txt
+MOV C88 0
+AddNameList ../QuestDiary/数据文件/关卡挑战名单.txt
+AddNameList ../QuestDiary/数据文件/每日成就名单.txt
+Reset [311] 58
+CALCVAR HUMAN 每日野外1 = 0
+SAVEVAR HUMAN 每日野外1 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日野外2 = 0
+SAVEVAR HUMAN 每日野外2 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日野外3 = 0
+SAVEVAR HUMAN 每日野外3 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日野外4 = 0
+SAVEVAR HUMAN 每日野外4 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日野外5 = 0
+SAVEVAR HUMAN 每日野外5 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日野外6 = 0
+SAVEVAR HUMAN 每日野外6 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日野外7 = 0
+SAVEVAR HUMAN 每日野外7 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日野外8 = 0
+SAVEVAR HUMAN 每日野外8 ..\QuestDiary\数据文件\每日成就Save.txt
+MOV C10 0
+MOV C24 0
+Reset [431] 7
+CALCVAR HUMAN 每日副本1 = 0
+SAVEVAR HUMAN 每日副本1 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日副本2 = 0
+SAVEVAR HUMAN 每日副本2 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日副本3 = 0
+SAVEVAR HUMAN 每日副本3 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日副本4 = 0
+SAVEVAR HUMAN 每日副本4 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 白银挖宝 = 0
+SAVEVAR HUMAN 白银挖宝 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 黄金挖宝 = 0
+SAVEVAR HUMAN 黄金挖宝 ..\QuestDiary\数据文件\每日成就Save.txt
+}

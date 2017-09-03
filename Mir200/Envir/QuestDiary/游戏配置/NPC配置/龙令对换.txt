@@ -1,0 +1,76 @@
+[@龙令对换]
+{
+[@游戏服务_龙令对换]
+　如果你身上有足够多的{铜龙令、银龙令、=FCO=243}\
+{金龙令=FCO=243}的话，就可以来找我对换游戏道具。\
+　{龙令可以通过参加活动“荒野灵兽”来=FCO=250}\
+{获得。具体活动详情，去找“活动公告牌”=FCO=250}\
+{查询。也可以在商城购买。=FCO=250}\ \
+<&对换龙令/@游戏服务_龙令对换_对换龙令>\
+<&对换材料/@游戏服务_龙令对换_对换材料>\
+<&对换玄晶/@游戏服务_龙令对换_对换玄晶>\
+<&对换矿石/@游戏服务_龙令对换_对换矿石>\
+<&返回上一页/@系统_标准NPC头_返回>\
+<&结束对话/@exit>\
+
+[@游戏服务_龙令对换_对换]
+#IF
+#ACT
+GOTO @游戏服务_龙令对换
+
+
+#CALLX [\\游戏配置\NPC配置\龙令对换\对换龙令.txt] @对换龙令
+#CALLX [\\游戏配置\NPC配置\龙令对换\对换材料.txt] @对换材料
+#CALLX [\\游戏配置\NPC配置\龙令对换\对换宝石.txt] @对换宝石
+#CALLX [\\游戏配置\NPC配置\龙令对换\对换玄晶.txt] @对换玄晶
+#CALLX [\\游戏配置\NPC配置\龙令对换\对换矿石.txt] @对换矿石
+
+
+[@游戏服务_龙令对换_确认对换_检测铜龙令]
+#IF
+NOT CHECKBAGSIZE 1
+#ACT
+MESSAGEBOX 您身上的背包空间不足，请先清理一下背包！
+BREAK
+
+#IF
+CHECKITEMCOUNT 铜龙令 ? <$STR(T1)>
+#ACT
+TAKECOUNT 铜龙令 <$STR(T1)>
+GIVE <$STR(T0)> <$STR(T2)>
+MESSAGEBOX 恭喜您，对换成功！
+#ELSEACT
+MESSAGEBOX 对不起，您身上的铜龙令数量不足，对换失败！
+
+[@游戏服务_龙令对换_确认对换_检测银龙令]
+#IF
+NOT CHECKBAGSIZE 1
+#ACT
+MESSAGEBOX 您身上的背包空间不足，请先清理一下背包！
+BREAK
+
+#IF
+CHECKITEMCOUNT 银龙令 ? <$STR(T1)>
+#ACT
+TAKECOUNT 银龙令 <$STR(T1)>
+GIVE <$STR(T0)> <$STR(T2)>
+MESSAGEBOX 恭喜您，对换成功！
+#ELSEACT
+MESSAGEBOX 对不起，您身上的银龙令数量不足，对换失败！
+
+[@游戏服务_龙令对换_确认对换_检测金龙令]
+#IF
+NOT CHECKBAGSIZE 1
+#ACT
+MESSAGEBOX 您身上的背包空间不足，请先清理一下背包！
+BREAK
+
+#IF
+CHECKITEMCOUNT 金龙令 ? <$STR(T1)>
+#ACT
+TAKECOUNT 金龙令 <$STR(T1)>
+GIVE <$STR(T0)> <$STR(T2)>
+MESSAGEBOX 恭喜您，对换成功！
+#ELSEACT
+MESSAGEBOX 对不起，您身上的金龙令数量不足，对换失败！
+}

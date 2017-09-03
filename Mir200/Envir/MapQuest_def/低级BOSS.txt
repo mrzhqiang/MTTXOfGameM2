@@ -1,0 +1,6 @@
+[@main]
+#IF
+#ACT
+INC C13 1
+GAMEGOLD + 50
+SENDMSG 0 玩家：【<$USERNAME>】杀死了低级BOSS，获得了50元宝的奖励。该Boss将在30分钟后刷新。

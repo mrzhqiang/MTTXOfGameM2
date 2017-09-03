@@ -1,0 +1,247 @@
+[@双倍经验]
+{
+[@游戏服务_双倍经验]
+#IF
+DAYOFWEEK MON
+#ACT
+MOV P0 1
+MOV P1 0
+GOTO @游戏服务_双倍经验_计算时间
+BREAK
+
+#IF
+DAYOFWEEK TUE
+#ACT
+MOV P0 2
+MOV P1 0
+GOTO @游戏服务_双倍经验_计算时间
+BREAK
+
+#IF
+DAYOFWEEK WED
+#ACT
+MOV P0 3
+MOV P1 0
+GOTO @游戏服务_双倍经验_计算时间
+BREAK
+
+#IF
+DAYOFWEEK THU
+#ACT
+MOV P0 4
+MOV P1 0
+GOTO @游戏服务_双倍经验_计算时间
+BREAK
+
+#IF
+DAYOFWEEK FRI
+#ACT
+MOV P0 5
+MOV P1 0
+GOTO @游戏服务_双倍经验_计算时间
+BREAK
+
+#IF
+DAYOFWEEK SAT
+#ACT
+MOV P0 6
+MOV P1 0
+GOTO @游戏服务_双倍经验_计算时间
+BREAK
+
+#IF
+DAYOFWEEK SUN
+#ACT
+MOV P0 7
+MOV P1 0
+GOTO @游戏服务_双倍经验_计算时间
+BREAK
+
+[@游戏服务_双倍经验_计算时间]
+#IF
+CHECKNAMELIST ../ScriptData/双倍经验/1.txt
+#ACT
+INC P1 1
+
+#IF
+CHECKNAMELIST ../ScriptData/双倍经验/2.txt
+#ACT
+INC P1 2
+
+#IF
+CHECKNAMELIST ../ScriptData/双倍经验/3.txt
+#ACT
+INC P1 3
+
+#IF
+CHECKNAMELIST ../ScriptData/双倍经验/4.txt
+#ACT
+INC P1 4
+
+#IF
+CHECKNAMELIST ../ScriptData/双倍经验/5.txt
+#ACT
+INC P1 5
+
+#IF
+CHECKNAMELIST ../ScriptData/双倍经验/10.txt
+#ACT
+INC P1 10
+
+#IF
+LARGE P1 <$STR(P0)>
+#ACT
+MOV P0 0
+GOTO @游戏服务_双倍经验_显示
+#ELSEACT
+DEC P0 <$STR(P1)>
+GOTO @游戏服务_双倍经验_显示
+
+
+[@游戏服务_双倍经验_显示]
+　每个角色每天可以{免费领取1个小时=FCO=251}的双\
+倍经验，而且双倍经验可在一周内累计，\
+最多高达{7个小时=FCO=250}。即你可以先预存数天\
+的双倍经验时间，然后再一起领取使用(不\
+可透支领取)，甚至是在周末一次性使用。\
+不过千万要记住：{每周一的凌晨1点整，双=FCO=243}\
+{倍经验时间会清空并重新计算，所以一定=FCO=243}\
+{要在周一凌晨1点前用完当周的双倍经验时=FCO=243}\
+{间。=FCO=243}\
+　该双倍可以与双倍秘籍同时使用，双倍\
+有效时间自动累加，下线也自动保存。\ \
+{你当前可以领取的双倍时间：=FCO=251} {<$STR(P0)>=FCO=243} {小时=FCO=251}\ \
+<&输入要领取的双倍经验时间(小时)/@@InputInteger0>\
+<&返回上一页/@系统_标准NPC头_返回>\
+
+[@@InputInteger0]
+#IF
+SMALL N0 1
+#ACT
+MESSAGEBOX 要领取的双倍经验时间必需大于“0”
+BREAK
+
+#IF
+SMALL P0 <$STR(N0)>
+#ACT
+MESSAGEBOX 你剩余的双倍经验时间不足！
+#ELSEACT
+DEC P0 <$STR(N0)>
+INC P1 <$STR(N0)> 
+MUL N0 3600
+KILLMONEXPRATE 200 <$STR(N0)>
+DELTEXTLIST <$USERNAME> ../ScriptData/双倍经验/1.txt
+DELTEXTLIST <$USERNAME> ../ScriptData/双倍经验/2.txt
+DELTEXTLIST <$USERNAME> ../ScriptData/双倍经验/3.txt
+DELTEXTLIST <$USERNAME> ../ScriptData/双倍经验/4.txt
+DELTEXTLIST <$USERNAME> ../ScriptData/双倍经验/5.txt
+DELTEXTLIST <$USERNAME> ../ScriptData/双倍经验/10.txt
+GOTO @游戏服务_双倍经验_保存剩余时间
+
+[@游戏服务_双倍经验_保存剩余时间]
+#IF
+EQUAL P1 1
+#ACT
+ADDNAMELIST ../ScriptData/双倍经验/1.txt
+GOTO @游戏服务_双倍经验_显示
+BREAK
+
+#IF
+EQUAL P1 2
+#ACT
+ADDNAMELIST ../ScriptData/双倍经验/2.txt
+GOTO @游戏服务_双倍经验_显示
+BREAK
+
+#IF
+EQUAL P1 3
+#ACT
+ADDNAMELIST ../ScriptData/双倍经验/3.txt
+GOTO @游戏服务_双倍经验_显示
+BREAK
+
+#IF
+EQUAL P1 4
+#ACT
+ADDNAMELIST ../ScriptData/双倍经验/4.txt
+GOTO @游戏服务_双倍经验_显示
+BREAK
+
+#IF
+EQUAL P1 5
+#ACT
+ADDNAMELIST ../ScriptData/双倍经验/5.txt
+GOTO @游戏服务_双倍经验_显示
+BREAK
+
+#IF
+EQUAL P1 6
+#ACT
+ADDNAMELIST ../ScriptData/双倍经验/5.txt
+ADDNAMELIST ../ScriptData/双倍经验/1.txt
+GOTO @游戏服务_双倍经验_显示
+BREAK
+
+#IF
+EQUAL P1 7
+#ACT
+ADDNAMELIST ../ScriptData/双倍经验/5.txt
+ADDNAMELIST ../ScriptData/双倍经验/2.txt
+GOTO @游戏服务_双倍经验_显示
+BREAK
+
+#IF
+EQUAL P1 8
+#ACT
+ADDNAMELIST ../ScriptData/双倍经验/5.txt
+ADDNAMELIST ../ScriptData/双倍经验/3.txt
+GOTO @游戏服务_双倍经验_显示
+BREAK
+
+#IF
+EQUAL P1 9
+#ACT
+ADDNAMELIST ../ScriptData/双倍经验/5.txt
+ADDNAMELIST ../ScriptData/双倍经验/4.txt
+GOTO @游戏服务_双倍经验_显示
+BREAK
+
+#IF
+EQUAL P1 10
+#ACT
+ADDNAMELIST ../ScriptData/双倍经验/10.txt
+GOTO @游戏服务_双倍经验_显示
+BREAK
+
+#IF
+EQUAL P1 11
+#ACT
+ADDNAMELIST ../ScriptData/双倍经验/10.txt
+ADDNAMELIST ../ScriptData/双倍经验/1.txt
+GOTO @游戏服务_双倍经验_显示
+BREAK
+
+#IF
+EQUAL P1 12
+#ACT
+ADDNAMELIST ../ScriptData/双倍经验/10.txt
+ADDNAMELIST ../ScriptData/双倍经验/2.txt
+GOTO @游戏服务_双倍经验_显示
+BREAK
+
+#IF
+EQUAL P1 13
+#ACT
+ADDNAMELIST ../ScriptData/双倍经验/10.txt
+ADDNAMELIST ../ScriptData/双倍经验/3.txt
+GOTO @游戏服务_双倍经验_显示
+BREAK
+
+#IF
+LARGE P1 13
+#ACT
+ADDNAMELIST ../ScriptData/双倍经验/10.txt
+ADDNAMELIST ../ScriptData/双倍经验/4.txt
+GOTO @游戏服务_双倍经验_显示
+BREAK
+}

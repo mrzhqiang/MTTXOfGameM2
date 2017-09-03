@@ -1,0 +1,403 @@
+[@沙巴克官员标准配置]
+{
+[@main]
+#CALLX [\\游戏配置\NPC配置\所有NPC调用头内容.txt] @系统_所有NPC头内容
+
+[@系统_所有NPC头_返回]
+#CALLX [\\游戏配置\NPC配置\所有NPC调用头内容.txt] @系统_标准NPC头内容
+
+[@系统_标准NPC头_返回]
+#if
+;ISGUILDMASTER
+;ISCASTLEGUILD
+#say
+　目前沙巴克受 {<$OWNERGUILD>=FCO=251} 行会管理。\
+　受约束于：{<$LORD>=FCO=251}\ \
+　城堡资金：{<$CASTLEGOLD>=FCO=251}\
+　今天收入：{<$TODAYINCOME>=FCO=251}\ \
+<&取回资金/@@withdrawal>\
+<&存储资金/@@receipts>\
+<&控制城门/@控制城门>\
+<&城堡维护/@城堡维护>\
+<&领取奖励/@领取奖励>\
+<&关闭/@exit>\
+#elsesay
+\ \
+　城堡基本信息\
+　城堡主人：{<$LORD>=FCO=251}\
+　管理行会：{<$OWNERGUILD>=FCO=251}\
+　城堡资金：{<$CASTLEGOLD>=FCO=251}\
+　今天收入：{<$TODAYINCOME>=FCO=251}\ \
+<&关闭/@exit>\
+
+[@领取奖励]
+#IF
+EQUAL A10
+#ACT
+GOTO @领取奖励_首任城主奖励_领取
+#ELSEACT
+GOTO @领取奖励_守城奖励
+
+;#SAY
+;\ \
+;　请选择你要领取的奖励\ \
+;<&首任城主奖励{【[$首任城主元宝奖励数量][$元宝名称]】=FCO=251}/@领取奖励_首任城主奖励_领取>\
+;<&守城奖励/@领取奖励_守城奖励>\
+;<&返回/@系统_标准NPC头_返回>\
+;#ELSEACT
+;GOTO @领取奖励_守城奖励 
+
+[@领取奖励_守城奖励]
+#IF
+ISUNDERWAR
+#ACT
+MESSAGEBOX 正在攻城当中，无法领取！
+BREAK
+
+#IF
+NOT ISGUILDMASTER
+#ACT
+MESSAGEBOX 只有行会掌门人才可以领取！
+BREAK
+
+#IF
+NOT ISCASTLEGUILD
+#ACT
+MESSAGEBOX 只有沙巴克成员才可以领取！
+BREAK
+
+#IF
+EQUAL A12
+#ACT
+MOV A12 <$USERNAME>
+GAMEGOLD + [$攻城战争结束奖励数量]
+SENDMSG 0 [#6FFFF/8#6公告#5]：恭喜[#7<$USERNAME>#7]获得了攻城战获胜方#6FFFF/8#6[$攻城战争结束奖励数量][$元宝名称]#5的奖励！
+MESSAGEBOX 恭喜您，获得了[$攻城战争结束奖励数量][$元宝名称]奖励！
+#ELSEACT
+MESSAGEBOX 对不起，奖励已经领取过了或者今天没有发生攻城战争！
+
+[@领取奖励_首任城主奖励_领取]
+#IF
+ISUNDERWAR
+#ACT
+MESSAGEBOX 正在攻城当中，无法领取！
+BREAK
+
+#IF
+NOT ISGUILDMASTER
+#ACT
+MESSAGEBOX 只有行会掌门人才可以领取！
+BREAK
+
+#IF
+NOT ISCASTLEGUILD
+#ACT
+MESSAGEBOX 只有沙巴克成员才可以领取！
+BREAK
+
+#IF
+EQUAL A10
+#ACT
+MOV A10 <$USERNAME>
+MOV A12 <$USERNAME>
+GAMEGOLD + [$首任城主元宝奖励数量]
+SENDMSG 0 [#6FFFF/8#6公告#5]：恭喜[#7<$USERNAME>#7]成为了首任沙巴克城主，已经获得了#6FFFF/8#6[$首任城主元宝奖励数量][$元宝名称]#5的奖励！
+MESSAGEBOX 恭喜您，获得了[$首任城主元宝奖励数量][$元宝名称]奖励！
+close
+#ELSEACT
+MESSAGEBOX 对不起，奖励已经领取过了！
+
+
+[@领取奖励_守城奖励_BAK]
+#if
+#ACT
+MOV P0 <$STR(G30)>
+DEC P0 <$STR(G31)>
+
+#SAY
+　为了鼓励大家积极守城，特发布守城奖\
+励。我们推出的是领取奖励的间隔越久奖\
+励就越多。{已守城天数=FCO=251}每天都会自动增加。\
+一但确定领取奖励{已守城天数=FCO=251}将被初始化\
+为{0=FCO=251}重新进行计算。\ \
+　已守城天数: {<$STR(P0)>=FCO=251}\ \
+
+　{已守城天数　　　奖励元宝数量=FCO=243}\
+　{   3天　　　　　　100元宝=FCO=242}\
+　{   6天　　　　　　300元宝=FCO=242}\
+　{   9天　　　　　　600元宝=FCO=242}\
+　{  12天　　　　 　1000元宝=FCO=242}\
+　{  15天　　　　　 1500元宝=FCO=242}\
+　{只能在每天22:10-23:59之间领取奖励=FCO=243}\ \
+<&确认领取奖励/@领取奖励_守城奖励_领取>\
+<&返回/@系统_标准NPC头_返回>\
+
+[@领取奖励_守城奖励_领取]
+#IF
+ISUNDERWAR
+#ACT
+MESSAGEBOX 正在攻城当中，无法领取！
+BREAK
+
+#IF
+NOT ISGUILDMASTER
+#ACT
+MESSAGEBOX 只有行会掌门人才可以领取！
+BREAK
+
+#IF
+NOT ISCASTLEGUILD
+#ACT
+MESSAGEBOX 只有沙巴克成员才可以领取！
+BREAK
+
+#IF
+#ACT
+MOV P0 22
+MOV P1 9
+
+#IF
+SMALL P0 <$HOUR>
+#ACT
+GOTO @领取奖励_守城奖励_领取_时间确认
+BREAK
+
+#IF
+EQUAL P0 <$HOUR>
+SMALL P1 <$MINUTE>
+#ACT
+GOTO @领取奖励_守城奖励_领取_时间确认
+#ELSEACT
+MESSAGEBOX 只能在每天22:10-23:59之间领取奖励！
+
+[@领取奖励_守城奖励_领取_时间确认]
+#if
+#ACT
+MOV P0 <$STR(G30)>
+DEC P0 <$STR(G31)>
+
+#IF
+LARGE P0 14
+#ACT
+INC G31 <$STR(P0)>
+GAMEGOLD + 1500
+SENDMSG 0 [#6FFFF/8#6公告#5]：恭喜[#7<$USERNAME>#7]守城达到了#6FFFF/8#615天#5，获得了#6FFFF/8#61500[$元宝名称]#5的奖励！
+MESSAGEBOX 恭喜您，获得了1500[$元宝名称]奖励！
+close
+BREAK
+
+#IF
+LARGE P0 11
+#ACT
+INC G31 <$STR(P0)>
+GAMEGOLD + 1000
+SENDMSG 0 [#6FFFF/8#6公告#5]：恭喜[#7<$USERNAME>#7]守城达到了#6FFFF/8#612天#5，获得了#6FFFF/8#61000[$元宝名称]#5的奖励！
+MESSAGEBOX 恭喜您，获得了1000[$元宝名称]奖励！
+close
+BREAK
+
+#IF
+LARGE P0 8
+#ACT
+INC G31 <$STR(P0)>
+GAMEGOLD + 600
+SENDMSG 0 [#6FFFF/8#6公告#5]：恭喜[#7<$USERNAME>#7]守城达到了#6FFFF/8#69天#5，获得了#6FFFF/8#6600[$元宝名称]#5的奖励！
+MESSAGEBOX 恭喜您，获得了600[$元宝名称]奖励！
+close
+BREAK
+
+#IF
+LARGE P0 5
+#ACT
+INC G31 <$STR(P0)>
+GAMEGOLD + 300
+SENDMSG 0 [#6FFFF/8#6公告#5]：恭喜[#7<$USERNAME>#7]守城达到了#6FFFF/8#66天#5，获得了#6FFFF/8#6300[$元宝名称]#5的奖励！
+MESSAGEBOX 恭喜您，获得了300[$元宝名称]奖励！
+close
+BREAK
+
+#IF
+LARGE P0 2
+#ACT
+INC G31 <$STR(P0)>
+GAMEGOLD + 100
+SENDMSG 0 [#6FFFF/8#6公告#5]：恭喜[#7<$USERNAME>#7]守城达到了#6FFFF/8#63天#5，获得了#6FFFF/8#6100[$元宝名称]#5的奖励！
+MESSAGEBOX 恭喜您，获得了100[$元宝名称]奖励！
+close
+BREAK
+#ELSEACT
+MESSAGEBOX 领取失败，守城天数不足！
+
+
+[@防御方式]
+\ \
+　当前防御状态为: {<$GUARDRULE>=FCO=251}\ \
+<&正常防守/@guardrule_normalnow>\
+<&进攻PK者/@guardrule_pkattack>\
+<&返回/@系统_标准NPC头_返回>\
+
+[@控制城门]
+\ \
+　城门当前状态为: {<$CASTLEDOORSTATE>=FCO=251}\ \
+<&打开城门/@openmaindoor>\
+<&关闭城门/@closemaindoor>\
+<&返回/@系统_标准NPC头_返回>\
+
+[@城堡维护]
+#if
+CHECKCASTLESTATE DOOR
+#act
+MOV S0 {正常=FCO=250}
+#elseact
+MOV S0 <修复/@repairdoornow>
+
+#if
+CHECKCASTLESTATE WALL 1
+#act
+MOV S1 {正常=FCO=250}
+#elseact
+MOV S1 <修复/@repairwallnow1>
+
+#if
+CHECKCASTLESTATE WALL 2
+#act
+MOV S2 {正常=FCO=250}
+#elseact
+MOV S2 <修复/@repairwallnow2>
+
+#if
+CHECKCASTLESTATE WALL 3
+#act
+MOV S3 {正常=FCO=250}
+#elseact
+MOV S3 <修复/@repairwallnow3>
+
+#if
+CHECKCASTLESTATE ARCHER 0
+#act
+MOV S4 {正常=FCO=250}
+#elseact
+MOV S4 <聘用/@hirearchernow1>
+
+#if
+CHECKCASTLESTATE ARCHER 1
+#act
+MOV S5 {正常=FCO=250}
+#elseact
+MOV S5 <聘用/@hirearchernow2>
+
+#if
+CHECKCASTLESTATE ARCHER 2
+#act
+MOV S6 {正常=FCO=250}
+#elseact
+MOV S6 <聘用/@hirearchernow3>
+
+#if
+CHECKCASTLESTATE ARCHER 3
+#act
+MOV S7 {正常=FCO=250}
+#elseact
+MOV S7 <聘用/@hirearchernow4>
+
+#if
+CHECKCASTLESTATE ARCHER 4
+#act
+MOV S8 {正常=FCO=250}
+#elseact
+MOV S8 <聘用/@hirearchernow5>
+
+#if
+CHECKCASTLESTATE ARCHER 5
+#act
+MOV S9 {正常=FCO=250}
+#elseact
+MOV S9 <聘用/@hirearchernow6>
+
+#if
+CHECKCASTLESTATE ARCHER 6
+#act
+MOV S10 {正常=FCO=250}
+#elseact
+MOV S10 <聘用/@hirearchernow7>
+
+#if
+CHECKCASTLESTATE ARCHER 7
+#act
+MOV S11 {正常=FCO=250}
+#elseact
+MOV S11 <聘用/@hirearchernow8>
+
+#if
+CHECKCASTLESTATE ARCHER 8
+#act
+MOV S12 {正常=FCO=250}
+#elseact
+MOV S12 <聘用/@hirearchernow9>
+
+#if
+CHECKCASTLESTATE ARCHER 9
+#act
+MOV S13 {正常=FCO=250}
+#elseact
+MOV S13 <聘用/@hirearchernow10>
+
+#if
+CHECKCASTLESTATE ARCHER 10
+#act
+MOV S14 {正常=FCO=250}
+#elseact
+MOV S14 <聘用/@hirearchernow11>
+
+#if
+CHECKCASTLESTATE ARCHER 11
+#act
+MOV S15 {正常=FCO=250}
+#elseact
+MOV S15 <聘用/@hirearchernow12>
+
+#if
+CHECKCASTLESTATE GUARD 0
+#act
+MOV S16 {正常=FCO=250}
+#elseact
+MOV S16 <聘用/@hireguardnow1>
+
+#if
+CHECKCASTLESTATE GUARD 1
+#act
+MOV S17 {正常=FCO=250}
+#elseact
+MOV S17 <聘用/@hireguardnow2>
+
+#if
+CHECKCASTLESTATE GUARD 2
+#act
+MOV S18 {正常=FCO=250}
+#elseact
+MOV S18 <聘用/@hireguardnow3>
+
+#if
+CHECKCASTLESTATE GUARD 3
+#act
+MOV S19 {正常=FCO=250}
+#elseact
+MOV S19 <聘用/@hireguardnow4>
+
+#if
+#say
+$RESETLABEL
+\ \
+　城堡资金：{<$CASTLEGOLD>=FCO=251}\ \
+　城门状态(费用：<$REPAIRDOORGOLD>)：<$STR(S0)>\ \
+　皇宫城墙状态(费用：<$REPAIRWALLGOLD>)\
+　1号：<$STR(S1)>   2号：<$STR(S2)>   1号：<$STR(S3)>\ \
+
+　弓箭手状态(费用：<$ARCHERFEE>)\
+　1号：<$STR(S4)>   2号：<$STR(S5)>   3号：<$STR(S6)>\
+　4号：<$STR(S7)>   5号：<$STR(S8)>   6号：<$STR(S9)>\
+　7号：<$STR(S10)>   8号：<$STR(S11)>   9号：<$STR(S12)>\
+　A号：<$STR(S13)>   B号：<$STR(S14)>   C号：<$STR(S15)>\ \
+
+<&返回/@系统_标准NPC头_返回>\
+}

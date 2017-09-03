@@ -1,0 +1,5 @@
+[@main]
+#IF
+#ACT
+GamePoint + 150
+SENDMSG 0 玩家：【<$USERNAME>】杀死了超级BOSS，获得了150点卷的奖励。

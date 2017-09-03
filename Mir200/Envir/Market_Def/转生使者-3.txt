@@ -1,0 +1,155 @@
+[@main]
+#say
+尊敬的玩家：【<$USERNAME>】你好，\
+想修仙转生吗,转生后拥有强大的属性\
+小提示：转生证明任何小怪都能爆出\
+<转生介绍/@介绍>\<我要转生/@转生>\<转生证明合成/@合成>
+[@介绍]
+1转材料:一转证明书一张+金条3根\
+获得:属性点+50,等级降低5级\
+2转材料:二转证明书一张张+金条8根\
+获得:属性点+100,等级降低5级\
+三转材料:三转证明书两张+元宝800\
+获得:全属性+1.05倍\
+四转材料:四转证明书两张+元宝2000\
+获得:全属性+1.10倍\
+五转材料:五转证明书三张+元宝4000\
+获得:全属性+1.15倍\
+[@转生]
+<我要进行一转/@一转>\<我要进行二转/@二转>\
+<我要进行三转/@三转>\<我要进行四转/@四转>\
+<我要进行五转/@五转>\
+[@一转]
+#IF
+CHECK [701] 1
+#ACT
+MESSAGEBOX 提示：你已经一转过了。
+BREAK
+#IF
+NOT CHECKITEM 一转证明书 1
+#act
+MESSAGEBOX 缺少转生物品.
+BREAK
+#if
+#act
+set [701] 1
+sendmsg 7 转生成功
+TAKE 一转证明书 1
+ChangeLevel - 5
+ChangeNakedCount + 50
+BREAK
+[@二转]
+#IF
+CHECK [702] 1
+#ACT
+MESSAGEBOX 提示：你已经二转过了。
+BREAK
+#IF
+NOT CHECKITEM 二转证明书 1
+#act
+MESSAGEBOX 缺少转生物品.
+BREAK
+#if
+#act
+set [702] 1
+sendmsg 7 转生成功
+TAKE 二转证明书 2
+ChangeLevel - 5
+ChangeNakedCount + 100
+BREAK
+[@三转]
+#IF
+CHECK [703] 1
+#ACT
+MESSAGEBOX 提示：你已经三转过了。
+BREAK
+#IF
+NOT CHECKITEM 三转证明书 2
+#act
+MESSAGEBOX 缺少转生物品.
+BREAK
+#if
+#act
+set [703] 1
+sendmsg 7 转生成功
+TAKE 三转证明书 2
+ChangeLevel - 5
+PowerRate 105 1000000
+BREAK
+[@四转]
+#IF
+CHECK [704] 1
+#ACT
+MESSAGEBOX 提示：你已经四转过了。
+BREAK
+#IF
+NOT CHECKITEM 四转证明书 2
+#act
+MESSAGEBOX 缺少转生物品.
+BREAK
+#if
+#act
+set [704] 1
+sendmsg 7 转生成功
+TAKE 四转证明书 2
+ChangeLevel - 5
+PowerRate 110 1000000
+BREAK
+[@五转]
+#IF
+CHECK [705] 1
+#ACT
+MESSAGEBOX 提示：你已经五转过了。
+BREAK
+#IF
+NOT CHECKITEM 五转证明书 3
+#act
+MESSAGEBOX 缺少转生物品.
+BREAK
+#if
+#act
+set [705] 1
+sendmsg 7 转生成功
+TAKE 五转证明书 3
+ChangeLevel - 5
+PowerRate 115 1000000
+BREAK
+
+
+[@合成]
+#say
+2个一转证明合成二转\2个二转证明合成三转\
+2个三转证明合成四转\2个四转证明合成五转\
+<合成二转证明/@二转>\<合成三转证明/@三转>\<合成四转证明/@四转>\<合成五转证明/@五转>\
+[@二转]
+#if
+checkitem 一转证明书 2
+#act
+give 二转证明书 1
+take 一转证明书 2
+#elseact
+messagebox 提示：材料不足
+[@三转]
+#if
+checkietm 二转证明书 2
+#act
+give 三转证明书 1
+take 二转证明书 2
+#elseact
+messagebox 提示：材料不足
+[@四转]
+#if
+checkitem 三转证明书 2
+#act
+give 四转证明书 1
+take 三转证明书 2
+#elseact
+messagebox 提示：材料不足
+[@五转]
+#if
+checkitem 四转证明书 2
+#act
+give 五转证明书 1
+take 四转证明书 2
+#elseact
+messagebox 提示：材料不足

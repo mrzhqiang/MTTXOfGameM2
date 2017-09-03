@@ -1,0 +1,910 @@
+[@杀人勋章]
+{
+[@杀人书勋章1]
+#IF
+#act
+MOV P19 <$ITEMINFO[$IDX(4)].Streng(1)>
+
+#if
+equal P19 18
+#ACT
+BREAK
+
+#IF
+#ACT
+MOV P20 <$ITEMINFO[$IDX(4)].Streng(1)>
+INC P20 1
+HookItem 4
+ChangeGiveItem 9 <$STR(P20)>
+ChangeGiveItem 8
+SENDMSG 7 杀人勋章提示:您的勋章吸收了杀戮的怨气.强化等级获得了提高。
+
+[@杀人书勋章2]
+#IF
+#act
+MOV P19 <$ITEMINFO[$IDX(4)].Streng(1)>
+
+#if
+equal P19 18
+#ACT
+BREAK
+
+#IF
+#ACT
+MOV P20 <$ITEMINFO[$IDX(4)].Streng(1)>
+INC P20 1
+HookItem 4
+ChangeGiveItem 9 <$STR(P20)>
+ChangeGiveItem 8
+SENDMSG 7 杀人勋章提示:您的勋章吸收了杀戮的怨气.强化等级获得了提高。
+
+#IF
+Large P20 2
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 3
+ChangeGiveItem 7 1 3
+ChangeGiveItem 8
+
+#IF
+Large P20 5
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 6
+ChangeGiveItem 7 1 6
+ChangeGiveItem 8
+
+#IF
+Large P20 8
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 9
+ChangeGiveItem 7 1 9
+ChangeGiveItem 8
+
+#IF
+Large P20 11
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 12
+ChangeGiveItem 7 1 12
+ChangeGiveItem 8
+
+#IF
+Large P20 14
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 15
+ChangeGiveItem 7 1 15
+ChangeGiveItem 8
+
+#IF
+Large P20 17
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 18
+ChangeGiveItem 7 1 18
+ChangeGiveItem 8
+break
+
+
+
+
+[@杀人书勋章3]
+#IF
+#act
+MOV P19 <$ITEMINFO[$IDX(4)].Streng(1)>
+
+#if
+equal P19 18
+#ACT
+BREAK
+
+#IF
+#ACT
+MOV P20 <$ITEMINFO[$IDX(4)].Streng(1)>
+INC P20 1
+HookItem 4
+ChangeGiveItem 9 <$STR(P20)>
+ChangeGiveItem 8
+SENDMSG 7 杀人勋章提示:您的勋章吸收了杀戮的怨气.强化等级获得了提高。
+
+#IF
+Large P20 2
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 3
+ChangeGiveItem 7 1 3
+ChangeGiveItem 7 17 3
+ChangeGiveItem 7 18 3
+ChangeGiveItem 8
+
+#IF
+Large P20 5
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 6
+ChangeGiveItem 7 1 6
+ChangeGiveItem 7 17 6
+ChangeGiveItem 7 18 6
+ChangeGiveItem 8
+
+#IF
+Large P20 8
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 9
+ChangeGiveItem 7 1 9
+ChangeGiveItem 7 17 9
+ChangeGiveItem 7 18 9
+ChangeGiveItem 8
+
+#IF
+Large P20 11
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 12
+ChangeGiveItem 7 1 12
+ChangeGiveItem 7 17 12
+ChangeGiveItem 7 18 12
+ChangeGiveItem 8
+
+#IF
+Large P20 14
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 15
+ChangeGiveItem 7 1 15
+ChangeGiveItem 7 17 15
+ChangeGiveItem 7 18 15
+ChangeGiveItem 8
+
+#IF
+Large P20 17
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 18
+ChangeGiveItem 7 1 18
+ChangeGiveItem 7 17 18
+ChangeGiveItem 7 18 18
+ChangeGiveItem 8
+break
+
+[@杀人书勋章4]
+#IF
+#act
+MOV P19 <$ITEMINFO[$IDX(4)].Streng(1)>
+
+#if
+equal P19 18
+#ACT
+BREAK
+
+#IF
+#ACT
+MOV P20 <$ITEMINFO[$IDX(4)].Streng(1)>
+INC P20 1
+HookItem 4
+ChangeGiveItem 9 <$STR(P20)>
+ChangeGiveItem 8
+SENDMSG 7 杀人勋章提示:您的勋章吸收了杀戮的怨气.强化等级获得了提高。
+
+
+#IF
+Large P20 2
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 3
+ChangeGiveItem 7 1 3
+ChangeGiveItem 7 17 3
+ChangeGiveItem 7 18 3
+ChangeGiveItem 7 26 1
+ChangeGiveItem 8
+
+#IF
+Large P20 5
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 6
+ChangeGiveItem 7 1 6
+ChangeGiveItem 7 17 6
+ChangeGiveItem 7 18 6
+ChangeGiveItem 7 26 2
+ChangeGiveItem 8
+
+#IF
+Large P20 8
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 9
+ChangeGiveItem 7 1 9
+ChangeGiveItem 7 17 9
+ChangeGiveItem 7 18 9
+ChangeGiveItem 7 26 3
+ChangeGiveItem 8
+
+#IF
+Large P20 11
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 12
+ChangeGiveItem 7 1 12
+ChangeGiveItem 7 17 12
+ChangeGiveItem 7 18 12
+ChangeGiveItem 7 26 4
+ChangeGiveItem 8
+
+#IF
+Large P20 14
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 15
+ChangeGiveItem 7 1 15
+ChangeGiveItem 7 17 15
+ChangeGiveItem 7 18 15
+ChangeGiveItem 7 26 5
+ChangeGiveItem 8
+
+#IF
+Large P20 17
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 18
+ChangeGiveItem 7 1 18
+ChangeGiveItem 7 17 18
+ChangeGiveItem 7 18 18
+ChangeGiveItem 7 26 6
+ChangeGiveItem 8
+break
+
+
+
+[@杀人书勋章1_被杀]
+#IF
+#act
+MOV P19 <$ITEMINFO[$IDX(4)].Streng(1)>
+#if
+equal P19 0
+#ACT
+BREAK
+#IF
+EQUAL P19 2
+#ACT
+MOV P20 1
+
+#IF
+EQUAL P19 1
+#ACT
+MOV P20 0
+
+#if
+Large P19 2
+#ACT
+MOV P20 <$STR(P19)>
+DIV P19 3
+DEC P20 <$STR(P19)>
+
+#IF
+#ACT
+HookItem 4
+ChangeGiveItem 9 <$STR(P20)>
+ChangeGiveItem 8
+SENDMSG 7 杀人勋章提示:由于你被击杀，怨气流失。你勋章的强化等级遗失了1/3。
+
+[@杀人书勋章2_被杀]
+#IF
+#act
+MOV P19 <$ITEMINFO[$IDX(4)].Streng(1)>
+#if
+equal P19 0
+#ACT
+BREAK
+#IF
+EQUAL P19 2
+#ACT
+MOV P20 1
+
+#IF
+EQUAL P19 1
+#ACT
+MOV P20 0
+
+#if
+Large P19 2
+#ACT
+MOV P20 <$STR(P19)>
+DIV P19 3
+DEC P20 <$STR(P19)>
+
+#IF
+#ACT
+HookItem 4
+ChangeGiveItem 9 <$STR(P20)>
+ChangeGiveItem 8
+SENDMSG 7 杀人勋章提示:由于你被击杀，怨气流失。你勋章的强化等级遗失了1/3。
+
+
+#IF
+Large P20 2
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 3
+ChangeGiveItem 7 1 3
+ChangeGiveItem 8
+
+#IF
+Large P20 5
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 6
+ChangeGiveItem 7 1 6
+ChangeGiveItem 8
+
+#IF
+Large P20 8
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 9
+ChangeGiveItem 7 1 9
+ChangeGiveItem 8
+
+#IF
+Large P20 11
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 12
+ChangeGiveItem 7 1 12
+ChangeGiveItem 8
+
+#IF
+Large P20 14
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 15
+ChangeGiveItem 7 1 15
+ChangeGiveItem 8
+
+#IF
+Large P20 17
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 18
+ChangeGiveItem 7 1 18
+ChangeGiveItem 8
+
+#IF
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 0
+ChangeGiveItem 7 1 0
+ChangeGiveItem 8
+break
+
+[@杀人书勋章3_被杀]
+#IF
+#act
+MOV P19 <$ITEMINFO[$IDX(4)].Streng(1)>
+#if
+equal P19 0
+#ACT
+BREAK
+#IF
+EQUAL P19 2
+#ACT
+MOV P20 1
+
+#IF
+EQUAL P19 1
+#ACT
+MOV P20 0
+
+#if
+Large P19 2
+#ACT
+MOV P20 <$STR(P19)>
+DIV P19 3
+DEC P20 <$STR(P19)>
+
+#IF
+#ACT
+HookItem 4
+ChangeGiveItem 9 <$STR(P20)>
+ChangeGiveItem 8
+SENDMSG 7 杀人勋章提示:由于你被击杀，怨气流失。你勋章的强化等级遗失了1/3。
+
+#IF
+Large P20 2
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 3
+ChangeGiveItem 7 1 3
+ChangeGiveItem 7 17 3
+ChangeGiveItem 7 18 3
+ChangeGiveItem 8
+
+#IF
+Large P20 5
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 6
+ChangeGiveItem 7 1 6
+ChangeGiveItem 7 17 6
+ChangeGiveItem 7 18 6
+ChangeGiveItem 8
+
+#IF
+Large P20 8
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 9
+ChangeGiveItem 7 1 9
+ChangeGiveItem 7 17 9
+ChangeGiveItem 7 18 9
+ChangeGiveItem 8
+
+#IF
+Large P20 11
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 12
+ChangeGiveItem 7 1 12
+ChangeGiveItem 7 17 12
+ChangeGiveItem 7 18 12
+ChangeGiveItem 8
+
+#IF
+Large P20 14
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 15
+ChangeGiveItem 7 1 15
+ChangeGiveItem 7 17 15
+ChangeGiveItem 7 18 15
+ChangeGiveItem 8
+
+#IF
+Large P20 17
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 18
+ChangeGiveItem 7 1 18
+ChangeGiveItem 7 17 18
+ChangeGiveItem 7 18 18
+ChangeGiveItem 8
+
+#IF
+EQUAL P20 0
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 0
+ChangeGiveItem 7 1 0
+ChangeGiveItem 7 17 0
+ChangeGiveItem 7 18 0
+ChangeGiveItem 8
+
+[@杀人书勋章4_被杀]
+#IF
+#act
+MOV P19 <$ITEMINFO[$IDX(4)].Streng(1)>
+
+#if
+equal P19 0
+#ACT
+BREAK
+
+#IF
+EQUAL P19 2
+#ACT
+MOV P20 1
+
+#IF
+EQUAL P19 1
+#ACT
+MOV P20 0
+
+#if
+Large P19 2
+#ACT
+MOV P20 <$STR(P19)>
+DIV P19 3
+DEC P20 <$STR(P19)> 
+SENDMSG 7 <$STR(P19)>:P19,<$STR(P20)>,P20
+#IF
+#ACT
+HookItem 4
+ChangeGiveItem 9 <$STR(P20)>
+ChangeGiveItem 8
+SENDMSG 7 杀人勋章提示:由于你被击杀，怨气流失。你勋章的强化等级遗失了1/3。
+
+
+#IF
+Large P20 2
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 3
+ChangeGiveItem 7 1 3
+ChangeGiveItem 7 17 3
+ChangeGiveItem 7 18 3
+ChangeGiveItem 7 26 1
+ChangeGiveItem 8
+
+#IF
+Large P20 5
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 6
+ChangeGiveItem 7 1 6
+ChangeGiveItem 7 17 6
+ChangeGiveItem 7 18 6
+ChangeGiveItem 7 26 2
+ChangeGiveItem 8
+
+#IF
+Large P20 8
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 9
+ChangeGiveItem 7 1 9
+ChangeGiveItem 7 17 9
+ChangeGiveItem 7 18 9
+ChangeGiveItem 7 26 3
+ChangeGiveItem 8
+
+#IF
+Large P20 11
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 12
+ChangeGiveItem 7 1 12
+ChangeGiveItem 7 17 12
+ChangeGiveItem 7 18 12
+ChangeGiveItem 7 26 4
+ChangeGiveItem 8
+
+#IF
+Large P20 14
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 15
+ChangeGiveItem 7 1 15
+ChangeGiveItem 7 17 15
+ChangeGiveItem 7 18 15
+ChangeGiveItem 7 26 5
+ChangeGiveItem 8
+
+#IF
+Large P20 17
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 18
+ChangeGiveItem 7 1 18
+ChangeGiveItem 7 17 18
+ChangeGiveItem 7 18 18
+ChangeGiveItem 7 26 6
+ChangeGiveItem 8
+
+#IF
+EQUAL P20 0
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 0
+ChangeGiveItem 7 1 0
+ChangeGiveItem 7 17 0
+ChangeGiveItem 7 18 0
+ChangeGiveItem 7 26 0
+ChangeGiveItem 8
+
+[@StdmodeFunc59]
+#IF
+#ACT
+MOV S19 <$RIGHTHAND>
+
+#IF
+EQUAL S19 优秀勋章
+#ACT
+GOTO @杀人书勋章1_服用
+
+#IF
+EQUAL S19 精致勋章
+#ACT
+GOTO @杀人书勋章2_服用
+
+#IF
+EQUAL S19 史诗勋章
+#ACT
+GOTO @杀人书勋章3_服用
+
+#IF
+EQUAL S19 传说勋章
+#ACT
+GOTO @杀人书勋章4_服用
+
+[@杀人书勋章4_服用]
+#IF
+NOT CheckUseItem 4
+#ACT
+MESSAGEBOX 提示：请将勋章佩戴好后在使用该道具。
+GIVE 怨气灵珠 1
+BREAK
+#IF
+#ACT
+MOV P36 <$ITEMINFO[$IDX(4)].Streng(1)>
+
+#IF
+EQUAL P36 18
+#ACT
+MESSAGEBOX 提示：你勋章的杀人效果已经满级，无法增加了。
+BREAK
+
+#IF
+NOT Small P36 15
+#ACT
+HookItem 4
+ChangeGiveItem 9 18
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】服用了【怨气灵珠】，促使【<$ITEMX[$IDX(4)]>】的杀人效果提升了3个等级。
+
+#IF
+Small P36 15
+#ACT
+INC P36 3
+HookItem 4
+ChangeGiveItem 9 <$STR(P36)>
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】服用了【怨气灵珠】，促使【<$ITEMX[$IDX(4)]>】的杀人效果提升了3个等级。
+
+
+#IF
+#ACT
+MOV P20 <$ITEMINFO[$IDX(4)].Streng(1)>
+
+#IF
+Large P20 2
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 3
+ChangeGiveItem 7 1 3
+ChangeGiveItem 7 17 3
+ChangeGiveItem 7 18 3
+ChangeGiveItem 7 26 1
+ChangeGiveItem 8
+
+#IF
+Large P20 5
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 6
+ChangeGiveItem 7 1 6
+ChangeGiveItem 7 17 6
+ChangeGiveItem 7 18 6
+ChangeGiveItem 7 26 2
+ChangeGiveItem 8
+
+#IF
+Large P20 8
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 9
+ChangeGiveItem 7 1 9
+ChangeGiveItem 7 17 9
+ChangeGiveItem 7 18 9
+ChangeGiveItem 7 26 3
+ChangeGiveItem 8
+
+#IF
+Large P20 11
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 12
+ChangeGiveItem 7 1 12
+ChangeGiveItem 7 17 12
+ChangeGiveItem 7 18 12
+ChangeGiveItem 7 26 4
+ChangeGiveItem 8
+
+#IF
+Large P20 14
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 15
+ChangeGiveItem 7 1 15
+ChangeGiveItem 7 17 15
+ChangeGiveItem 7 18 15
+ChangeGiveItem 7 26 5
+ChangeGiveItem 8
+
+#IF
+Large P20 17
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 18
+ChangeGiveItem 7 1 18
+ChangeGiveItem 7 17 18
+ChangeGiveItem 7 18 18
+ChangeGiveItem 7 26 6
+ChangeGiveItem 8
+
+[@杀人书勋章3_服用]
+#IF
+NOT CheckUseItem 4
+#ACT
+MESSAGEBOX 提示：请将勋章佩戴好后在使用该道具。
+GIVE 怨气灵珠 1
+BREAK
+#IF
+#ACT
+MOV P36 <$ITEMINFO[$IDX(4)].Streng(1)>
+
+#IF
+EQUAL P36 18
+#ACT
+MESSAGEBOX 提示：你勋章的杀人效果已经满级，无法增加了。
+BREAK
+
+#IF
+NOT Small P36 15
+#ACT
+HookItem 4
+ChangeGiveItem 9 18
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】服用了【怨气灵珠】，促使【<$ITEMX[$IDX(4)]>】的杀人效果提升了3个等级。
+
+#IF
+Small P36 15
+#ACT
+INC P36 3
+HookItem 4
+ChangeGiveItem 9 <$STR(P36)>
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】服用了【怨气灵珠】，促使【<$ITEMX[$IDX(4)]>】的杀人效果提升了3个等级。
+
+#IF
+#ACT
+MOV P20 <$ITEMINFO[$IDX(4)].Streng(1)>
+#IF
+Large P20 2
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 3
+ChangeGiveItem 7 1 3
+ChangeGiveItem 7 17 3
+ChangeGiveItem 7 18 3
+ChangeGiveItem 8
+
+#IF
+Large P20 5
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 6
+ChangeGiveItem 7 1 6
+ChangeGiveItem 7 17 6
+ChangeGiveItem 7 18 6
+ChangeGiveItem 8
+
+#IF
+Large P20 8
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 9
+ChangeGiveItem 7 1 9
+ChangeGiveItem 7 17 9
+ChangeGiveItem 7 18 9
+ChangeGiveItem 8
+
+#IF
+Large P20 11
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 12
+ChangeGiveItem 7 1 12
+ChangeGiveItem 7 17 12
+ChangeGiveItem 7 18 12
+ChangeGiveItem 8
+
+#IF
+Large P20 14
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 15
+ChangeGiveItem 7 1 15
+ChangeGiveItem 7 17 15
+ChangeGiveItem 7 18 15
+ChangeGiveItem 8
+
+#IF
+Large P20 17
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 18
+ChangeGiveItem 7 1 18
+ChangeGiveItem 7 17 18
+ChangeGiveItem 7 18 18
+ChangeGiveItem 8
+
+[@杀人书勋章2_服用]
+#IF
+NOT CheckUseItem 4
+#ACT
+MESSAGEBOX 提示：请将勋章佩戴好后在使用该道具。
+GIVE 怨气灵珠 1
+BREAK
+
+#IF
+#ACT
+MOV P36 <$ITEMINFO[$IDX(4)].Streng(1)>
+
+#IF
+EQUAL P36 18
+#ACT
+MESSAGEBOX 提示：你勋章的杀人效果已经满级，无法增加了。
+BREAK
+
+#IF
+NOT Small P36 15
+#ACT
+HookItem 4
+ChangeGiveItem 9 18
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】服用了【怨气灵珠】，促使【<$ITEMX[$IDX(4)]>】的杀人效果提升了3个等级。
+
+#IF
+Small P36 15
+#ACT
+INC P36 3
+HookItem 4
+ChangeGiveItem 9 <$STR(P36)>
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】服用了【怨气灵珠】，促使【<$ITEMX[$IDX(4)]>】的杀人效果提升了3个等级。
+
+#IF
+#ACT
+MOV P20 <$ITEMINFO[$IDX(4)].Streng(1)>
+
+#IF
+Large P20 2
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 3
+ChangeGiveItem 7 1 3
+ChangeGiveItem 8
+
+#IF
+Large P20 5
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 6
+ChangeGiveItem 7 1 6
+ChangeGiveItem 8
+
+#IF
+Large P20 8
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 9
+ChangeGiveItem 7 1 9
+ChangeGiveItem 8
+
+#IF
+Large P20 11
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 12
+ChangeGiveItem 7 1 12
+ChangeGiveItem 8
+
+#IF
+Large P20 14
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 15
+ChangeGiveItem 7 1 15
+ChangeGiveItem 8
+
+#IF
+Large P20 17
+#ACT
+HookItem 4
+ChangeGiveItem 7 0 18
+ChangeGiveItem 7 1 18
+ChangeGiveItem 8
+}

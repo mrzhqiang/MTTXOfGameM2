@@ -1,0 +1,119 @@
+[@武馆教头_检测]
+{
+#IF
+CHECKMISSION [133] 1
+CHECKMISSION [135] 0
+CHECKLEVELEX > 39
+#ACT
+INC S0 <&武馆教头的心事{【任务】=FCO=251}/@任务_教头心事>\
+
+#IF
+CHECKMISSION [144] 1
+CHECKMISSION [145] 0
+CHECKITEMCOUNT 如梦丹 ? 1
+#ACT
+INC S0 <&武馆教头的心事{【任务】=FCO=251}/@任务_教头心事_第九步完成>\
+}
+
+[@武馆教头_脚本]
+{
+[@任务_教头心事]
+#IF
+CHECKMISSION [133] 1
+CHECKMISSION [135] 0
+CHECKLEVELEX > 39
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　最近不知道怎么回事，老是做同一个\
+恶梦，惊醒的时候还记得清清楚楚，但过\
+一阵就什么都不记得梦见了什么，而且我\
+有一个不详的预感，这不是什么兆头。\
+　　为此我很想了解我到底梦见的是什么\
+，你愿不愿意帮我解开这个心结？\ \
+<&请接着往下说/@任务_教头心事_接受>\
+<&结束对话/@exit>\
+
+[@任务_教头心事_接受]
+#IF
+CHECKMISSION [133] 1
+CHECKMISSION [135] 0
+CHECKLEVELEX > 39
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　听人说{比奇城内有一叫=FCO=251}{李益仙=FCO=250}的奇人\
+，精通天文地理，医学万象。不知道他能\
+否帮我记起梦中的影像。如果你能帮我去\
+问问他，我将会万分的感激你。\ \
+{任务奖励：=FCO=243}\
+　声望值：[$任务_教头心事_第一步奖励声望]\
+　经验值：[$任务_教头心事_第一步奖励经验]\ \
+<&我这就去问问他/@任务_教头心事_第一步>\
+<&结束对话/@exit>\
+
+[@任务_教头心事_第一步]
+#IF
+CHECKMISSION [133] 1
+CHECKMISSION [135] 0
+CHECKLEVELEX > 39
+#ACT
+DELMISSION 0
+ADDMISSION 0 教头心事第一步
+SETMISSION [135] 1
+SHOWEFFECT [$特效_接受任务]
+AUTOMOVE 比奇省,356,319
+close
+
+[@任务_教头心事_第九步完成]
+#IF
+CHECKMISSION [144] 1
+CHECKMISSION [145] 0
+CHECKITEMCOUNT 如梦丹 ? 1
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　李益仙说就是这种小丸子可以让我将\
+睡梦中的事情记起来？还让我在睡觉前服\
+下，第二天早上就有结果？这是真的吗？\
+这也太神奇了。\
+　　不管怎么样，你为我的事劳累了一番\
+，对此我非常的感激你，我这有些东西我\
+拿着也没什么用，或许对于你们这些勇士\
+来说用处更大，请你收下。\ \
+
+<&谢谢/@任务_教头心事_第九步结束>\
+<&结束对话/@exit>\
+
+[@任务_教头心事_第九步结束]
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+MESSAGEBOX 您身上的背包空间不足，请先清理一下背包！
+BREAK
+
+#IF
+CHECKMISSION [144] 1
+CHECKMISSION [145] 0
+CHECKITEMCOUNT 如梦丹 ? 1
+#ACT
+SHOWEFFECT [$特效_任务完成]
+SETMISSION [145] 1
+TAKECOUNT 如梦丹 1
+CHANGEEXP + [$任务_教头心事_第九步奖励经验]
+CREDITPOINT + [$任务_教头心事_第九步奖励声望]
+DYNAMICGIVE [$任务_教头心事_第九步奖励物品1] 1
+CHANGEGIVEITEM [$物品_改变属性_时间] 15
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可出售] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+DYNAMICGIVE [$任务_教头心事_第九步奖励物品2] 2
+DYNAMICGIVE [$任务_教头心事_第九步奖励物品3] 2
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可出售] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+DELMISSION 0
+CLOSE
+
+}

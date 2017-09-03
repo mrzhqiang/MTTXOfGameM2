@@ -1,0 +1,226 @@
+[@循环经验_检测]
+{
+#IF
+CHECKMISSION [$任务_循环经验任务变量] 0
+CHECKMISSION [$任务_循环任务变量2] 0
+CHECKLEVELEX > 44
+#ACT
+MOV S0 <&45级经验任务{【循环任务】=FCO=251}/@45_循环经验_接受>\
+
+#IF
+CHECKMISSION [$任务_循环经验任务变量] 0
+CHECKMISSION [$任务_循环任务变量2] 0
+CHECKLEVELEX > 54
+#ACT
+MOV S0 <&55级经验任务{【循环任务】=FCO=251}/@55_循环经验_接受>\
+
+#IF
+CHECKMISSION [$任务_循环经验任务变量] 0
+CHECKMISSION [$任务_循环任务变量2] 0
+CHECKLEVELEX > 64
+#ACT
+MOV S0 <&65级经验任务{【循环任务】=FCO=251}/@65_循环经验_接受>\
+
+#IF
+CHECKMISSION [$任务_循环经验任务变量] 0
+CHECKMISSION [$任务_循环任务变量2] 0
+CHECKLEVELEX > 74
+#ACT
+MOV S0 <&75级经验任务{【循环任务】=FCO=251}/@75_循环经验_接受>\
+
+#IF
+CHECKMISSION [$任务_循环经验任务变量] 0
+CHECKMISSION [$任务_循环任务变量2] 0
+CHECKLEVELEX > 84
+#ACT
+MOV S0 <&85级经验任务{【循环任务】=FCO=251}/@85_循环经验_接受>\
+
+#IF
+CHECKMISSION [$任务_循环经验任务变量] 1
+CHECKMISSION [$任务_循环任务变量2] 1
+CHECKLEVELEX > 44
+#ACT
+INC S0 <&45级经验任务{【完成任务】=FCO=251}/@45_循环经验_完成>\
+
+#IF
+CHECKMISSION [$任务_循环经验任务变量] 1
+CHECKMISSION [$任务_循环任务变量2] 1
+CHECKLEVELEX > 54
+#ACT
+INC S0 <&55级经验任务{【完成任务】=FCO=251}/@55_循环经验_完成>\
+
+#IF
+CHECKMISSION [$任务_循环经验任务变量] 1
+CHECKMISSION [$任务_循环任务变量2] 1
+CHECKLEVELEX > 64
+#ACT
+INC S0 <&65级经验任务{【完成任务】=FCO=251}/@65_循环经验_完成>\
+
+#IF
+CHECKMISSION [$任务_循环经验任务变量] 1
+CHECKMISSION [$任务_循环任务变量2] 1
+CHECKLEVELEX > 74
+#ACT
+INC S0 <&75级经验任务{【完成任务】=FCO=251}/@75_循环经验_完成>\
+
+#IF
+CHECKMISSION [$任务_循环经验任务变量] 1
+CHECKMISSION [$任务_循环任务变量2] 1
+CHECKLEVELEX > 84
+#ACT
+INC S0 <&85级经验任务{【完成任务】=FCO=251}/@85_循环经验_完成>\
+}
+
+
+[@循环经验_脚本]
+{
+[@45_循环经验_接受]
+#IF
+CHECKPULLULATION ? [$任务_45循环经验任务自然点]
+#ACT
+SETMISSION [$任务_循环经验任务变量] [$任务_循环任务已接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务已接受值]
+SET [$CHECK常量_45经验杀怪变量] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION [$任务_循环索引变量]
+ADDMISSION [$任务_循环索引变量] 45级循环经验任务
+CHANGEPULLULATION - [$任务_45循环经验任务自然点]
+close
+#ELSEACT
+MESSAGEBOX [提示]:您的自然成长点底于<[$任务_45循环经验任务自然点]>,所以不能领取任务!
+
+[@55_循环经验_接受]
+#IF
+CHECKPULLULATION ? [$任务_55循环经验任务自然点]
+#ACT
+SETMISSION [$任务_循环经验任务变量] [$任务_循环任务已接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务已接受值]
+SET [$CHECK常量_55经验杀怪变量] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION [$任务_循环索引变量]
+ADDMISSION [$任务_循环索引变量] 55级循环经验任务
+CHANGEPULLULATION - [$任务_55循环经验任务自然点]
+close
+#ELSEACT
+MESSAGEBOX [提示]:您的自然成长点底于<[$任务_55循环经验任务自然点]>,所以不能领取任务!
+
+[@65_循环经验_接受]
+#IF
+CHECKPULLULATION ? [$任务_65循环经验任务自然点]
+#ACT
+SETMISSION [$任务_循环经验任务变量] [$任务_循环任务已接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务已接受值]
+SET [$CHECK常量_65经验杀怪变量] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION [$任务_循环索引变量]
+ADDMISSION [$任务_循环索引变量] 65级循环经验任务
+CHANGEPULLULATION - [$任务_65循环经验任务自然点]
+close
+#ELSEACT
+MESSAGEBOX [提示]:您的自然成长点底于<[$任务_65循环经验任务自然点]>,所以不能领取任务!
+
+[@75_循环经验_接受]
+#IF
+CHECKPULLULATION ? [$任务_75循环经验任务自然点]
+#ACT
+SETMISSION [$任务_循环经验任务变量] [$任务_循环任务已接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务已接受值]
+SET [$CHECK常量_75经验杀怪变量] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION [$任务_循环索引变量]
+ADDMISSION [$任务_循环索引变量] 75级循环经验任务
+CHANGEPULLULATION - [$任务_75循环经验任务自然点]
+close
+#ELSEACT
+MESSAGEBOX [提示]:您的自然成长点底于<[$任务_75循环经验任务自然点]>,所以不能领取任务!
+
+[@85_循环经验_接受]
+#IF
+CHECKPULLULATION ? [$任务_85循环经验任务自然点]
+#ACT
+SETMISSION [$任务_循环经验任务变量] [$任务_循环任务已接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务已接受值]
+SET [$CHECK常量_85经验杀怪变量] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION [$任务_循环索引变量]
+ADDMISSION [$任务_循环索引变量] 85级循环经验任务
+CHANGEPULLULATION - [$任务_85循环经验任务自然点]
+close
+#ELSEACT
+MESSAGEBOX [提示]:您的自然成长点底于<[$任务_85循环经验任务自然点]>,所以不能领取任务!
+
+[@85_循环经验_完成]
+#IF
+CHECKMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = [$任务_85循环经验任务杀怪1数量]
+#ACT
+CHANGEMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = 0
+SETMISSION [$任务_循环经验任务变量] [$任务_循环任务未接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务未接受值]
+SET [$CHECK常量_85经验杀怪变量] 0
+SHOWEFFECT [$特效_任务完成]
+DELMISSION [$任务_循环索引变量]
+CHANGEEXP + [$任务_85循环经验任务奖励]
+close
+#ELSEACT
+MESSAGEBOX [提示]:任务未完成,请认阅读任务内容与要求!
+
+[@75_循环经验_完成]
+#IF
+CHECKMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = [$任务_75循环经验任务杀怪1数量]
+#ACT
+CHANGEMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = 0
+SETMISSION [$任务_循环经验任务变量] [$任务_循环任务未接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务未接受值]
+SET [$CHECK常量_75经验杀怪变量] 0
+SHOWEFFECT [$特效_任务完成]
+DELMISSION [$任务_循环索引变量]
+CHANGEEXP + [$任务_75循环经验任务奖励]
+close
+#ELSEACT
+MESSAGEBOX [提示]:任务未完成,请认阅读任务内容与要求!
+
+[@65_循环经验_完成]
+#IF
+CHECKMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = [$任务_65循环经验任务杀怪1数量]
+#ACT
+CHANGEMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = 0
+SETMISSION [$任务_循环经验任务变量] [$任务_循环任务未接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务未接受值]
+SET [$CHECK常量_65经验杀怪变量] 0
+SHOWEFFECT [$特效_任务完成]
+DELMISSION [$任务_循环索引变量]
+CHANGEEXP + [$任务_65循环经验任务奖励]
+close
+#ELSEACT
+MESSAGEBOX [提示]:任务未完成,请认阅读任务内容与要求!
+
+[@55_循环经验_完成]
+#IF
+CHECKMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = [$任务_55循环经验任务杀怪1数量]
+#ACT
+CHANGEMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = 0
+SETMISSION [$任务_循环经验任务变量] [$任务_循环任务未接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务未接受值]
+SET [$CHECK常量_55经验杀怪变量] 0
+SHOWEFFECT [$特效_任务完成]
+DELMISSION [$任务_循环索引变量]
+CHANGEEXP + [$任务_55循环经验任务奖励]
+close
+#ELSEACT
+MESSAGEBOX [提示]:任务未完成,请认阅读任务内容与要求!
+
+[@45_循环经验_完成]
+#IF
+CHECKMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = [$任务_45循环经验任务杀怪1数量]
+#ACT
+CHANGEMISSIONKILLMONCOUNT [$任务_循环索引变量] 1 = 0
+SETMISSION [$任务_循环经验任务变量] [$任务_循环任务未接受值]
+SETMISSION [$任务_循环任务变量2] [$任务_循环任务未接受值]
+SET [$CHECK常量_45经验杀怪变量] 0
+SHOWEFFECT [$特效_任务完成]
+DELMISSION [$任务_循环索引变量]
+CHANGEEXP + [$任务_45循环经验任务奖励]
+close
+#ELSEACT
+MESSAGEBOX [提示]:任务未完成,请认阅读任务内容与要求!
+}

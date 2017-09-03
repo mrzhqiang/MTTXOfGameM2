@@ -1,0 +1,442 @@
+[@每日收集_检测]
+{
+#IF
+CHECKMISSION [$任务_每日任务变量] 0
+CHECKMISSION [$任务_每日收集任务变量] 0
+CHECKLEVELEX > 39
+#ACT
+MOV S1 <&领取收集任务{【未领取】=FCO=251}/@每日_收集_接受>\
+
+#IF
+CHECKMISSION [$任务_每日任务变量] 1
+CHECKMISSION [$任务_每日收集任务变量] 1
+CHECKLEVELEX > 39
+#ACT
+MOV S1 <&完成收集任务{【已领取】=FCO=251}/@每日_收集_完成>\
+
+#IF
+CHECKARITHMOMETERCOUNT [$每日收集循环变量] > 0
+CHECKMISSION [$任务_每日任务变量] 0
+CHECKMISSION [$任务_每日收集任务变量] 0
+#ACT
+MOV S1 <&领取收集任务{【已完成】=FCO=251}/@每日_收集_已完成>\
+}
+
+
+[@每日_收集任务_脚本]
+{
+[@每日_收集_接受]
+#IF
+CHECKLEVELEX ? 80
+#ACT
+GOTO @80级任务
+BREAK
+#IF
+CHECKLEVELEX ? 70
+#ACT
+GOTO @70级任务
+BREAK
+#IF
+CHECKLEVELEX ? 60
+#ACT
+GOTO @60级任务
+BREAK
+#IF
+CHECKLEVELEX ? 40
+#ACT
+GOTO @40级任务
+BREAK
+
+[@80级任务]
+#IF
+#ACT
+GETRANDOMNAME ../QuestDiary/Amark/每日任务/收集任务80级随即.txt S0
+
+#IF
+#ACT
+CALCVAR HUMAN 收集任务 = <$STR(S0)>
+SAVEVAR HUMAN 收集任务 ..\QuestDiary\Amark\变量数据\收集任务Save.txt
+
+#IF
+#ACT
+SETMISSION [$任务_每日任务变量] 1
+SETMISSION [$任务_每日收集任务变量] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION [$任务_每日任务索引变量]
+ADDMISSION [$任务_每日任务索引变量] 收集任务_80_<$STR(S0)>
+CHANGEARITHMOMETERCOUNT [$每日收集循环变量] + 1
+
+[@70级任务]
+#IF
+#ACT
+GETRANDOMNAME ../QuestDiary/Amark/每日任务/收集任务70级随即.txt S0
+
+#IF
+#ACT
+CALCVAR HUMAN 收集任务 = <$STR(S0)>
+SAVEVAR HUMAN 收集任务 ..\QuestDiary\Amark\变量数据\收集任务Save.txt
+
+#IF
+#ACT
+SETMISSION [$任务_每日任务变量] 1
+SETMISSION [$任务_每日收集任务变量] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION [$任务_每日任务索引变量]
+ADDMISSION [$任务_每日任务索引变量] 收集任务_70_<$STR(S0)>
+CHANGEARITHMOMETERCOUNT [$每日收集循环变量] + 1
+
+[@60级任务]
+#IF
+#ACT
+GETRANDOMNAME ../QuestDiary/Amark/每日任务/收集任务60级随即.txt S0
+
+#IF
+#ACT
+CALCVAR HUMAN 收集任务 = <$STR(S0)>
+SAVEVAR HUMAN 收集任务 ..\QuestDiary\Amark\变量数据\收集任务Save.txt
+
+#IF
+#ACT
+SETMISSION [$任务_每日任务变量] 1
+SETMISSION [$任务_每日收集任务变量] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION [$任务_每日任务索引变量]
+ADDMISSION [$任务_每日任务索引变量] 收集任务_60_<$STR(S0)>
+CHANGEARITHMOMETERCOUNT [$每日收集循环变量] + 1
+
+[@40级任务]
+#IF
+#ACT
+GETRANDOMNAME ../QuestDiary/Amark/每日任务/收集任务40级随即.txt S0
+
+#IF
+#ACT
+CALCVAR HUMAN 收集任务 = <$STR(S0)>
+SAVEVAR HUMAN 收集任务 ..\QuestDiary\Amark\变量数据\收集任务Save.txt
+
+#IF
+#ACT
+SETMISSION [$任务_每日任务变量] 1
+SETMISSION [$任务_每日收集任务变量] 1
+SHOWEFFECT [$特效_接受任务]
+DELMISSION [$任务_每日任务索引变量]
+ADDMISSION [$任务_每日任务索引变量] 收集任务_40_<$STR(S0)>
+CHANGEARITHMOMETERCOUNT [$每日收集循环变量] + 1
+
+
+
+[@每日_收集_完成]
+#IF
+CHECKVAR HUMAN 收集任务 = 1
+#ACT
+GOTO @检测收集任务1
+
+#IF
+CHECKVAR HUMAN 收集任务 = 2
+#ACT
+GOTO @检测收集任务2
+
+#IF
+CHECKVAR HUMAN 收集任务 = 3
+#ACT
+GOTO @检测收集任务3
+
+#IF
+CHECKVAR HUMAN 收集任务 = 4
+#ACT
+GOTO @检测收集任务4
+
+#IF
+CHECKVAR HUMAN 收集任务 = 5
+#ACT
+GOTO @检测收集任务5
+
+#IF
+CHECKVAR HUMAN 收集任务 = 6
+#ACT
+GOTO @检测收集任务6
+
+#IF
+CHECKVAR HUMAN 收集任务 = 7
+#ACT
+GOTO @检测收集任务7
+
+#IF
+CHECKVAR HUMAN 收集任务 = 8
+#ACT
+GOTO @检测收集任务8
+
+#IF
+CHECKVAR HUMAN 收集任务 = 9
+#ACT
+GOTO @检测收集任务9
+
+#IF
+CHECKVAR HUMAN 收集任务 = 10
+#ACT
+GOTO @检测收集任务10
+
+#IF
+CHECKVAR HUMAN 收集任务 = 11
+#ACT
+GOTO @检测收集任务11
+
+#IF
+CHECKVAR HUMAN 收集任务 = 12
+#ACT
+GOTO @检测收集任务12
+
+#IF
+CHECKVAR HUMAN 收集任务 = 13
+#ACT
+GOTO @检测收集任务13
+
+#IF
+CHECKVAR HUMAN 收集任务 = 14
+#ACT
+GOTO @检测收集任务14
+
+#IF
+CHECKVAR HUMAN 收集任务 = 15
+#ACT
+GOTO @检测收集任务15
+
+[@检测收集任务1]
+#IF
+CHECKITEMCOUNT [$收集任务1物品1] ? [$收集任务物品数量]
+CHECKITEMCOUNT [$收集任务1物品2] ? [$收集任务物品数量]
+#ACT
+TAKECOUNT  [$收集任务1物品1] [$收集任务物品数量]
+TAKECOUNT  [$收集任务1物品2] [$收集任务物品数量]
+GOTO @收集任务变量还原
+#ELSEACT
+MESSAGEBOX [提示]:任务物品不齐全!
+
+[@检测收集任务2]
+#IF
+CHECKITEMCOUNT [$收集任务2物品1] ? [$收集任务物品数量]
+CHECKITEMCOUNT [$收集任务2物品2] ? [$收集任务物品数量]
+#ACT
+TAKECOUNT  [$收集任务2物品1] [$收集任务物品数量]
+TAKECOUNT  [$收集任务2物品2] [$收集任务物品数量]
+GOTO @收集任务变量还原
+#ELSEACT
+MESSAGEBOX [提示]:任务物品不齐全!
+
+[@检测收集任务3]
+#IF
+CHECKITEMCOUNT [$收集任务3物品1] ? [$收集任务物品数量]
+CHECKITEMCOUNT [$收集任务3物品2] ? [$收集任务物品数量]
+#ACT
+TAKECOUNT  [$收集任务3物品1] [$收集任务物品数量]
+TAKECOUNT  [$收集任务3物品2] [$收集任务物品数量]
+GOTO @收集任务变量还原
+#ELSEACT
+MESSAGEBOX [提示]:任务物品不齐全!
+
+
+[@检测收集任务4]
+#IF
+CHECKITEMCOUNT [$收集任务4物品1] ? [$收集任务物品数量]
+CHECKITEMCOUNT [$收集任务4物品2] ? [$收集任务物品数量]
+#ACT
+TAKECOUNT  [$收集任务4物品1] [$收集任务物品数量]
+TAKECOUNT  [$收集任务4物品2] [$收集任务物品数量]
+GOTO @收集任务变量还原
+#ELSEACT
+MESSAGEBOX [提示]:任务物品不齐全!
+
+[@检测收集任务5]
+#IF
+CHECKITEMCOUNT [$收集任务5物品1] ? [$收集任务物品数量]
+CHECKITEMCOUNT [$收集任务5物品2] ? [$收集任务物品数量]
+#ACT
+TAKECOUNT  [$收集任务5物品1] [$收集任务物品数量]
+TAKECOUNT  [$收集任务5物品2] [$收集任务物品数量]
+GOTO @收集任务变量还原
+#ELSEACT
+MESSAGEBOX [提示]:任务物品不齐全!
+
+[@检测收集任务6]
+#IF
+CHECKITEMCOUNT [$收集任务6物品1] ? [$收集任务物品数量]
+CHECKITEMCOUNT [$收集任务6物品2] ? [$收集任务物品数量]
+#ACT
+TAKECOUNT  [$收集任务6物品1] [$收集任务物品数量]
+TAKECOUNT  [$收集任务6物品2] [$收集任务物品数量]
+GOTO @收集任务变量还原
+#ELSEACT
+MESSAGEBOX [提示]:任务物品不齐全!
+
+[@检测收集任务7]
+#IF
+CHECKITEMCOUNT [$收集任务7物品1] ? [$收集任务物品数量]
+CHECKITEMCOUNT [$收集任务7物品2] ? [$收集任务物品数量]
+#ACT
+TAKECOUNT  [$收集任务7物品1] [$收集任务物品数量]
+TAKECOUNT  [$收集任务7物品2] [$收集任务物品数量]
+GOTO @收集任务变量还原
+#ELSEACT
+MESSAGEBOX [提示]:任务物品不齐全!
+
+[@检测收集任务8]
+#IF
+CHECKITEMCOUNT [$收集任务8物品1] ? [$收集任务物品数量]
+CHECKITEMCOUNT [$收集任务8物品2] ? [$收集任务物品数量]
+#ACT
+TAKECOUNT  [$收集任务8物品1] [$收集任务物品数量]
+TAKECOUNT  [$收集任务8物品2] [$收集任务物品数量]
+GOTO @收集任务变量还原
+#ELSEACT
+MESSAGEBOX [提示]:任务物品不齐全!
+
+[@检测收集任务9]
+#IF
+CHECKITEMCOUNT [$收集任务9物品1] ? [$收集任务物品数量]
+CHECKITEMCOUNT [$收集任务9物品2] ? [$收集任务物品数量]
+#ACT
+TAKECOUNT  [$收集任务9物品1] [$收集任务物品数量]
+TAKECOUNT  [$收集任务9物品2] [$收集任务物品数量]
+GOTO @收集任务变量还原
+#ELSEACT
+MESSAGEBOX [提示]:任务物品不齐全!
+
+[@检测收集任务10]
+#IF
+CHECKITEMCOUNT [$收集任务10物品1] ? [$收集任务物品数量]
+CHECKITEMCOUNT [$收集任务10物品2] ? [$收集任务物品数量]
+#ACT
+TAKECOUNT  [$收集任务10物品1] [$收集任务物品数量]
+TAKECOUNT  [$收集任务10物品2] [$收集任务物品数量]
+GOTO @收集任务变量还原
+#ELSEACT
+MESSAGEBOX [提示]:任务物品不齐全!
+
+[@检测收集任务11]
+#IF
+CHECKITEMCOUNT [$收集任务11物品1] ? [$收集任务物品数量]
+CHECKITEMCOUNT [$收集任务11物品2] ? [$收集任务物品数量]
+#ACT
+TAKECOUNT  [$收集任务11物品1] [$收集任务物品数量]
+TAKECOUNT  [$收集任务11物品2] [$收集任务物品数量]
+GOTO @收集任务变量还原
+#ELSEACT
+MESSAGEBOX [提示]:任务物品不齐全!
+
+[@检测收集任务12]
+#IF
+CHECKITEMCOUNT [$收集任务12物品1] ? [$收集任务物品数量]
+CHECKITEMCOUNT [$收集任务12物品2] ? [$收集任务物品数量]
+#ACT
+TAKECOUNT  [$收集任务12物品1] [$收集任务物品数量]
+TAKECOUNT  [$收集任务12物品2] [$收集任务物品数量]
+GOTO @收集任务变量还原
+#ELSEACT
+MESSAGEBOX [提示]:任务物品不齐全!
+
+[@检测收集任务13]
+#IF
+CHECKITEMCOUNT [$收集任务13物品1] ? [$收集任务物品数量]
+CHECKITEMCOUNT [$收集任务13物品2] ? [$收集任务物品数量]
+#ACT
+TAKECOUNT  [$收集任务13物品1] [$收集任务物品数量]
+TAKECOUNT  [$收集任务13物品2] [$收集任务物品数量]
+GOTO @收集任务变量还原
+#ELSEACT
+MESSAGEBOX [提示]:任务物品不齐全!
+
+[@检测收集任务14]
+#IF
+CHECKITEMCOUNT [$收集任务14物品1] ? [$收集任务物品数量]
+CHECKITEMCOUNT [$收集任务14物品2] ? [$收集任务物品数量]
+#ACT
+TAKECOUNT  [$收集任务14物品1] [$收集任务物品数量]
+TAKECOUNT  [$收集任务14物品2] [$收集任务物品数量]
+GOTO @收集任务变量还原
+#ELSEACT
+MESSAGEBOX [提示]:任务物品不齐全!
+
+[@检测收集任务15]
+#IF
+CHECKITEMCOUNT [$收集任务15物品1] ? [$收集任务物品数量]
+CHECKITEMCOUNT [$收集任务15物品2] ? [$收集任务物品数量]
+#ACT
+TAKECOUNT  [$收集任务15物品1] [$收集任务物品数量]
+TAKECOUNT  [$收集任务15物品2] [$收集任务物品数量]
+GOTO @收集任务变量还原
+#ELSEACT
+MESSAGEBOX [提示]:任务物品不齐全!
+
+[@收集任务变量还原]
+#IF
+#ACT
+SETMISSION [$任务_每日任务变量] 0
+SETMISSION [$任务_每日收集任务变量] 0
+SHOWEFFECT [$特效_任务完成]
+DELMISSION [$任务_每日任务索引变量]
+GOTO @收集任务奖励
+close
+#ELSEACT
+MESSAGEBOX [提示]:任务未完成,请认阅读任务内容与要求!
+
+[@收集任务奖励]
+#IF
+CHECKLEVELEX ? 80
+#ACT
+DYNAMICGIVE [$收集任务奖励物品] [$80级收集任务奖励数量]
+CHANGEGIVEITEM 1 [$收集任务物品时间]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+BREAK
+
+#IF
+CHECKLEVELEX ? 70
+#ACT
+DYNAMICGIVE [$收集任务奖励物品] [$70级收集任务奖励数量]
+CHANGEGIVEITEM 1 [$收集任务物品时间]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+BREAK
+
+#IF
+CHECKLEVELEX ? 60
+#ACT
+DYNAMICGIVE [$收集任务奖励物品] [$60级收集任务奖励数量]
+CHANGEGIVEITEM 1 [$收集任务物品时间]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+BREAK
+
+#IF
+CHECKLEVELEX ? 50
+#ACT
+DYNAMICGIVE [$收集任务奖励物品] [$50级收集任务奖励数量]
+CHANGEGIVEITEM 1 [$收集任务物品时间]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+BREAK
+
+#IF
+CHECKLEVELEX ? 40
+#ACT
+DYNAMICGIVE [$收集任务奖励物品] [$40级收集任务奖励数量]
+CHANGEGIVEITEM 1 [$收集任务物品时间]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_永不掉落] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_不可交易] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_绑定状态] [$物品_改变属性_绑定状态_丢弃消失] [$物品_改变属性_绑定状态_绑定]
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+BREAK
+
+[@每日_收集_已完成]
+#IF
+#ACT
+MESSAGEBOX [提示]:您今天的每日收集任务已经完成过了!\请在12点系统清空次数后再领取!\
+}

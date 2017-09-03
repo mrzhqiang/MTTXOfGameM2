@@ -1,0 +1,160 @@
+[@庆典蛋糕]
+{
+[@StdmodeFunc13]
+#IF
+#ACT
+ChangeExp + 35000000
+DelayGoto 1 @庆典蛋糕_特效_2
+
+[@StdmodeFunc14]
+#IF
+random 15
+#ACT
+ChangeExp + 5000000
+SENDMSG 7 你服用了蛋卷，获得了5000000点经验值。
+BREAK
+#IF
+random 10
+#ACT
+ChangeExp + 4500000
+SENDMSG 7 你服用了蛋卷，获得了5000000点经验值。
+BREAK
+#IF
+random 8
+#ACT
+ChangeExp + 4000000
+SENDMSG 7 你服用了蛋卷，获得了5000000点经验值。
+BREAK
+#IF
+random 3
+#ACT
+ChangeExp + 3500000
+SENDMSG 7 你服用了蛋卷，获得了5000000点经验值。
+BREAK
+#IF
+#ACT
+ChangeExp + 3000000
+SENDMSG 7 你服用了蛋卷，获得了5000000点经验值。
+BREAK
+
+
+[@StdmodeFunc12]
+#IF
+#ACT
+GIVE 庆典蛋糕 1
+#IF
+Equal <$USER.INTERFACE> 0
+#ACT
+GOTO @庆典蛋糕_剑侠
+BREAK
+#IF
+Equal <$USER.INTERFACE> 1
+#ACT
+GOTO @庆典蛋糕_盛大
+BREAK
+
+[@庆典蛋糕_剑侠]
+<$USERNAME>:\
+使用说明:\
+　使用本蛋糕，使用者可获得[$庆典蛋糕经验下限]\
+至[$庆典蛋糕经验上限]经验。\
+　并且，使用者周围一圈范围内可有8人\
+一并获得经验。\
+　除此之外，你还可以全服醒目传音一次。\ \
+<&{我要输入传音内容，开始点燃庆典蛋糕=FCO=253}。/@@InPutString60#请输入全服醒目传音的内容【请保持在20个字内，不可出现空格】>
+[@庆典蛋糕_盛大]
+#SAY
+<$USERNAME>:\
+　　使用说明:\
+　　　　　　 使用本蛋糕，使用者可获得[$庆典蛋糕经验下限]至\
+[$庆典蛋糕经验上限]经验。\
+　　　　　　 并且，使用者周围一圈范围内可有8人一并获得经验。\
+　　　　　　 除此之外，你还可以全服醒目传音一次。\ \
+<&{我要输入传音内容，开始点燃庆典蛋糕=FCO=253}。/@@InPutString1#请输入全服醒目传音的内容【请保持在20个字内，不可出现空格】>
+
+[@@InPutString1]
+#IF
+CHECKITEM 庆典蛋糕 1
+#ACT
+MOV A970 <$USERNAME>
+MOV A971 <$MAP>
+MOV G970 <$X>
+MOV G971 <$Y>
+ChangeExp + 10000000
+Gmexecute 开始提问 @庆典蛋糕_经验
+Gmexecute ShowEffect 20
+SENDMSG 8 ★庆典蛋糕传音★【<$USERNAME>】：<$STR(S60)>
+SendCenterMsg 251 254 ★庆典蛋糕传音★【<$USERNAME>】：<$STR(S60)> 1 60 @庆典蛋糕_结束 庆典蛋糕_结束
+SENDMSG 8 【<$USERNAME>】：使用庆典蛋糕获得了1000万经验值，同时围在他身边的朋友都获得100万经验。
+SendCenterMsg 249 251 【庆典蛋糕】：玩家【<$USERNAME>】在【<$MAPNAME>.<$X>.<$Y>】点燃了庆典蛋糕。 1 60 @庆典蛋糕_结束 庆典蛋糕_结束
+SendCenterMsg 249 251 【<$USERNAME>】:使用庆典蛋糕获得了1000万经验值,同时围在他身边的朋友都获得200万经验. 1 60 @庆典蛋糕_结束 庆典蛋糕_结束
+TAKE 庆典蛋糕 1
+DelayGoto 1 @庆典蛋糕_特效_2
+Close
+#ELSEACT
+MESSAGEBOX 你的蛋糕让谁吃了?难道是猫子吃了?
+
+[@庆典蛋糕_特效_2]
+#IF
+CheckUseItem 13
+#ACT
+HookItem 13
+ChangeGiveItem 11 +350000
+ChangeGiveItem 8
+SENDMSG 7 坐骑获得了350000经验值.小退后信息刷新。
+#IF
+#ACT
+Gmexecute ShowEffect 22
+DelayGoto 1 @庆典蛋糕_特效_3
+[@庆典蛋糕_特效_3]
+#IF
+#ACT
+Gmexecute ShowEffect 23
+DelayGoto 1 @庆典蛋糕_特效_4
+[@庆典蛋糕_特效_4]
+#IF
+#ACT
+Gmexecute ShowEffect 24
+DelayGoto 1 @庆典蛋糕_特效_5
+[@庆典蛋糕_特效_5]
+#IF
+#ACT
+Gmexecute ShowEffect 21
+DelayGoto 1 @庆典蛋糕_特效_6
+[@庆典蛋糕_特效_6]
+#IF
+#ACT
+Gmexecute ShowEffect 25
+DelayGoto 1 @庆典蛋糕_特效_7
+[@庆典蛋糕_特效_7]
+#IF
+#ACT
+Gmexecute ShowEffect 26
+BREAK
+
+[@庆典蛋糕_结束]
+#IF
+#ACT
+BREAK
+
+[@庆典蛋糕_经验]
+#IF
+EQUAL A970 <$USERNAME>
+#ACT
+BREAK
+#IF
+CheckInMapRange <$STR(A971)> <$STR(G970)> <$STR(G971)> 1
+NOT IsDupMode
+#ACT
+Gmexecute ShowEffect 22
+ChangeExp + 2000000
+SENDMSG 7 恭喜：你的朋友【<$STR(A970)>】在你身边使用了庆典蛋糕，你获得了200万的经验祝福。
+BREAK
+#IF
+CheckInMapRange <$STR(A971)> <$STR(G970)> <$STR(G971)> 1
+IsDupMode
+#ACT
+SENDMSG 7 注意：你现在与人重叠！无法获得经验。
+BREAK
+}
+

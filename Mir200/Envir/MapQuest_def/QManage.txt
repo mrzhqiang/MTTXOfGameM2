@@ -1,0 +1,328 @@
+[@RESUME]
+#IF
+#ACT
+messagebox 因为你上次下线的时后使用了离线挂机功能!!!\　管理员为了避免你在游戏中出现数据错误!!!\　所以请你小退一下再重新登陆\ 
+KICK 1 
+[@Login]
+#CALLX [\\数据文件\变量申明.txt] @私人变量
+
+#if
+CheckNameList ..\QuestDiary\游戏功能\会员名单.txt
+#act
+SetRankLevelName %S\★尊贵会员★
+ChangeNameColor 253
+sendmsg 0 尊敬的会员玩家<$USERNAME>上线了.
+#IF
+ISNEWHUMAN
+#ACT
+ChangePullulation = 10000
+CALCVAR HUMAN 闭关经验 = <$STR(G995)>
+SAVEVAR HUMAN 闭关经验 ..\QuestDiary\数据文件\闭关系统Save.txt
+DELMISSION [$任务_循环任务_押镖任务变量]
+SETMISSION [$任务_补给危机_接受变量] [$任务_补给危机_接受未完成变量值]
+KILLSLAVE [$任务_补给危机_镖车名称]
+KILLSLAVE [$押镖_补给危机_镖车_90_补]
+KILLSLAVE [$押镖_补给危机_镖车_75_补]
+KILLSLAVE [$押镖_补给危机_镖车_60_补]
+KILLSLAVE [$押镖_补给危机_镖车_45_补]
+KILLSLAVE [$押镖_补给危机_镖车_90]
+KILLSLAVE [$押镖_补给危机_镖车_75]
+KILLSLAVE [$押镖_补给危机_镖车_60]
+KILLSLAVE [$押镖_补给危机_镖车_45]
+DELMISSION [$任务_循环任务_押镖任务变量]
+SETMISSION [$任务_补给危机_接受变量] [$任务_补给危机_接受未完成变量值]
+KILLSLAVE [$任务_补给危机_镖车名称]
+KILLSLAVE [$押镖_补给危机_镖车_90_补]
+KILLSLAVE [$押镖_补给危机_镖车_75_补]
+KILLSLAVE [$押镖_补给危机_镖车_60_补]
+KILLSLAVE [$押镖_补给危机_镖车_45_补]
+KILLSLAVE [$押镖_补给危机_镖车_90]
+KILLSLAVE [$押镖_补给危机_镖车_75]
+KILLSLAVE [$押镖_补给危机_镖车_60]
+KILLSLAVE [$押镖_补给危机_镖车_45]
+SENDMSG 0 欢迎来自【<$IPLOCAL>】的【<$USERNAME>】玩家走进了【名途天下】开启了新的游戏旅程~
+#IF
+#ACT
+Gmexecute TestStatus 5 0
+ChangeMode 2 0
+ChangeMode 3 0
+
+#IF
+EQUAL C80 1
+#ACT
+MOV C80 0
+
+#if
+#act
+mov C91 0
+
+#IF
+EQUAL C92 1
+#ACT
+SetHumIcon 1 3 2239 1 10 0 39 2
+
+#IF
+EQUAL C92 2
+#ACT
+SetHumIcon 1 3 2238 1 10 0 39 2
+
+#IF
+EQUAL C92 3
+#ACT
+SetHumIcon 1 3 2239 1 10 0 39 2
+
+#IF
+EQUAL C92 4
+#ACT
+SetHumIcon 1 3 2240 1 10 0 39 2
+
+#IF
+EQUAL A1 <$USERNAME>
+#ACT
+SENDMSG 0 万人敬仰的天下第一练级狂【<$USERNAME>】上线了!大家欢呼吧~
+#IF
+EQUAL A2 <$USERNAME>
+#ACT
+SENDMSG 0 万人敬仰的天下第一战圣【<$USERNAME>】上线了!大家欢呼吧~
+#IF
+EQUAL A3 <$USERNAME>
+#ACT
+SENDMSG 0 万人敬仰的天下第一法神【<$USERNAME>】上线了!大家欢呼吧~
+#IF
+EQUAL A4 <$USERNAME>
+#ACT
+SENDMSG 0 万人敬仰的天下第一道尊【<$USERNAME>】上线了!大家欢呼吧~
+
+#IF
+CheckRenewLevel = 1
+#ACT
+ChangeNameColor 250
+#IF
+CheckRenewLevel = 2
+#ACT
+ChangeNameColor 2
+#IF
+CheckRenewLevel = 3
+#ACT
+ChangeNameColor 254
+#IF
+CheckRenewLevel = 4
+#ACT
+ChangeNameColor 70
+#IF
+CheckRenewLevel = 5
+#ACT
+ChangeNameColor 253
+
+#if
+NOT Equal C89 0
+NOT CheckNameList ../QuestDiary/数据文件/答题次数名单.txt
+#ACT
+MOV C89 0
+AddNameList ../QuestDiary/数据文件/答题次数名单.txt
+
+#if
+NOT Equal C88 0
+NOT CheckNameList ../QuestDiary/数据文件/关卡挑战名单.txt
+#ACT
+MOV C88 0
+AddNameList ../QuestDiary/数据文件/关卡挑战名单.txt
+
+#IF
+NOT CheckNameList ../QuestDiary/数据文件/每日成就名单.txt
+#ACT
+AddNameList ../QuestDiary/数据文件/每日成就名单.txt
+Reset [311] 58
+CALCVAR HUMAN 每日野外1 = 0
+SAVEVAR HUMAN 每日野外1 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日野外2 = 0
+SAVEVAR HUMAN 每日野外2 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日野外3 = 0
+SAVEVAR HUMAN 每日野外3 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日野外4 = 0
+SAVEVAR HUMAN 每日野外4 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日野外5 = 0
+SAVEVAR HUMAN 每日野外5 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日野外6 = 0
+SAVEVAR HUMAN 每日野外6 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日野外7 = 0
+SAVEVAR HUMAN 每日野外7 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日野外8 = 0
+SAVEVAR HUMAN 每日野外8 ..\QuestDiary\数据文件\每日成就Save.txt
+MOV C10 0
+Reset [431] 7
+MOV C24 0
+CALCVAR HUMAN 每日副本1 = 0
+SAVEVAR HUMAN 每日副本1 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日副本2 = 0
+SAVEVAR HUMAN 每日副本2 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日副本3 = 0
+SAVEVAR HUMAN 每日副本3 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 每日副本4 = 0
+SAVEVAR HUMAN 每日副本4 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 白银挖宝 = 0
+SAVEVAR HUMAN 白银挖宝 ..\QuestDiary\数据文件\每日成就Save.txt
+CALCVAR HUMAN 黄金挖宝 = 0
+SAVEVAR HUMAN 黄金挖宝 ..\QuestDiary\数据文件\每日成就Save.txt
+
+
+
+
+
+
+
+
+
+
+[~Initialize]
+#if
+EQUAL G501 0
+#ACT
+MOV G501 1
+
+#IF
+#ACT
+MOV G35 20
+
+#IF
+EQUAL G996 0
+#ACT
+MOV G996 1
+MOV G601 [$冲级成就_永久_名额1]
+MOV G602 [$冲级成就_永久_名额2]
+MOV G603 [$冲级成就_永久_名额3]
+MOV G604 [$冲级成就_永久_名额4]
+MOV G605 [$冲级成就_永久_名额5]
+MOV G606 [$冲级成就_永久_名额6]
+MOV G607 [$冲级成就_永久_名额7]
+MOV G608 [$冲级成就_永久_名额8]
+
+
+#CALLX [\\游戏功能\每日数据.txt] @每日数据
+#CALLX [\\游戏功能\庆典蛋糕.txt] @庆典蛋糕
+#CALLX [\\游戏功能\闭关经验.txt] @闭关经验
+
+
+[@答题开始_检测]
+#IF
+CheckMapName XRDT
+#ACT
+BREAK
+#IF
+Equal <$USER.INTERFACE> 0
+#ACT
+GOTO @开始答题_检测_剑侠
+Break
+#IF
+Equal <$USER.INTERFACE> 1
+#ACT
+GOTO @开始答题_检测_盛大
+Break
+
+[@开始答题_检测_剑侠]
+#IF
+#SAY
+尊敬的Vip会员<$USERNAME>:\ \
+　　本服每日活动【文采答题】已经开始。\
+　　答对每题将有500000经验值哦~\
+　　活动地点:庄园.50.50\ \ \
+<&【我要参与】/@参与答题_传送>\
+
+[@开始答题_检测_盛大]
+#IF
+#say
+尊敬的Vip会员<$USERNAME>:\ \
+　　本服每日活动【文采答题】已经开始。\
+　　答对每题将有500000经验值哦~\
+　　活动地点:庄园.50.50\ \ \
+　 <【我要参与】/@参与答题_传送>\
+
+[@参与答题_传送]
+#IF
+CheckMapName XRDT
+#ACT
+BREAK
+#if
+#act
+mapmove GA0 50 50
+
+[@活动提示_天赐宝箱]
+#IF
+CheckMapName XRDT
+#ACT
+BREAK
+#IF
+#SAY
+<$USERNAME>:\ \
+　　服务器每天活动【天赐宝箱】。\
+　　开启宝箱可获得1000万-5000万经验值，还有元宝哦!\ \
+<&我要参加/@参加宝箱>
+
+[@参加宝箱]
+#IF
+CheckMapName XRDT
+#ACT
+BREAK
+#IF
+#ACT
+Movr P60 8
+Movr P61 6
+MOV P62 350
+MOV P63 333
+INC P62 <$STR(P60)>
+INC P63 <$STR(P61)>
+MAPMOVE 3 <$STR(P62)> <$STR(P63)>
+
+
+[@每日活动_怪物攻城_开启]
+<USERNAME>:\ \
+　　本服每日活动[怪物攻城]已经开始!\
+每日12:00或23:00都将开启!\ \
+<&{我要参与怪物攻城=FCO=253}/@参与怪物攻城>
+
+[@参与怪物攻城]
+#IF
+CheckMapName XRDT
+#ACT
+BREAK
+#IF
+#ACT
+MAPMOVE 11 177 325
+SENDMSG 0 玩家【<$USERNAME>】参与了怪物攻城活动，如果你还没参与，那请赶快吧！
+
+
+[@回收魔阵_刷怪]
+#IF
+CheckMapName XRDT
+#ACT
+BREAK
+#IF
+#SAY
+<$USERNAME>:\ \
+　　装备回收魔阵已经开启。\ \
+　　魔阵树妖出现在了[梵天灵塔]。\ \
+　　大量宝藏等待被挖掘,你准备好了吗？\ \
+　　<速度送我过去/@回收魔阵_传送>
+
+[@回收魔阵_传送]
+#IF
+CheckMapName XRDT
+#ACT
+BREAK
+#IF
+#ACT
+MAPMOVE FTLT
+[@玩家在线分钟统计]
+#IF
+CheckOffLine
+#ACT
+BREAK
+#ELSEACT
+INC C10 1
+INC C11 1
+
+[@庄园泡点离线检测]
+#IF
+CheckOffLine
+#ACT
+BREAK

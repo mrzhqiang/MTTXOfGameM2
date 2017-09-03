@@ -1,0 +1,52 @@
+[@药店标准配置头]
+{
+(@buy @sell @repair @makedrug)
+%100
++99
+[@main]
+#CALL [\\NPC配置\所有NPC头内容.txt] @系统_所有NPC头_内容
+
+[@系统_所有NPC头_返回_剑侠]
+　又打架了吧？来看看我的止血药吧。\
+　你知道吗？你可以在我这里出售任何物\
+品和修理任何装备\ \
+<&购买药品〖{金币=FCO=251}〗/@buy>\
+<&购买药品〖{绑定金币=FCO=251}〗/@BindBuy>\
+<&药品打造〖{高级药品=FCO=253}〗/@makedrug>\
+<&关闭/@exit>\
+[@系统_所有NPC头_返回_盛大]
+　又打架了吧？来看看我的止血药吧。\
+　你知道吗？你可以在我这里出售任何物品和修理任何装备\ \
+<&购买药品〖{金币=FCO=251}〗/@buy>\
+<&购买药品〖{绑定金币=FCO=251}〗/@BindBuy>\
+<&使用30点卷购买一包〖{万年雪霜=FCO=250}〗/@万年雪霜>\
+;<&药品打造〖{高级药品=FCO=253}〗/@makedrug>\
+<&关闭/@exit>\
+
+}
+[@药店标准配置尾]
+{
+[@万年雪霜]
+#IF
+CheckGamePoint ? 30
+#act
+GamePoint - 30
+DynamicGive 万年雪霜包 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 2 6 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 8
+GOTO @MAIN
+#ELSEACT
+MESSAGEBOX 提示:点卷不足30点。
+[goods]
+;物品名称 	数量 	刷新时间(分钟) 摆放位置
+
+超强金创药	100	0	0
+超强魔法药	100	0	1
+强效太阳水	100	0	2
+万年雪霜	100	0	3	
+强效太阳水包	100	0	4
+红牛		200	0	5	
+}

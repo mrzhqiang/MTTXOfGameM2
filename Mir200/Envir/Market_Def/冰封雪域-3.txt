@@ -1,0 +1,17 @@
+
+[@main]
+#say
+这里有大量BOSS和高级怪物,\
+能爆出本服所有装备,\
+进入需要条件300W金币,\
+<进入/@进入>
+[@进入]
+#if
+CHECKGOLD 3000000
+#act
+TAKE 金币 3000000
+mapmove BFXY
+SENDMSG 8 【<$USERNAME>】进入冰封雪域，希望他能满载而归！
+#elseact
+messagebox 提示：金币不足!
+

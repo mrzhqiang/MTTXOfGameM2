@@ -1,0 +1,498 @@
+[@装备合成标准配置头]
+{
+[@main]
+#CALL [\\NPC配置\所有NPC头内容.txt] @系统_所有NPC头_内容
+
+[@系统_所有NPC头_返回_剑侠]
+<$USERNAME>：\ \
+　　本炉提供首饰等物品打造合成。\ \
+<&打造{【贝尔首饰】=FCO=254}。/@贝尔_打造>\ \
+<&打造{【黄金首饰】=FCO=253}。/@黄金_打造>\ \
+<&打造{【恶魔首饰】=FCO=251}。/@恶魔_打造>\ \
+<&打造{【涅槃首饰】=FCO=249}。/@涅槃_打造>\ \
+<&关闭/@EXIT>
+
+[@系统_所有NPC头_返回_盛大]
+<$USERNAME>：\ \
+　　本炉提供首饰等物品打造合成。\ \
+<打造{【贝尔首饰】=FCO=254}。/@贝尔_打造_盛大>　　　　
+<打造{【黄金首饰】=FCO=253}。/@黄金_打造_盛大>\ \
+<打造{【恶魔首饰】=FCO=251}。/@恶魔_打造_盛大>\
+;<打造{【涅槃首饰】=FCO=249}。/@涅槃_打造_盛大>\ \
+<&关闭/@EXIT>
+}
+[@装备合成标准配置尾]
+{
+[@贝尔_打造]
+<$USERNAME>：\ \
+　　请选择要打造的装备部位。\ \
+<&打造{【贝尔头盔】=FCO=254}。/@贝尔_打造_头盔>\ \
+<&打造{【贝尔项链】=FCO=254}。/@贝尔_打造_项链>\ \
+<&打造{【贝尔手镯】=FCO=254}。/@贝尔_打造_手镯>\ \
+<&打造{【贝尔戒指】=FCO=254}。/@贝尔_打造_戒指>\ \
+<&返回/@MAIN>
+
+[@黄金_打造]
+<$USERNAME>：\ \
+　　请选择要打造的装备部位。\ \
+<&打造{【黄金头盔】=FCO=253}。/@黄金_打造_头盔>\ \
+<&打造{【黄金项链】=FCO=253}。/@黄金_打造_项链>\ \
+<&打造{【黄金手镯】=FCO=253}。/@黄金_打造_手镯>\ \
+<&打造{【黄金戒指】=FCO=253}。/@黄金_打造_戒指>\ \
+<&返回/@MAIN>
+
+[@恶魔_打造]
+<$USERNAME>：\ \
+　　请选择要打造的装备部位。\ \
+<&打造{【恶魔头盔】=FCO=251}。/@恶魔_打造_头盔>\ \
+<&打造{【恶魔项链】=FCO=251}。/@恶魔_打造_项链>\ \
+<&打造{【恶魔手镯】=FCO=251}。/@恶魔_打造_手镯>\ \
+<&打造{【恶魔戒指】=FCO=251}。/@恶魔_打造_戒指>\ \
+<&返回/@MAIN>
+
+[@涅槃_打造]
+<$USERNAME>：\ \
+　　请选择要打造的装备部位。\ \
+<&打造{【涅槃头盔】=FCO=249}。/@涅槃_打造_头盔>\ \
+<&打造{【涅槃项链】=FCO=249}。/@涅槃_打造_项链>\ \
+<&打造{【涅槃手镯】=FCO=249}。/@涅槃_打造_手镯>\ \
+<&打造{【涅槃戒指】=FCO=249}。/@涅槃_打造_戒指>\ \
+<&返回/@MAIN>
+
+[@贝尔_打造_盛大]
+<$USERNAME>：\ \
+　　请选择要打造的装备部位。\ \
+<打造{【贝尔头盔】=FCO=254}。/@贝尔_打造_头盔>　　　　　
+<打造{【贝尔项链】=FCO=254}。/@贝尔_打造_项链>\ \
+<打造{【贝尔手镯】=FCO=254}。/@贝尔_打造_手镯>　　　　　
+<打造{【贝尔戒指】=FCO=254}。/@贝尔_打造_戒指>\ \
+<&返回/@MAIN>
+
+[@黄金_打造_盛大]
+<$USERNAME>：\ \
+　　请选择要打造的装备部位。\ \
+<打造{【黄金头盔】=FCO=254}。/@黄金_打造_头盔>　　　　　
+<打造{【黄金项链】=FCO=254}。/@黄金_打造_项链>\ \
+<打造{【黄金手镯】=FCO=254}。/@黄金_打造_手镯>　　　　　
+<打造{【黄金戒指】=FCO=254}。/@黄金_打造_戒指>\ \
+<&返回/@MAIN>
+
+[@恶魔_打造_盛大]
+<$USERNAME>：\ \
+　　请选择要打造的装备部位。\ \
+<打造{【恶魔头盔】=FCO=251}。/@恶魔_打造_头盔>　　　　　
+<打造{【恶魔项链】=FCO=251}。/@恶魔_打造_项链>\ \
+<打造{【恶魔手镯】=FCO=251}。/@恶魔_打造_手镯>　　　　　
+<打造{【恶魔戒指】=FCO=251}。/@恶魔_打造_戒指>\ \
+<&返回/@MAIN>
+
+[@涅槃_打造_盛大]
+<$USERNAME>：\ \
+　　请选择要打造的装备部位。\ \
+<打造{【涅槃头盔】=FCO=249}。/@涅槃_打造_头盔>　　　　　
+<打造{【涅槃项链】=FCO=249}。/@涅槃_打造_项链>\ \
+<打造{【涅槃手镯】=FCO=249}。/@涅槃_打造_手镯>　　　　　
+<打造{【涅槃戒指】=FCO=249}。/@涅槃_打造_戒指>\ \
+<&返回/@MAIN>
+
+[@贝尔_打造_头盔]
+#IF
+#ACT
+MOV S0 铜域头盔
+MOV S1 木域头盔
+MOV S2 土域头盔
+MOV S3 贝尔头盔
+MOV S4 金刚石
+GOTO @装备打造_执行_CHECK
+[@贝尔_打造_项链]
+#IF
+#ACT
+MOV S0 铜域项链
+MOV S1 木域项链
+MOV S2 土域项链
+MOV S3 贝尔项链
+MOV S4 金刚石
+GOTO @装备打造_执行_CHECK
+[@贝尔_打造_手镯]
+#IF
+#ACT
+MOV S0 铜域手镯
+MOV S1 木域手镯
+MOV S2 土域手镯
+MOV S3 贝尔手镯
+MOV S4 金刚石
+GOTO @装备打造_执行_CHECK
+
+[@贝尔_打造_戒指]
+#IF
+#ACT
+MOV S0 铜域戒指
+MOV S1 木域戒指
+MOV S2 土域戒指
+MOV S3 金刚石
+MOV S4 贝尔戒指の麻
+MOV S5 贝尔戒指の护
+MOV S6 贝尔戒指の复
+GOTO @装备打造_执行_戒指_CHECK
+
+[@黄金_打造_头盔]
+#IF
+#ACT
+MOV S0 金星头盔
+MOV S1 土星头盔
+MOV S2 水星头盔
+MOV S3 黄金头盔
+MOV S4 玄铁
+GOTO @装备打造_执行_CHECK
+[@黄金_打造_项链]
+#IF
+#ACT
+MOV S0 金星项链
+MOV S1 土星项链
+MOV S2 水星项链
+MOV S3 黄金项链
+MOV S4 玄铁
+GOTO @装备打造_执行_CHECK
+[@黄金_打造_手镯]
+#IF
+#ACT
+MOV S0 金星手镯
+MOV S1 土星手镯
+MOV S2 水星手镯
+MOV S3 黄金手镯
+MOV S4 玄铁
+GOTO @装备打造_执行_CHECK
+[@黄金_打造_戒指]
+#IF
+#ACT
+MOV S0 金星戒指
+MOV S1 土星戒指
+MOV S2 水星戒指
+MOV S3 玄铁
+MOV S4 黄金戒指の麻
+MOV S5 黄金戒指の护
+MOV S6 黄金戒指の复
+GOTO @装备打造_执行_戒指_CHECK
+
+[@恶魔_打造_头盔]
+#IF
+#ACT
+MOV S0 怒天头盔
+MOV S1 魔神头盔
+MOV S2 混沌头盔
+MOV S3 恶魔头盔
+MOV S4 百炼精铁
+GOTO @装备打造_执行_CHECK
+[@恶魔_打造_项链]
+#IF
+#ACT
+MOV S0 怒天项链
+MOV S1 魔神项链
+MOV S2 混沌项链
+MOV S3 恶魔项链
+MOV S4 百炼精铁
+GOTO @装备打造_执行_CHECK
+[@恶魔_打造_手镯]
+#IF
+#ACT
+MOV S0 怒天手镯
+MOV S1 魔神手镯
+MOV S2 混沌手镯
+MOV S3 恶魔手镯
+MOV S4 百炼精铁
+GOTO @装备打造_执行_CHECK
+[@恶魔_打造_戒指]
+#IF
+#ACT
+MOV S0 怒天戒指
+MOV S1 魔神戒指
+MOV S2 混沌戒指
+MOV S3 百炼精铁
+MOV S4 恶魔戒指の麻
+MOV S5 恶魔戒指の护
+MOV S6 恶魔戒指の复
+GOTO @装备打造_执行_戒指_CHECK
+
+[@涅槃_打造_头盔]
+#IF
+#ACT
+MOV S0 赤炎头盔
+MOV S1 冰炎头盔
+MOV S2 金炎头盔
+MOV S3 涅槃头盔
+MOV S4 龙鳞
+GOTO @装备打造_执行_CHECK
+[@涅槃_打造_项链]
+#IF
+#ACT
+MOV S0 赤炎项链
+MOV S1 冰炎项链
+MOV S2 金炎项链
+MOV S3 涅槃项链
+MOV S4 龙鳞
+GOTO @装备打造_执行_CHECK
+[@涅槃_打造_手镯]
+#IF
+#ACT
+MOV S0 赤炎手镯
+MOV S1 冰炎手镯
+MOV S2 金炎手镯
+MOV S3 涅槃手镯
+MOV S4 龙鳞
+GOTO @装备打造_执行_CHECK
+[@涅槃_打造_戒指]
+#IF
+#ACT
+MOV S0 赤炎戒指
+MOV S1 冰炎戒指
+MOV S2 金炎戒指
+MOV S3 龙鳞
+MOV S4 涅槃戒指の麻
+MOV S5 涅槃戒指の护
+MOV S6 涅槃戒指の复
+GOTO @装备打造_执行_戒指_CHECK
+
+[@装备打造_执行_CHECK]
+#IF
+Equal <$USER.INTERFACE> 0
+#ACT
+GOTO @装备打造_执行
+Break
+#IF
+Equal <$USER.INTERFACE> 1
+#ACT
+GOTO @装备打造_执行_盛大
+Break
+
+[@装备打造_执行_戒指_CHECK]
+#IF
+Equal <$USER.INTERFACE> 0
+#ACT
+GOTO @装备打造_执行_戒指
+Break
+#IF
+Equal <$USER.INTERFACE> 1
+#ACT
+GOTO @装备打造_执行_戒指_盛大
+Break
+
+
+[@装备打造_执行]
+<$USERNAME>：\ \
+　　当前装备打造需要{【<$STR(S0)>】=FCO=253}或\{【<$STR(S1)>】=FCO=253}或{【<$STR(S2)>】=FCO=253}
+相同装备\
+三个外加三个{【<$STR(S4)>】=FCO=254}即可合成。\ \
+<&物品齐全，开始合成。/@开始合成_执行>\
+<&返回/@MAIN>
+[@装备打造_执行_盛大]
+<$USERNAME>：\ \
+　　当前装备打造需要{【<$STR(S0)>】=FCO=253}或{【<$STR(S1)>】=FCO=253}或{【<$STR(S2)>】=FCO=253}\
+相同装备三个外加三个{【<$STR(S4)>】=FCO=254}即可合成。\ \
+<&物品齐全，开始合成。/@开始合成_执行>\
+<&返回/@MAIN>
+
+[@装备打造_执行_戒指]
+<$USERNAME>：\ \
+　　当前装备打造需要{【<$STR(S0)>】=FCO=253}或\{【<$STR(S1)>】=FCO=253}或{【<$STR(S2)>】=FCO=253}
+相同装备\
+三个外加三个{【<$STR(S3)>】=FCO=254}即可合成。\ \
+合成麻痹属性需要{【麻痹戒指】=FCO=251}x1。\
+合护身痹属性需要{【护身戒指】=FCO=251}x1。\
+合复活痹属性需要{【复活戒指】=FCO=251}x1。\ \
+<&物品齐全，开始合成{【麻痹属性】=FCO=253}。/@开始合成_执行_戒指_麻痹>\
+<&物品齐全，开始合成{【护身属性】=FCO=253}。/@开始合成_执行_戒指_护身>\
+<&物品齐全，开始合成{【复活属性】=FCO=253}。/@开始合成_执行_戒指_复活>\
+<&返回/@MAIN>
+
+[@装备打造_执行_戒指_盛大]
+<$USERNAME>：\
+　　当前装备打造需要{【<$STR(S0)>】=FCO=253}或{【<$STR(S1)>】=FCO=253}或{【<$STR(S2)>】=FCO=253}\
+相同装备三个外加三个{【<$STR(S3)>】=FCO=254}即可合成。\
+　　合成麻痹属性需要{【麻痹戒指】=FCO=251}x1。\
+　　合成护身属性需要{【护身戒指】=FCO=251}x1。\
+　　合成复活属性需要{【复活戒指】=FCO=251}x1。\ \
+<开始合成{【麻痹属性】=FCO=253}。/@开始合成_执行_戒指_麻痹>　　　　<开始合成{【护身属性】=FCO=253}。/@开始合成_执行_戒指_护身>\
+<开始合成{【复活属性】=FCO=253}。/@开始合成_执行_戒指_复活>　　　　<返回/@MAIN>
+
+[@开始合成_执行_戒指_麻痹]
+#if
+CHECKITEM <$STR(S0)> 3
+CheckItemCount <$STR(S3)> ? 3
+CHECKITEM 麻痹戒指 1
+#ACT
+TAKE <$STR(S0)> 3
+TakeCount <$STR(S3)> 3
+TAKE 麻痹戒指 1
+DynamicGive <$STR(S4)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 玩家：<$USERNAME>成功使用3个【<$STR(S0)>】打造了一个【<$STR(S4)>】。
+GOTO @MAIN
+BREAK
+#if
+CHECKITEM <$STR(S1)> 3
+CheckItemCount <$STR(S3)> ? 3
+CHECKITEM 麻痹戒指 1
+#ACT
+TAKE <$STR(S1)> 3
+TakeCount <$STR(S3)> 3
+TAKE 麻痹戒指 1
+DynamicGive <$STR(S4)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 玩家：<$USERNAME>成功使用3个【<$STR(S1)>】打造了一个【<$STR(S4)>】。
+GOTO @MAIN
+BREAK
+#if
+CHECKITEM <$STR(S2)> 3
+CheckItemCount <$STR(S3)> ? 3
+CHECKITEM 麻痹戒指 1
+#ACT
+TAKE <$STR(S2)> 3
+TakeCount <$STR(S3)> 3
+TAKE 麻痹戒指 1
+DynamicGive <$STR(S4)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 玩家：<$USERNAME>成功使用3个【<$STR(S2)>】打造了一个【<$STR(S4)>】。
+GOTO @MAIN
+BREAK
+#IF
+#ACT
+MESSAGEBOX 提示：打造材料不足。\　　\本次打造需要物品【<$STR(S0)>】或【<$STR(S1)>】或【<$STR(S2)>】三个\外加三个【<$STR(S3)>】和一个【麻痹戒指】。
+
+[@开始合成_执行_戒指_护身]
+#if
+CHECKITEM <$STR(S0)> 3
+CheckItemCount <$STR(S3)> ? 3
+CHECKITEM 护身戒指 1
+#ACT
+TAKE <$STR(S0)> 3
+TakeCount <$STR(S3)> 3
+TAKE 护身戒指 1
+DynamicGive <$STR(S5)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 玩家：<$USERNAME>成功使用3个【<$STR(S0)>】打造了一个【<$STR(S5)>】。
+GOTO @MAIN
+BREAK
+#if
+CHECKITEM <$STR(S1)> 3
+CheckItemCount <$STR(S3)> ? 3
+CHECKITEM 护身戒指 1
+#ACT
+TAKE <$STR(S1)> 3
+TakeCount <$STR(S3)> 3
+TAKE 护身戒指 1
+DynamicGive <$STR(S5)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 玩家：<$USERNAME>成功使用3个【<$STR(S1)>】打造了一个【<$STR(S5)>】。
+GOTO @MAIN
+BREAK
+#if
+CHECKITEM <$STR(S2)> 3
+CheckItemCount <$STR(S3)> ? 3
+CHECKITEM 护身戒指 1
+#ACT
+TAKE <$STR(S2)> 3
+TakeCount <$STR(S3)> 3
+TAKE 护身戒指 1
+DynamicGive <$STR(S5)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 玩家：<$USERNAME>成功使用3个【<$STR(S2)>】打造了一个【<$STR(S5)>】。
+GOTO @MAIN
+BREAK
+#IF
+#ACT
+MESSAGEBOX 提示：打造材料不足。\　　\本次打造需要物品【<$STR(S0)>】或【<$STR(S1)>】或【<$STR(S2)>】三个\外加三个【<$STR(S3)>】和一个【护身戒指】。
+
+[@开始合成_执行_戒指_复活]
+#if
+CHECKITEM <$STR(S0)> 3
+CheckItemCount <$STR(S3)> ? 3
+CHECKITEM 复活戒指 1
+#ACT
+TAKE <$STR(S0)> 3
+TakeCount <$STR(S3)> 3
+TAKE 复活戒指 1
+DynamicGive <$STR(S6)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 玩家：<$USERNAME>成功使用3个【<$STR(S0)>】打造了一个【<$STR(S6)>】。
+GOTO @MAIN
+BREAK
+#if
+CHECKITEM <$STR(S1)> 3
+CheckItemCount <$STR(S3)> ? 3
+CHECKITEM 复活戒指 1
+#ACT
+TAKE <$STR(S1)> 3
+TakeCount <$STR(S3)> 3
+TAKE 复活戒指 1
+DynamicGive <$STR(S6)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 玩家：<$USERNAME>成功使用3个【<$STR(S1)>】打造了一个【<$STR(S6)>】。
+GOTO @MAIN
+BREAK
+#if
+CHECKITEM <$STR(S2)> 3
+CheckItemCount <$STR(S3)> ? 3
+CHECKITEM 复活戒指 1
+#ACT
+TAKE <$STR(S2)> 3
+TakeCount <$STR(S3)> 3
+TAKE 复活戒指 1
+DynamicGive <$STR(S6)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 玩家：<$USERNAME>成功使用3个【<$STR(S2)>】打造了一个【<$STR(S6)>】。
+GOTO @MAIN
+BREAK
+#IF
+#ACT
+MESSAGEBOX 提示：打造材料不足。\　　\本次打造需要物品【<$STR(S0)>】或【<$STR(S1)>】或【<$STR(S2)>】三个\外加三个【<$STR(S3)>】和一个【复活戒指】。
+
+[@开始合成_执行]
+#if
+CHECKITEM <$STR(S0)> 3
+CheckItemCount <$STR(S4)> ? 3
+#ACT
+TAKE <$STR(S0)> 3
+TakeCount <$STR(S4)> 3
+DynamicGive <$STR(S3)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 玩家：<$USERNAME>成功使用3个【<$STR(S0)>】打造了一个【<$STR(S3)>】。
+GOTO @MAIN
+BREAK
+#if
+CHECKITEM <$STR(S1)> 3
+CheckItemCount <$STR(S4)> ? 3
+#ACT
+TAKE <$STR(S1)> 3
+TakeCount <$STR(S4)> 3
+DynamicGive <$STR(S3)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 玩家：<$USERNAME>成功使用3个【<$STR(S1)>】打造了一个【<$STR(S3)>】。
+GOTO @MAIN
+BREAK
+#if
+CHECKITEM <$STR(S2)> 3
+CheckItemCount <$STR(S4)> ? 3
+#ACT
+TAKE <$STR(S2)> 3
+TakeCount <$STR(S4)> 3
+DynamicGive <$STR(S3)> 1
+ChangeGiveItem 2 8 1
+ChangeGiveItem 8
+SENDMSG 0 玩家：<$USERNAME>成功使用3个【<$STR(S2)>】打造了一个【<$STR(S3)>】。
+GOTO @MAIN
+BREAK
+#IF
+#ACT
+MESSAGEBOX 提示：打造材料不足。\　　\本次打造需要物品【<$STR(S0)>】或【<$STR(S1)>】或【<$STR(S2)>】三个\外加三个【<$STR(S4)>】。
+}

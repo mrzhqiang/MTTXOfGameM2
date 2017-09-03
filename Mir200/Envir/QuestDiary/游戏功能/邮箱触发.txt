@@ -1,0 +1,624 @@
+[@邮箱触发]
+{
+[@EMailItem1]
+#IF
+#ACT
+SENDMSG 7 恭喜你获得被推广专利【35级新人礼包】x1。下一阶段领取礼包等级为40级。
+DynamicGive 35级新人礼包 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+DelayGoto 1 @推广礼包
+[@EMailItem2]
+#IF
+#ACT
+SENDMSG 7 恭喜你获得被推广专利【40级新人礼包】x1。下一阶段领取礼包等级为45级。
+DynamicGive 40级新人礼包 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+DelayGoto 1 @推广礼包
+[@EMailItem3]
+#IF
+#ACT
+SENDMSG 7 恭喜你获得被推广专利【45级新人礼包】x1。下一阶段领取礼包等级为50级。
+DynamicGive 45级新人礼包 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+DelayGoto 1 @推广礼包
+[@EMailItem4]
+#IF
+#ACT
+SENDMSG 7 恭喜你获得被推广专利【50级新人礼包】x1。下一阶段领取礼包等级为55级。
+DynamicGive 50级新人礼包 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+DelayGoto 1 @推广礼包
+[@EMailItem5]
+#IF
+#ACT
+SENDMSG 7 恭喜你获得被推广专利【55级新人礼包】x1。下一阶段领取礼包等级为60级。
+DynamicGive 55级新人礼包 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+DelayGoto 1 @推广礼包
+[@EMailItem6]
+#IF
+#ACT
+SENDMSG 7 恭喜你获得被推广专利【60级新人礼包】x1。下一阶段领取礼包等级为65级。
+DynamicGive 60级新人礼包 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+DelayGoto 1 @推广礼包
+[@EMailItem7]
+#IF
+#ACT
+SENDMSG 7 恭喜你获得被推广专利【65级新人礼包】x1。下一阶段领取礼包等级为70级。
+DynamicGive 65级新人礼包 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+DelayGoto 1 @推广礼包
+[@EMailItem8]
+#IF
+#ACT
+SENDMSG 7 恭喜你获得被推广专利【70级新人礼包】x1。
+DynamicGive 70级新人礼包 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+DelayGoto 1 @推广礼包
+
+
+
+[@EMailItem10]
+#IF
+#ACT
+DelayGoto 1 @推广礼包
+INC C93 1
+SENDMSG 7 推广员【<$USERNAME>】恭喜你，线下又有一名玩家绑定了你的推广。他在游戏过程中升级或是冲值，你都有奖励和提成。
+SENDMSG 0 恭喜：推广员【<$USERNAME>】线下又有一名玩家绑定了推广。游戏过程中他的升级和充值，推广员都可获得提成和奖励。
+SENDMSG 0 本服推广系统火爆开放中。只需将本服推荐给你的朋友。你就可以获取丰厚奖励。详情到土城安全区右下角查询。
+[@EMailItem11]
+#IF
+#ACT
+DelayGoto 1 @推广礼包
+GamePoint + 75
+ChangeExp + 2000000
+INC C94 1
+SENDMSG 7 推广员【<$USERNAME>】恭喜你，线下有名玩家达到50级，你获得了75点卷、1点推广积分。
+SENDMSG 0 恭喜推广员【<$USERNAME>】线下一名玩家到达50级，从而获得了75点卷、1点推广积分和经验值2000000的推广奖励。
+SENDMSG 0 本服推广系统火爆开放中。只需将本服推荐给你的朋友。你就可以获取丰厚奖励。详情到土城安全区右下角查询。
+[@EMailItem12]
+#IF
+#ACT
+DelayGoto 1 @推广礼包
+GamePoint + 375
+ChangeExp + 4000000
+INC C94 2
+SENDMSG 7 推广员【<$USERNAME>】恭喜你，线下有名玩家达到55级，你获得了375点卷和2点推广积分。
+SENDMSG 0 恭喜推广员【<$USERNAME>】线下一名玩家到达55级，从而获得了375点卷、2点推广积分和4000000的推广奖励。
+SENDMSG 0 本服推广系统火爆开放中。只需将本服推荐给你的朋友。你就可以获取丰厚奖励。详情到土城安全区右下角查询。
+[@EMailItem13]
+#IF
+#ACT
+DelayGoto 1 @推广礼包
+GamePoint + 750
+ChangeExp + 7000000
+INC C94 3
+SENDMSG 7 推广员【<$USERNAME>】恭喜你，线下有名玩家达到60级，你获得了750点卷和3点推广积分。
+SENDMSG 0 恭喜推广员【<$USERNAME>】线下一名玩家到达60级，从而获得了750点卷、3点推广积分和经验值7000000的推广奖励。
+SENDMSG 0 本服推广系统火爆开放中。只需将本服推荐给你的朋友。你就可以获取丰厚奖励。详情到土城安全区右下角查询。
+[@EMailItem14]
+#IF
+#ACT
+DelayGoto 1 @推广礼包
+GamePoint + 2250
+ChangeExp + 20000000
+INC C94 5
+SENDMSG 7 推广员【<$USERNAME>】恭喜你，线下有名玩家达到65级，你获得了2250点卷和5点推广积分。
+SENDMSG 0 恭喜推广员【<$USERNAME>】线下一名玩家到达65级，从而获得了2250点卷、5点推广积分和经验值20000000的推广奖励。
+SENDMSG 0 本服推广系统火爆开放中。只需将本服推荐给你的朋友。你就可以获取丰厚奖励。详情到土城安全区右下角查询。
+[@EMailItem15]
+#IF
+#ACT
+DelayGoto 1 @推广礼包
+GamePoint + 3750
+ChangeExp + 60000000
+INC C94 10
+SENDMSG 7 推广员【<$USERNAME>】恭喜你，线下有名玩家达到70级，你获得了3750点卷和10点推广积分。
+SENDMSG 0 恭喜推广员【<$USERNAME>】线下一名玩家到达70级，从而获得了3750点卷、10点推广积分和经验值60000000的推广奖励。
+SENDMSG 0 本服推广系统火爆开放中。只需将本服推荐给你的朋友。你就可以获取丰厚奖励。详情到土城安全区右下角查询。
+
+
+
+[@EMailItem101]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 5
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem102]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 10
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem103]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 15
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem104]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 20
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem105]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 25
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem106]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 30
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem107]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 35
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem108]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 40
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem109]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 45
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem110]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 50
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem111]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 100
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem112]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 150
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem113]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 200
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem114]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 250
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem115]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 300
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem116]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 350
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem117]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 400
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem118]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 450
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem119]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 500
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem120]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 1000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem121]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 1500
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem122]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 2000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem123]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 2500
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem124]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 3000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem125]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 3500
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem126]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 4000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem127]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 4500
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem128]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 5000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem129]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 10000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem130]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 15000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem131]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 20000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem132]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 25000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem133]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 30000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem134]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 35000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem135]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 40000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem136]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 45000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem137]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 50000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem138]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 100000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem139]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 150000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem140]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 200000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem141]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 250000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem142]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 300000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem143]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 350000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem144]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 400000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+[@EMailItem145]
+#ACT
+MOV P1 0
+DelayGoto 1 @推广礼包
+MOV P1 450000
+Mul P1 <$STR(C95)>
+GAMEGOLD + <$STR(P1)>
+SENDMSG 0 <$STR(C95)>级推官员【<$USERNAME>】线下又有一名玩家进行了充值，他获得了<$STR(C95)>0%的元宝提成！
+SENDMSG 0 如果你眼红了，也赶快加入推广员行列吧！推广的玩家升级或是充值，你都可以领取到丰富的奖励和元宝！
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@推广礼包]
+#IF
+#ACT
+TAKE 推广奖励 1
+}

@@ -1,0 +1,148 @@
+(@@InPutString @@InPutInteger)
+[@main]
+★行会竞价版★\ \
+行会【<$STR(A30)>】自助招人系统\ 
+加入该行会的最低等级要求是：<$STR(G108)>级以上\ 
+<加入行会/@jrxh>　<参加竞价/@cyjj>　<管理选项/@竞标台管理>\
+【行会名称】：【<$STR(A30)>】\
+【行会掌门】：【<$STR(A31)>】\
+【竞标价格】：【<$STR(G56)>】\
+【掌门致辞】：【<$STR(S5)>】\
+您支付比目前竞价多100个元宝，\即可让你建的行会成为[天下第一行会]\ 
+[@cyjj] 
+#IF 
+HAVEGUILD 
+ISGUILDMASTER 
+CHECKGAMEGOLD > <$STR(G56)> 
+#ACT 
+INC G56 200 
+GAMEGOLD - <$STR(G56)> 
+mov A30 <$GUILDNAME>
+mov A31 <$USERNAME>
+Messagebox [成功]：您在行会竞价板上花了【<$STR(G56)>】个元宝竞得。 
+SENDMSG 0 【<$USERNAME>】在行会竞价板为行会【<$STR(A30)>】竞得，大家赶快来加入这个有实力的行会吧! 
+SENDMSG 0 【<$USERNAME>】在行会竞价板为行会【<$STR(A30)>】竞得，大家赶快来加入这个有实力的行会吧! 
+SENDMSG 0 【<$USERNAME>】在行会竞价板为行会【<$STR(A30)>】竞得，大家赶快来加入这个有实力的行会吧! 
+SENDMSG 0 【<$USERNAME>】在行会竞价板为行会【<$STR(A30)>】竞得，大家赶快来加入这个有实力的行会吧! 
+SENDMSG 0 【<$USERNAME>】在行会竞价板为行会【<$STR(A30)>】竞得，大家赶快来加入这个有实力的行会吧! 
+GOTO @main 
+BREAK 
+#ELSEACT 
+Messagebox [失败]：您的元宝不足或者您没有行会 
+[@jrxh]
+#if
+equal G109 1
+#act
+messagebox 对不起，本行会暂时不收人
+break
+#if
+CHECKLEVELEX < <$STR(G108)>
+#act
+messagebox 等级不够！
+break
+#IF 
+ISGUILDMASTER 
+#ACT 
+Messagebox [失败]：您现在是行会掌门不能在加入其他行会！！ 
+break 
+#IF 
+equal A30 <$GUILDNAME> 
+#ACT 
+Messagebox [失败]：您现在已经是【<$STR(A30)>】的行会成员了！！ 
+break 
+#ELSEACT 
+goto @jrxh3 
+[@jrxh3] 
+#IF 
+HAVEGUILD 
+#ACT 
+Gmexecute 退出门派 
+DELAYGOTO 3 @jrxh4 
+#ELSEACT 
+goto @jrxh4 
+[@jrxh4] 
+#IF 
+equal A30 
+#ACT 
+Messagebox [失败]：现在还没行会竟价格
+#ELSEACT
+AddGuildMember <$STR(A30)> <$USERNAME>
+SENDMSG 0 恭喜【<$USERNAME>】通过【天下第一行会】NPC加入了行会【<$STR(A30)>】
+SENDMSG 0 恭喜【<$USERNAME>】通过【天下第一行会】NPC加入了行会【<$STR(A30)>】
+SENDMSG 0 恭喜【<$USERNAME>】通过【天下第一行会】NPC加入了行会【<$STR(A30)>】
+SENDMSG 0 恭喜【<$USERNAME>】通过【天下第一行会】NPC加入了行会【<$STR(A30)>】
+SENDMSG 0 恭喜【<$USERNAME>】通过【天下第一行会】NPC加入了行会【<$STR(A30)>】
+break 
+
+
+[@竞标台管理]
+#if
+ISGUILDMASTER
+equal A30 <$GUILDNAME>
+#act
+goto @竞标台管理2
+#elseact
+SENDMSG 5 [只有本行会掌门才可以进行管理]
+goto @main
+[@竞标台管理2]
+#if
+equal g109 0
+#act
+mov s1 开启
+#if
+equal g109 1
+#act
+mov s1 关闭
+#if
+equal g110 0
+#act
+mov s2 允许
+#if
+equal g110 1
+#act
+mov s2 禁止
+#if
+#say
+\
+→<修改公告内容/@@InPutString5#请输入要说的话>\
+当前公告内容:<$STR(S5)>\\\
+→<修改等级要求/@@InPutInteger9#请输入要限制的等级>\
+当前等级要求:<$STR(G108)>级\\\
+→行会收人状态 当前状态为：<$STR(S1)> <更改/@gg1>\ \
+→<返回/@main>
+[@gg1]
+#if
+equal g109 0
+#act
+mov g109 1
+messagebox 行会收人状态→关闭
+goto @竞标台管理
+break
+#if
+equal g109 1
+#act
+mov g109 0
+messagebox 行会收人状态→开放
+goto @竞标台管理
+break
+[@@InPutInteger9]
+#if
+;large n71 35
+;small n71 300
+#act
+mov g108 <$STR(n9)>
+messagebox 设定成功，加入你的行会的最低等级要求是<$STR(n9)>级！
+goto @竞标台管理
+#elseact
+messagebox 【错误提示】:\　\　　　　　　㈠　请输入一个35－300间的整数！\　\　　　　　㈡　请输入数字，勿输入其它字符！
+goto @竞标台管理
+
+[@@InPutString5]
+#if
+#act
+mov S5 <$STR(S5)>
+messagebox 修改成功，公告内容为<$STR(S5)>！
+goto @竞标台管理
+#elseact
+messagebox 【错误提示】:非法字符，请输入一段文本，勿输入其它字符！
+goto @竞标台管理

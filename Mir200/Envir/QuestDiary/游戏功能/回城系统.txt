@@ -1,0 +1,107 @@
+[@回城系统]
+{
+[@回城_执行_1]
+#IF
+NOT CheckInMapRange <$STR(S2)> <$STR(P3)> <$STR(P4)> 0
+#ACT
+Close
+GmExeCute TestStatus 4
+SENDMSG 7 警告：由于回城释放时，移动或招收攻击等因素造成了回城被打断。
+BREAK
+#IF
+Large P0 <$HP>
+#ACT
+Close
+GmExeCute TestStatus 4
+SENDMSG 7 警告：由于回城释放时，移动或招收攻击等因素造成了回城被打断。
+BREAK
+#IF
+Large P1 <$MP>
+#ACT
+Close
+GmExeCute TestStatus 4
+SENDMSG 7 警告：由于回城释放时，移动或招收攻击等因素造成了回城被打断。
+BREAK
+#IF
+#ACT
+DelayGoto 1 @回城_执行_2
+#SAY
+<$USERNAME>:\ \
+　　已经启动回城石，请保持静态。\
+　　注：一旦移动，或遭受攻击将打断回城。\ \
+　　回城：■■■■■□□□□□50%。\
+
+[@回城_执行_2]
+#IF
+NOT CheckInMapRange <$STR(S2)> <$STR(P3)> <$STR(P4)> 0
+#ACT
+Close
+GmExeCute TestStatus 4
+SENDMSG 7 警告：由于回城释放时，移动或招收攻击等因素造成了回城被打断。
+BREAK
+#IF
+Large P0 <$HP>
+#ACT
+Close
+GmExeCute TestStatus 4
+SENDMSG 7 警告：由于回城释放时，移动或招收攻击等因素造成了回城被打断。
+BREAK
+#IF
+Large P1 <$MP>
+#ACT
+Close
+GmExeCute TestStatus 4
+SENDMSG 7 警告：由于回城释放时，移动或招收攻击等因素造成了回城被打断。
+BREAK
+#IF
+#ACT
+DelayGoto 1 @回城_执行_4
+#SAY
+<$USERNAME>:\ \
+　　已经启动回城石，请保持静态。\
+　　注：一旦移动，或遭受攻击将打断回城。\ \
+　　回城：■■■■■■■■■■100%。\
+
+[@回城_执行_3]
+#IF
+NOT CheckInMapRange <$STR(S2)> <$STR(P3)> <$STR(P4)> 0
+#ACT
+Close
+GmExeCute TestStatus 4
+SENDMSG 7 警告：由于回城释放时，移动或招收攻击等因素造成了回城被打断。
+BREAK
+#IF
+Large P0 <$HP>
+#ACT
+Close
+GmExeCute TestStatus 4
+SENDMSG 7 警告：由于回城释放时，移动或招收攻击等因素造成了回城被打断。
+BREAK
+#IF
+Large P1 <$MP>
+#ACT
+Close
+GmExeCute TestStatus 4
+SENDMSG 7 警告：由于回城释放时，移动或招收攻击等因素造成了回城被打断。
+BREAK
+#IF
+#ACT
+DelayGoto 1 @回城_执行_4
+#SAY
+<$USERNAME>:\ \
+　　已经启动回城石，请保持静态。\
+　　注：一旦移动，或遭受攻击将打断回城。\ \
+　　回城：■■■■■■■■■100%。\
+
+[@回城_执行_4]
+#IF
+#ACT
+Movr P60 19
+Movr P61 19
+MOV P62 321
+MOV P63 321
+INC P62 <$STR(P60)>
+INC P63 <$STR(P61)>
+MAPMOVE 3 <$STR(P62)> <$STR(P63)>
+
+}

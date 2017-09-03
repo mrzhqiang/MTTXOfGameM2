@@ -1,0 +1,253 @@
+
+[@main]
+60级奖励->金条一根\
+65级奖励->金条一根+50元宝\
+70级奖励->通行证一张+超级祝福油一瓶\
+75级奖励->特殊戒指随机一枚\
+80级奖励->黄金武器随机一把\
+85级奖励->坐骑(烈炎马)一只\
+90级奖励->神器偃月武器一把\
+95级奖励->坐骑(玄皇兽)一只\
+99级奖励->神器龙鳞凤羽+终极技能书一本\[99奖励只限开区3天内]\
+<领取奖励/@领取>
+[@领取]
+<60级奖励/@60>\<65级奖励/@65>\<70级奖励/@70>\<75级奖励/@75>\<80级奖励/@80>\
+<85级奖励/@85>\<90级奖励/@90>\<95级奖励/@95>\<99级奖/@99>\
+[@60]
+#if
+CHECKLEVELEX < 60
+#act
+messagebox 提示：等级不足.
+break
+#if
+check [660] 1
+#act
+messagebox 提示：该奖励你已经领取过了。
+break
+#IF
+#act
+give 金条 1
+set [660] 1
+SENDMSG 8 恭喜【<$USERNAME>】领取60级冲级奖励成功
+[@65]
+#if
+CHECKLEVELEX < 65
+#act
+messagebox 提示：等级不足.
+break
+#if
+check [665] 1
+#act
+messagebox 提示：该奖励你已经领取过了。
+break
+#IF
+#act
+give 金条 1
+gamegold + 50
+set [665] 1
+SENDMSG 8 恭喜【<$USERNAME>】领取65级冲级奖励成功
+[@70]
+#if
+CHECKLEVELEX < 70
+#act
+messagebox 提示：等级不足.
+break
+#if
+check [670] 1
+#act
+messagebox 提示：该奖励你已经领取过了。
+break
+#IF
+#act
+give 通行证 1
+give 超级祝福油 1
+set [670] 1
+SENDMSG 8 恭喜【<$USERNAME>】领取70级冲级奖励成功
+
+[@75]
+#if
+CHECKLEVELEX < 75
+#act
+messagebox 提示：等级不足.
+break
+#if
+check [675] 1
+#act
+messagebox 提示：该奖励你已经领取过了。
+break
+#IF
+random 3
+#act
+give 麻痹戒指 1
+set [675] 1
+SENDMSG 8 恭喜【<$USERNAME>】领取75级冲级奖励成功
+break
+#IF
+random 3
+#act
+give 复活戒指 1
+set [675] 1
+SENDMSG 8 恭喜【<$USERNAME>】领取75级冲级奖励成功
+break
+#IF
+random 3
+#act
+give 护身戒指 1
+set [675] 1
+SENDMSG 8 恭喜【<$USERNAME>】领取75级冲级奖励成功
+break
+#IF
+#act
+give 复活戒指 1
+set [675] 1
+SENDMSG 8 恭喜【<$USERNAME>】领取75级冲级奖励成功
+break
+[@80]
+#if
+CHECKLEVELEX < 80
+#act
+messagebox 提示：等级不足.
+break
+#if
+check [680] 1
+#act
+messagebox 提示：该奖励你已经领取过了。
+break
+#IF
+random 3
+#act
+give 黄金战刀 1,
+set [680] 1
+SENDMSG 8 恭喜【<$USERNAME>】领取80级冲级奖励成功
+break
+#IF
+random 3
+#act
+give 黄金道枪 1
+set [680] 1
+SENDMSG 8 恭喜【<$USERNAME>】领取80级冲级奖励成功
+break
+#IF
+random 3
+#act
+give 黄金法轮 1
+set [680] 1
+SENDMSG 8 恭喜【<$USERNAME>】领取80级冲级奖励成功
+break
+#IF
+#act
+give 黄金法轮 1
+set [680] 1
+SENDMSG 8 恭喜【<$USERNAME>】领取80级冲级奖励成功
+break
+[@85]
+#if
+CHECKLEVELEX < 85
+#act
+messagebox 提示：等级不足.
+break
+#if
+check [685] 1
+#act
+messagebox 提示：该奖励你已经领取过了。
+break
+#IF
+#act
+give 坐骑(烈炎马) 1
+set [685] 1
+SENDMSG 8 恭喜【<$USERNAME>】领取85级冲级奖励成功
+
+[@90]
+#if
+CHECKLEVELEX < 90
+#act
+messagebox 提示：等级不足.
+break
+#if
+check [690] 1
+#act
+messagebox 提示：该奖励你已经领取过了。
+break
+#IF
+CheckJob Warrior
+#act
+give 偃月刀 1
+set [690] 1
+SENDMSG 8 恭喜【<$USERNAME>】领取90级冲级奖励成功
+break
+#IF
+CheckJob Taoist
+#act
+give 天龙刀 1
+set [690] 1
+SENDMSG 8 恭喜【<$USERNAME>】领取90级冲级奖励成功
+break
+#IF
+CheckJob Wizard
+#act
+give 冥法棍 1
+set [690] 1
+SENDMSG 8 恭喜【<$USERNAME>】领取90级冲级奖励成功
+break
+[@95]
+#if
+CHECKLEVELEX < 95
+#act
+messagebox 提示：等级不足.
+break
+#if
+check [695] 1
+#act
+messagebox 提示：该奖励你已经领取过了。
+break
+#IF
+#act
+give 坐骑(玄皇兽) 1
+set [695] 1
+SENDMSG 8 恭喜【<$USERNAME>】领取95级冲级奖励成功
+
+[@99]
+#IF
+LARGE G501 3
+#ACT
+SENDMSG 7 开区数大于3天。无法领取99级奖励！
+break
+
+#if
+CHECKLEVELEX < 99
+#act
+messagebox 提示：等级不足.
+break
+#if
+check [699] 1
+#act
+messagebox 提示：该奖励你已经领取过了。
+break
+#IF
+#act
+give 龙鳞凤羽 1
+set [699] 1
+SENDMSG 8 恭喜【<$USERNAME>】领取99级冲级奖励成功
+
+#IF
+CheckJob Warrior
+#act
+give 十步一杀 1
+
+
+#IF
+CheckJob Taoist
+#act
+give 死亡之眼 1
+
+
+#IF
+CheckJob Wizard
+#act
+give 冰霜群雨 1
+
+
+
+
+
+

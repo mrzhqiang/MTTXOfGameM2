@@ -1,0 +1,224 @@
+[@新手接待员_检测]
+{
+#if
+CHECKMISSION [100] 0
+#ACT
+INC S0 <&初出茅庐{【任务】=FCO=251}/@任务_初出茅庐_接受>\
+
+#IF
+CHECKMISSION [101] 1
+CHECKMISSION [102] 0
+#ACT
+INC S0 <&初出茅庐{【任务】=FCO=251}/@任务_初出茅庐第二步_完成>\
+
+#IF
+CHECKMISSION [115] 1
+CHECKMISSION [116] 0
+#ACT
+INC S0 <&初显锋芒{【任务】=FCO=251}/@任务_学习技能_第六步>\
+
+#if
+CHECKMISSION [116] 1
+CHECKMISSION [117] 0
+CHECKMISSION [$任务_系统_成功使用一次技能] 1
+#act
+INC S0 <&初显锋芒{【任务】=FCO=251}/@任务_学习技能_第七步>\
+
+#IF
+CHECKMISSION [117] 1
+CHECKMISSION [118] 0
+#ACT
+INC S0 <&小试牛刀{【任务】=FCO=251}/@任务_小试牛刀_接受>\
+
+#IF
+CHECKMISSION [118] 1
+CHECKMISSION [119] 0
+CHECKMISSIONKILLMONCOUNT 0 1 ? 20
+CHECKMISSIONKILLMONCOUNT 0 2 ? 20
+#ACT
+INC S0 <&小试牛刀{【完成】=FCO=251}/@任务_小试牛刀_完成>\
+
+#IF
+CHECKMISSION [119] 1
+CHECKMISSION [120] 0
+#ACT
+INC S0 <&踏入江湖{【任务】=FCO=251}/@任务_踏入江湖_接受>\
+}
+
+[@新手接待员_脚本]
+{
+[@任务_初出茅庐_接受]
+#IF
+CHECKMISSION [100] 0
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　你去找一个头上有发光卷轴的老人家\
+他的名字叫龙五，是三十年前玛法大陆的\
+首领，当年被人尊称为{龙五大爷=FCO=251}，在江湖\
+上相当有名望。他若肯指点你一二，可说\
+是受用无穷。\ \
+{任务奖励=FCO=243}\
+　声望值： 2\
+　经验值： 100\ \ \
+<&接受任务/@初出茅庐_接受任务>\
+<&结束对话/@exit>\
+#elseact
+close
+
+[@初出茅庐_接受任务]
+#IF
+CHECKMISSION [100] 0
+#ACT
+DELMISSION 0
+ADDMISSION 0 初出茅庐第一步
+SETMISSION [100] 1
+SHOWEFFECT [$特效_接受任务]
+AUTOMOVE 新手村,92,149
+close
+
+[@任务_初出茅庐第二步_完成]
+#IF
+CHECKMISSION [101] 1
+CHECKMISSION [102] 0
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　老太爷真像个小孩子，他说不送就不\
+送了。另外老太爷用过的那几把刀剑都有\
+些历史了，现正放在{甜酒叔(武器店老板)=FCO=251}\
+那里修理，你去找他要吧。不过甜酒是个\
+怪人，总爱出问题为难后生。\ \
+<&现在就过去/@move(新手村,110,144)>\
+<&结束对话/@exit>\
+#ACT
+SHOWEFFECT [$特效_步骤完成]
+SETMISSION [102] 1
+CHANGEEXP + [$任务_初出茅庐_第二步奖励经验值]
+CREDITPOINT + 1
+UPDATEMISSION 0 初出茅庐第三步
+
+[@任务_学习技能_第六步]
+#IF
+CHECKMISSION [115] 1
+CHECKMISSION [116] 0
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　才几天没见，成熟多了啊。关于这本\
+书啊，嗯！我看看。哦，原来是技能书，\
+这可是好东西啊。不知道那个小书生从哪\
+里捡来的。至于怎么使用嘛，前些年听龙\
+五大爷说过。{当你等级达到技能书所要求=FCO=251}\
+{的等级时，直接双击使用技能书学习该技=FCO=251}\
+{能。=FCO=251}{按 “S” 键或 “F11”键，可以打=FCO=250}\
+{开技能窗口，用鼠标单击技能图标，当图=FCO=250}\
+{标拿起来的时候，把它放到底下的快捷栏=FCO=250}\
+{里面，这样以后你想要释放技能只要按对=FCO=250}\
+{应的快捷键就可以了。=FCO=250}\
+　　听懂了吗？你现在就按照我所说的学\
+好技能，然后再拖放到快捷键栏里面，成\
+功释一次任意技能。\ \
+<&我现在去试试/@任务_学习技能_第六步_完成>\
+<&结束对话/@exit>\
+
+[@任务_学习技能_第六步_完成]
+#if
+CHECKMISSION [115] 1
+CHECKMISSION [116] 0
+#act
+SHOWEFFECT [$特效_步骤完成] 
+SETMISSION [116] 1
+CHANGEEXP + [$任务_学习技能_第六步奖励经验值]
+CREDITPOINT + 1
+UPDATEMISSION 0 学习技能第七步
+close
+
+[@任务_学习技能_第七步]
+#if
+CHECKMISSION [116] 1
+CHECKMISSION [117] 0
+CHECKMISSION [$任务_系统_成功使用一次技能] 1
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　不错，你已经能够熟练的掌握魔法技\
+能，但不知道你的实践能力怎么样。\
+　　村子里的庄稼地最近出现了许多多钩\
+猫和钉耙猫，肆意践踏着庄稼地，如果你\
+能杀掉{20只多钩猫=FCO=251}和{20只钉耙猫=FCO=251}的话，就\
+能足够证明你的能力。\ \ 
+{任务奖励=FCO=243}\
+　绑定金币： 300000\
+　经验值： 75000\ \
+<&接受任务/@任务_小试牛刀_接受>\
+<&结束对话/@exit>\
+#ACT
+SHOWEFFECT [$特效_任务完成] 
+SETMISSION [117] 1
+CHANGEEXP + [$任务_学习技能_第七步奖励经验值]
+CREDITPOINT + 1
+DELMISSION 0
+DYNAMICGIVE 坐骑(雷龙) 1
+CHANGEGIVEITEM [$物品_改变属性_时间] 3
+CHANGEGIVEITEM [$物品_改变属性_刷新物品]
+
+[@任务_小试牛刀_接受]
+#IF
+CHECKMISSION [117] 1
+CHECKMISSION [118] 0
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　村子的庄稼地在<（新手村 153:38）/@move(新手村,153,38)>和\
+<（新手村 185:29）/@move(新手村,185,29)>。\
+　　完成后我等你的好消息。\ \ \ \
+<&我这就去/@move(新手村,153,38)>\
+<&结束对话/@exit>\
+#ACT
+DELMISSION 0
+SHOWEFFECT [$特效_接受任务]
+SETMISSION [118] 1
+ADDMISSION 0 小试牛刀
+SET [$CHECK常量_是否接受小试牛刀杀怪任务] 1
+
+[@任务_小试牛刀_完成]
+#IF
+CHECKMISSION [118] 1
+CHECKMISSION [119] 0
+CHECKMISSIONKILLMONCOUNT 0 1 ? 20
+CHECKMISSIONKILLMONCOUNT 0 2 ? 20
+#SAY
+{<$SELFNAME>=FCO=243}：\
+　　嗯，不错！你现在已经长大了，已经\
+不适合再待在村子里面了，应该出去到外\
+面的花花世界闯荡一番。\
+　　我在{比奇省=FCO=251}有个老朋友{邹德侩（传送=FCO=251}\
+{员）=FCO=251}，我这里有封信，你帮我带给他。让\
+他教你在外面的世界如何保护自己！\ \
+{任务奖励=FCO=243}\
+　绑定金币： 500000\ \
+<&接受任务/@任务_踏入江湖_接受>\
+<&结束对话/@exit>\
+#ACT
+SHOWEFFECT [$特效_任务完成] 
+SETMISSION [119] 1
+CHANGEEXP + [$任务_小试牛刀奖励经验值]
+SET [$CHECK常量_是否已完成小试牛刀杀怪任务] 1
+GIVE [$绑定金币名称] [$任务_小试牛刀奖励绑定金币]
+DELMISSION 0
+
+[@任务_踏入江湖_接受]
+#if
+CHECKBAGSIZE 1
+#elseact
+MESSAGEBOX 请至少预留1格背包空间！
+break
+
+#IF
+CHECKMISSION [119] 1
+CHECKMISSION [120] 0
+#ACT
+DELMISSION 0
+ADDMISSION 0 踏入江湖第一步
+SETMISSION [120] 1
+GIVE 介绍信 1
+SHOWEFFECT [$特效_接受任务] 
+AUTOMOVE 新手村,206,20;比奇省,330,270
+close
+}

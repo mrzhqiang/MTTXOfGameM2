@@ -1,0 +1,110 @@
+[@藏宝关卡]
+{
+[@StdmodeFunc60]
+#IF
+CHECK [353] 0
+#ACT
+SET [353] 1
+SENDMSG 7 每日成就提示：每日活动成就⑶已经完成，请倒土城左上角找【左成就】完成。
+#IF
+#ACT
+DEC C87 1
+GetRandomName ../QuestDiary/游戏功能/藏宝关卡宝物/普通.txt S5
+DynamicGive <$STR(S5)> 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】在挑战【藏宝阁】关卡时开出了宝藏，正躲着乐呵呵的笑呢。
+SENDMSG 7 恭喜:又找到了一个宝藏，当前地图还有<$STR(C87)>个真宝藏。
+BREAK
+[@StdmodeFunc61]
+#IF
+#ACT
+SENDMSG 7 哎哟我草。原来是个空箱子。
+[@StdmodeFunc62]
+#IF
+#ACT
+SENDMSG 7 哎哟我草。开了一个有封印的箱子，一批恶魔冲了出来！
+MongenEx <$MAP> <$X> <$Y> 宝藏恶魔1 1 2
+MongenEx <$MAP> <$X> <$Y> 宝藏恶魔2 1 2
+MongenEx <$MAP> <$X> <$Y> 宝藏恶魔3 1 2
+
+[@StdmodeFunc63]
+#IF
+CHECK [353] 0
+#ACT
+SET [353] 1
+SENDMSG 7 每日成就提示：每日活动成就⑶已经完成，请倒土城左上角找【左成就】完成。
+#IF
+#ACT
+DEC C87 1
+GetRandomName ../QuestDiary/游戏功能/藏宝关卡宝物/精英.txt S5
+DynamicGive <$STR(S5)> 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】在挑战【藏宝阁】关卡时开出了宝藏，正躲着乐呵呵的笑呢。
+SENDMSG 7 恭喜:又找到了一个宝藏，当前地图还有<$STR(C87)>个真宝藏。
+BREAK
+[@StdmodeFunc64]
+#IF
+CHECK [353] 0
+#ACT
+SET [353] 1
+SENDMSG 7 每日成就提示：每日活动成就⑶已经完成，请倒土城左上角找【左成就】完成。
+#IF
+#ACT
+SENDMSG 7 哎哟我草。原来是个空箱子。
+[@StdmodeFunc65]
+#IF
+#ACT
+SENDMSG 7 哎哟我草。开了一个有封印的箱子，一批恶魔冲了出来！
+MongenEx <$MAP> <$X> <$Y> 宝藏恶魔11 1 2
+MongenEx <$MAP> <$X> <$Y> 宝藏恶魔12 1 2
+MongenEx <$MAP> <$X> <$Y> 宝藏恶魔13 1 2
+
+[@StdmodeFunc66]
+#IF
+CHECK [353] 0
+#ACT
+SET [353] 1
+SENDMSG 7 每日成就提示：每日活动成就⑶已经完成，请倒土城左上角找【左成就】完成。
+#IF
+#ACT
+DEC C87 1
+GetRandomName ../QuestDiary/游戏功能/藏宝关卡宝物/恶魔.txt S5
+DynamicGive <$STR(S5)> 1
+ChangeGiveItem 2 0 1
+ChangeGiveItem 2 3 1
+ChangeGiveItem 2 4 1
+ChangeGiveItem 2 7 1
+ChangeGiveItem 8
+SENDMSG 0 玩家【<$USERNAME>】在挑战【藏宝阁】关卡时开出了宝藏，正躲着乐呵呵的笑呢。
+SENDMSG 7 恭喜:又找到了一个宝藏，当前地图还有<$STR(C87)>个真宝藏。
+BREAK
+[@StdmodeFunc67]
+#IF
+CHECK [353] 0
+#ACT
+SET [353] 1
+SENDMSG 7 每日成就提示：每日活动成就⑶已经完成，请倒土城左上角找【左成就】完成。
+#IF
+#ACT
+SENDMSG 7 哎哟我草。原来是个空箱子。
+[@StdmodeFunc68]
+#IF
+CHECK [353] 0
+#ACT
+SET [353] 1
+SENDMSG 7 每日成就提示：每日活动成就⑶已经完成，请倒土城左上角找【左成就】完成。
+#IF
+#ACT
+SENDMSG 7 哎哟我草。开了一个有封印的箱子，一批恶魔冲了出来！
+MongenEx <$MAP> <$X> <$Y> 宝藏恶魔21 1 2
+MongenEx <$MAP> <$X> <$Y> 宝藏恶魔22 1 2
+MongenEx <$MAP> <$X> <$Y> 宝藏恶魔23 1 2
+}
